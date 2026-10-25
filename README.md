@@ -5,11 +5,11 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 
 ## Fonctionnalités
 
-- **Galerie** par thèmes : animaux, nourriture, nature, objets, mandalas, et un onglet « Mes coloriages » (en cours et terminés).
-- **Plus de 60 dessins** : 20 pixel arts faits main, 8 mandalas générés et une quarantaine d'emojis convertis en pixel art (selon les polices de l'appareil).
+- **Galerie** par thèmes : Minecraft, Star Wars, jeux vidéo, animaux, nourriture, nature, objets, mandalas, et un onglet « Mes coloriages » (en cours et terminés).
+- **Près de 90 dessins** : 24 grands dessins jeux vidéo (32×32 à 56×24), 20 pixel arts faits main, 8 mandalas générés et une quarantaine d'emojis convertis en pixel art (selon les polices de l'appareil).
 - **Coloriage au doigt ou à la souris** : touche ou glisse pour colorier plusieurs cases d'un coup.
 - **Zoom** : pincement à deux doigts, molette, boutons ＋ / － / ⤢ ; un appui sur un dessin trop petit zoome directement dessus.
-- Les cases de la couleur choisie sont **mises en évidence** ; une mauvaise couleur reste visible en transparence avec son numéro.
+- Les cases de la couleur choisie sont **mises en évidence**, et une couleur ne peut colorier que les cases de son propre numéro.
 - **Palette** avec anneau de progression, coche ✓ et passage automatique à la couleur suivante.
 - **Bonus** : 🔍 loupe pour trouver une case, 🪣 seau pour remplir une zone, 💣 bombe pour colorier autour. Chaque dessin terminé rapporte un seau et une bombe.
 - **Fin de dessin** : confettis, ralenti du coloriage et téléchargement de l'image en PNG.
@@ -54,6 +54,7 @@ Depuis un ordinateur : `npx wrangler deploy`.
 | `public/index.html` | Structure des écrans |
 | `public/css/style.css` | Style |
 | `public/js/art.js` | Dessins pixel art faits main |
+| `public/js/games.js` | Dessins jeux vidéo, tracés avec un petit « pinceau » (formes, textures, contours) |
 | `public/js/generators.js` | Mandalas, conversion emoji / photo en grille numérotée |
 | `public/js/audio.js` | Effets sonores |
 | `public/js/app.js` | Galerie, jeu, gestes, sauvegarde, écran de fin |

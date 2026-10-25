@@ -134,6 +134,7 @@ button {
 .card canvas {
   width: 100%;
   aspect-ratio: 1;
+  object-fit: contain;
   image-rendering: pixelated;
   border-radius: 12px;
   background: #fff;
@@ -342,7 +343,7 @@ button {
   display: grid;
   place-items: center;
 }
-#replay { width: 100%; max-width: 320px; aspect-ratio: 1; image-rendering: pixelated; }
+#replay { width: 100%; max-width: 320px; aspect-ratio: 1; object-fit: contain; image-rendering: pixelated; }
 .reward { font-weight: 600; color: var(--accent) !important; }
 .done-actions, .sheet-actions, .dialog-buttons {
   display: flex;

@@ -5,6 +5,9 @@ const $ = (id) => document.getElementById(id);
 
 const CATS = [
   { id: 'all', name: 'Tout', icon: '✨' },
+  { id: 'minecraft', name: 'Minecraft', icon: '⛏️' },
+  { id: 'starwars', name: 'Star Wars', icon: '🌌' },
+  { id: 'jeux', name: 'Jeux vidéo', icon: '🎮' },
   { id: 'animaux', name: 'Animaux', icon: '🐾' },
   { id: 'nourriture', name: 'Miam', icon: '🍓' },
   { id: 'nature', name: 'Nature', icon: '🌼' },
@@ -71,6 +74,7 @@ function addImage(img) {
 }
 
 function loadLibrary() {
+  GAME_ART.forEach((a) => addImage(Gen.fromArt(a)));
   ART.forEach((a) => addImage(Gen.fromArt(a)));
 
   MANDALA_SIZES.forEach((size, i) => {
@@ -303,6 +307,8 @@ const Game = (() => {
     const p = loadProgress(img);
     fill = p.fill;
     order = p.order;
+    // Les anciennes sauvegardes pouvaient contenir des cases de la mauvaise couleur.
+    for (let i = 0; i < fill.length; i++) if (fill[i] !== img.cells[i]) fill[i] = -1;
     remaining = img.palette.map(() => 0);
     totals = img.palette.map(() => 0);
     doneCount = 0;
@@ -406,12 +412,9 @@ const Game = (() => {
     if (idx < 0 || finished) return false;
     const target = img.cells[idx];
     if (target < 0 || fill[idx] === target) return false;
+    // Une couleur ne peut colorier que les cases de son propre numéro.
     if (color !== target) {
-      if (fill[idx] === color) return false;
-      fill[idx] = color;
       if (!silent) Sound.wrong();
-      requestDraw();
-      saveSoon();
       return false;
     }
     fill[idx] = target;
@@ -458,6 +461,8 @@ const Game = (() => {
     setTimeout(() => Done.show(img, fill, order, true), 700);
   }
 
+  const isTargetOf = (i) => img.cells[i] === selected;
+
   // Trace une ligne de cases entre deux positions pour ne rien rater lors d'un glissé rapide.
   function paintLine(a, b) {
     if (a < 0) { paint(b, selected); return; }
@@ -467,7 +472,7 @@ const Game = (() => {
     const sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
     let err = dx + dy;
     for (;;) {
-      paint(y0 * img.w + x0, selected);
+      paint(y0 * img.w + x0, selected, { silent: !isTargetOf(y0 * img.w + x0) });
       if (x0 === x1 && y0 === y1) break;
       const e2 = 2 * err;
       if (e2 >= dy) { err += dy; x0 += sx; }
@@ -685,8 +690,7 @@ const Game = (() => {
         const c = img.cells[i];
         if (c < 0) continue;
         const px = cam.ox + x * s, py = cam.oy + y * s;
-        const f = fill[i];
-        if (f === c) {
+        if (fill[i] === c) {
           ctx.fillStyle = img.palette[c];
           ctx.fillRect(px - 0.3, py - 0.3, s + 0.6, s + 0.6);
           continue;
@@ -695,13 +699,6 @@ const Game = (() => {
         if (c === selected && tool === 'brush') { r -= 70; g -= 66; b -= 52; }
         ctx.fillStyle = `rgb(${r},${g},${b})`;
         ctx.fillRect(px + gap, py + gap, s - gap * 2, s - gap * 2);
-        if (f >= 0) {
-          // Mauvaise couleur : affichée en transparence, le numéro reste visible.
-          ctx.globalAlpha = 0.55;
-          ctx.fillStyle = img.palette[f];
-          ctx.fillRect(px + gap, py + gap, s - gap * 2, s - gap * 2);
-          ctx.globalAlpha = 1;
-        }
       }
     }
 
@@ -716,7 +713,7 @@ const Game = (() => {
           const c = img.cells[i];
           if (c < 0 || fill[i] === c) continue;
           const hl = c === selected && tool === 'brush';
-          ctx.fillStyle = hl ? '#ffffff' : fill[i] >= 0 ? '#2c2547' : '#7d7799';
+          ctx.fillStyle = hl ? '#ffffff' : '#7d7799';
           ctx.fillText(String(c + 1), cam.ox + (x + 0.5) * s, cam.oy + (y + 0.55) * s);
         }
       }
