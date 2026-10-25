@@ -55,6 +55,20 @@ const Sound = (() => {
     },
     splash() { [660, 880, 1100].forEach((f, i) => tone(f, i * 0.04, 0.18, { vol: 0.07, slide: 1.2 })); },
     colorDone() { [784, 988, 1175, 1568].forEach((f, i) => tone(f, i * 0.07, 0.18, { vol: 0.09 })); },
+    // Sons de la petite animation de fin, selon le thème du dessin.
+    roar() {
+      tone(140, 0, 0.6, { type: 'sawtooth', vol: 0.14, slide: 0.55 });
+      tone(95, 0.05, 0.6, { type: 'square', vol: 0.06, slide: 0.6 });
+    },
+    vroom() {
+      tone(70, 0, 0.9, { type: 'sawtooth', vol: 0.1, slide: 2.6 });
+      tone(105, 0.1, 0.8, { type: 'square', vol: 0.04, slide: 2.2 });
+    },
+    whoosh() { tone(200, 0, 1, { type: 'triangle', vol: 0.1, slide: 6 }); },
+    bubbles() { [0, 0.12, 0.22, 0.36, 0.5].forEach((t, i) => tone(400 + i * 120, t, 0.12, { vol: 0.08, slide: 1.8 })); },
+    zap() { [0, 0.18].forEach((t) => tone(1400, t, 0.22, { type: 'square', vol: 0.05, slide: 0.2 })); },
+    sparkle() { [1568, 2093, 2637, 3136, 2637].forEach((f, i) => tone(f, i * 0.08, 0.25, { vol: 0.05 })); },
+    boing() { tone(220, 0, 0.35, { vol: 0.12, slide: 3 }); tone(660, 0.3, 0.25, { vol: 0.08, slide: 0.5 }); },
     win() {
       const notes = [523, 659, 784, 1047, 784, 1047, 1319];
       notes.forEach((f, i) => tone(f, i * 0.12, 0.3, { type: 'triangle', vol: 0.12 }));

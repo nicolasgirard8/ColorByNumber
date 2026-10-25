@@ -18,8 +18,29 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <!-- Qui joue ? -->
+  <section id="profiles" class="screen" aria-label="Choix du joueur">
+    <div class="profiles-wrap">
+      <div class="brand"><span class="brand-logo" aria-hidden="true">🎨</span><h1>Coloriage <span>Magique</span></h1></div>
+      <h2 class="who" id="who-title">Qui joue ?</h2>
+      <div class="profile-list" id="profile-list"></div>
+      <button class="btn ghost" id="btn-manage">✏️ Modifier</button>
+    </div>
+  </section>
+
+  <!-- Album d'autocollants -->
+  <section id="album" class="screen" aria-label="Album">
+    <header class="gallery-head">
+      <button class="icon-btn" id="btn-album-back" aria-label="Retour à la galerie">
+        <svg viewBox="0 0 24 24" width="26" height="26"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="album-head"><h1 id="album-title">Mon album</h1><p id="album-total"></p></div>
+    </header>
+    <main class="album-pages" id="album-pages"></main>
+  </section>
+
   <!-- Galerie -->
-  <section id="gallery" class="screen active" aria-label="Galerie">
+  <section id="gallery" class="screen" aria-label="Galerie">
     <header class="gallery-head">
       <div class="brand">
         <span class="brand-logo" aria-hidden="true">🎨</span>
@@ -30,7 +51,9 @@
           <span>💣 <b id="stock-bomb">0</b></span>
           <span>🪣 <b id="stock-bucket">0</b></span>
         </div>
+        <button class="icon-btn" id="btn-album" aria-label="Mon album d'autocollants">📒<b class="count" id="album-count" hidden>0</b></button>
         <button class="icon-btn" id="btn-sound" aria-label="Son">🔊</button>
+        <button class="icon-btn avatar-btn" id="btn-profile" aria-label="Changer de joueur">🙂</button>
       </div>
     </header>
     <nav class="tabs" id="tabs" role="tablist"></nav>
@@ -82,6 +105,7 @@
       <p id="done-name"></p>
       <div class="done-frame"><canvas id="replay"></canvas></div>
       <p class="reward" id="done-reward"></p>
+      <p class="sticker-new" id="done-sticker" hidden>📒 Nouvel autocollant dans ton album !</p>
       <div class="done-actions">
         <button class="btn ghost" id="btn-replay">▶ Revoir</button>
         <button class="btn ghost" id="btn-save">⬇ Enregistrer</button>
@@ -114,6 +138,22 @@
       <div class="sheet-actions">
         <button class="btn ghost" id="import-cancel">Annuler</button>
         <button class="btn" id="import-ok" disabled>Créer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Création / modification d'un joueur -->
+  <div class="overlay" id="profile-edit" hidden>
+    <div class="sheet">
+      <h2 id="pe-title">Nouveau joueur</h2>
+      <div class="pe-preview" id="pe-preview">🦖</div>
+      <input id="pe-name" maxlength="14" placeholder="Prénom" autocomplete="off" aria-label="Prénom">
+      <div class="pe-avatars" id="pe-avatars"></div>
+      <div class="pe-colors" id="pe-colors"></div>
+      <div class="sheet-actions">
+        <button class="btn danger" id="pe-delete">Supprimer</button>
+        <button class="btn ghost" id="pe-cancel">Annuler</button>
+        <button class="btn" id="pe-save">C'est moi !</button>
       </div>
     </div>
   </div>
