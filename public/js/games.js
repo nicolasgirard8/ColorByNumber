@@ -425,7 +425,7 @@ const GAME_ART_DEFS = [
   // ---------------- Autres jeux vidéo ----------------
   {
     id: 'jv-pacman', name: 'Pac-Man', cat: 'jeux', w: 56, h: 24,
-    colors: { N: '#0b0b1a', B: '#2442d6', Y: '#ffe14d', D: '#ffd8a8', R: '#ff2a2a', P: '#ffb8de', W: '#ffffff', U: '#2442d6', K: '#141414' },
+    colors: { N: '#0b0b1a', B: '#2442d6', Y: '#ffe14d', D: '#ffd8a8', R: '#ff2a2a', P: '#ffb8de', W: '#ffffff', U: '#4fc3ff', K: '#141414' },
     draw(p) {
       p.fill('N').rect(0, 0, 56, 2, 'B').rect(0, 22, 56, 2, 'B').rect(0, 3, 56, 1, 'B').rect(0, 20, 56, 1, 'B');
       for (let x = 20; x < 56; x += 4) p.set(x, 12, 'D');
@@ -994,6 +994,201 @@ const GAME_ART_DEFS = [
       p.disc(12, 14, 2.6, 'O').disc(12, 14, 1.6, 'Y');
       p.disc(20, 14, 2.6, 'O').disc(20, 14, 1.6, 'Y');
       p.rect(13, 19, 6, 2, 'K');
+    },
+  },
+
+  // ---------------- Autres personnages ----------------
+  ...[
+    ['jv-mario', 'Mario', { C: '#e52521', D: '#a8141a' }, ['C...C', 'CC.CC', 'C.C.C', 'C...C']],
+    ['jv-luigi', 'Luigi', { C: '#2ab048', D: '#1a7a30' }, ['C....', 'C....', 'C....', 'CCCC.']],
+  ].map(([id, name, cap, letter]) => ({
+    id, name, cat: 'jeux', w: 32, h: 32,
+    colors: {
+      ...cap, W: '#ffffff', S: '#ffc890', T: '#f0a870', H: '#4a2a12', B: '#2a4ad0',
+      O: '#2a5ad8', Y: '#ffd23f', K: '#1b1410',
+    },
+    draw(p) {
+      p.rect(4, 27, 24, 5, 'C').rect(8, 27, 4, 5, 'O').rect(20, 27, 4, 5, 'O').rect(8, 30, 16, 2, 'O');
+      p.disc(10, 29, 1.2, 'Y').disc(22, 29, 1.2, 'Y');
+      p.disc(7, 17, 2.4, 'S').disc(25, 17, 2.4, 'S');
+      p.ellipse(16, 18, 9, 8.5, 'S');
+      p.rect(7, 11, 3, 6, 'H').rect(22, 11, 3, 6, 'H');
+      p.ellipse(16, 9, 11, 7, 'C', (x, y) => y < 10);
+      p.rect(5, 9, 25, 2, 'D');
+      p.disc(16, 5.5, 3.8, 'W');
+      p.stamp(14, 4, letter);
+      p.ellipse(13, 14.5, 1.8, 2.6, 'W').ellipse(19, 14.5, 1.8, 2.6, 'W');
+      p.ellipse(13.5, 15, 1, 1.8, 'B').ellipse(19.5, 15, 1, 1.8, 'B');
+      p.ellipse(16, 19, 3.2, 2.4, 'T');
+      p.poly([[8, 22], [12, 20.5], [16, 21.5], [20, 20.5], [24, 22], [22, 24], [16, 23], [10, 24]], 'H');
+      p.line(14, 25.5, 18, 25.5, 'K', 0.9);
+      p.outline('K');
+    },
+  })),
+  {
+    id: 'jv-goomba', name: 'Goomba', cat: 'jeux', w: 32, h: 32,
+    colors: { B: '#a0522d', D: '#7a3a1e', C: '#f0d0a0', W: '#ffffff', K: '#1b1410', F: '#3a2414' },
+    draw(p) {
+      p.ellipse(11, 29, 6, 3, 'F').ellipse(21, 29, 6, 3, 'F');
+      p.rect(10, 20, 12, 8, 'C');
+      p.ellipse(16, 13, 15, 10, 'B');
+      p.swap('B', 'D', (x, y) => y > 17);
+      p.ellipse(11.5, 13, 2.6, 3.5, 'W').ellipse(20.5, 13, 2.6, 3.5, 'W');
+      p.ellipse(12.5, 14, 1.4, 2, 'K').ellipse(19.5, 14, 1.4, 2, 'K');
+      p.line(7, 8, 14, 10.5, 'K', 1.6).line(25, 8, 18, 10.5, 'K', 1.6);
+      p.line(11, 20, 21, 20, 'K', 1);
+      p.poly([[11, 19.5], [13, 19.5], [12, 17.5]], 'W').poly([[19, 19.5], [21, 19.5], [20, 17.5]], 'W');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'jv-1up', name: 'Champignon 1-UP', cat: 'jeux', w: 32, h: 32,
+    colors: { G: '#3cb44a', H: '#23802e', W: '#ffffff', C: '#f4e2c0', E: '#d8c09a', K: '#1b1b16' },
+    draw(p) {
+      p.ellipse(16, 13, 15, 12, 'G', (x, y) => y < 18);
+      p.swap('G', 'H', (x, y) => y > 14);
+      p.disc(16, 7, 4.5, 'W').disc(4, 13, 3, 'W').disc(28, 13, 3, 'W');
+      p.rect(7, 18, 18, 12, 'C').rect(8, 30, 16, 1, 'C');
+      p.swap('C', 'E', (x, y) => x > 21);
+      p.rect(12, 21, 2, 5, 'K').rect(18, 21, 2, 5, 'K');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'jv-bobomb', name: 'Bob-omb', cat: 'jeux', w: 32, h: 32,
+    colors: { K: '#1b1b22', A: '#2e2e3a', L: '#5a5a6e', W: '#ffffff', Y: '#ffd23f', O: '#ff9a2a', G: '#b8bec8', M: '#7a8090', F: '#ffe14d', R: '#e8402a' },
+    draw(p) {
+      p.path([[16, 5], [17, 2], [20, 1]], 'M', 1.5);
+      p.disc(21, 1.5, 1.5, 'R').set(22, 0, 'F');
+      p.rect(13, 4, 6, 3, 'G');
+      p.ellipse(10, 29, 5.5, 2.8, 'O').ellipse(22, 29, 5.5, 2.8, 'O');
+      p.disc(16, 17, 11, 'A');
+      p.ellipse(11, 11, 3.5, 2.5, 'L');
+      p.ellipse(13, 17, 1.8, 3.2, 'W').ellipse(19, 17, 1.8, 3.2, 'W');
+      p.ellipse(13.4, 17.5, 0.9, 2, 'K').ellipse(19.4, 17.5, 0.9, 2, 'K');
+      p.rect(28, 13, 2, 8, 'Y').rect(30, 11, 2, 4, 'Y').rect(30, 19, 2, 4, 'Y');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'jv-kirby', name: 'Kirby', cat: 'jeux', w: 32, h: 32,
+    colors: { P: '#ffb3cf', D: '#f28bb0', C: '#ff7aa0', R: '#e83050', K: '#1b1b22', B: '#2a4ad0', W: '#ffffff' },
+    draw(p) {
+      p.ellipse(9, 28, 7, 3.5, 'R').ellipse(24, 28, 7, 3.5, 'R');
+      p.ellipse(4, 17, 3.5, 3, 'P').ellipse(28, 15, 3.5, 3, 'P');
+      p.disc(16, 15, 12, 'P');
+      p.swap('P', 'D', (x, y) => Math.hypot(x - 12, y - 11) > 14);
+      p.ellipse(13, 12, 1.5, 3.2, 'K').ellipse(19, 12, 1.5, 3.2, 'K');
+      p.set(13, 10, 'W').set(19, 10, 'W').set(13, 14, 'B').set(19, 14, 'B');
+      p.ellipse(9, 17, 2.4, 1.3, 'C').ellipse(23, 17, 2.4, 1.3, 'C');
+      p.ellipse(16, 18, 1.5, 1.2, 'R');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'jv-sonic', name: 'Sonic', cat: 'jeux', w: 32, h: 32,
+    colors: { B: '#2a5ad8', D: '#1a3a9a', S: '#f4c89a', W: '#ffffff', G: '#2a9a3a', K: '#1b1b22', P: '#e08aa0' },
+    draw(p) {
+      p.poly([[12, 6], [0, 2], [9, 12]], 'B').poly([[9, 11], [0, 13], [9, 18]], 'B');
+      p.poly([[9, 17], [1, 24], [12, 22]], 'B').poly([[13, 6], [11, 0], [19, 5]], 'B');
+      p.poly([[16, 7], [20, 0], [23, 7]], 'B').poly([[18, 6], [20, 2], [21, 6]], 'S');
+      p.disc(17, 15, 10, 'B');
+      p.swap('B', 'D', (x, y) => x < 6 || y > 23);
+      p.ellipse(22, 21, 7, 4.5, 'S');
+      p.ellipse(20, 12, 6.5, 5, 'W');
+      p.line(20, 8, 20, 11, 'B', 1);
+      p.disc(18.5, 13, 1.8, 'G').disc(24, 13, 1.8, 'G');
+      p.disc(18.8, 13.3, 0.8, 'K').disc(24.3, 13.3, 0.8, 'K');
+      p.disc(29, 18, 1.8, 'K');
+      p.path([[18, 22], [22, 24], [26, 22]], 'K', 1);
+      p.set(23, 23, 'P');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'jv-yoshi', name: 'Yoshi', cat: 'jeux', w: 32, h: 32,
+    colors: { G: '#4cc04c', H: '#2e8a2e', W: '#ffffff', K: '#1b1b16', R: '#e8402a', C: '#f4e2c0', O: '#ff9a2a' },
+    draw(p) {
+      p.poly([[3, 12], [0, 9], [4, 9]], 'R').poly([[3, 17], [0, 14], [4, 14]], 'R').poly([[4, 22], [1, 19], [5, 19]], 'R');
+      p.ellipse(11, 16, 8, 10, 'G');
+      p.ellipse(21, 18, 10.5, 7, 'G');
+      p.ellipse(14, 26, 7, 4, 'C');
+      p.swap('G', 'H', (x, y) => y > 23 && x > 18);
+      p.ellipse(11, 6, 3.5, 5, 'W').ellipse(17, 6, 3.5, 5, 'W');
+      p.ellipse(12, 7, 1.5, 2.6, 'K').ellipse(18, 7, 1.5, 2.6, 'K');
+      p.disc(24, 13, 1, 'H').disc(28, 14, 1, 'H');
+      p.path([[14, 21], [22, 22], [30, 20]], 'K', 1);
+      p.disc(8, 20, 1.8, 'O');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'jv-link', name: 'Link', cat: 'jeux', w: 32, h: 32,
+    colors: { G: '#3a9a3a', H: '#24702a', Y: '#f4d040', Z: '#d8a820', S: '#ffd0a8', T: '#f0b088', B: '#2a6ad8', K: '#1b1410', W: '#ffffff', M: '#8a5a2a' },
+    draw(p) {
+      p.poly([[6, 12], [16, 1], [26, 11], [31, 26], [24, 14]], 'G');
+      p.swap('G', 'H', (x, y) => x > 24);
+      p.poly([[9, 17], [0, 12], [9, 21]], 'S').poly([[23, 17], [32, 12], [23, 21]], 'S');
+      p.ellipse(16, 18, 8, 9, 'S');
+      p.swap('S', 'T', (x, y) => y > 24);
+      p.poly([[8, 12], [24, 12], [24, 15], [20, 13.5], [16, 16], [12, 13.5], [8, 16]], 'Y');
+      p.rect(8, 15, 2, 6, 'Z').rect(22, 15, 2, 6, 'Z');
+      p.rect(7, 10, 18, 2, 'M');
+      p.ellipse(13, 18, 1.6, 2, 'W').ellipse(19, 18, 1.6, 2, 'W');
+      p.ellipse(13.4, 18.4, 0.9, 1.4, 'B').ellipse(19.4, 18.4, 0.9, 1.4, 'B');
+      p.line(14.5, 23.5, 17.5, 23.5, 'T', 1);
+      p.rect(9, 27, 14, 5, 'G').poly([[13, 27], [19, 27], [16, 31]], 'S');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'jv-triforce', name: 'Triforce', cat: 'jeux', w: 32, h: 30,
+    colors: { N: '#1a3a2a', M: '#14301f', Y: '#f2c230', L: '#ffe27a', D: '#c8981a', K: '#5a3a08' },
+    draw(p) {
+      p.fill('N').swap('N', 'M', (x, y) => (x + y) % 2 === 0 && y > 26);
+      const tri = (ax, ay, s) => {
+        p.poly([[ax, ay], [ax + s / 2, ay + s * 0.87], [ax - s / 2, ay + s * 0.87]], 'Y');
+        p.poly([[ax, ay + 2], [ax - s / 4 + 0.5, ay + s * 0.87 - 1], [ax - s / 2 + 2.5, ay + s * 0.87 - 1]], 'L');
+        p.poly([[ax + 1, ay + 3], [ax + s / 2 - 2, ay + s * 0.87 - 1], [ax + 1, ay + s * 0.87 - 1]], 'D');
+      };
+      tri(16, 1, 14.5);
+      tri(8.75, 13.6, 14.5);
+      tri(23.25, 13.6, 14.5);
+      p.swap('N', 'K', (x, y) => ['Y', 'L', 'D'].some((c) => p.get(x + 1, y) === c || p.get(x - 1, y) === c || p.get(x, y + 1) === c || p.get(x, y - 1) === c));
+      p.swap('M', 'K', (x, y) => ['Y', 'L', 'D'].some((c) => p.get(x, y - 1) === c));
+    },
+  },
+  {
+    id: 'jv-lama', name: 'Lama Fortnite', cat: 'jeux', w: 32, h: 32,
+    colors: { V: '#9a4fe0', U: '#7a32c0', L: '#c89aff', P: '#ff6fa8', Y: '#ffd23f', B: '#3fd8f0', K: '#1b1b22', W: '#ffffff' },
+    draw(p) {
+      p.rect(5, 26, 4, 5, 'U').rect(17, 26, 4, 5, 'U').rect(9, 26, 3, 5, 'V').rect(20, 26, 3, 5, 'V');
+      p.rect(3, 16, 21, 11, 'V');
+      p.rect(19, 6, 7, 14, 'V');
+      p.rect(19, 3, 11, 8, 'V').rect(27, 7, 5, 5, 'L');
+      p.poly([[20, 3], [20, 0], [23, 3]], 'V').poly([[25, 3], [26, 0], [28, 3]], 'V');
+      p.rect(6, 15, 13, 9, 'P').rect(6, 15, 13, 2, 'Y').rect(6, 22, 13, 2, 'Y');
+      p.rect(10, 18, 5, 3, 'B');
+      p.rect(23, 5, 3, 3, 'W').rect(24, 6, 2, 2, 'K');
+      p.rect(19, 12, 2, 8, 'L').rect(3, 23, 21, 1, 'U');
+      p.rect(30, 9, 1, 1, 'K');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'jv-peely', name: 'Peely', cat: 'jeux', w: 28, h: 34,
+    colors: { Y: '#ffd93b', O: '#f0b400', M: '#6b4a2e', N: '#3a2414', W: '#ffffff', K: '#1b1b16', R: '#c0402a', B: '#2a5ad8' },
+    draw(p) {
+      p.rect(9, 29, 4, 4, 'B').rect(16, 29, 4, 4, 'B');
+      p.rect(12, 1, 4, 6, 'M').rect(12, 0, 4, 2, 'N');
+      p.ellipse(14, 18, 9, 12.5, 'Y');
+      p.swap('Y', 'O', (x, y) => x > 18 || y > 27);
+      p.disc(10, 15, 2.8, 'W').disc(18, 15, 2.8, 'W');
+      p.disc(10.5, 15.5, 1.3, 'K').disc(18.5, 15.5, 1.3, 'K');
+      p.path([[9, 21], [14, 24], [19, 21]], 'K', 1.2);
+      p.rect(13, 23, 2, 1, 'R');
+      p.line(5, 18, 1, 23, 'Y', 2).line(23, 18, 27, 23, 'O', 2);
+      p.outline('K');
     },
   },
 ];
