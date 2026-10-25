@@ -66,9 +66,17 @@ const store = {
 const encodeCells = (cells) => Array.from(cells, (c) => String.fromCharCode(49 + c)).join('');
 const decodeCells = (s) => Int16Array.from(s, (ch) => ch.charCodeAt(0) - 49);
 
-const settings = Object.assign({ sound: true, bomb: START_TOOLS, bucket: START_TOOLS, tips: 0 }, store.get('settings', {}));
-const saveSettings = () => store.set('settings', settings);
-Sound.enabled = settings.sound;
+// ---------- Profils ----------
+// Chaque enfant a son profil : sa progression, ses bonus et son album sont séparés.
+const AVATARS = ['🦖', '🚒', '🚀', '🦈', '🐉', '🦄', '🐱', '🐶', '🦁', '🐼', '⚽', '🌈', '🤖', '🦋', '🐸', '👑'];
+const AVATAR_COLORS = ['#ff8fb8', '#ffd93b', '#7ed8b8', '#8fd0f8', '#c9a6f5', '#ffb38a'];
+const SETTINGS_DEFAULT = { sound: true, bomb: START_TOOLS, bucket: START_TOOLS, tips: 0 };
+
+const settings = { ...SETTINGS_DEFAULT };
+let profiles = store.get('profiles', []);
+let profile = null;
+const pk = (key) => 'u.' + profile.id + '.' + key;
+const saveSettings = () => { if (profile) store.set(pk('settings'), settings); };
 
 // ---------- Bibliothèque d'images ----------
 const library = [];
@@ -111,7 +119,7 @@ function loadLibrary() {
 
 // Progression : `fill[i]` = couleur posée (-1 si vide), `order` = ordre des bonnes cases.
 function loadProgress(img) {
-  const p = store.get('p.' + img.id, null);
+  const p = store.get(pk('p.' + img.id), null);
   const n = img.w * img.h;
   if (p && p.s && p.s.length === n) {
     return { fill: decodeCells(p.s), order: p.o || [] };
@@ -120,7 +128,7 @@ function loadProgress(img) {
 }
 
 function progressSummary(img) {
-  const p = store.get('p.' + img.id, null);
+  const p = store.get(pk('p.' + img.id), null);
   if (!p) return { started: false, done: false, pct: 0 };
   return { started: true, done: !!p.d, pct: p.c ? p.c / img.total : 0 };
 }
@@ -224,7 +232,18 @@ const thumbObserver = window.IntersectionObserver
   }), { rootMargin: '300px' })
   : null;
 
+// Écran vers lequel revenir en quittant un dessin.
+let homeScreen = 'gallery';
+function goHome() {
+  if (homeScreen === 'album') Album.show();
+  else { showScreen('gallery'); renderGrid(); }
+}
+
 function renderGrid() {
+  homeScreen = 'gallery';
+  const doneCount = library.filter((i) => progressSummary(i).done).length;
+  $('album-count').textContent = doneCount;
+  $('album-count').hidden = doneCount === 0;
   const grid = $('grid');
   if (thumbObserver) thumbObserver.disconnect();
   grid.innerHTML = '';
@@ -364,15 +383,14 @@ const Game = (() => {
   function close() {
     saveNow();
     img = null;
-    showScreen('gallery');
-    renderGrid();
+    goHome();
   }
 
   // ----- Sauvegarde -----
   function saveNow() {
     if (!img) return;
     clearTimeout(saveTimer);
-    store.set('p.' + img.id, { s: encodeCells(fill), o: order, c: doneCount, d: finished });
+    store.set(pk('p.' + img.id), { s: encodeCells(fill), o: order, c: doneCount, d: finished });
   }
   function saveSoon() {
     clearTimeout(saveTimer);
@@ -1017,13 +1035,13 @@ const Game = (() => {
   };
 
   function reset() {
-    store.del('p.' + img.id);
+    store.del(pk('p.' + img.id));
     open(img);
   }
 
   function removeCustom() {
     const id = img.id;
-    store.del('p.' + id);
+    profiles.forEach((pr) => store.del('u.' + pr.id + '.p.' + id));
     store.set('photos', store.get('photos', []).filter((p) => p.id !== id));
     const k = library.findIndex((x) => x.id === id);
     if (k >= 0) library.splice(k, 1);
@@ -1048,6 +1066,7 @@ const Done = (() => {
     img = image; fill = f; order = o.slice();
     $('done-name').textContent = img.name;
     $('done-reward').textContent = fresh ? 'Tu gagnes 💣 +1 et 🪣 +1 !' : '';
+    $('done-sticker').hidden = !fresh;
     overlay.hidden = false;
     playReplay();
     if (fresh) { Sound.win(); confetti(); }
@@ -1088,6 +1107,97 @@ const Done = (() => {
         g.fillRect((i % img.w) * px, Math.floor(i / img.w) * px, px, px);
       }
       if (k < order.length) replayRaf = requestAnimationFrame(step);
+      else replayRaf = requestAnimationFrame(() => alive(px));
+    };
+    replayRaf = requestAnimationFrame(step);
+  }
+
+  // Le dessin terminé prend vie quelques secondes : mouvement, son et petits effets selon le thème.
+  const LIFE = {
+    dinos: { sound: 'roar', move: 'stomp', flow: 'prints', parts: ['👣', '💥'] },
+    vehicules: { sound: 'vroom', move: 'drive', flow: 'puff', parts: ['💨'] },
+    espace: { sound: 'whoosh', move: 'float', flow: 'twinkle', parts: ['⭐', '✨', '🌟'] },
+    ocean: { sound: 'bubbles', move: 'swim', flow: 'rise', parts: ['🫧'] },
+    aventure: { sound: 'zap', move: 'jump', flow: 'rise', parts: ['🔥', '✨', '⚡'] },
+    gemmes: { sound: 'sparkle', move: 'shine', flow: 'twinkle', parts: ['✨', '💎'] },
+    pokemon: { sound: 'boing', move: 'jump', flow: 'burst', parts: ['⚡', '⭐'] },
+    minecraft: { sound: 'pop', move: 'jump', flow: 'burst', parts: ['🟩', '🟫', '💎'] },
+    starwars: { sound: 'zap', move: 'float', flow: 'twinkle', parts: ['✨', '⭐'] },
+    default: { sound: 'boing', move: 'jump', flow: 'burst', parts: ['❤️', '⭐', '✨'] },
+  };
+
+  function alive(px) {
+    const cfg = LIFE[img.cat] || LIFE.default;
+    const W = replay.width, H = replay.height;
+    const still = document.createElement('canvas');
+    still.width = W;
+    still.height = H;
+    still.getContext('2d').drawImage(replay, 0, 0);
+    const g = replay.getContext('2d');
+    const parts = [];
+    const fs = Math.round(Math.min(W, H) * 0.11);
+    const t0 = performance.now(), dur = 3200;
+    const rnd = (a, b) => a + Math.random() * (b - a);
+    const spawn = () => {
+      const e = cfg.parts[Math.floor(Math.random() * cfg.parts.length)];
+      if (cfg.flow === 'rise') return { e, x: rnd(0.1, 0.9) * W, y: H * 1.02, vx: rnd(-0.3, 0.3), vy: -rnd(1.2, 2.4) * H / 320, life: 1.6 };
+      if (cfg.flow === 'puff') return { e, x: W * 0.12, y: H * rnd(0.6, 0.8), vx: -rnd(1, 2) * W / 320, vy: -0.2, life: 1.2, grow: true };
+      if (cfg.flow === 'prints') return { e: '👣', x: rnd(0.1, 0.9) * W, y: H * rnd(0.75, 0.95), vx: 0, vy: 0, life: 1 };
+      if (cfg.flow === 'twinkle') return { e, x: rnd(0.05, 0.95) * W, y: rnd(0.05, 0.95) * H, vx: 0, vy: 0, life: 1, twinkle: true };
+      const a = rnd(0, Math.PI * 2), v = rnd(1.5, 3.5) * W / 320;
+      return { e, x: W / 2, y: H / 2, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 1, life: 1.3, grav: 0.06 * H / 320 };
+    };
+    if (Sound[cfg.sound]) Sound[cfg.sound]();
+    let last = t0;
+    const step = (now) => {
+      const el = now - t0, t = el / 1000, dt = Math.min(50, now - last) / 16.7;
+      last = now;
+      const k = Math.max(0, 1 - el / dur);
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.fillStyle = '#f6f4fb';
+      g.fillRect(0, 0, W, H);
+      let dx = 0, dy = 0, sx = 1, sy = 1, rot = 0, wave = 0;
+      if (cfg.move === 'jump') {
+        const up = Math.abs(Math.sin(t * Math.PI * 2.2));
+        dy = -up * H * 0.1 * k; sy = 1 - (1 - up) * 0.08 * k; sx = 1 + (1 - up) * 0.06 * k;
+      } else if (cfg.move === 'stomp') {
+        const hit = Math.sin(t * Math.PI * 2.4) > 0.7 ? 1 : 0.15;
+        dx = Math.sin(t * 70) * W * 0.02 * k * hit; dy = Math.abs(Math.sin(t * 50)) * H * 0.01 * k * hit;
+      } else if (cfg.move === 'drive') {
+        dy = Math.sin(t * 45) * H * 0.008 * k; dx = Math.sin(t * Math.PI * 1.2) * W * 0.05 * k;
+      } else if (cfg.move === 'float') {
+        dy = Math.sin(t * Math.PI * 1.6) * H * 0.05 * k; rot = Math.sin(t * Math.PI * 1.2) * 0.04 * k;
+      } else if (cfg.move === 'swim') {
+        wave = 0.03 * k; dy = Math.sin(t * 3) * H * 0.02 * k;
+      } else if (cfg.move === 'shine') {
+        sx = sy = 1 + Math.sin(t * Math.PI * 3) * 0.05 * k;
+      }
+      // Marge pour que le dessin reste dans le cadre pendant qu'il bouge.
+      const base = 1 - 0.12 * Math.min(1, el / 250) * Math.min(1, k * 4);
+      g.translate(W / 2 + dx, H / 2 + dy);
+      g.rotate(rot);
+      g.scale(base * sx, base * sy);
+      if (wave) {
+        for (let r = 0; r < img.h; r++) g.drawImage(still, 0, r * px, W, px, -W / 2 + Math.sin(t * 6 + r * 0.45) * W * wave, -H / 2 + r * px, W, px + 0.5);
+      } else g.drawImage(still, -W / 2, -H / 2);
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      if (el < dur - 700 && Math.random() < 0.35 * dt) parts.push(spawn());
+      g.textAlign = 'center';
+      g.textBaseline = 'middle';
+      for (let i = parts.length - 1; i >= 0; i--) {
+        const q = parts[i];
+        q.life -= 0.016 * dt;
+        if (q.life <= 0) { parts.splice(i, 1); continue; }
+        q.x += q.vx * dt; q.y += q.vy * dt;
+        if (q.grav) q.vy += q.grav * dt;
+        const size = fs * (q.grow ? 1.6 - q.life * 0.5 : q.twinkle ? 0.6 + Math.abs(Math.sin(q.life * 6)) * 0.6 : 1);
+        g.globalAlpha = Math.min(1, q.life * 1.5);
+        g.font = Math.round(size) + 'px sans-serif';
+        g.fillText(q.e, q.x, q.y);
+      }
+      g.globalAlpha = 1;
+      if (el < dur || parts.length) replayRaf = requestAnimationFrame(step);
+      else g.drawImage(still, 0, 0);
     };
     replayRaf = requestAnimationFrame(step);
   }
@@ -1150,6 +1260,203 @@ const Done = (() => {
   overlay.addEventListener('pointerdown', (e) => { if (e.target === overlay) hide(); });
 
   return { show, hide };
+})();
+
+// ---------- Écran « Qui joue ? » ----------
+const Profiles = (() => {
+  let managing = false;
+  let editing = null;
+  let draft = null;
+
+  function use(p) {
+    profile = p;
+    store.set('current', p.id);
+    Object.keys(settings).forEach((k) => delete settings[k]);
+    Object.assign(settings, SETTINGS_DEFAULT, store.get(pk('settings'), {}));
+    Sound.enabled = settings.sound;
+    const b = $('btn-profile');
+    b.textContent = p.avatar;
+    b.style.background = p.color;
+    b.setAttribute('aria-label', 'Changer de joueur (' + (p.name || 'joueur') + ')');
+    showScreen('gallery');
+    renderTabs();
+    renderGrid();
+  }
+
+  function show() {
+    managing = false;
+    render();
+    showScreen('profiles');
+  }
+
+  function render() {
+    const list = $('profile-list');
+    list.innerHTML = '';
+    profiles.forEach((p) => {
+      const b = document.createElement('button');
+      b.className = 'profile' + (managing ? ' managing' : '');
+      b.innerHTML = '<span class="avatar"></span><span class="pname"></span>';
+      b.querySelector('.avatar').textContent = p.avatar;
+      b.querySelector('.avatar').style.background = p.color;
+      b.querySelector('.pname').textContent = p.name || ' ';
+      b.onclick = () => { Sound.unlock(); Sound.tap(); if (managing) edit(p); else use(p); };
+      list.appendChild(b);
+    });
+    const add = document.createElement('button');
+    add.className = 'profile add';
+    add.innerHTML = '<span class="avatar">＋</span><span class="pname">Ajouter</span>';
+    add.onclick = () => { Sound.unlock(); Sound.tap(); edit(null); };
+    list.appendChild(add);
+    $('btn-manage').hidden = profiles.length === 0;
+    $('btn-manage').textContent = managing ? '✓ Terminé' : '✏️ Modifier';
+    $('who-title').textContent = profiles.length ? 'Qui joue ?' : 'Bienvenue ! Qui va jouer ?';
+  }
+
+  $('btn-manage').onclick = () => { Sound.tap(); managing = !managing; render(); };
+  $('btn-profile').onclick = () => { Sound.tap(); show(); };
+
+  function edit(p) {
+    editing = p;
+    draft = p ? { ...p } : { name: '', avatar: AVATARS[profiles.length % AVATARS.length], color: AVATAR_COLORS[profiles.length % AVATAR_COLORS.length] };
+    $('pe-title').textContent = p ? 'Modifier le joueur' : 'Nouveau joueur';
+    $('pe-name').value = draft.name;
+    $('pe-delete').hidden = !p;
+    const av = $('pe-avatars');
+    av.innerHTML = '';
+    AVATARS.forEach((a) => {
+      const b = document.createElement('button');
+      b.textContent = a;
+      b.onclick = () => { Sound.tap(); draft.avatar = a; paint(); };
+      av.appendChild(b);
+    });
+    const co = $('pe-colors');
+    co.innerHTML = '';
+    AVATAR_COLORS.forEach((c) => {
+      const b = document.createElement('button');
+      b.style.background = c;
+      b.setAttribute('aria-label', 'Couleur');
+      b.onclick = () => { Sound.tap(); draft.color = c; paint(); };
+      co.appendChild(b);
+    });
+    paint();
+    $('profile-edit').hidden = false;
+  }
+
+  function paint() {
+    const pv = $('pe-preview');
+    pv.textContent = draft.avatar;
+    pv.style.background = draft.color;
+    [...$('pe-avatars').children].forEach((b) => b.classList.toggle('on', b.textContent === draft.avatar));
+    [...$('pe-colors').children].forEach((b, i) => b.classList.toggle('on', AVATAR_COLORS[i] === draft.color));
+  }
+
+  $('pe-cancel').onclick = () => { $('profile-edit').hidden = true; };
+  $('pe-save').onclick = () => {
+    draft.name = $('pe-name').value.trim().slice(0, 14);
+    if (editing) {
+      Object.assign(editing, draft);
+    } else {
+      const p = { id: 'k' + Date.now().toString(36), ...draft };
+      // La progression faite avant les profils est confiée au premier joueur créé.
+      if (!profiles.length) adoptLegacy(p.id);
+      profiles.push(p);
+      editing = p;
+    }
+    store.set('profiles', profiles);
+    $('profile-edit').hidden = true;
+    Sound.colorDone();
+    if (profiles.length === 1 && !managing) use(editing);
+    else render();
+  };
+  $('pe-delete').onclick = () => {
+    const p = editing;
+    dialog('Supprimer ' + (p.name || 'ce joueur') + ' ?', 'Ses dessins et son album seront effacés.', [
+      { label: 'Supprimer', cls: 'danger', action: () => {
+        removeKeys(STORE + 'u.' + p.id + '.');
+        profiles = profiles.filter((x) => x !== p);
+        store.set('profiles', profiles);
+        if (profile === p) profile = null;
+        $('profile-edit').hidden = true;
+        render();
+      } },
+      { label: 'Non', cls: 'ghost' },
+    ]);
+  };
+
+  function removeKeys(prefix) {
+    try {
+      const keys = [];
+      for (let i = 0; i < localStorage.length; i++) if (localStorage.key(i).startsWith(prefix)) keys.push(localStorage.key(i));
+      keys.forEach((k) => localStorage.removeItem(k));
+    } catch (e) { /* ignoré */ }
+  }
+
+  // Avant les profils, la progression était commune à tout l'appareil.
+  function adoptLegacy(id) {
+    try {
+      const keys = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k.startsWith(STORE + 'p.') || k === STORE + 'settings') keys.push(k);
+      }
+      keys.forEach((k) => {
+        localStorage.setItem(STORE + 'u.' + id + '.' + k.slice(STORE.length), localStorage.getItem(k));
+        localStorage.removeItem(k);
+      });
+    } catch (e) { /* ignoré */ }
+  }
+
+  return { show, use };
+})();
+
+// ---------- Album d'autocollants ----------
+const Album = (() => {
+  function show() {
+    homeScreen = 'album';
+    const pages = $('album-pages');
+    if (thumbObserver) thumbObserver.disconnect();
+    pages.innerHTML = '';
+    let total = 0, done = 0;
+    CATS.filter((c) => c.id !== 'all' && c.id !== 'mine').forEach((cat) => {
+      const items = library.filter((i) => i.cat === cat.id);
+      if (!items.length) return;
+      const got = items.filter((i) => progressSummary(i).done).length;
+      total += items.length;
+      done += got;
+      const page = document.createElement('section');
+      page.className = 'album-page' + (got === items.length ? ' complete' : '');
+      page.innerHTML = '<h2><span></span><b></b></h2><div class="stickers"></div>';
+      page.querySelector('h2 span').textContent = cat.icon + ' ' + cat.name;
+      page.querySelector('h2 b').textContent = got === items.length ? '🏆 ' + got + ' / ' + items.length : got + ' / ' + items.length;
+      const wrap = page.querySelector('.stickers');
+      items.forEach((img, n) => {
+        const isDone = progressSummary(img).done;
+        const b = document.createElement('button');
+        b.className = 'sticker' + (isDone ? ' got' : '');
+        b.style.setProperty('--tilt', (((n * 37) % 11) - 5) + 'deg');
+        b.setAttribute('aria-label', img.name);
+        const cv = document.createElement('canvas');
+        const px = Math.max(1, Math.floor(96 / Math.max(img.w, img.h)));
+        // Pas encore terminé : le dessin apparaît en gris, comme une case vide de l'album.
+        thumbs.set(cv, () => drawPicture(cv, img, isDone ? img.cells : null, px));
+        if (thumbObserver) thumbObserver.observe(cv); else thumbs.get(cv)();
+        b.appendChild(cv);
+        b.onclick = () => { Sound.unlock(); Sound.tap(); Game.open(img); };
+        wrap.appendChild(b);
+      });
+      pages.appendChild(page);
+    });
+    const who = profile.name || profile.avatar;
+    $('album-title').textContent = (/^[aeiouyàâéèêëîïôûüh]/i.test(who) ? "Album d'" : 'Album de ') + who;
+    $('album-total').textContent = done + ' / ' + total + ' autocollants';
+    showScreen('album');
+    pages.scrollTop = 0;
+  }
+
+  $('btn-album').onclick = () => { Sound.tap(); show(); };
+  $('btn-album-back').onclick = () => { Sound.tap(); homeScreen = 'gallery'; goHome(); };
+
+  return { show };
 })();
 
 // ---------- Import de photo ----------
@@ -1231,8 +1538,10 @@ $('import-ok').onclick = () => {
 // ---------- Démarrage ----------
 loadLibrary();
 if (!CATS.some((c) => c.id === currentTab)) currentTab = 'all';
-renderTabs();
-renderGrid();
+// Demande au navigateur de ne pas effacer les données du jeu de lui-même.
+if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
+if (profiles.length === 1) Profiles.use(profiles[0]);
+else Profiles.show();
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));

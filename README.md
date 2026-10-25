@@ -12,9 +12,11 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 - Les cases de la couleur choisie sont **bien visibles** : bord de la vraie couleur, centre pâle qui pulse doucement, même dézoomé ; les autres cases s'estompent. Une couleur ne peut colorier que les cases de son propre numéro.
 - **Palette** avec anneau de progression, coche ✓ et passage automatique à la couleur suivante.
 - **Bonus** : 🔍 loupe pour trouver une case, 🪣 seau pour remplir une zone, 💣 bombe pour colorier autour. Chaque dessin terminé rapporte un seau et une bombe.
-- **Fin de dessin** : confettis, ralenti du coloriage et téléchargement de l'image en PNG.
+- **Profils** : « Qui joue ? » au démarrage, un avatar et un prénom par enfant ; chacun a sa progression, ses bonus et son album.
+- **Fin de dessin** : confettis, ralenti du coloriage, puis **le dessin prend vie** selon son thème (le T-rex piétine et rugit, le camion vrombit, le requin nage dans les bulles, les pierres scintillent…) ; téléchargement de l'image en PNG.
+- **Album d'autocollants** 📒 : chaque dessin terminé devient un autocollant, rangé par pages thématiques ; les dessins restants apparaissent en gris.
 - **Tes photos** : transforme une photo en coloriage (taille et nombre de couleurs au choix).
-- **Sauvegarde automatique** de la progression dans le navigateur, sons synthétisés (désactivables), fonctionne **hors ligne** et s'installe comme une application (PWA).
+- **Sauvegarde automatique** de la progression dans le navigateur (stockage protégé contre l'effacement automatique), sons synthétisés (désactivables), fonctionne **hors ligne** et s'installe comme une application (PWA).
 
 ## Lancer le jeu
 
