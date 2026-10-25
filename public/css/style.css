@@ -162,6 +162,18 @@ button {
   font-size: 18px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, .2);
 }
+.card .xl {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--accent-2);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, .2);
+}
 .card.add {
   align-items: center;
   justify-content: center;

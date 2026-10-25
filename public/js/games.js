@@ -7,6 +7,12 @@ function painter(w, h, seed = 1) {
   const rnd = Gen.rng(seed);
   const inb = (x, y) => x >= 0 && y >= 0 && x < w && y < h;
   const each = (fn) => { for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) fn(x, y); };
+  // Parcourt seulement les cases d'un rectangle englobant (plus rapide pour les grands dessins).
+  const eachIn = (x0, y0, x1, y1, fn) => {
+    for (let y = Math.max(0, Math.floor(y0)); y <= Math.min(h - 1, Math.ceil(y1)); y++) {
+      for (let x = Math.max(0, Math.floor(x0)); x <= Math.min(w - 1, Math.ceil(x1)); x++) fn(x, y);
+    }
+  };
 
   const P = {
     w, h, rnd,
@@ -17,9 +23,16 @@ function painter(w, h, seed = 1) {
       for (let j = y; j < y + rh; j++) for (let i = x; i < x + rw; i++) P.set(i, j, c);
       return P;
     },
+    // Rectangle en coordonnées continues : les cases dont le centre est à l'intérieur.
+    frect(x, y, rw, rh, c) {
+      eachIn(x, y, x + rw, y + rh, (i, j) => {
+        if (i + 0.5 >= x && i + 0.5 < x + rw && j + 0.5 >= y && j + 0.5 < y + rh) P.set(i, j, c);
+      });
+      return P;
+    },
     // Ellipse remplie, centre et rayons en coordonnées continues (une case = 1×1).
     ellipse(cx, cy, rx, ry, c, keep = () => true) {
-      each((x, y) => {
+      eachIn(cx - rx - 1, cy - ry - 1, cx + rx + 1, cy + ry + 1, (x, y) => {
         const dx = (x + 0.5 - cx) / rx, dy = (y + 0.5 - cy) / ry;
         if (dx * dx + dy * dy <= 1 && keep(x, y)) P.set(x, y, c);
       });
@@ -29,7 +42,8 @@ function painter(w, h, seed = 1) {
     // Segment épais : toutes les cases à moins de t/2 du segment.
     line(x0, y0, x1, y1, c, t = 1) {
       const dx = x1 - x0, dy = y1 - y0, len2 = dx * dx + dy * dy || 1;
-      each((x, y) => {
+      const m = t / 2 + 1;
+      eachIn(Math.min(x0, x1) - m, Math.min(y0, y1) - m, Math.max(x0, x1) + m, Math.max(y0, y1) + m, (x, y) => {
         const px = x + 0.5, py = y + 0.5;
         const k = Math.max(0, Math.min(1, ((px - x0) * dx + (py - y0) * dy) / len2));
         if (Math.hypot(px - x0 - k * dx, py - y0 - k * dy) <= t / 2) P.set(x, y, c);
@@ -41,7 +55,8 @@ function painter(w, h, seed = 1) {
       return P;
     },
     poly(pts, c) {
-      each((x, y) => {
+      const xs = pts.map((q) => q[0]), ys = pts.map((q) => q[1]);
+      eachIn(Math.min(...xs) - 1, Math.min(...ys) - 1, Math.max(...xs) + 1, Math.max(...ys) + 1, (x, y) => {
         const px = x + 0.5, py = y + 0.5;
         let inside = false;
         for (let i = 0, j = pts.length - 1; i < pts.length; j = i++) {
@@ -96,6 +111,15 @@ function painter(w, h, seed = 1) {
       each((x, y) => { if (rnd() < density && test(x, y)) P.set(x, y, c); });
       return P;
     },
+    // Dessine sur un calque transparent, l'entoure d'un contour puis le colle sur le dessin.
+    layer(fn, outlineColor) {
+      const q = painter(w, h, Math.floor(rnd() * 1e9));
+      fn(q);
+      if (outlineColor) q.outline(outlineColor);
+      q.cells().forEach((v, i) => { if (v !== '.') g[i] = v; });
+      return P;
+    },
+    cells: () => g,
     rows() {
       const out = [];
       for (let y = 0; y < h; y++) out.push(g.slice(y * w, y * w + w).join(''));
@@ -1193,9 +1217,24 @@ const GAME_ART_DEFS = [
   },
 ];
 
+// Trace une liste de dessins. Le résultat est gardé sur l'appareil et n'est recalculé
+// que si le code d'un dessin, du pinceau ou des objets partagés (`extra`) change.
+function renderDefs(defs, name, seedOf, extra = '') {
+  let src = painter.toString() + extra;
+  defs.forEach((d) => { src += d.id + d.w + 'x' + d.h + d.draw.toString(); });
+  let hash = 2166136261;
+  for (let i = 0; i < src.length; i++) hash = Math.imul(hash ^ src.charCodeAt(i), 16777619);
+  const key = 'cbn.art.' + name;
+  const stamp = (hash >>> 0).toString(36) + '.' + src.length;
+  try {
+    const cached = JSON.parse(localStorage.getItem(key));
+    if (cached && cached.h === stamp && cached.rows.length === defs.length) return cached.rows;
+  } catch (e) { /* recalcul */ }
+  const rows = defs.map((d, i) => { const p = painter(d.w, d.h, seedOf(i)); d.draw(p); return p.rows(); });
+  try { localStorage.setItem(key, JSON.stringify({ h: stamp, rows })); } catch (e) { /* stockage plein */ }
+  return rows;
+}
+
 // Transforme les définitions en dessins au même format que ART (lignes de lettres).
-const GAME_ART = GAME_ART_DEFS.map((d, i) => {
-  const p = painter(d.w, d.h, i * 131 + 7);
-  d.draw(p);
-  return { id: d.id, name: d.name, cat: d.cat, colors: d.colors, rows: p.rows() };
-});
+const GAME_ART = renderDefs(GAME_ART_DEFS, 'jeux', (i) => i * 131 + 7)
+  .map((rows, i) => { const d = GAME_ART_DEFS[i]; return { id: d.id, name: d.name, cat: d.cat, colors: d.colors, rows }; });

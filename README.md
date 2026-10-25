@@ -5,8 +5,8 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 
 ## Fonctionnalités
 
-- **Galerie** par thèmes : Minecraft, Pokémon, Star Wars, jeux vidéo, animaux, nourriture, nature, objets, mandalas, et un onglet « Mes coloriages » (en cours et terminés).
-- **130 dessins** : 64 grands dessins jeux vidéo (18 Minecraft, 12 Pokémon, 16 Star Wars, 18 autres dont Mario, Sonic, Kirby, Zelda et Fortnite, de 32×32 à 56×24), 20 pixel arts faits main, 8 mandalas générés et une quarantaine d'emojis convertis en pixel art (selon les polices de l'appareil).
+- **Galerie** par thèmes : dinosaures, véhicules, espace, océan, aventure, Minecraft, Pokémon, Star Wars, jeux vidéo, animaux, nourriture, nature, objets, mandalas, et un onglet « Mes coloriages » (en cours et terminés).
+- **181 dessins**, dont **51 scènes XXL plein écran** (64×48 ou 48×64 cases : dinosaures, camions de pompiers, monster trucks, fusées, requins, dragons, robots, super-héros, ninjas, pirates…), 64 grands dessins jeux vidéo (18 Minecraft, 12 Pokémon, 16 Star Wars, 18 autres dont Mario, Sonic, Kirby, Zelda et Fortnite, de 32×32 à 56×24), 20 pixel arts faits main, 8 mandalas générés et une quarantaine d'emojis convertis en pixel art (selon les polices de l'appareil).
 - **Coloriage au doigt ou à la souris** : un appui colorie une case, un glissé déplace l'image ; garde le doigt appuyé un instant puis glisse pour colorier plusieurs cases d'un coup.
 - **Zoom** : pincement à deux doigts, molette, boutons ＋ / － / ⤢ ; un appui sur un dessin trop petit zoome directement dessus.
 - Les cases de la couleur choisie sont **mises en évidence**, et une couleur ne peut colorier que les cases de son propre numéro.
@@ -54,7 +54,8 @@ Depuis un ordinateur : `npx wrangler deploy`.
 | `public/index.html` | Structure des écrans |
 | `public/css/style.css` | Style |
 | `public/js/art.js` | Dessins pixel art faits main |
-| `public/js/games.js` | Dessins jeux vidéo, tracés avec un petit « pinceau » (formes, textures, contours) |
+| `public/js/games.js` | Dessins jeux vidéo, tracés avec un petit « pinceau » (formes, textures, contours, calques) ; les dessins générés sont gardés sur l'appareil |
+| `public/js/scenes.js` | Scènes XXL : décors et personnages réutilisables (agrandis, retournés, recolorés) |
 | `public/js/generators.js` | Mandalas, conversion emoji / photo en grille numérotée |
 | `public/js/audio.js` | Effets sonores |
 | `public/js/app.js` | Galerie, jeu, gestes, sauvegarde, écran de fin |
