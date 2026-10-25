@@ -68,8 +68,15 @@ const Deco = {
   },
   grass(p, top, flowers = true) {
     p.rect(0, top, p.w, p.h, 'G');
-    for (let x = 1; x < p.w; x += 3) p.set(x, top + 1 + ((x * 7) % 5), 'H');
-    if (flowers) for (let x = 3; x < p.w; x += 9) { const y = top + 3 + ((x * 5) % (p.h - top - 4 || 1)); p.set(x, y, x % 2 ? 'Y' : 'P'); }
+    // Brins d'herbe de deux cases et petites fleurs en croix.
+    for (let x = 2; x < p.w; x += 6) { const y = top + 1 + ((x * 7) % 4); p.set(x, y, 'H').set(x, y + 1, 'H'); }
+    if (flowers) {
+      for (let x = 5; x < p.w - 1; x += 11) {
+        const y = top + 3 + ((x * 5) % Math.max(1, p.h - top - 5));
+        if (y >= p.h - 1) continue;
+        [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([a, b]) => p.set(x + a, y + b, x % 2 ? 'Y' : 'P'));
+      }
+    }
   },
   road(p, top, hgt = 8) {
     p.rect(0, top, p.w, hgt, 'j');
@@ -111,7 +118,10 @@ const Deco = {
       if (x >= p.w) return;
       p.layer((q) => {
         q.rect(x, base - hgt, wid, hgt, 'g');
-        for (let yy = base - hgt + 2; yy < base - 2; yy += 3) for (let xx = x + 1; xx < x + wid - 1; xx += 2) q.set(xx, yy, (xx + yy) % 3 ? 'y' : 'j');
+        // Fenêtres allumées en carrés de 2×2 (les autres restent de la couleur de l'immeuble).
+        for (let yy = base - hgt + 2; yy < base - 3; yy += 4) {
+          for (let xx = x + 1; xx < x + wid - 2; xx += 3) if ((xx * 7 + yy * 3) % 5 !== 0) q.rect(xx, yy, 2, 2, 'y');
+        }
       }, 'K');
     });
   },
@@ -129,11 +139,14 @@ const Obj = {
       o.E(6, 11, 9, 6.5, body);
       o.E(7, 13.5, 6, 3.4, belly);
       o.PG([[9, 7], [12, -1], [17, 0], [15, 9]], body);
-      o.E(18, -1, 6.5, 4.2, body);
-      o.PG([[16, 1], [26, 1], [25, 4.5], [17, 5]], body);
-      o.PG([[17, 1.2], [25.5, 1.2], [25, 2.2], [17, 2.4]], 'R');
-      for (let t = 18; t < 25.5; t += 2) o.PG([[t, 1.2], [t + 1.2, 1.2], [t + 0.6, 2.6]], 'W');
-      o.D(18.5, -2.5, 1.5, 'W'); o.D(19, -2.3, 0.8, 'K');
+      o.E(18, -1.5, 7, 4.6, body);
+      o.PG([[18, -5.2], [25.5, -3.6], [26.2, 0.2], [18, 1]], body);
+      o.PG([[16, 1.2], [26, 1.2], [25, 4.8], [17, 5.2]], body);
+      o.PG([[17, 1], [25.8, 1], [25, 2.6], [17, 2.8]], 'R');
+      for (let t = 18; t < 25.5; t += 2) { o.PG([[t, 1], [t + 1.2, 1], [t + 0.6, 2.2]], 'W'); o.PG([[t + 0.8, 2.8], [t + 2, 2.8], [t + 1.4, 1.8]], 'W'); }
+      o.D(19, -2.6, 1.7, 'W'); o.D(19.5, -2.4, 0.9, 'K');
+      o.L(16.8, -4.9, 21.2, -4, 'n', 0.9);
+      o.D(24.6, -2.4, 0.55, 'K');
       o.L(14, 11, 17, 13.5, body, 1.4); o.L(17, 13.5, 18.5, 13, body, 1);
       o.PG([[1, 12], [3, 21], [1, 27], [6, 27], [7, 20], [6, 13]], body);
       [[-6, 5], [0, 8], [5, 7]].forEach(([sx, sy]) => o.D(sx, sy, 1.1, belly));
@@ -142,16 +155,20 @@ const Obj = {
   triceratops(p, x, y, k = 1, flip = false, body = 'O', frill = 'Y') {
     p.layer((q) => {
       const o = at(q, x, y, k, flip);
-      o.PG([[-8, 7], [-20, 10], [-8, 12]], body);
-      o.E(0, 8, 11, 7, body);
-      [[-7, 12], [-2, 12], [4, 12], [8, 11]].forEach(([lx, ly]) => o.R(lx, ly, 3.4, 8, body));
-      o.E(14, 2, 6.5, 8.5, frill);
-      o.E(16, 7, 6, 4.2, body);
-      o.PG([[20, 6], [25, 8], [20, 10]], 'o');
-      o.PG([[14, 3.5], [21, -4], [16.5, 4.5]], 'W'); o.PG([[21, 5], [24, 1.5], [22.5, 6]], 'W');
-      o.D(17, 5.5, 1.1, 'K');
-      [[9, -3], [12, -6], [16, -6], [19, -3]].forEach(([sx, sy]) => o.D(sx, sy, 0.9, 'R'));
-      [[-4, 4], [2, 3], [-1, 8]].forEach(([sx, sy]) => o.D(sx, sy, 1.3, 'k'));
+      o.PG([[-9, 4], [-22, 9], [-9, 11]], body);
+      [[-9, 10], [-3, 11], [4, 11], [9, 10]].forEach(([lx, ly]) => o.R(lx, ly, 4, 19 - ly, body));
+      o.E(0, 6, 12, 7.5, body);
+      [[-5, 3, 1.6], [1, 2, 1.3], [-1, 7, 1.2], [5, 5, 1.1]].forEach(([sx, sy, r]) => o.D(sx, sy, r, 'k'));
+      // Collerette derrière la tête, bordée de pointes.
+      o.E(12.5, 0.5, 6.5, 7.5, frill);
+      for (let a = -2.4; a <= -0.2; a += 0.55) o.D(12.5 + Math.cos(a) * 6.6, 0.5 + Math.sin(a) * 7.6, 1.1, 'R');
+      o.E(18, 6.5, 6.4, 4.4, body);
+      o.PG([[22.5, 4.2], [27.5, 7.2], [22.5, 9.4]], 'o');
+      o.PG([[15, 3.4], [21.5, -4.2], [17.3, 4]], 'h');
+      o.PG([[17, 3.6], [25, -4.6], [19.4, 4.4]], 'W');
+      o.PG([[22.2, 4.6], [24.2, 1.2], [23.8, 5.2]], 'W');
+      o.D(19, 5.2, 1.3, 'W'); o.D(19.4, 5.3, 0.7, 'K');
+      o.PATH([[22, 8.6], [19.6, 9.2]], 'K', 0.6);
     }, 'K');
   },
   brachio(p, x, y, k = 1, flip = false, body = 'N', belly = 'a') {
@@ -165,7 +182,7 @@ const Obj = {
       o.E(18, 0, 5, 3, body);
       o.D(19, -1, 0.9, 'K');
       o.L(20, 1.5, 22.5, 1.2, 'K', 0.8);
-      [[-6, 27], [0, 26], [-3, 30]].forEach(([sx, sy]) => o.D(sx, sy, 1.4, 'e'));
+      [[-7, 26.5, 1.6], [0, 25.6, 1.4], [5, 27, 1.1]].forEach(([sx, sy, r]) => o.D(sx, sy, r, 'b'));
     }, 'K');
   },
   stego(p, x, y, k = 1, flip = false, body = 'm', plates = 'O') {
@@ -797,10 +814,10 @@ const SCENE_DEFS = [
     draw(p) {
       Deco.sky(p, 'c', 'b', 'a', 0.25, 0.45);
       p.rect(0, 16, 64, 8, 'h');
-      for (let x = 0; x < 64; x += 2) p.set(x, 17 + (x % 4 ? 0 : 1), 'R').set(x, 21, x % 4 ? 'd' : 'Y');
+      for (let x = 0; x < 64; x += 4) { p.rect(x, 17, 2, 2, 'R'); p.rect(x + 2, 20, 2, 2, x % 8 ? 'd' : 'Y'); }
       Deco.grass(p, 24, false);
       p.rect(0, 28, 64, 16, 'j');
-      for (let x = 0; x < 64; x += 2) { p.rect(x, 28, 1, 1, 'W'); p.rect(x + 1, 28, 1, 1, 'R'); p.rect(x, 43, 1, 1, 'R'); p.rect(x + 1, 43, 1, 1, 'W'); }
+      for (let x = 0; x < 64; x += 4) { p.rect(x, 28, 2, 1, 'W'); p.rect(x + 2, 28, 2, 1, 'R'); p.rect(x, 43, 2, 1, 'R'); p.rect(x + 2, 43, 2, 1, 'W'); }
       for (let y = 29; y < 43; y += 2) p.rect(56, y, 2, 1, 'W').rect(58, y + 1, 2, 1, 'W');
       for (let y = 30; y < 43; y += 2) p.rect(56, y, 2, 1, 'K').rect(58, y - 1, 2, 1, 'K');
       Obj.raceCar(p, 6, 28, 1.25, false, 'R', '7');

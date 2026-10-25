@@ -739,7 +739,7 @@ const SCENE2_DEFS = [
       Deco.grass(p, 34, false);
       for (let i = 0; i < 12; i++) {
         const x = 4 + i * 5.3, y = 37 + (i * 7) % 9;
-        p.layer((q) => { q.disc(x, y, 1.6, i % 3 === 0 ? 'P' : i % 3 === 1 ? 'Y' : 'v'); q.set(Math.round(x - 0.5), Math.round(y - 0.5), 'O'); }, 'K');
+        p.layer((q) => { q.disc(x, y, 1.6, i % 3 === 0 ? 'P' : i % 3 === 1 ? 'Y' : 'v'); }, 'K');
       }
       Obj2.eevee(p, 32, 44, 1.35);
     },

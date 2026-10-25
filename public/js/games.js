@@ -104,6 +104,16 @@ function painter(w, h, seed = 1, shader = null) {
         if (same < 2) return;
         if (outside(x + 1, y) || outside(x, y + 1) || outside(x + 1, y + 1)) out[y * w + x] = dark;
       });
+      // Une case d'ombre toute seule (coin en escalier) reprend sa couleur d'origine.
+      each((x, y) => {
+        const i = y * w + x;
+        if (out[i] === g[i]) return;
+        const alone = [[1, 0], [-1, 0], [0, 1], [0, -1]].every(([a, b]) => {
+          const X = x + a, Y = y + b;
+          return X < 0 || Y < 0 || X >= w || Y >= h || out[Y * w + X] !== out[i];
+        });
+        if (alone) out[i] = g[i];
+      });
       out.forEach((v, i) => { g[i] = v; });
       return P;
     },
@@ -118,6 +128,19 @@ function painter(w, h, seed = 1, shader = null) {
         if (nb.some(([a, b]) => { const v = P.get(x + a, y + b); return v !== '.' && v !== c; })) add.push([x, y]);
       });
       add.forEach(([x, y]) => P.set(x, y, c));
+      // Ferme les diagonales en escalier : le contour devient un seul trait continu,
+      // qu'on peut colorier d'un geste au lieu de cases séparées.
+      for (let y = 0; y < h - 1; y++) {
+        for (let x = 0; x < w; x++) {
+          [[1, 1], [-1, 1]].forEach(([a, b]) => {
+            const X = x + a, Y = y + b;
+            if (X < 0 || X >= w || g[y * w + x] !== c || g[Y * w + X] !== c) return;
+            if (g[y * w + X] === c || g[Y * w + x] === c) return;
+            if (g[y * w + X] === '.') g[y * w + X] = c;
+            else if (g[Y * w + x] === '.') g[Y * w + x] = c;
+          });
+        }
+      }
       return P;
     },
     // Petit motif texte (une lettre par case), avec agrandissement facultatif.
@@ -132,8 +155,17 @@ function painter(w, h, seed = 1, shader = null) {
       for (let y = 0; y < h; y++) for (let x = 0; x < w / 2; x++) g[y * w + (w - 1 - x)] = g[y * w + x];
       return P;
     },
+    // Étoiles (ou taches) en petites croix bien espacées : jolies et faciles à colorier,
+    // au lieu d'une poussière de cases isolées.
     stars(c, density, test = () => true) {
-      each((x, y) => { if (rnd() < density && test(x, y)) P.set(x, y, c); });
+      const want = Math.max(1, Math.round((w * h * density) / 4));
+      const placed = [];
+      for (let tries = 0; tries < want * 30 && placed.length < want; tries++) {
+        const x = 1 + Math.floor(rnd() * (w - 2)), y = 1 + Math.floor(rnd() * (h - 2));
+        if (!test(x, y) || placed.some(([a, b]) => Math.abs(a - x) + Math.abs(b - y) < 5)) continue;
+        placed.push([x, y]);
+        [[0, 0], [1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([a, b]) => P.set(x + a, y + b, c));
+      }
       return P;
     },
     // Dessine sur un calque transparent, l'entoure d'un contour puis le colle sur le dessin.
@@ -144,13 +176,19 @@ function painter(w, h, seed = 1, shader = null) {
       const cells = q.cells();
       // Petite ombre au sol sous les objets posés par terre.
       if (shader && outlineColor) {
+        const spots = [];
         for (let x = 0; x < w; x++) {
           let low = -1;
           for (let y = h - 1; y >= 0; y--) if (cells[y * w + x] !== '.') { low = y; break; }
-          if (low < 0 || low + 1 >= h) continue;
+          if (low < 0 || low + 1 >= h) { spots.push(null); continue; }
           const under = g[(low + 1) * w + x];
-          if (cells[(low + 1) * w + x] === '.' && shader.ground(under) && shader.dark(under)) g[(low + 1) * w + x] = shader.dark(under);
+          spots.push(cells[(low + 1) * w + x] === '.' && shader.ground(under) && shader.dark(under) ? (low + 1) * w + x : null);
         }
+        // Seulement par traits d'au moins deux cases, pour éviter les points isolés.
+        spots.forEach((i, x) => {
+          if (i === null || (spots[x - 1] == null && spots[x + 1] == null)) return;
+          g[i] = shader.dark(g[i]);
+        });
       }
       cells.forEach((v, i) => { if (v !== '.') g[i] = v; });
       return P;
@@ -724,7 +762,7 @@ const GAME_ART_DEFS = [
     colors: { O: '#140c1e', P: '#24163a', Q: '#3a2458', V: '#8a2be2', W: '#a64ff0', X: '#6a1fb0', Y: '#c88aff', S: '#2a2a2a', G: '#5a5a5a' },
     draw(p) {
       p.fill('O').noise('O', ['O', 'P', 'Q', 'O'], 2);
-      p.rect(4, 4, 20, 30, 'V').noise('V', ['V', 'W', 'X', 'V', 'Y'], 1);
+      p.rect(4, 4, 20, 30, 'V').noise('V', ['V', 'W', 'X', 'V', 'Y'], 2);
     },
   },
   {
