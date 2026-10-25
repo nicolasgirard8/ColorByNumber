@@ -10,6 +10,7 @@ const CATS = [
   { id: 'espace', name: 'Espace', icon: '🚀' },
   { id: 'ocean', name: 'Océan', icon: '🦈' },
   { id: 'aventure', name: 'Aventure', icon: '🐉' },
+  { id: 'gemmes', name: 'Pierres précieuses', icon: '💎' },
   { id: 'minecraft', name: 'Minecraft', icon: '⛏️' },
   { id: 'pokemon', name: 'Pokémon', icon: '⚡' },
   { id: 'starwars', name: 'Star Wars', icon: '🌌' },
@@ -750,6 +751,29 @@ const Game = (() => {
     }
 
     let animating = !!camAnim;
+    if (brush && mode === 'paint') {
+      // Rond autour du doigt : le coloriage en glissant est actif, avec la couleur choisie.
+      const t = Math.min(1, (now - brush.t0) / 160);
+      const r = 46 * (0.6 + 0.4 * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) animating = true;
+      ctx.beginPath();
+      ctx.arc(brush.x, brush.y, r, 0, Math.PI * 2);
+      ctx.globalAlpha = 0.18;
+      ctx.fillStyle = img.palette[selected];
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.lineWidth = 8;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+      ctx.lineWidth = 4.5;
+      ctx.strokeStyle = img.palette[selected];
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(brush.x, brush.y, r + 4, 0, Math.PI * 2);
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = 'rgba(44,37,71,0.6)';
+      ctx.stroke();
+    }
     if (flash) {
       const t = (now - flash.t0) / 1600;
       if (t > 1) flash = null;
@@ -777,6 +801,7 @@ const Game = (() => {
   let pinch = null;
   let pendingTimer = 0;
   let pendingIsMouse = false;
+  let brush = null;        // position du doigt quand le coloriage en glissant est actif
   let lastPan = null;
 
   function local(e) {
@@ -790,12 +815,15 @@ const Game = (() => {
 
   function startPaint(p) {
     mode = 'paint';
+    brush = { x: p.x, y: p.y, t0: performance.now() };
     lastCell = cellAt(p.x, p.y);
     paint(lastCell, selected);
+    requestDraw();
   }
 
   function startPinch() {
     clearTimeout(pendingTimer);
+    brush = null;
     const [a, b] = [...pointers.values()];
     pinch = {
       d: Math.hypot(a.x - b.x, a.y - b.y) || 1,
@@ -865,6 +893,9 @@ const Game = (() => {
     } else if (mode === 'paint') {
       const c = cellAt(p.x, p.y);
       if (c !== lastCell && c >= 0) { paintLine(lastCell, c); lastCell = c; }
+      brush.x = p.x;
+      brush.y = p.y;
+      requestDraw();
     }
     lastPan = p;
   });
@@ -894,6 +925,7 @@ const Game = (() => {
       mode = null;
       lastCell = -1;
     }
+    if (mode !== 'paint' && brush) { brush = null; requestDraw(); }
   }
   board.addEventListener('pointerup', endPointer);
   board.addEventListener('pointercancel', endPointer);
