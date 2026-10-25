@@ -5,6 +5,10 @@ const $ = (id) => document.getElementById(id);
 
 const CATS = [
   { id: 'all', name: 'Tout', icon: '✨' },
+  { id: 'minecraft', name: 'Minecraft', icon: '⛏️' },
+  { id: 'pokemon', name: 'Pokémon', icon: '⚡' },
+  { id: 'starwars', name: 'Star Wars', icon: '🌌' },
+  { id: 'jeux', name: 'Jeux vidéo', icon: '🎮' },
   { id: 'animaux', name: 'Animaux', icon: '🐾' },
   { id: 'nourriture', name: 'Miam', icon: '🍓' },
   { id: 'nature', name: 'Nature', icon: '🌼' },
@@ -56,7 +60,7 @@ const store = {
 const encodeCells = (cells) => Array.from(cells, (c) => String.fromCharCode(49 + c)).join('');
 const decodeCells = (s) => Int16Array.from(s, (ch) => ch.charCodeAt(0) - 49);
 
-const settings = Object.assign({ sound: true, bomb: START_TOOLS, bucket: START_TOOLS }, store.get('settings', {}));
+const settings = Object.assign({ sound: true, bomb: START_TOOLS, bucket: START_TOOLS, tips: 0 }, store.get('settings', {}));
 const saveSettings = () => store.set('settings', settings);
 Sound.enabled = settings.sound;
 
@@ -71,6 +75,7 @@ function addImage(img) {
 }
 
 function loadLibrary() {
+  GAME_ART.forEach((a) => addImage(Gen.fromArt(a)));
   ART.forEach((a) => addImage(Gen.fromArt(a)));
 
   MANDALA_SIZES.forEach((size, i) => {
@@ -125,12 +130,12 @@ function grayFor(hex) {
 }
 
 let toastTimer = 0;
-function toast(msg) {
+function toast(msg, ms = 1800) {
   const t = $('toast');
   t.textContent = msg;
   t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+  toastTimer = setTimeout(() => t.classList.remove('show'), ms);
 }
 
 function vibrate(ms) {
@@ -297,12 +302,15 @@ const Game = (() => {
   const MAX_SCALE = 70;
   const PAINT_MIN_TOUCH = 15;
   const PAINT_MIN_MOUSE = 6;
+  const HOLD_MS = 300;     // durée d'appui avant de pouvoir colorier en glissant
 
   function open(image) {
     img = image;
     const p = loadProgress(img);
     fill = p.fill;
     order = p.order;
+    // Les anciennes sauvegardes pouvaient contenir des cases de la mauvaise couleur.
+    for (let i = 0; i < fill.length; i++) if (fill[i] !== img.cells[i]) fill[i] = -1;
     remaining = img.palette.map(() => 0);
     totals = img.palette.map(() => 0);
     doneCount = 0;
@@ -322,6 +330,11 @@ const Game = (() => {
     fit(false);
     updateHud();
     if (finished) setTimeout(() => Done.show(img, fill, order, false), 250);
+    else if (settings.tips < 3) {
+      settings.tips++;
+      saveSettings();
+      toast('Astuce : garde le doigt appuyé puis glisse pour colorier 🖌️', 4000);
+    }
   }
 
   function close() {
@@ -406,12 +419,9 @@ const Game = (() => {
     if (idx < 0 || finished) return false;
     const target = img.cells[idx];
     if (target < 0 || fill[idx] === target) return false;
+    // Une couleur ne peut colorier que les cases de son propre numéro.
     if (color !== target) {
-      if (fill[idx] === color) return false;
-      fill[idx] = color;
       if (!silent) Sound.wrong();
-      requestDraw();
-      saveSoon();
       return false;
     }
     fill[idx] = target;
@@ -458,6 +468,8 @@ const Game = (() => {
     setTimeout(() => Done.show(img, fill, order, true), 700);
   }
 
+  const isTargetOf = (i) => img.cells[i] === selected;
+
   // Trace une ligne de cases entre deux positions pour ne rien rater lors d'un glissé rapide.
   function paintLine(a, b) {
     if (a < 0) { paint(b, selected); return; }
@@ -467,7 +479,7 @@ const Game = (() => {
     const sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
     let err = dx + dy;
     for (;;) {
-      paint(y0 * img.w + x0, selected);
+      paint(y0 * img.w + x0, selected, { silent: !isTargetOf(y0 * img.w + x0) });
       if (x0 === x1 && y0 === y1) break;
       const e2 = 2 * err;
       if (e2 >= dy) { err += dy; x0 += sx; }
@@ -685,8 +697,7 @@ const Game = (() => {
         const c = img.cells[i];
         if (c < 0) continue;
         const px = cam.ox + x * s, py = cam.oy + y * s;
-        const f = fill[i];
-        if (f === c) {
+        if (fill[i] === c) {
           ctx.fillStyle = img.palette[c];
           ctx.fillRect(px - 0.3, py - 0.3, s + 0.6, s + 0.6);
           continue;
@@ -695,13 +706,6 @@ const Game = (() => {
         if (c === selected && tool === 'brush') { r -= 70; g -= 66; b -= 52; }
         ctx.fillStyle = `rgb(${r},${g},${b})`;
         ctx.fillRect(px + gap, py + gap, s - gap * 2, s - gap * 2);
-        if (f >= 0) {
-          // Mauvaise couleur : affichée en transparence, le numéro reste visible.
-          ctx.globalAlpha = 0.55;
-          ctx.fillStyle = img.palette[f];
-          ctx.fillRect(px + gap, py + gap, s - gap * 2, s - gap * 2);
-          ctx.globalAlpha = 1;
-        }
       }
     }
 
@@ -716,7 +720,7 @@ const Game = (() => {
           const c = img.cells[i];
           if (c < 0 || fill[i] === c) continue;
           const hl = c === selected && tool === 'brush';
-          ctx.fillStyle = hl ? '#ffffff' : fill[i] >= 0 ? '#2c2547' : '#7d7799';
+          ctx.fillStyle = hl ? '#ffffff' : '#7d7799';
           ctx.fillText(String(c + 1), cam.ox + (x + 0.5) * s, cam.oy + (y + 0.55) * s);
         }
       }
@@ -749,6 +753,7 @@ const Game = (() => {
   let lastCell = -1;
   let pinch = null;
   let pendingTimer = 0;
+  let pendingIsMouse = false;
   let lastPan = null;
 
   function local(e) {
@@ -778,6 +783,8 @@ const Game = (() => {
     camAnim = null;
   }
 
+  // Un appui court colorie une case, un glissé déplace l'image.
+  // Garder le doigt appuyé un instant puis glisser colorie en continu.
   board.addEventListener('pointerdown', (e) => {
     Sound.unlock();
     if (!img) return;
@@ -792,11 +799,15 @@ const Game = (() => {
     if (isMouse && e.button !== 0) { mode = 'pan'; return; }
     if (finished) { mode = 'pan'; return; }
     if (tool !== 'brush') { mode = 'tool'; return; }
-    if (!canPaint(isMouse)) { mode = 'tap'; return; }
-    if (isMouse) { startPaint(p); return; }
-    // Au doigt, on attend un instant pour ne pas colorier au début d'un pincement.
     mode = 'pending';
-    pendingTimer = setTimeout(() => { if (mode === 'pending') startPaint(downPos); }, 70);
+    pendingIsMouse = isMouse;
+    if (!canPaint(isMouse)) return;
+    pendingTimer = setTimeout(() => {
+      if (mode !== 'pending') return;
+      vibrate(25);
+      Sound.tap();
+      startPaint(downPos);
+    }, HOLD_MS);
   });
 
   board.addEventListener('pointermove', (e) => {
@@ -818,8 +829,10 @@ const Game = (() => {
       return;
     }
     const moved = downPos ? Math.hypot(p.x - downPos.x, p.y - downPos.y) : 0;
-    if (mode === 'pending' && moved > 4) { clearTimeout(pendingTimer); startPaint(downPos); }
-    if ((mode === 'tap' || mode === 'tool') && moved > 8) mode = 'pan';
+    if ((mode === 'pending' || mode === 'tool') && moved > (pendingIsMouse ? 4 : 8)) {
+      clearTimeout(pendingTimer);
+      mode = 'pan';
+    }
     if (mode === 'pan') {
       cam.ox += p.x - lastPan.x;
       cam.oy += p.y - lastPan.y;
@@ -837,11 +850,16 @@ const Game = (() => {
     if (!pointers.has(e.pointerId)) return;
     const p = local(e);
     pointers.delete(e.pointerId);
-    if (mode === 'pending') { clearTimeout(pendingTimer); startPaint(downPos); }
-    if (mode === 'tap' && e.type === 'pointerup') {
-      // Dessin trop petit : un appui zoome vers l'endroit touché.
-      const target = Math.max(PAINT_MIN_TOUCH * 1.6, fitScale * 2.2);
-      zoomAt(target / cam.scale, p.x, p.y, true);
+    if (mode === 'pending') {
+      clearTimeout(pendingTimer);
+      if (e.type === 'pointerup') {
+        if (canPaint(pendingIsMouse)) paint(cellAt(downPos.x, downPos.y), selected);
+        else {
+          // Dessin trop petit : un appui zoome vers l'endroit touché.
+          const target = Math.max(PAINT_MIN_TOUCH * 1.6, fitScale * 2.2);
+          zoomAt(target / cam.scale, p.x, p.y, true);
+        }
+      }
     }
     if (mode === 'tool' && e.type === 'pointerup') applyTool(cellAt(p.x, p.y));
     if (pointers.size === 1) {

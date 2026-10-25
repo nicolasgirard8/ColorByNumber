@@ -1,0 +1,10 @@
+// Configuration Cloudflare : le jeu est un site 100 % statique servi tel quel.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "colorbynumber",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  }
+}
