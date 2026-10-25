@@ -5,8 +5,8 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 
 ## Fonctionnalités
 
-- **Galerie** par thèmes : dinosaures, véhicules, espace, océan, aventure, pierres précieuses, Minecraft, Pokémon, Star Wars, jeux vidéo, animaux, nourriture, nature, objets, mandalas, et un onglet « Mes coloriages » (en cours et terminés).
-- **197 dessins**, dont **16 pierres précieuses sans contour** (diamant, rubis, émeraude, saphir, améthyste, topaze, citrine, aigue-marine, quartz rose, péridot, grenat, tanzanite, tourmaline, perle, opale et un trésor qui les réunit), dont **51 scènes XXL plein écran** (64×48 ou 48×64 cases : dinosaures, camions de pompiers, monster trucks, fusées, requins, dragons, robots, super-héros, ninjas, pirates…), 64 grands dessins jeux vidéo (18 Minecraft, 12 Pokémon, 16 Star Wars, 18 autres dont Mario, Sonic, Kirby, Zelda et Fortnite, de 32×32 à 56×24), 20 pixel arts faits main, 8 mandalas générés et une quarantaine d'emojis convertis en pixel art (selon les polices de l'appareil).
+- **Galerie** par thèmes : dinosaures, véhicules, police, espace, océan, aventure, pierres précieuses, Minecraft, Pokémon, Star Wars, jeux vidéo, animaux, nourriture, nature, objets, mandalas, et un onglet « Mes coloriages » (en cours et terminés).
+- **230 dessins**, dont **33 nouvelles scènes XXL** (police, jeux vidéo, Pokémon), dont **16 pierres précieuses sans contour** (diamant, rubis, émeraude, saphir, améthyste, topaze, citrine, aigue-marine, quartz rose, péridot, grenat, tanzanite, tourmaline, perle, opale et un trésor qui les réunit), dont **51 scènes XXL plein écran** (64×48 ou 48×64 cases : dinosaures, camions de pompiers, monster trucks, fusées, requins, dragons, robots, super-héros, ninjas, pirates…), 64 grands dessins jeux vidéo (18 Minecraft, 12 Pokémon, 16 Star Wars, 18 autres dont Mario, Sonic, Kirby, Zelda et Fortnite, de 32×32 à 56×24), 20 pixel arts faits main, 8 mandalas générés et une quarantaine d'emojis convertis en pixel art (selon les polices de l'appareil).
 - **Coloriage au doigt ou à la souris** : un appui colorie une case, un glissé déplace l'image ; garde le doigt appuyé un instant puis glisse pour colorier plusieurs cases d'un coup (un rond de la couleur choisie entoure alors le doigt).
 - **Zoom** : pincement à deux doigts, molette, boutons ＋ / － / ⤢ ; un appui sur un dessin trop petit zoome directement dessus.
 - Les cases de la couleur choisie sont **bien visibles** : bord de la vraie couleur, centre pâle qui pulse doucement, même dézoomé ; les autres cases s'estompent. Une couleur ne peut colorier que les cases de son propre numéro.
@@ -58,6 +58,7 @@ Depuis un ordinateur : `npx wrangler deploy`.
 | `public/js/art.js` | Dessins pixel art faits main |
 | `public/js/games.js` | Dessins jeux vidéo, tracés avec un petit « pinceau » (formes, textures, contours, calques) ; les dessins générés sont gardés sur l'appareil |
 | `public/js/gems.js` | Pierres précieuses : tailles brillant, à degrés, cristal, perle et opale |
+| `public/js/scenes2.js` | Deuxième série de scènes : police, jeux vidéo et Pokémon en pied |
 | `public/js/scenes.js` | Scènes XXL : décors et personnages réutilisables (agrandis, retournés, recolorés) |
 | `public/js/generators.js` | Mandalas, conversion emoji / photo en grille numérotée |
 | `public/js/audio.js` | Effets sonores |

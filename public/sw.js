@@ -1,5 +1,5 @@
 // Cache hors ligne : l'application fonctionne sans connexion après la première visite.
-const CACHE = 'coloriage-v8';
+const CACHE = 'coloriage-v9';
 const FILES = [
   './',
   'index.html',
@@ -8,6 +8,7 @@ const FILES = [
   'js/generators.js',
   'js/games.js',
   'js/scenes.js',
+  'js/scenes2.js',
   'js/gems.js',
   'js/audio.js',
   'js/app.js',

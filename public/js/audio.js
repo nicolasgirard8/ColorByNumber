@@ -64,6 +64,7 @@ const Sound = (() => {
       tone(70, 0, 0.9, { type: 'sawtooth', vol: 0.1, slide: 2.6 });
       tone(105, 0.1, 0.8, { type: 'square', vol: 0.04, slide: 2.2 });
     },
+    siren() { [0, 0.3, 0.6, 0.9].forEach((t, i) => tone(i % 2 ? 660 : 880, t, 0.28, { type: 'triangle', vol: 0.09 })); },
     whoosh() { tone(200, 0, 1, { type: 'triangle', vol: 0.1, slide: 6 }); },
     bubbles() { [0, 0.12, 0.22, 0.36, 0.5].forEach((t, i) => tone(400 + i * 120, t, 0.12, { vol: 0.08, slide: 1.8 })); },
     zap() { [0, 0.18].forEach((t) => tone(1400, t, 0.22, { type: 'square', vol: 0.05, slide: 0.2 })); },
