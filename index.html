@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#7c5cff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Coloriage">
+  <meta name="description" content="Jeu de coloriage par numéros pour enfants : touche les cases, retrouve les couleurs et révèle de jolis dessins.">
+  <title>Coloriage Magique</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Galerie -->
+  <section id="gallery" class="screen active" aria-label="Galerie">
+    <header class="gallery-head">
+      <div class="brand">
+        <span class="brand-logo" aria-hidden="true">🎨</span>
+        <h1>Coloriage <span>Magique</span></h1>
+      </div>
+      <div class="head-actions">
+        <div class="tool-stock" title="Tes bonus">
+          <span>💣 <b id="stock-bomb">0</b></span>
+          <span>🪣 <b id="stock-bucket">0</b></span>
+        </div>
+        <button class="icon-btn" id="btn-sound" aria-label="Son">🔊</button>
+      </div>
+    </header>
+    <nav class="tabs" id="tabs" role="tablist"></nav>
+    <main class="grid" id="grid"></main>
+  </section>
+
+  <!-- Jeu -->
+  <section id="game" class="screen" aria-label="Coloriage">
+    <header class="game-head">
+      <button class="icon-btn" id="btn-back" aria-label="Retour à la galerie">
+        <svg viewBox="0 0 24 24" width="26" height="26"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="progress" aria-label="Progression">
+        <div class="progress-bar"><i id="progress-fill"></i></div>
+        <span id="progress-text">0 %</span>
+      </div>
+      <div class="game-tools">
+        <button class="tool-btn" id="tool-hint" aria-label="Trouver une case">
+          <span>🔍</span>
+        </button>
+        <button class="tool-btn" id="tool-bucket" aria-label="Seau de peinture">
+          <span>🪣</span><b id="count-bucket">0</b>
+        </button>
+        <button class="tool-btn" id="tool-bomb" aria-label="Bombe de couleur">
+          <span>💣</span><b id="count-bomb">0</b>
+        </button>
+        <button class="icon-btn" id="btn-menu" aria-label="Menu">
+          <svg viewBox="0 0 24 24" width="24" height="24"><circle cx="5" cy="12" r="2.3" fill="currentColor"/><circle cx="12" cy="12" r="2.3" fill="currentColor"/><circle cx="19" cy="12" r="2.3" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </header>
+    <div class="board" id="board">
+      <canvas id="canvas"></canvas>
+      <div class="tool-banner" id="tool-banner"></div>
+      <div class="zoom-ctrl">
+        <button class="icon-btn small" id="zoom-in" aria-label="Zoomer">＋</button>
+        <button class="icon-btn small" id="zoom-out" aria-label="Dézoomer">－</button>
+        <button class="icon-btn small" id="zoom-fit" aria-label="Voir tout">⤢</button>
+      </div>
+    </div>
+    <footer class="palette" id="palette" role="listbox" aria-label="Couleurs"></footer>
+  </section>
+
+  <!-- Fin du dessin -->
+  <div class="overlay" id="done" hidden>
+    <canvas id="confetti"></canvas>
+    <div class="done-card">
+      <h2>Bravo&nbsp;! 🎉</h2>
+      <p id="done-name"></p>
+      <div class="done-frame"><canvas id="replay"></canvas></div>
+      <p class="reward" id="done-reward"></p>
+      <div class="done-actions">
+        <button class="btn ghost" id="btn-replay">▶ Revoir</button>
+        <button class="btn ghost" id="btn-save">⬇ Enregistrer</button>
+        <button class="btn" id="btn-done-gallery">Galerie</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Import de photo -->
+  <div class="overlay" id="import" hidden>
+    <div class="sheet">
+      <h2>Ta photo en coloriage 📷</h2>
+      <label class="file-drop" id="file-drop">
+        <input type="file" id="file-input" accept="image/*">
+        <span id="file-label">Choisis une photo</span>
+        <canvas id="import-preview" hidden></canvas>
+      </label>
+      <div class="field">
+        <span>Taille</span>
+        <div class="seg" id="seg-size">
+          <button data-v="24">Petit</button><button data-v="36" class="on">Moyen</button><button data-v="52">Grand</button>
+        </div>
+      </div>
+      <div class="field">
+        <span>Couleurs</span>
+        <div class="seg" id="seg-colors">
+          <button data-v="6">6</button><button data-v="10" class="on">10</button><button data-v="16">16</button>
+        </div>
+      </div>
+      <div class="sheet-actions">
+        <button class="btn ghost" id="import-cancel">Annuler</button>
+        <button class="btn" id="import-ok" disabled>Créer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu et confirmations -->
+  <div class="overlay" id="dialog" hidden>
+    <div class="sheet small">
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-text"></p>
+      <div class="dialog-buttons" id="dialog-buttons"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/art.js"></script>
+  <script src="js/generators.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
