@@ -7,6 +7,7 @@ const CATS = [
   { id: 'all', name: 'Tout', icon: '✨' },
   { id: 'dinos', name: 'Dinosaures', icon: '🦖' },
   { id: 'vehicules', name: 'Véhicules', icon: '🚒' },
+  { id: 'police', name: 'Police', icon: '👮' },
   { id: 'espace', name: 'Espace', icon: '🚀' },
   { id: 'ocean', name: 'Océan', icon: '🦈' },
   { id: 'aventure', name: 'Aventure', icon: '🐉' },
@@ -1116,6 +1117,7 @@ const Done = (() => {
   const LIFE = {
     dinos: { sound: 'roar', move: 'stomp', flow: 'prints', parts: ['👣', '💥'] },
     vehicules: { sound: 'vroom', move: 'drive', flow: 'puff', parts: ['💨'] },
+    police: { sound: 'siren', move: 'drive', flow: 'twinkle', parts: ['🚨', '⭐'] },
     espace: { sound: 'whoosh', move: 'float', flow: 'twinkle', parts: ['⭐', '✨', '🌟'] },
     ocean: { sound: 'bubbles', move: 'swim', flow: 'rise', parts: ['🫧'] },
     aventure: { sound: 'zap', move: 'jump', flow: 'rise', parts: ['🔥', '✨', '⚡'] },

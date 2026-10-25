@@ -771,7 +771,7 @@ const SCENE_DEFS = [
     },
   },
   {
-    id: 'xl-police', name: 'Voiture de police', cat: 'vehicules', w: 64, h: 48,
+    id: 'xl-police', name: 'Voiture de police', cat: 'police', w: 64, h: 48,
     draw(p) {
       Deco.night(p);
       Deco.moon(p, 52, 8, 4, 'f');
