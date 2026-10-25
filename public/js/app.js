@@ -5,6 +5,11 @@ const $ = (id) => document.getElementById(id);
 
 const CATS = [
   { id: 'all', name: 'Tout', icon: '✨' },
+  { id: 'dinos', name: 'Dinosaures', icon: '🦖' },
+  { id: 'vehicules', name: 'Véhicules', icon: '🚒' },
+  { id: 'espace', name: 'Espace', icon: '🚀' },
+  { id: 'ocean', name: 'Océan', icon: '🦈' },
+  { id: 'aventure', name: 'Aventure', icon: '🐉' },
   { id: 'minecraft', name: 'Minecraft', icon: '⛏️' },
   { id: 'pokemon', name: 'Pokémon', icon: '⚡' },
   { id: 'starwars', name: 'Star Wars', icon: '🌌' },
@@ -207,8 +212,20 @@ function renderTabs() {
   });
 }
 
+// Les vignettes ne sont dessinées qu'en arrivant à l'écran : la galerie s'ouvre plus vite.
+const thumbs = new WeakMap();
+const thumbObserver = window.IntersectionObserver
+  ? new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (!en.isIntersecting) return;
+    thumbObserver.unobserve(en.target);
+    const draw = thumbs.get(en.target);
+    if (draw) draw();
+  }), { rootMargin: '300px' })
+  : null;
+
 function renderGrid() {
   const grid = $('grid');
+  if (thumbObserver) thumbObserver.disconnect();
   grid.innerHTML = '';
   $('stock-bomb').textContent = settings.bomb;
   $('stock-bucket').textContent = settings.bucket;
@@ -241,8 +258,8 @@ function renderGrid() {
     const card = document.createElement('button');
     card.className = 'card';
     const cv = document.createElement('canvas');
-    const px = Math.max(1, Math.floor(160 / Math.max(img.w, img.h)));
-    drawPicture(cv, img, sum.started ? loadProgress(img).fill : null, px);
+    thumbs.set(cv, () => drawPicture(cv, img, sum.started ? loadProgress(img).fill : null, Math.max(1, Math.floor(160 / Math.max(img.w, img.h)))));
+    if (thumbObserver) thumbObserver.observe(cv); else thumbs.get(cv)();
     card.appendChild(cv);
     const name = document.createElement('div');
     name.className = 'name';
@@ -253,6 +270,12 @@ function renderGrid() {
       bar.className = 'bar';
       bar.innerHTML = `<i style="width:${Math.round(sum.pct * 100)}%"></i>`;
       card.appendChild(bar);
+    }
+    if (img.w * img.h >= 2000) {
+      const xl = document.createElement('div');
+      xl.className = 'xl';
+      xl.textContent = 'XXL';
+      card.appendChild(xl);
     }
     if (sum.done) {
       const badge = document.createElement('div');
