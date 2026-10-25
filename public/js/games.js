@@ -473,7 +473,7 @@ const GAME_ART_DEFS = [
     },
   },
   {
-    id: 'jv-pokeball', name: 'Poké Ball', cat: 'jeux', w: 32, h: 32,
+    id: 'jv-pokeball', name: 'Poké Ball', cat: 'pokemon', w: 32, h: 32,
     colors: { R: '#ee2b2b', P: '#ff7a7a', D: '#b51f1f', W: '#ffffff', G: '#d8dde5', K: '#1b1b22', L: '#eef2f7' },
     draw(p) {
       p.disc(16, 16, 14, 'W');
@@ -542,7 +542,7 @@ const GAME_ART_DEFS = [
     },
   },
   {
-    id: 'jv-souris', name: 'Pikachu', cat: 'jeux', w: 32, h: 32,
+    id: 'jv-souris', name: 'Pikachu', cat: 'pokemon', w: 32, h: 32,
     colors: { Y: '#ffd93b', O: '#f0b400', K: '#1b1b1b', W: '#ffffff', R: '#ee3a43', P: '#c22a34', B: '#8a5a20' },
     draw(p) {
       p.poly([[7, 14], [1, 0], [3, 0], [12, 11]], 'Y');
@@ -558,6 +558,442 @@ const GAME_ART_DEFS = [
       p.path([[13, 22], [14.5, 23.5], [16, 22.5], [17.5, 23.5], [19, 22]], 'B', 1);
       p.ellipse(16, 25, 2, 1.5, 'P');
       p.outline('K');
+    },
+  },
+
+  // ---------------- Minecraft (suite) ----------------
+  {
+    id: 'mc-mineur', name: 'Mineur', cat: 'minecraft', w: 32, h: 32,
+    colors: {
+      H: '#5a3a1e', I: '#4a2e16', J: '#6b4524', S: '#c9946a', T: '#b98256', U: '#d4a27a',
+      W: '#ffffff', B: '#3d4fbf', N: '#9a6440', M: '#6a3a24',
+    },
+    draw(p) {
+      p.stamp(0, 0, ['HHHHHHHH', 'HHHHHHHH', 'HSSSSSSH', 'SSSSSSSS', 'SWBSSBWS', 'SSSNNSSS', 'SSMMMMSS', 'SSSSSSSS'], 4);
+      p.noise('H', ['H', 'I', 'J'], 2).noise('S', ['S', 'T', 'U', 'S'], 2);
+    },
+  },
+  {
+    id: 'mc-zombie', name: 'Zombie', cat: 'minecraft', w: 32, h: 32,
+    colors: { Z: '#5e9e4a', Y: '#4f8a3d', X: '#6fae58', K: '#1d2a1a', E: '#2f6a6a', D: '#3a6630' },
+    draw(p) {
+      p.stamp(0, 0, ['ZZZZZZZZ', 'ZZZZZZZZ', 'ZZZZZZZZ', 'ZZZZZZZZ', 'ZKEZZEKZ', 'ZZZDDZZZ', 'ZZDDDDZZ', 'ZZDZZDZZ'], 4);
+      p.noise('Z', ['Z', 'Y', 'X', 'Z'], 2);
+    },
+  },
+  {
+    id: 'mc-squelette', name: 'Squelette', cat: 'minecraft', w: 32, h: 32,
+    colors: { G: '#c9c9c9', H: '#b5b5b5', I: '#dcdcdc', K: '#2a2a2a', D: '#6a6a6a' },
+    draw(p) {
+      p.stamp(0, 0, ['GGGGGGGG', 'GGGGGGGG', 'GGGGGGGG', 'GKKGGKKG', 'GGGDDGGG', 'GGGGGGGG', 'GKKKKKKG', 'GGGGGGGG'], 4);
+      p.noise('G', ['G', 'H', 'I', 'G'], 2);
+      for (let x = 6; x < 26; x += 4) p.rect(x, 24, 2, 4, 'G');
+    },
+  },
+  {
+    id: 'mc-enderman', name: 'Enderman', cat: 'minecraft', w: 32, h: 32,
+    colors: { V: '#2a1438', Q: '#b84fd8', E: '#141414', F: '#1e1a24', G: '#262030', P: '#e07af5', M: '#c43ae8' },
+    draw(p) {
+      p.fill('V').stars('Q', 0.06);
+      p.rect(4, 4, 24, 24, 'E').noise('E', ['E', 'F', 'G', 'E'], 3);
+      p.stamp(4, 16, ['PMP..PMP'], 3);
+    },
+  },
+  {
+    id: 'mc-diamant', name: 'Diamant', cat: 'minecraft', w: 32, h: 32,
+    colors: { A: '#4be0d0', L: '#a6fff2', M: '#2bb3a6', D: '#1e8c80', W: '#e0fffb', K: '#10302e' },
+    draw(p) {
+      p.poly([[8, 5], [14, 5], [11, 13], [2, 13]], 'L');
+      p.poly([[14, 5], [19, 5], [21, 13], [11, 13]], 'A');
+      p.poly([[19, 5], [24, 5], [30, 13], [21, 13]], 'M');
+      p.poly([[2, 13], [11, 13], [16, 29]], 'A');
+      p.poly([[11, 13], [21, 13], [16, 29]], 'L');
+      p.poly([[21, 13], [30, 13], [16, 29]], 'D');
+      p.line(9, 7, 12, 7, 'W').set(15, 16, 'W').set(14, 18, 'W');
+      p.outline('K', true);
+    },
+  },
+  {
+    id: 'mc-minerai', name: 'Minerai de diamant', cat: 'minecraft', w: 32, h: 32,
+    colors: { G: '#8a8f99', H: '#7a7f89', I: '#9da2ac', L: '#a6fff2', D: '#2bb3a6', M: '#1e8c80', W: '#e0fffb' },
+    draw(p) {
+      p.fill('G').noise('G', ['G', 'H', 'I', 'G'], 2);
+      const gem = ['.LD.', 'LWDM', 'DDMM', '.MM.'];
+      [[3, 4], [20, 2], [11, 12], [24, 15], [4, 22], [16, 25], [26, 26]].forEach(([x, y]) => p.stamp(x, y, gem));
+    },
+  },
+  {
+    id: 'mc-four', name: 'Four', cat: 'minecraft', w: 32, h: 32,
+    colors: {
+      G: '#8a8f99', H: '#7a7f89', I: '#9da2ac', D: '#4a4e56', K: '#1d1d22',
+      R: '#e8402a', O: '#ff9a2a', Y: '#ffe14d',
+    },
+    draw(p) {
+      p.fill('G').noise('G', ['G', 'H', 'I', 'G'], 2);
+      p.rect(0, 0, 32, 2, 'D').rect(0, 30, 32, 2, 'D').rect(0, 0, 2, 32, 'D').rect(30, 0, 2, 32, 'D');
+      p.rect(8, 6, 16, 3, 'K');
+      p.rect(7, 15, 18, 13, 'D').rect(8, 16, 16, 11, 'K');
+      p.poly([[9, 27], [12, 18], [14, 23], [16, 16], [19, 22], [21, 19], [23, 27]], 'R');
+      p.poly([[11, 27], [13, 21], [15, 24], [17, 20], [19, 24], [21, 27]], 'O');
+      p.poly([[13, 27], [15, 23], [17, 25], [19, 27]], 'Y');
+      p.rect(8, 21, 16, 1, 'D');
+    },
+  },
+  {
+    id: 'mc-gateau', name: 'Gâteau', cat: 'minecraft', w: 32, h: 28,
+    colors: {
+      W: '#fbf6ec', V: '#ece4d4', R: '#e8303a', B: '#b8743a', C: '#a0622c', E: '#8a5224', F: '#c98a4a', K: '#4a2a12',
+    },
+    draw(p) {
+      p.poly([[16, 0], [32, 8], [16, 16], [0, 8]], 'W');
+      p.poly([[0, 8], [16, 16], [16, 28], [0, 20]], 'B');
+      p.poly([[16, 16], [32, 8], [32, 20], [16, 28]], 'E');
+      p.noise('B', ['B', 'C', 'F'], 2).noise('E', ['E', 'C'], 2);
+      p.noise('W', ['W', 'W', 'V'], 2);
+      for (let x = 0; x < 32; x += 2) {
+        const top = x < 16 ? 8 + x / 2 : 16 - (x - 16) / 2;
+        const depth = 2 + Math.floor(p.rnd() * 3);
+        for (let y = Math.floor(top); y < top + depth; y++) for (let i = x; i < x + 2; i++) if (p.get(i, y) !== '.') p.set(i, y, x < 16 ? 'W' : 'V');
+      }
+      [[16, 3], [9, 7], [23, 7], [16, 11], [12, 4], [20, 10]].forEach(([x, y]) => p.rect(x, y, 2, 1, 'R'));
+      p.line(16, 16, 16, 28, 'K', 0.9);
+    },
+  },
+  {
+    id: 'mc-portail', name: 'Portail du Nether', cat: 'minecraft', w: 28, h: 38,
+    colors: { O: '#140c1e', P: '#24163a', Q: '#3a2458', V: '#8a2be2', W: '#a64ff0', X: '#6a1fb0', Y: '#c88aff', S: '#2a2a2a', G: '#5a5a5a' },
+    draw(p) {
+      p.fill('O').noise('O', ['O', 'P', 'Q', 'O'], 2);
+      p.rect(4, 4, 20, 30, 'V').noise('V', ['V', 'W', 'X', 'V', 'Y'], 1);
+    },
+  },
+  {
+    id: 'mc-abeille', name: 'Abeille', cat: 'minecraft', w: 32, h: 32,
+    colors: { Y: '#f2c230', Z: '#e5b020', X: '#ffd75a', B: '#4a3218', K: '#1d1d1d', W: '#ffffff', S: '#9fdcff' },
+    draw(p) {
+      p.fill('S');
+      p.stamp(0, 0, ['.K....K.', '..K..K..', 'YYYYYYYY', 'YWKYYKWY', 'YYYYYYYY', 'BBBBBBBB', 'YYYYYYYY', 'BBBBBBBB'], 4);
+      p.noise('Y', ['Y', 'Z', 'X', 'Y'], 2);
+    },
+  },
+
+  // ---------------- Pokémon ----------------
+  {
+    id: 'pk-rondoudou', name: 'Rondoudou', cat: 'pokemon', w: 32, h: 32,
+    colors: { P: '#ffb3cf', D: '#f28bb0', W: '#ffffff', T: '#3fa0b0', U: '#1f6a78', K: '#1b1b22', R: '#d94a6a' },
+    draw(p) {
+      p.poly([[5, 9], [7, 0], [12, 6]], 'P').poly([[27, 9], [25, 0], [20, 6]], 'P');
+      p.poly([[7, 6], [8, 2], [10, 6]], 'K').poly([[25, 6], [24, 2], [22, 6]], 'K');
+      p.disc(16, 17, 13.5, 'P');
+      p.swap('P', 'D', (x, y) => Math.hypot(x - 12, y - 13) > 15);
+      p.path([[14, 3], [12, 6], [15, 8], [18, 6], [16, 5]], 'D', 1.4);
+      [10, 22].forEach((x) => {
+        p.disc(x, 16, 4.4, 'W').disc(x + 0.5, 16.5, 3, 'T').disc(x + 0.5, 16.5, 1.6, 'U').disc(x - 1, 14.5, 1.1, 'W');
+      });
+      p.path([[14, 23], [16, 24.5], [18, 23]], 'R', 1);
+      p.ellipse(9, 30.5, 4, 1.8, 'D').ellipse(23, 30.5, 4, 1.8, 'D');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'pk-salameche', name: 'Salamèche', cat: 'pokemon', w: 32, h: 32,
+    colors: { O: '#ff9a3c', D: '#e07a20', C: '#ffe0a0', K: '#1b1b22', W: '#ffffff', R: '#e8302a', Y: '#ffe14d', U: '#2a4a8a' },
+    draw(p) {
+      p.path([[18, 26], [25, 23], [27, 16], [27, 11]], 'O', 3.4);
+      p.poly([[27, 1], [31, 7], [30, 12], [24, 12], [23, 7]], 'R');
+      p.poly([[27, 4], [29, 8], [28, 11], [25, 11], [25, 8]], 'O');
+      p.poly([[27, 7], [28, 10], [26, 10]], 'Y');
+      p.ellipse(13, 22, 7, 8, 'O');
+      p.ellipse(13, 23, 4.2, 5.5, 'C');
+      p.ellipse(6, 20, 2.5, 1.6, 'O').ellipse(20, 20, 2.5, 1.6, 'O');
+      p.ellipse(8.5, 30, 3.2, 2, 'O').ellipse(17.5, 30, 3.2, 2, 'O');
+      p.ellipse(12, 10, 8.5, 7.5, 'O');
+      p.swap('O', 'D', (x, y) => y > 28 || (y < 18 && Math.hypot(x - 9, y - 7) > 9.5));
+      p.ellipse(9, 9, 1.6, 2.6, 'K').ellipse(16, 9, 1.6, 2.6, 'K');
+      p.set(9, 7, 'W').set(16, 7, 'W').set(9, 10, 'U').set(16, 10, 'U');
+      p.path([[7, 14], [12, 15], [17, 14]], 'K', 0.9);
+      p.outline('K');
+    },
+  },
+  {
+    id: 'pk-carapuce', name: 'Carapuce', cat: 'pokemon', w: 32, h: 32,
+    colors: {
+      B: '#7ec8f0', D: '#4fa0d0', S: '#b07a3c', T: '#8a5a24', C: '#f4e2a0', E: '#e8c070',
+      K: '#1b1b22', W: '#ffffff', R: '#8a2a2a',
+    },
+    draw(p) {
+      p.path([[24, 28], [29, 26], [30, 22], [27, 20], [26, 23]], 'B', 3);
+      p.ellipse(16, 22, 9.5, 9, 'E');
+      p.ellipse(16, 22, 8.5, 8, 'S');
+      p.ellipse(16, 23, 6, 7, 'C');
+      p.line(10.5, 21, 21.5, 21, 'E', 1).line(11, 25, 21, 25, 'E', 1).line(16, 16, 16, 30, 'E', 1);
+      p.ellipse(6, 21, 3, 2, 'B').ellipse(26, 21, 3, 2, 'B');
+      p.ellipse(10, 30.5, 3, 1.8, 'B').ellipse(22, 30.5, 3, 1.8, 'B');
+      p.ellipse(15, 9, 9, 7.5, 'B');
+      p.swap('B', 'D', (x, y) => y < 16 && Math.hypot(x - 12, y - 6) > 10);
+      p.ellipse(11, 8.5, 2.2, 3, 'W').ellipse(19, 8.5, 2.2, 3, 'W');
+      p.ellipse(11.5, 9, 1.4, 2.2, 'R').ellipse(19.5, 9, 1.4, 2.2, 'R');
+      p.set(11, 8, 'W').set(19, 8, 'W');
+      p.path([[11, 13], [15, 14.5], [19, 13]], 'K', 0.9);
+      p.outline('K');
+    },
+  },
+  {
+    id: 'pk-bulbizarre', name: 'Bulbizarre', cat: 'pokemon', w: 36, h: 30,
+    colors: {
+      T: '#7ed8b8', U: '#4fb090', G: '#5cb85c', H: '#3d8a3d', L: '#8ee07a',
+      K: '#1b1b22', W: '#ffffff', R: '#e04040', P: '#e08aa0',
+    },
+    draw(p) {
+      p.rect(13, 23, 4, 6, 'T').rect(26, 23, 4, 6, 'T');
+      p.ellipse(21, 20, 12, 7, 'T');
+      p.ellipse(25, 10, 8.5, 8.5, 'G');
+      p.ellipse(22, 7, 3.5, 3, 'L');
+      p.path([[25, 2], [25, 18]], 'H', 1).path([[19, 6], [24, 16]], 'H', 1).path([[31, 6], [26, 16]], 'H', 1);
+      p.poly([[4, 8], [5, 3], [9, 7]], 'T').poly([[14, 7], [16, 2], [17, 8]], 'T');
+      p.ellipse(10, 15, 9, 7.5, 'T');
+      p.rect(3, 23, 4, 6, 'T').rect(9, 24, 4, 5, 'T');
+      [[4, 12, 1.6], [12, 9, 1.4], [16, 19, 2], [27, 22, 1.8], [21, 24, 1.4], [32, 19, 1.4]].forEach(([x, y, r]) => p.disc(x, y, r, 'U', (i, j) => p.get(i, j) === 'T'));
+      p.ellipse(6, 14, 2, 2.5, 'R').ellipse(14, 14, 2, 2.5, 'R');
+      p.set(5, 13, 'W').set(13, 13, 'W').set(6, 15, 'K').set(14, 15, 'K');
+      p.path([[5, 19], [10, 21], [15, 19]], 'K', 0.9);
+      p.set(10, 20, 'P');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'pk-evoli', name: 'Évoli', cat: 'pokemon', w: 32, h: 32,
+    colors: { B: '#c08048', D: '#9a5e2c', E: '#7a4a20', C: '#f4e2c0', V: '#e0caa0', K: '#1b1b22', W: '#ffffff' },
+    draw(p) {
+      p.poly([[7, 14], [1, 0], [13, 9]], 'B').poly([[25, 14], [31, 0], [19, 9]], 'B');
+      p.poly([[7, 11], [3, 3], [11, 9]], 'E').poly([[25, 11], [29, 3], [21, 9]], 'E');
+      p.ellipse(16, 28, 11, 4.5, 'C');
+      for (let x = 6; x < 26; x += 4) p.poly([[x, 25], [x + 2, 21], [x + 4, 25]], 'C');
+      p.swap('C', 'V', (x, y) => y > 28);
+      p.ellipse(16, 16, 10, 8.5, 'B');
+      p.swap('B', 'D', (x, y) => y > 19 && y < 25);
+      p.ellipse(11.5, 15, 2.4, 3, 'K').ellipse(20.5, 15, 2.4, 3, 'K');
+      p.set(11, 13, 'W').set(20, 13, 'W').set(12, 14, 'W').set(21, 14, 'W');
+      p.rect(15, 18, 2, 1, 'K');
+      p.path([[13, 20], [16, 21], [19, 20]], 'E', 0.9);
+      p.outline('K');
+    },
+  },
+  {
+    id: 'pk-magicarpe', name: 'Magicarpe', cat: 'pokemon', w: 36, h: 30,
+    colors: { R: '#ff6a3c', D: '#d84a22', C: '#ffd0a0', Y: '#ffd23f', W: '#ffffff', K: '#1b1b22', P: '#ff8fa3', S: '#9fdcff' },
+    draw(p) {
+      p.fill('S');
+      p.poly([[24, 15], [35, 4], [33, 15], [35, 26]], 'W');
+      p.poly([[10, 6], [14, 0], [18, 4], [22, 1], [24, 7]], 'Y');
+      p.ellipse(15, 16, 13, 9.5, 'R');
+      p.swap('R', 'D', (x, y) => (x + y) % 5 === 0 && x > 8);
+      p.ellipse(16, 21, 9, 3.5, 'C');
+      p.poly([[13, 24], [17, 29], [20, 24]], 'Y');
+      p.disc(8, 13, 3.6, 'W').disc(8, 13, 1.4, 'K');
+      p.ellipse(3, 18, 2.5, 3, 'P');
+      p.path([[4, 14], [1, 8], [2, 3]], 'Y', 1.2).path([[4, 21], [1, 26]], 'Y', 1.2);
+    },
+  },
+  {
+    id: 'pk-psykokwak', name: 'Psykokwak', cat: 'pokemon', w: 32, h: 32,
+    colors: { Y: '#ffd23f', O: '#e8b020', C: '#f4e2a0', E: '#d8c080', W: '#ffffff', K: '#1b1b22' },
+    draw(p) {
+      p.path([[16, 5], [15, 0]], 'K', 1).path([[13, 5], [10, 1]], 'K', 1).path([[19, 5], [22, 1]], 'K', 1);
+      p.ellipse(16, 18, 13, 12, 'Y');
+      p.swap('Y', 'O', (x, y) => Math.hypot(x - 13, y - 14) > 13);
+      p.ellipse(16, 23, 7.5, 4.2, 'C');
+      p.line(9, 23, 23, 23, 'E', 1);
+      p.disc(10.5, 15, 3.2, 'W').disc(21.5, 15, 3.2, 'W');
+      p.set(10, 15, 'K').set(22, 15, 'K');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'pk-ronflex', name: 'Ronflex', cat: 'pokemon', w: 34, h: 34,
+    colors: { T: '#3a6a7a', U: '#2a5262', C: '#f4e2c0', D: '#d8c09a', K: '#1b1b22', W: '#ffffff', B: '#8a6a48' },
+    draw(p) {
+      p.ellipse(17, 22, 16, 12, 'T');
+      p.poly([[8, 6], [9, 0], [12, 4]], 'T').poly([[26, 6], [25, 0], [22, 4]], 'T');
+      p.ellipse(17, 9, 10, 7.5, 'T');
+      p.swap('T', 'U', (x, y) => x < 6 || x > 28);
+      p.ellipse(17, 10, 7.5, 5.5, 'C');
+      p.ellipse(17, 24, 11, 9, 'C');
+      p.swap('C', 'D', (x, y) => y > 29);
+      p.line(12, 8, 15, 8, 'K').line(19, 8, 22, 8, 'K');
+      p.rect(13, 12, 8, 2, 'K').set(14, 12, 'W').set(19, 12, 'W');
+      p.ellipse(7, 31.5, 5, 2.5, 'C').ellipse(27, 31.5, 5, 2.5, 'C');
+      p.disc(7, 31.5, 1.3, 'B').disc(27, 31.5, 1.3, 'B');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'pk-superball', name: 'Super Ball', cat: 'pokemon', w: 32, h: 32,
+    colors: { B: '#3d7fe0', D: '#2a5cb0', R: '#ee2b2b', W: '#ffffff', G: '#d8dde5', K: '#1b1b22', L: '#eef2f7', P: '#8ab8ff' },
+    draw(p) {
+      p.disc(16, 16, 14, 'W');
+      p.swap('W', 'B', (x, y) => y < 15);
+      p.swap('B', 'R', (x, y) => y < 12 && (Math.abs(x - 9) < 2.5 || Math.abs(x - 22) < 2.5));
+      p.swap('B', 'D', (x, y) => Math.hypot(x - 11, y - 11) > 14);
+      p.swap('W', 'G', (x, y) => Math.hypot(x - 11, y - 11) > 15);
+      p.ellipse(14, 5, 2.5, 1.5, 'P');
+      p.rect(2, 15, 28, 2, 'K');
+      p.disc(16, 16, 5.5, 'K').disc(16, 16, 4, 'W').disc(16, 16, 2, 'L');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'pk-hyperball', name: 'Hyper Ball', cat: 'pokemon', w: 32, h: 32,
+    colors: { A: '#2a2a33', Y: '#ffd23f', W: '#ffffff', G: '#d8dde5', K: '#14141a', L: '#eef2f7', C: '#4a4a58' },
+    draw(p) {
+      p.disc(16, 16, 14, 'W');
+      p.swap('W', 'A', (x, y) => y < 15);
+      p.swap('A', 'Y', (x, y) => y < 13 && (Math.abs(x - 9) < 2.2 || Math.abs(x - 22) < 2.2) && y > 3);
+      p.swap('A', 'C', (x, y) => Math.hypot(x - 11, y - 7) < 3.5);
+      p.swap('W', 'G', (x, y) => Math.hypot(x - 11, y - 11) > 15);
+      p.rect(2, 15, 28, 2, 'K');
+      p.disc(16, 16, 5.5, 'K').disc(16, 16, 4, 'W').disc(16, 16, 2, 'L');
+      p.outline('K');
+    },
+  },
+
+  // ---------------- Star Wars (suite) ----------------
+  {
+    id: 'sw-wookie', name: 'Wookiee', cat: 'starwars', w: 32, h: 32,
+    colors: {
+      A: '#7a4f2a', B: '#8f6234', C: '#5e3a1e', D: '#a5753f', T: '#c49a6a', K: '#1b1410', U: '#3a5a8a',
+      S: '#5a4030', G: '#b8bec8',
+    },
+    draw(p) {
+      p.rect(0, 25, 32, 7, 'A');
+      p.ellipse(16, 14, 11, 13, 'A');
+      p.noise('A', ['A', 'B', 'C', 'D'], 2);
+      p.ellipse(16, 16, 6.5, 6, 'T');
+      p.noise('T', ['T', 'D'], 1);
+      p.ellipse(12.5, 13, 2, 1.3, 'K').ellipse(19.5, 13, 2, 1.3, 'K');
+      p.set(12, 12, 'U').set(19, 12, 'U');
+      p.ellipse(16, 17, 2.4, 1.6, 'K');
+      p.line(13, 21, 19, 21, 'C', 1);
+      p.line(2, 32, 30, 22, 'S', 3.2);
+      for (let i = 0; i < 6; i++) p.rect(5 + i * 4.5, 29 - i * 1.6, 2, 2, 'G');
+    },
+  },
+  {
+    id: 'sw-faucon', name: 'Faucon Millenium', cat: 'starwars', w: 40, h: 34,
+    colors: { N: '#0b1026', W: '#e8ecff', G: '#b8bec8', H: '#8d96a3', L: '#dfe4ea', D: '#5c636e', B: '#7ec8ff', K: '#1d2128', R: '#c0504a' },
+    draw(p) {
+      p.fill('N').stars('W', 0.035);
+      p.rect(28, 11, 11, 5, 'G').rect(28, 18, 11, 5, 'G');
+      p.line(23, 25, 34, 30, 'G', 3).disc(35, 30, 2.6, 'G').disc(35.5, 30, 1.2, 'K');
+      p.disc(18, 17, 14, 'G');
+      for (let a = 0; a < 12; a++) {
+        const t = (a * Math.PI) / 6;
+        p.line(18 + Math.cos(t) * 5, 17 + Math.sin(t) * 5, 18 + Math.cos(t) * 13.5, 17 + Math.sin(t) * 13.5, 'H', 1);
+      }
+      p.disc(18, 17, 5, 'L').disc(18, 17, 3, 'H');
+      p.disc(12, 9, 3, 'D').disc(12, 9, 1.4, 'L');
+      p.ellipse(5, 17, 2, 9, 'B', (x) => x < 6);
+      p.rect(22, 21, 4, 3, 'R');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'sw-xwing', name: 'Chasseur X-wing', cat: 'starwars', w: 36, h: 36,
+    colors: { N: '#0b1026', W: '#e8ecff', G: '#dfe4ea', H: '#9aa3b0', D: '#5c636e', R: '#e8302a', K: '#1d2128', O: '#ff9a2a', B: '#24305e' },
+    draw(p) {
+      p.fill('N').stars('W', 0.03);
+      p.poly([[16, 19], [3, 23], [3, 28], [16, 28]], 'G');
+      p.poly([[20, 19], [33, 23], [33, 28], [20, 28]], 'G');
+      p.rect(6, 24, 7, 2, 'R').rect(23, 24, 7, 2, 'R');
+      p.line(3, 6, 3, 29, 'H', 1.6).line(33, 6, 33, 29, 'H', 1.6);
+      p.rect(12, 21, 3, 10, 'H').rect(21, 21, 3, 10, 'H');
+      p.rect(12, 31, 3, 1, 'O').rect(21, 31, 3, 1, 'O');
+      p.poly([[16, 31], [20, 31], [20, 11], [18, 2], [16, 11]], 'G');
+      p.ellipse(18, 14, 1.6, 3, 'B');
+      p.rect(16, 20, 4, 1, 'R').rect(17, 25, 2, 3, 'D');
+      p.outline('K');
+    },
+  },
+  {
+    id: 'sw-mando', name: 'Mandalorien', cat: 'starwars', w: 32, h: 32,
+    colors: { O: '#e8a050', P: '#d08038', S: '#b8c0cc', D: '#8a929e', L: '#e6eaf0', K: '#14161c', E: '#5c636e' },
+    draw(p) {
+      for (let y = 0; y < 32; y++) p.rect(0, y, 32, 1, y < 20 ? 'O' : 'P');
+      p.ellipse(16, 13, 11, 12, 'S');
+      p.rect(5, 13, 22, 15, 'S');
+      p.poly([[5, 27], [27, 27], [29, 32], [3, 32]], 'E');
+      p.swap('S', 'D', (x, y) => x > 21 || y > 24);
+      p.ellipse(11, 6, 4, 2.5, 'L');
+      p.rect(7, 13, 18, 3, 'K').rect(14, 13, 4, 11, 'K');
+      p.rect(8, 22, 4, 1, 'D').rect(20, 22, 4, 1, 'D');
+    },
+  },
+  {
+    id: 'sw-chasseur', name: 'Chasseur de primes', cat: 'starwars', w: 32, h: 32,
+    colors: {
+      N: '#24305e', M: '#1c2548', G: '#5a7a3a', H: '#46602c', Y: '#c9a040', R: '#c0402a', K: '#14161c', S: '#9aa3b0', E: '#3a4a2a',
+    },
+    draw(p) {
+      p.fill('N').swap('N', 'M', (x, y) => y > 24);
+      p.ellipse(16, 13, 11, 12, 'G');
+      p.rect(5, 13, 22, 15, 'G');
+      p.swap('G', 'H', (x, y) => x > 21);
+      p.rect(5, 18, 4, 9, 'Y').rect(23, 18, 4, 9, 'Y');
+      p.poly([[10, 2], [22, 2], [20, 7], [12, 7]], 'R');
+      p.rect(7, 13, 18, 3, 'K').rect(14, 13, 4, 11, 'K');
+      p.line(27, 12, 30, 2, 'S', 1.4).rect(29, 2, 2, 5, 'S');
+      p.set(9, 9, 'E').set(10, 10, 'E').set(11, 9, 'E');
+      p.poly([[5, 28], [27, 28], [29, 32], [3, 32]], 'E');
+    },
+  },
+  {
+    id: 'sw-bebe', name: 'Bébé Yoda', cat: 'starwars', w: 36, h: 30,
+    colors: { G: '#a6c97c', H: '#86a95c', P: '#e0a8a0', K: '#1b1b16', W: '#ffffff', T: '#c9a878', U: '#a68a5c', O: '#3a2c1e' },
+    draw(p) {
+      p.poly([[8, 19], [28, 19], [31, 30], [5, 30]], 'T');
+      p.poly([[12, 19], [24, 19], [21, 24], [15, 24]], 'U');
+      p.poly([[12, 11], [0, 7], [1, 12], [12, 16]], 'G').poly([[24, 11], [36, 7], [35, 12], [24, 16]], 'G');
+      p.poly([[11, 12], [3, 9], [4, 11], [11, 14]], 'P').poly([[25, 12], [33, 9], [32, 11], [25, 14]], 'P');
+      p.ellipse(18, 13, 7.5, 7, 'G');
+      p.swap('G', 'H', (x, y) => y < 9 && x > 10 && x < 26);
+      p.disc(15, 13.5, 2.6, 'K').disc(21, 13.5, 2.6, 'K');
+      p.set(14, 12, 'W').set(20, 12, 'W');
+      p.set(18, 16, 'H').line(16.5, 18.5, 19.5, 18.5, 'O');
+      p.outline('O');
+    },
+  },
+  {
+    id: 'sw-atat', name: 'Marcheur AT-AT', cat: 'starwars', w: 44, h: 34,
+    colors: { S: '#cfe3f0', W: '#ffffff', G: '#9aa3b0', H: '#7a838f', D: '#4a5260', K: '#1d2128', L: '#c9d0da' },
+    draw(p) {
+      p.fill('S').rect(0, 30, 44, 4, 'W');
+      p.rect(9, 6, 24, 10, 'G').rect(11, 4, 20, 2, 'G').rect(9, 9, 24, 1, 'L');
+      for (let x = 13; x < 32; x += 5) p.rect(x, 11, 1, 5, 'H');
+      p.rect(32, 9, 4, 4, 'D');
+      p.poly([[35, 7], [43, 9], [43, 15], [35, 15]], 'G');
+      p.rect(37, 10, 2, 1, 'K').line(41, 15, 44, 16, 'D', 1);
+      [11, 16, 26, 31].forEach((x, i) => {
+        p.rect(x, 16, 3, 7, i % 2 ? 'H' : 'G').disc(x + 1.5, 23, 1.8, 'D').rect(x, 24, 3, 6, i % 2 ? 'H' : 'G');
+        p.rect(x - 1, 29, 5, 2, 'D');
+      });
+      p.outline('K');
+    },
+  },
+  {
+    id: 'sw-doree', name: 'Droïde doré', cat: 'starwars', w: 32, h: 32,
+    colors: { N: '#1c1a2a', A: '#e8b84a', B: '#b8862a', L: '#ffe08a', Y: '#fff36a', O: '#ff9a2a', K: '#1d1608', D: '#5a4012' },
+    draw(p) {
+      p.fill('N');
+      p.rect(9, 26, 14, 6, 'A').rect(13, 23, 6, 4, 'D');
+      p.line(14, 23, 13, 27, 'K').line(18, 23, 19, 27, 'K');
+      p.disc(5.5, 14, 3, 'B').disc(26.5, 14, 3, 'B');
+      p.ellipse(16, 13, 10, 11, 'A');
+      p.swap('A', 'B', (x, y) => x > 21 || y > 20);
+      p.ellipse(12, 6, 4, 2.5, 'L');
+      p.rect(7, 11, 18, 1, 'B');
+      p.disc(12, 14, 2.6, 'O').disc(12, 14, 1.6, 'Y');
+      p.disc(20, 14, 2.6, 'O').disc(20, 14, 1.6, 'Y');
+      p.rect(13, 19, 6, 2, 'K');
     },
   },
 ];

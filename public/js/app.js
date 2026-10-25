@@ -6,6 +6,7 @@ const $ = (id) => document.getElementById(id);
 const CATS = [
   { id: 'all', name: 'Tout', icon: '✨' },
   { id: 'minecraft', name: 'Minecraft', icon: '⛏️' },
+  { id: 'pokemon', name: 'Pokémon', icon: '⚡' },
   { id: 'starwars', name: 'Star Wars', icon: '🌌' },
   { id: 'jeux', name: 'Jeux vidéo', icon: '🎮' },
   { id: 'animaux', name: 'Animaux', icon: '🐾' },
@@ -59,7 +60,7 @@ const store = {
 const encodeCells = (cells) => Array.from(cells, (c) => String.fromCharCode(49 + c)).join('');
 const decodeCells = (s) => Int16Array.from(s, (ch) => ch.charCodeAt(0) - 49);
 
-const settings = Object.assign({ sound: true, bomb: START_TOOLS, bucket: START_TOOLS }, store.get('settings', {}));
+const settings = Object.assign({ sound: true, bomb: START_TOOLS, bucket: START_TOOLS, tips: 0 }, store.get('settings', {}));
 const saveSettings = () => store.set('settings', settings);
 Sound.enabled = settings.sound;
 
@@ -129,12 +130,12 @@ function grayFor(hex) {
 }
 
 let toastTimer = 0;
-function toast(msg) {
+function toast(msg, ms = 1800) {
   const t = $('toast');
   t.textContent = msg;
   t.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+  toastTimer = setTimeout(() => t.classList.remove('show'), ms);
 }
 
 function vibrate(ms) {
@@ -301,6 +302,7 @@ const Game = (() => {
   const MAX_SCALE = 70;
   const PAINT_MIN_TOUCH = 15;
   const PAINT_MIN_MOUSE = 6;
+  const HOLD_MS = 300;     // durée d'appui avant de pouvoir colorier en glissant
 
   function open(image) {
     img = image;
@@ -328,6 +330,11 @@ const Game = (() => {
     fit(false);
     updateHud();
     if (finished) setTimeout(() => Done.show(img, fill, order, false), 250);
+    else if (settings.tips < 3) {
+      settings.tips++;
+      saveSettings();
+      toast('Astuce : garde le doigt appuyé puis glisse pour colorier 🖌️', 4000);
+    }
   }
 
   function close() {
@@ -746,6 +753,7 @@ const Game = (() => {
   let lastCell = -1;
   let pinch = null;
   let pendingTimer = 0;
+  let pendingIsMouse = false;
   let lastPan = null;
 
   function local(e) {
@@ -775,6 +783,8 @@ const Game = (() => {
     camAnim = null;
   }
 
+  // Un appui court colorie une case, un glissé déplace l'image.
+  // Garder le doigt appuyé un instant puis glisser colorie en continu.
   board.addEventListener('pointerdown', (e) => {
     Sound.unlock();
     if (!img) return;
@@ -789,11 +799,15 @@ const Game = (() => {
     if (isMouse && e.button !== 0) { mode = 'pan'; return; }
     if (finished) { mode = 'pan'; return; }
     if (tool !== 'brush') { mode = 'tool'; return; }
-    if (!canPaint(isMouse)) { mode = 'tap'; return; }
-    if (isMouse) { startPaint(p); return; }
-    // Au doigt, on attend un instant pour ne pas colorier au début d'un pincement.
     mode = 'pending';
-    pendingTimer = setTimeout(() => { if (mode === 'pending') startPaint(downPos); }, 70);
+    pendingIsMouse = isMouse;
+    if (!canPaint(isMouse)) return;
+    pendingTimer = setTimeout(() => {
+      if (mode !== 'pending') return;
+      vibrate(25);
+      Sound.tap();
+      startPaint(downPos);
+    }, HOLD_MS);
   });
 
   board.addEventListener('pointermove', (e) => {
@@ -815,8 +829,10 @@ const Game = (() => {
       return;
     }
     const moved = downPos ? Math.hypot(p.x - downPos.x, p.y - downPos.y) : 0;
-    if (mode === 'pending' && moved > 4) { clearTimeout(pendingTimer); startPaint(downPos); }
-    if ((mode === 'tap' || mode === 'tool') && moved > 8) mode = 'pan';
+    if ((mode === 'pending' || mode === 'tool') && moved > (pendingIsMouse ? 4 : 8)) {
+      clearTimeout(pendingTimer);
+      mode = 'pan';
+    }
     if (mode === 'pan') {
       cam.ox += p.x - lastPan.x;
       cam.oy += p.y - lastPan.y;
@@ -834,11 +850,16 @@ const Game = (() => {
     if (!pointers.has(e.pointerId)) return;
     const p = local(e);
     pointers.delete(e.pointerId);
-    if (mode === 'pending') { clearTimeout(pendingTimer); startPaint(downPos); }
-    if (mode === 'tap' && e.type === 'pointerup') {
-      // Dessin trop petit : un appui zoome vers l'endroit touché.
-      const target = Math.max(PAINT_MIN_TOUCH * 1.6, fitScale * 2.2);
-      zoomAt(target / cam.scale, p.x, p.y, true);
+    if (mode === 'pending') {
+      clearTimeout(pendingTimer);
+      if (e.type === 'pointerup') {
+        if (canPaint(pendingIsMouse)) paint(cellAt(downPos.x, downPos.y), selected);
+        else {
+          // Dessin trop petit : un appui zoome vers l'endroit touché.
+          const target = Math.max(PAINT_MIN_TOUCH * 1.6, fitScale * 2.2);
+          zoomAt(target / cam.scale, p.x, p.y, true);
+        }
+      }
     }
     if (mode === 'tool' && e.type === 'pointerup') applyTool(cellAt(p.x, p.y));
     if (pointers.size === 1) {
