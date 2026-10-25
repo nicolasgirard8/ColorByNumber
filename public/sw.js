@@ -1,5 +1,5 @@
 // Cache hors ligne : l'application fonctionne sans connexion après la première visite.
-const CACHE = 'coloriage-v11';
+const CACHE = 'coloriage-v12';
 const FILES = [
   './',
   'index.html',
