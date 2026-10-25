@@ -23,6 +23,7 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 - **Ombres automatiques** : sur chaque grand personnage ou objet, le bord bas-droite reçoit une teinte plus foncée de sa couleur (relief façon dessin animé), et une petite ombre au sol apparaît sous ce qui est posé par terre. Seules les grandes zones sont ombrées, pour limiter le nombre de couleurs.
 - **Petits dessins faits main** agrandis en 32×32 avec l'algorithme Scale2x (bords adoucis, sans nouvelle couleur), puis ombrés.
 - **Dessins tirés des emojis** générés en 36×36, nettoyés des cases isolées et entourés d'un contour foncé.
+- **Peu de cases isolées** : étoiles en petites croix espacées, fenêtres allumées en 2×2, brins d'herbe et fleurs groupés, contours sans « marches » en diagonale (un seul trait continu), ombres sans cases orphelines.
 - Un dessin déjà terminé reste terminé quand son image est améliorée ; un dessin en cours sur une image modifiée repart de zéro.
 
 ## Lancer le jeu
