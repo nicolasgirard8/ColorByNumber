@@ -706,6 +706,8 @@ const Game = (() => {
     const y1 = Math.min(img.h - 1, Math.floor((H - cam.oy) / s));
     const showNumbers = s >= 11 && !finished;
     const gap = showNumbers ? Math.max(0.5, s * 0.04) : 0;
+    const highlightColor = tool === 'brush' && !finished ? selected : -1;
+    const hl = highlightColor >= 0 ? highlightStyle(highlightColor, now) : null;
 
     // Contour léger du dessin.
     ctx.fillStyle = '#f2f0f7';
@@ -721,14 +723,24 @@ const Game = (() => {
         const c = img.cells[i];
         if (c < 0) continue;
         const px = cam.ox + x * s, py = cam.oy + y * s;
+        const target = c === highlightColor ? hl : null;
         if (fill[i] === c) {
           ctx.fillStyle = img.palette[c];
           ctx.fillRect(px - 0.3, py - 0.3, s + 0.6, s + 0.6);
           continue;
         }
-        let [r, g, b] = grayFor(img.palette[c]);
-        if (c === selected && tool === 'brush') { r -= 70; g -= 66; b -= 52; }
-        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        if (target) {
+          // Case à colorier : bord de la vraie couleur et centre pâle qui pulse.
+          ctx.fillStyle = target.edge;
+          ctx.fillRect(px + gap, py + gap, s - gap * 2, s - gap * 2);
+          const inset = gap + Math.max(1, s * 0.12);
+          ctx.fillStyle = target.fill;
+          ctx.fillRect(px + inset, py + inset, s - inset * 2, s - inset * 2);
+          continue;
+        }
+        // Les autres cases s'estompent pour ne pas distraire.
+        const [r, g, b] = grayFor(img.palette[c]);
+        ctx.fillStyle = `rgb(${(r + 255 * 1.2) / 2.2 | 0},${(g + 255 * 1.2) / 2.2 | 0},${(b + 255 * 1.2) / 2.2 | 0})`;
         ctx.fillRect(px + gap, py + gap, s - gap * 2, s - gap * 2);
       }
     }
@@ -743,8 +755,7 @@ const Game = (() => {
           const i = y * img.w + x;
           const c = img.cells[i];
           if (c < 0 || fill[i] === c) continue;
-          const hl = c === selected && tool === 'brush';
-          ctx.fillStyle = hl ? '#ffffff' : '#7d7799';
+          ctx.fillStyle = c === highlightColor ? hl.text : 'rgba(125,119,153,0.55)';
           ctx.fillText(String(c + 1), cam.ox + (x + 0.5) * s, cam.oy + (y + 0.55) * s);
         }
       }
@@ -790,8 +801,27 @@ const Game = (() => {
       }
     }
     if (animating) requestDraw();
+    else if (hl && remaining[highlightColor] > 0) {
+      // Pulsation des cases à colorier, à ~15 images/s pour ménager la batterie.
+      clearTimeout(pulseTimer);
+      pulseTimer = setTimeout(requestDraw, 66);
+    }
   }
   let lastHudCount = -1;
+  let pulseTimer = 0;
+
+  // Couleurs des cases à colorier : version pâle de la vraie couleur, qui pulse doucement.
+  function highlightStyle(c, now) {
+    const [r, g, b] = Gen.hexToRgb(img.palette[c]);
+    const light = Gen.luminance(img.palette[c]) > 0.8;
+    // Les couleurs très claires sont mélangées à un gris-bleu pour rester visibles sur le blanc.
+    const base = light ? [138, 150, 176] : [255, 255, 255];
+    const pulse = 0.5 + 0.5 * Math.sin((now / 1000) * Math.PI * 1.6);
+    const mix = (k) => `rgb(${base[0] + (r - base[0]) * k | 0},${base[1] + (g - base[1]) * k | 0},${base[2] + (b - base[2]) * k | 0})`;
+    const k = light ? 0.15 + 0.2 * pulse : 0.3 + 0.25 * pulse;
+    const lum = (0.299 * (base[0] + (r - base[0]) * k) + 0.587 * (base[1] + (g - base[1]) * k) + 0.114 * (base[2] + (b - base[2]) * k)) / 255;
+    return { fill: mix(k), edge: light ? mix(0.05) : mix(0.85), text: lum > 0.62 ? '#2c2547' : '#ffffff' };
+  }
 
   // ----- Gestes (doigts, souris, molette) -----
   const pointers = new Map();
