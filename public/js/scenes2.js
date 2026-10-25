@@ -61,13 +61,17 @@ const Obj2 = {
   moto(p, x, y, k = 1, flip = false) {
     p.layer((q) => {
       const o = at(q, x, y, k, flip);
-      o.PG([[-10, 2], [-2, -1], [8, -1], [13, 3], [-8, 5]], 'W');
-      o.PG([[-9, 3], [12, 3], [11, 5], [-8, 5]], 'd');
-      o.PG([[8, -1], [11, -6], [13, -6], [11, 0]], 'a');
-      o.R(-6, -2.5, 3, 1.4, 'd'); o.R(-3, -2.5, 3, 1.4, 'R');
-      o.L(-8, -6, -2, -1, 'e', 3); o.L(-2, -1, 2, 4, 'e', 2.4); o.R(1, 3, 3, 1.4, 'K');
-      o.L(-6, -7, 8, -4, 'd', 2.4); o.D(8.6, -4, 1.2, 'S');
-      o.D(-6.5, -12, 3.6, 'W'); o.E(-5.6, -11.6, 2.4, 1.6, 'a'); o.R(-9.5, -15.5, 6, 1, 'd');
+      o.PG([[-11, 2], [-3, -1], [8, -1], [13, 3], [-8, 5]], 'W');
+      o.PG([[-10, 3], [12, 3], [11, 5], [-8, 5]], 'd');
+      o.PG([[8, -1], [11, -7], [13.5, -7], [11.5, 0]], 'a');
+      o.R(-8.5, -2.4, 7, 1.6, 'K');
+      o.R(9, -1, 2.4, 1.6, 'y');
+      // Pilote assis, penché vers le guidon.
+      o.L(-3.5, -1.5, 2.5, 2.2, 'e', 2.6); o.R(1.6, 1.6, 3.6, 2, 'K');
+      o.PG([[-7, -1.8], [-1.5, -1.8], [0.5, -10], [-5, -11]], 'd');
+      o.R(-6, -6, 6, 1.2, 'Z');
+      o.L(-1, -9, 7.5, -4.5, 'd', 2.2); o.D(8, -4.4, 1.2, 'K');
+      o.D(-2, -13.5, 3.4, 'W'); o.E(-0.4, -13.3, 2, 1.5, 'a'); o.R(-5.4, -16.2, 6.2, 1.2, 'd');
     }, 'K');
     const o = at(p, x, y, k, flip);
     [-10, 12].forEach((wx) => { o.D(wx, 7, 4, 'K'); o.D(wx, 7, 2.1, 'h'); o.D(wx, 7, 0.8, 'j'); });
@@ -797,8 +801,9 @@ const SCENE2_DEFS = [
   },
 ];
 
-const SCENE2_SHARED = SCENE_SHARED + Object.values(Obj2).join('') + text.toString() + JSON.stringify(FONT);
-renderDefs(SCENE2_DEFS, 'scenes2', (i) => i * 733 + 29, SCENE2_SHARED).forEach((rows, i) => {
+const SCENE2_SHADER = makeShader(PAL2, { ground: GROUND });
+const SCENE2_SHARED = SCENE_SHARED + Object.values(Obj2).join('') + text.toString() + JSON.stringify(FONT) + JSON.stringify(PAL2);
+renderDefs(SCENE2_DEFS, 'scenes2', (i) => i * 733 + 29, SCENE2_SHARED, () => SCENE2_SHADER).forEach((rows, i) => {
   const d = SCENE2_DEFS[i];
   GAME_ART.push({ id: d.id, name: d.name, cat: d.cat, colors: PAL2, rows });
 });

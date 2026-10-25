@@ -36,6 +36,21 @@ button {
   cursor: pointer;
 }
 
+.loading {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--accent);
+  z-index: 30;
+  background: var(--bg);
+}
+.loading span { font-size: 64px; animation: pulse 1s infinite; display: inline-block; }
+.loading[hidden] { display: none; }
+
 .screen {
   position: fixed;
   inset: 0;

@@ -187,15 +187,21 @@ const Obj = {
   ptero(p, x, y, k = 1, flip = false, body = 'k') {
     p.layer((q) => {
       const o = at(q, x, y, k, flip);
-      o.PG([[-2, 0], [-14, -6], [-12, 3]], body); o.PG([[2, 0], [14, -6], [12, 3]], body);
-      o.E(0, 1, 2.5, 4, body);
-      o.E(2, -3.5, 2.5, 2, body);
-      o.PG([[3, -4], [9, -2.5], [3, -2.5]], 'Y');
-      o.PG([[0, -5], [-4, -8], [1, -4]], body);
-      o.D(2.5, -4, 0.6, 'K');
+      // Deux ailes déployées : membrane claire tendue sur l'os du bras.
+      [-1, 1].forEach((side) => {
+        const X = (v) => v * side;
+        o.PG([[X(1), -1], [X(7), -6], [X(15), -5], [X(12), -2.5], [X(14), 0.5], [X(9), 0.5], [X(2), 2.5]], 'o');
+        o.PATH([[X(1), -1], [X(7), -6], [X(15), -5]], body, 1);
+      });
+      o.E(0, 1.5, 2.4, 4.2, body);
+      o.E(0.4, 2.4, 1.3, 2.6, 'p');
+      o.L(-0.8, 5.5, -1.6, 7.5, 'Y', 0.8); o.L(0.8, 5.5, 1.6, 7.5, 'Y', 0.8);
+      o.PG([[0.5, -4.8], [-6, -8.5], [1.5, -6.5]], body);
+      o.E(2.6, -4.6, 2.8, 2.1, body);
+      o.PG([[4.2, -5.4], [11.5, -3.8], [4.2, -3.2]], 'Y');
+      o.D(3.1, -5.1, 0.75, 'W'); o.D(3.35, -5.1, 0.38, 'K');
     }, 'K');
   },
-
   fireTruck(p, x, y, k = 1, flip = false) {
     p.layer((q) => {
       const o = at(q, x, y, k, flip);
@@ -317,7 +323,8 @@ const Obj = {
   plane(p, x, y, k = 1, flip = false) {
     p.layer((q) => {
       const o = at(q, x, y, k, flip);
-      o.PG([[-2, 0], [2, 0], [4, -10], [0, -10]], 'R');
+      o.PG([[-1.5, 1], [7, 1], [2.5, -9], [-1.5, -9]], 'R');
+      o.PG([[-1, 3], [5, 3], [0, 6]], 'h');
       o.PG([[12, 3], [24, 3], [12, 15]], 'h');
       o.E(16, 3, 18, 3.6, 'W');
       o.PG([[30, 0.5], [35.5, 2.5], [30, 3]], 'a');
@@ -558,15 +565,20 @@ const Obj = {
   hero(p, x, y, k = 1, flip = false, suit = 'd', cape = 'R') {
     p.layer((q) => {
       const o = at(q, x, y, k, flip);
-      o.PG([[-4, -2], [-20, 4], [-16, 8], [-3, 4]], cape);
-      o.L(-6, 2, -14, 4, suit, 2.4); o.L(-6, 5, -14, 8, suit, 2.4);
-      o.R(-7, 0, 12, 7, suit);
-      o.PG([[-2, 1.5], [0, 3.5], [2.5, 1.5], [0.2, 6]], 'Y');
-      o.L(5, 1, 11, -3, suit, 2.4); o.D(11.5, -3.5, 1.6, 'S');
-      o.D(8, 3, 3.6, 'S');
-      o.E(8.5, 1, 3.8, 2.2, 'n', (i, j) => j < 1.2);
-      o.R(5, 2.2, 6.5, 1.4, 'K');
-      o.D(9.8, 2.9, 0.5, 'W');
+      // Cape qui flotte derrière, jambes tendues, poing en avant.
+      o.PG([[-2, -2.5], [-14, -1], [-23, 1.5], [-20, 4], [-23, 7], [-17, 8], [-3, 4.5]], cape);
+      o.L(-4, 2.2, -14, 3, suit, 2.8); o.L(-4, 4, -13, 6.5, suit, 2.8);
+      o.D(-14.6, 3, 1.6, cape); o.D(-13.6, 6.6, 1.6, cape);
+      o.E(0, 2.6, 6.2, 3.4, suit);
+      o.R(-3.6, 1.2, 1.2, 3, 'Y');
+      o.PG([[1.4, 0.4], [2, 1.8], [3.4, 1.8], [2.3, 2.6], [2.7, 4], [1.4, 3.2], [0.1, 4], [0.5, 2.6], [-0.6, 1.8], [0.8, 1.8]], 'Y');
+      o.L(4, 0.6, 11.5, -2.5, suit, 2.4); o.D(12.2, -2.8, 1.5, 'S');
+      o.L(3, 4.2, 7.5, 5.8, suit, 2); o.D(8.1, 6, 1.2, 'S');
+      o.D(8.3, -1.4, 3.3, 'S');
+      o.E(8.6, -3.4, 3.6, 1.9, 'n', (i, j) => j < -2.4);
+      o.R(5.4, -2.2, 6.2, 1.3, 'K');
+      o.D(9.8, -1.6, 0.45, 'W');
+      o.PATH([[8.4, 0.4], [9.6, 0.9], [10.6, 0.3]], 'K', 0.6);
     }, 'K');
   },
   ninja(p, x, y, k = 1, flip = false) {
@@ -744,7 +756,7 @@ const SCENE_DEFS = [
       p.layer((q) => {
         q.ellipse(24, 30, 9, 11, 'y', (i, j) => j > 26);
         q.poly([[15, 27], [18, 24], [21, 27], [24, 24], [27, 27], [30, 24], [33, 27], [33, 30], [15, 30]], 'y');
-        q.swap('y', 'X', (i, j) => (i + j) % 7 === 0);
+        [[19, 33, 1.8], [27, 31, 2.2], [24, 37, 1.6], [30, 36, 1.4]].forEach(([cx, cy, r]) => q.disc(cx, cy, r, 'X'));
       }, 'K');
       p.layer((q) => {
         q.ellipse(24, 18, 7, 6.5, 'G');
@@ -1290,8 +1302,11 @@ const SCENE_DEFS = [
 ];
 
 // Ajoute les scènes aux dessins de jeux (même format : lignes de lettres + palette).
-const SCENE_SHARED = at.toString() + Object.values(Deco).join('') + Object.values(Obj).join('');
-renderDefs(SCENE_DEFS, 'scenes', (i) => i * 977 + 13, SCENE_SHARED).forEach((rows, i) => {
+// Ombres : chaque couleur reçoit une teinte plus foncée ; ces lettres-là sont des sols.
+const GROUND = 'GHlXjihponBkg';
+const SCENE_SHADER = makeShader(PAL, { ground: GROUND });
+const SCENE_SHARED = at.toString() + Object.values(Deco).join('') + Object.values(Obj).join('') + JSON.stringify(PAL);
+renderDefs(SCENE_DEFS, 'scenes', (i) => i * 977 + 13, SCENE_SHARED, () => SCENE_SHADER).forEach((rows, i) => {
   const d = SCENE_DEFS[i];
   GAME_ART.push({ id: d.id, name: d.name, cat: d.cat, colors: PAL, rows });
 });

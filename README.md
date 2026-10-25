@@ -18,6 +18,13 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 - **Tes photos** : transforme une photo en coloriage (taille et nombre de couleurs au choix).
 - **Sauvegarde automatique** de la progression dans le navigateur (stockage protégé contre l'effacement automatique), sons synthétisés (désactivables), fonctionne **hors ligne** et s'installe comme une application (PWA).
 
+## Qualité des images
+
+- **Ombres automatiques** : sur chaque grand personnage ou objet, le bord bas-droite reçoit une teinte plus foncée de sa couleur (relief façon dessin animé), et une petite ombre au sol apparaît sous ce qui est posé par terre. Seules les grandes zones sont ombrées, pour limiter le nombre de couleurs.
+- **Petits dessins faits main** agrandis en 32×32 avec l'algorithme Scale2x (bords adoucis, sans nouvelle couleur), puis ombrés.
+- **Dessins tirés des emojis** générés en 36×36, nettoyés des cases isolées et entourés d'un contour foncé.
+- Un dessin déjà terminé reste terminé quand son image est améliorée ; un dessin en cours sur une image modifiée repart de zéro.
+
 ## Lancer le jeu
 
 Aucune installation ni compilation : ce sont des fichiers HTML/CSS/JS statiques.

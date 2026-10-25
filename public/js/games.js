@@ -2,8 +2,10 @@
 // Chaque dessin remplit une grille de lettres (une lettre = une couleur de `colors`, '.' = vide).
 'use strict';
 
-function painter(w, h, seed = 1) {
+// `shader` (facultatif) : { dark(lettre) → lettre plus foncée, ground(lettre) → c'est un sol }.
+function painter(w, h, seed = 1, shader = null) {
   const g = new Array(w * h).fill('.');
+  let shaded = false;
   const rnd = Gen.rng(seed);
   const inb = (x, y) => x >= 0 && y >= 0 && x < w && y < h;
   const each = (fn) => { for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) fn(x, y); };
@@ -83,8 +85,31 @@ function painter(w, h, seed = 1) {
       });
       return P;
     },
+    // Ombre sur le bord bas-droite de chaque forme : donne du relief sans ajouter de reflets.
+    shade() {
+      if (shaded || !shader) return P;
+      shaded = true;
+      const out = g.slice();
+      const outside = (x, y) => P.get(x, y) === '.';
+      // Seules les grandes zones reçoivent une ombre : peu de couleurs en plus pour les petits.
+      const count = {};
+      g.forEach((c) => { count[c] = (count[c] || 0) + 1; });
+      each((x, y) => {
+        const c = g[y * w + x];
+        if (c === '.' || count[c] < 40) return;
+        const dark = shader.dark(c);
+        if (!dark) return;
+        // Les détails fins (yeux, traits) restent intacts.
+        const same = [[1, 0], [-1, 0], [0, 1], [0, -1]].filter(([a, b]) => P.get(x + a, y + b) === c).length;
+        if (same < 2) return;
+        if (outside(x + 1, y) || outside(x, y + 1) || outside(x + 1, y + 1)) out[y * w + x] = dark;
+      });
+      out.forEach((v, i) => { g[i] = v; });
+      return P;
+    },
     // Contour autour de tout ce qui est dessiné.
     outline(c, diagonal = false) {
+      P.shade();
       const add = [];
       each((x, y) => {
         if (g[y * w + x] !== '.') return;
@@ -113,10 +138,21 @@ function painter(w, h, seed = 1) {
     },
     // Dessine sur un calque transparent, l'entoure d'un contour puis le colle sur le dessin.
     layer(fn, outlineColor) {
-      const q = painter(w, h, Math.floor(rnd() * 1e9));
+      const q = painter(w, h, Math.floor(rnd() * 1e9), shader);
       fn(q);
       if (outlineColor) q.outline(outlineColor);
-      q.cells().forEach((v, i) => { if (v !== '.') g[i] = v; });
+      const cells = q.cells();
+      // Petite ombre au sol sous les objets posés par terre.
+      if (shader && outlineColor) {
+        for (let x = 0; x < w; x++) {
+          let low = -1;
+          for (let y = h - 1; y >= 0; y--) if (cells[y * w + x] !== '.') { low = y; break; }
+          if (low < 0 || low + 1 >= h) continue;
+          const under = g[(low + 1) * w + x];
+          if (cells[(low + 1) * w + x] === '.' && shader.ground(under) && shader.dark(under)) g[(low + 1) * w + x] = shader.dark(under);
+        }
+      }
+      cells.forEach((v, i) => { if (v !== '.') g[i] = v; });
       return P;
     },
     cells: () => g,
@@ -1219,9 +1255,47 @@ const GAME_ART_DEFS = [
 
 // Trace une liste de dessins. Le résultat est gardé sur l'appareil et n'est recalculé
 // que si le code d'un dessin, du pinceau ou des objets partagés (`extra`) change.
-function renderDefs(defs, name, seedOf, extra = '') {
-  let src = painter.toString() + extra;
-  defs.forEach((d) => { src += d.id + d.w + 'x' + d.h + d.draw.toString(); });
+// Teinte d'ombre : même couleur, plus sombre et un peu plus saturée.
+function darkerHex(hex) {
+  const [r, g, b] = Gen.hexToRgb(hex).map((v) => v / 255);
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2, d = mx - mn;
+  let hh = 0, sat = 0;
+  if (d) {
+    sat = d / (1 - Math.abs(2 * l - 1));
+    hh = mx === r ? ((g - b) / d) % 6 : mx === g ? (b - r) / d + 2 : (r - g) / d + 4;
+  }
+  const L = Math.max(0.08, l - (l > 0.85 ? 0.12 : 0.15)), S = Math.min(1, sat * 1.12);
+  const C = (1 - Math.abs(2 * L - 1)) * S, X = C * (1 - Math.abs(((hh % 6) + 6) % 6 % 2 - 1)), m = L - C / 2;
+  const [r1, g1, b1] = [[C, X, 0], [X, C, 0], [0, C, X], [0, X, C], [X, 0, C], [C, 0, X]][Math.floor(((hh % 6) + 6) % 6)];
+  return '#' + [r1, g1, b1].map((v) => Math.round((v + m) * 255).toString(16).padStart(2, '0')).join('');
+}
+
+// Lettres libres pour les teintes d'ombre ajoutées aux palettes.
+const SHADE_POOL = 'αβγδεζηθικλμνξοπρστυφχψωабвгдежзийклмнопрстуфхцчшщэюяΓΔΘΛΞΠΣΦΨΩ';
+
+// Crée l'ombreur d'une palette : ajoute à `colors` une teinte foncée par couleur
+// (ou réutilise une couleur déjà très proche, pour ne pas multiplier les numéros).
+function makeShader(colors, { skip = 'K', ground = '' } = {}) {
+  const map = {};
+  const dist = (a, b) => { const x = Gen.hexToRgb(a), y = Gen.hexToRgb(b); return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]); };
+  Object.keys(colors).forEach((ch) => {
+    if (skip.includes(ch) || SHADE_POOL.includes(ch) || Gen.luminance(colors[ch]) < 0.14) return;
+    const dark = darkerHex(colors[ch]);
+    const near = Object.keys(colors).find((k) => k !== ch && dist(colors[k], dark) < 26);
+    if (near) { map[ch] = near; return; }
+    const letter = [...SHADE_POOL].find((l) => !(l in colors));
+    if (!letter) return;
+    colors[letter] = dark;
+    map[ch] = letter;
+  });
+  return { dark: (c) => map[c], ground: (c) => ground.includes(c) };
+}
+
+function renderDefs(defs, name, seedOf, extra = '', shaderFor = null) {
+  // Les ombreurs complètent les palettes : ils sont créés même quand le dessin vient du cache.
+  const shaders = defs.map((d) => (shaderFor ? shaderFor(d) : null));
+  let src = painter.toString() + extra + darkerHex.toString() + makeShader.toString();
+  defs.forEach((d) => { src += d.id + d.w + 'x' + d.h + d.draw.toString() + (d.colors ? JSON.stringify(d.colors) : ''); });
   let hash = 2166136261;
   for (let i = 0; i < src.length; i++) hash = Math.imul(hash ^ src.charCodeAt(i), 16777619);
   const key = 'cbn.art.' + name;
@@ -1230,11 +1304,11 @@ function renderDefs(defs, name, seedOf, extra = '') {
     const cached = JSON.parse(localStorage.getItem(key));
     if (cached && cached.h === stamp && cached.rows.length === defs.length) return cached.rows;
   } catch (e) { /* recalcul */ }
-  const rows = defs.map((d, i) => { const p = painter(d.w, d.h, seedOf(i)); d.draw(p); return p.rows(); });
+  const rows = defs.map((d, i) => { const p = painter(d.w, d.h, seedOf(i), shaders[i]); d.draw(p); return p.rows(); });
   try { localStorage.setItem(key, JSON.stringify({ h: stamp, rows })); } catch (e) { /* stockage plein */ }
   return rows;
 }
 
 // Transforme les définitions en dessins au même format que ART (lignes de lettres).
-const GAME_ART = renderDefs(GAME_ART_DEFS, 'jeux', (i) => i * 131 + 7)
+const GAME_ART = renderDefs(GAME_ART_DEFS, 'jeux', (i) => i * 131 + 7, '', (d) => makeShader(d.colors))
   .map((rows, i) => { const d = GAME_ART_DEFS[i]; return { id: d.id, name: d.name, cat: d.cat, colors: d.colors, rows }; });

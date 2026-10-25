@@ -225,7 +225,40 @@ const Gen = (() => {
     const dw = (bw / side) * size, dh = (bh / side) * size;
     s.drawImage(big, x0, y0, bw, bh, (size - dw) / 2, (size - dh) / 2, dw, dh);
     const img = s.getImageData(0, 0, size, size).data;
-    return fromImageData(img, size, size, 10, { minShare: 0.01 });
+    return tidy(fromImageData(img, size, size, 10, { minShare: 0.01 }), size, size);
+  }
+
+  // Nettoie une image issue d'un emoji : supprime les cases isolées (taches de l'anticrénelage)
+  // et ajoute un contour foncé, comme un autocollant.
+  function tidy(res, w, h) {
+    let cells = res.cells.slice();
+    const at2 = (c, x, y) => (x < 0 || y < 0 || x >= w || y >= h ? -1 : c[y * w + x]);
+    for (let pass = 0; pass < 2; pass++) {
+      const next = cells.slice();
+      for (let y = 0; y < h; y++) {
+        for (let x = 0; x < w; x++) {
+          const v = cells[y * w + x];
+          if (v < 0) continue;
+          const nb = [at2(cells, x + 1, y), at2(cells, x - 1, y), at2(cells, x, y + 1), at2(cells, x, y - 1)];
+          if (nb.includes(v)) continue;
+          const tally = {};
+          nb.filter((n) => n >= 0).forEach((n) => { tally[n] = (tally[n] || 0) + 1; });
+          const best = Object.keys(tally).sort((a, b) => tally[b] - tally[a])[0];
+          if (best !== undefined) next[y * w + x] = +best;
+        }
+      }
+      cells = next;
+    }
+    const palette = res.palette.concat(['#2b2438']);
+    const ink = palette.length - 1;
+    const out = cells.slice();
+    for (let y = 0; y < h; y++) {
+      for (let x = 0; x < w; x++) {
+        if (cells[y * w + x] >= 0) continue;
+        if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([a, b]) => at2(cells, x + a, y + b) >= 0)) out[y * w + x] = ink;
+      }
+    }
+    return { cells: out, palette };
   }
 
   // Réduit une photo (HTMLImageElement / ImageBitmap) en pixel art.

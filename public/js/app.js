@@ -43,10 +43,11 @@ const EMOJIS = [
 ];
 
 const MANDALA_SIZES = [21, 25, 25, 29, 31, 33, 35, 41];
+const EMOJI_SIZE = 36;
 
 const START_TOOLS = 5;
 const STORE = 'cbn.';
-const EMOJI_VERSION = 'e1.';
+const EMOJI_VERSION = 'e2.';
 
 // ---------- Stockage ----------
 const store = {
@@ -91,7 +92,7 @@ function addImage(img) {
 
 function loadLibrary() {
   GAME_ART.forEach((a) => addImage(Gen.fromArt(a)));
-  ART.forEach((a) => addImage(Gen.fromArt(a)));
+  ART.forEach((a) => addImage(Gen.fromArt(upgradeArt(a))));
 
   MANDALA_SIZES.forEach((size, i) => {
     const { cells, palette } = Gen.mandala(i + 1, size);
@@ -103,14 +104,14 @@ function loadLibrary() {
     const id = 'emoji' + i;
     let data = store.get(EMOJI_VERSION + id, null);
     if (!data) {
-      const res = Gen.emoji(ch, 28);
+      const res = Gen.emoji(ch, EMOJI_SIZE);
       if (!res) return;
-      const img = Gen.build({}, 28, 28, res.palette, res.cells);
+      const img = Gen.build({}, EMOJI_SIZE, EMOJI_SIZE, res.palette, res.cells);
       if (img.palette.length < 2) return;
       data = { palette: img.palette, cells: encodeCells(img.cells) };
       store.set(EMOJI_VERSION + id, data);
     }
-    addImage({ id, name, cat, w: 28, h: 28, palette: data.palette, cells: decodeCells(data.cells) });
+    addImage({ id, name, cat, w: EMOJI_SIZE, h: EMOJI_SIZE, palette: data.palette, cells: decodeCells(data.cells) });
   });
 
   store.get('photos', []).forEach((p) => {
@@ -118,10 +119,34 @@ function loadLibrary() {
   });
 }
 
+// Les petits dessins faits main sont agrandis en 32×32 avec l'algorithme Scale2x
+// (bords en escalier adoucis, sans nouvelle couleur), puis reçoivent des ombres.
+function upgradeArt(a) {
+  const src = a.rows, h = src.length, w = src[0].length;
+  const at2 = (x, y) => (x < 0 || y < 0 || x >= w || y >= h ? '.' : src[y][x]);
+  const out = Array.from({ length: h * 2 }, () => []);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const P = at2(x, y), A = at2(x, y - 1), B = at2(x + 1, y), C = at2(x - 1, y), D = at2(x, y + 1);
+      out[2 * y][2 * x] = C === A && C !== D && A !== B ? A : P;
+      out[2 * y][2 * x + 1] = A === B && A !== C && B !== D ? B : P;
+      out[2 * y + 1][2 * x] = D === C && D !== B && C !== A ? C : P;
+      out[2 * y + 1][2 * x + 1] = B === D && B !== A && D !== C ? D : P;
+    }
+  }
+  const colors = { ...a.colors };
+  const p = painter(w * 2, h * 2, 1, makeShader(colors));
+  out.forEach((row, y) => row.forEach((c, x) => p.set(x, y, c)));
+  p.shade();
+  return { ...a, colors, rows: p.rows() };
+}
+
 // Progression : `fill[i]` = couleur posée (-1 si vide), `order` = ordre des bonnes cases.
 function loadProgress(img) {
   const p = store.get(pk('p.' + img.id), null);
   const n = img.w * img.h;
+  // Un dessin terminé reste terminé, même si son image a été améliorée depuis.
+  if (p && p.d) return { fill: Int16Array.from(img.cells), order: p.s && p.s.length === n ? (p.o || []) : [] };
   if (p && p.s && p.s.length === n) {
     return { fill: decodeCells(p.s), order: p.o || [] };
   }
@@ -1544,6 +1569,7 @@ if (!CATS.some((c) => c.id === currentTab)) currentTab = 'all';
 if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {});
 if (profiles.length === 1) Profiles.use(profiles[0]);
 else Profiles.show();
+$('loading').hidden = true;
 
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
