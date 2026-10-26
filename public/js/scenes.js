@@ -1135,19 +1135,6 @@ const SCENE_DEFS = [
     },
   },
   {
-    id: 'xl-pika', name: 'Pikachu dans la prairie', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p);
-      Deco.sun(p, 54, 8, 4);
-      Deco.cloud(p, 6, 6, 1);
-      Deco.hills(p, 32, 'l');
-      Deco.grass(p, 34);
-      Deco.tree(p, 54, 38, 1.2);
-      Obj.pokeball(p, 12, 38, 5);
-      Obj.pika(p, 32, 20, 1.15);
-    },
-  },
-  {
     id: 'xl-pokeballs', name: 'Pluie de Poké Balls', cat: 'pokemon', w: 48, h: 64,
     draw(p) {
       Deco.sky(p, 'c', 'b', 'a');

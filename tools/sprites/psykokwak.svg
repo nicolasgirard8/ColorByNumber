@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-psykokwak" data-name="Psykokwak" data-cat="pokemon" data-size="56" data-weights="#ffffff:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pieds palmés -->
+  <path d="M56 180 C60 168 84 166 88 178 C80 188 62 190 56 180 Z" fill="#f6dfa0"/>
+  <path d="M112 178 C116 166 140 168 144 180 C138 190 120 188 112 178 Z" fill="#f6dfa0"/>
+  <!-- corps -->
+  <path d="M64 118 C48 140 50 172 72 180 L128 180 C150 172 152 140 136 118 Z" fill="#ffd84a"/>
+  <!-- tête -->
+  <ellipse cx="100" cy="78" rx="56" ry="48" fill="#ffd84a"/>
+  <!-- trois cheveux -->
+  <path d="M92 32 C88 20 90 10 96 4 M100 31 C100 18 104 10 110 6 M108 32 C112 22 120 18 126 18" fill="none" stroke-width="4"/>
+  <!-- mains sur la tête -->
+  <path d="M46 96 C30 92 26 74 38 62 C46 58 52 64 52 72 C56 80 54 92 46 96 Z" fill="#ffd84a"/>
+  <path d="M154 96 C170 92 174 74 162 62 C154 58 148 64 148 72 C144 80 146 92 154 96 Z" fill="#ffd84a"/>
+  <path d="M46 96 C52 108 58 118 66 124 M154 96 C148 108 142 118 134 124" fill="none" stroke-width="12"/>
+  <path d="M46 96 C52 108 58 118 66 124 M154 96 C148 108 142 118 134 124" fill="none" stroke="#ffd84a" stroke-width="5"/>
+  <!-- yeux vides -->
+  <ellipse cx="74" cy="70" rx="15" ry="12" fill="#ffffff"/>
+  <ellipse cx="126" cy="70" rx="15" ry="12" fill="#ffffff"/>
+  <circle cx="74" cy="71" r="3" fill="#1b1b22" stroke="none"/>
+  <circle cx="126" cy="71" r="3" fill="#1b1b22" stroke="none"/>
+  <!-- bec -->
+  <path d="M64 96 C64 86 84 84 100 84 C116 84 136 86 136 96 C136 110 118 116 100 116 C82 116 64 110 64 96 Z" fill="#f6dfa0"/>
+  <path d="M68 100 C84 104 116 104 132 100" fill="none" stroke-width="3"/>
+  <circle cx="92" cy="92" r="1.8" fill="#1b1b22"/>
+  <circle cx="108" cy="92" r="1.8" fill="#1b1b22"/>
+</g>
+</svg>

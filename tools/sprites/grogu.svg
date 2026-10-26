@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180" data-id="sw-bebe" data-name="Grogu" data-cat="starwars" data-size="56" data-weights="#ffffff:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- robe -->
+  <path d="M60 178 C62 140 80 126 110 124 C140 126 158 140 160 178 Z" fill="#c9b38a"/>
+  <path d="M70 140 C90 150 130 150 150 140" fill="none" stroke="#9a8460" stroke-width="5"/>
+  <!-- oreilles -->
+  <path d="M72 72 C46 58 22 52 2 56 C20 80 46 96 72 98 Z" fill="#a3c98a"/>
+  <path d="M66 78 C48 70 30 66 16 66 C30 82 48 90 66 92 Z" fill="#e3a8a8" stroke="none"/>
+  <path d="M148 72 C174 58 198 52 218 56 C200 80 174 96 148 98 Z" fill="#a3c98a"/>
+  <path d="M154 78 C172 70 190 66 204 66 C190 82 172 90 154 92 Z" fill="#e3a8a8" stroke="none"/>
+  <!-- tête -->
+  <path d="M110 34 C144 34 158 58 156 86 C154 112 134 128 110 128 C86 128 66 112 64 86 C62 58 76 34 110 34 Z" fill="#a3c98a"/>
+  <!-- grands yeux -->
+  <ellipse cx="88" cy="84" rx="13" ry="14" fill="#2a1a12"/>
+  <ellipse cx="132" cy="84" rx="13" ry="14" fill="#2a1a12"/>
+  <circle cx="84" cy="78" r="4.5" fill="#ffffff" stroke="none"/>
+  <circle cx="128" cy="78" r="4.5" fill="#ffffff" stroke="none"/>
+  <!-- nez et bouche -->
+  <path d="M106 102 Q110 106 114 102" fill="none" stroke-width="3"/>
+  <path d="M102 114 Q110 118 118 114" fill="none" stroke-width="3"/>
+</g>
+</svg>

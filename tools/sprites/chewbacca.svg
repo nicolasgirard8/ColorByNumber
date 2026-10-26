@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="sw-wookie" data-name="Chewbacca" data-cat="starwars" data-size="52" data-weights="#ffffff:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- corps -->
+  <path d="M22 198 C22 150 48 130 100 128 C152 130 178 150 178 198 Z" fill="#8a5a30"/>
+  <!-- bandoulière -->
+  <path d="M44 150 L64 136 L170 196 L144 198 Z" fill="#6b4a2a"/>
+  <rect x="70" y="148" width="12" height="10" fill="#c9ced6" stroke-width="3" transform="rotate(30 76 153)"/>
+  <rect x="96" y="163" width="12" height="10" fill="#c9ced6" stroke-width="3" transform="rotate(30 102 168)"/>
+  <rect x="122" y="178" width="12" height="10" fill="#c9ced6" stroke-width="3" transform="rotate(30 128 183)"/>
+  <!-- tête poilue -->
+  <path d="M100 12 L112 20 L126 16 L134 28 L148 30 L150 46 L162 56 L156 72 L164 88 L152 98 L156 116 L140 120 L132 138 L116 132 L100 142 L84 132 L68 138 L60 120 L44 116 L48 98 L36 88 L44 72 L38 56 L50 46 L52 30 L66 28 L74 16 L88 20 Z" fill="#8a5a30"/>
+  <!-- visage plus clair -->
+  <path d="M70 56 C80 46 120 46 130 56 C140 76 136 108 120 122 C108 130 92 130 80 122 C64 108 60 76 70 56 Z" fill="#b5834c"/>
+  <!-- mèches -->
+  <path d="M84 30 L90 48 M116 30 L110 48 M100 24 L100 44 M58 70 L68 82 M142 70 L132 82" fill="none" stroke="#5a3a1e" stroke-width="4"/>
+  <!-- yeux -->
+  <path d="M72 74 L96 72" fill="none" stroke="#5a3a1e" stroke-width="5"/>
+  <path d="M104 72 L128 74" fill="none" stroke="#5a3a1e" stroke-width="5"/>
+  <ellipse cx="84" cy="84" rx="9" ry="7" fill="#ffffff"/>
+  <ellipse cx="116" cy="84" rx="9" ry="7" fill="#ffffff"/>
+  <circle cx="85" cy="84" r="4.5" fill="#2a4a8a" stroke="none"/>
+  <circle cx="117" cy="84" r="4.5" fill="#2a4a8a" stroke="none"/>
+  <!-- nez -->
+  <path d="M90 94 C94 88 106 88 110 94 C108 102 92 102 90 94 Z" fill="#1b1b22"/>
+  <!-- bouche -->
+  <path d="M84 112 C94 120 106 120 116 112 C108 108 92 108 84 112 Z" fill="#5a3a1e"/>
+</g>
+</svg>

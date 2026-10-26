@@ -148,7 +148,11 @@ function loadProgress(img) {
   // Un dessin terminé reste terminé, même si son image a été améliorée depuis.
   if (p && p.d) return { fill: Int16Array.from(img.cells), order: p.s && p.s.length === n ? (p.o || []) : [] };
   if (p && p.s && p.s.length === n) {
-    return { fill: decodeCells(p.s), order: p.o || [] };
+    // Si le dessin a été redessiné, on ne garde que les cases encore justes.
+    const fill = decodeCells(p.s);
+    let changed = false;
+    fill.forEach((c, i) => { if (c >= 0 && c !== img.cells[i]) { fill[i] = -1; changed = true; } });
+    return { fill, order: changed ? (p.o || []).filter((i) => fill[i] >= 0) : (p.o || []) };
   }
   return { fill: new Int16Array(n).fill(-1), order: [] };
 }
