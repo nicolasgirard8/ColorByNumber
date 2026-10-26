@@ -20,8 +20,8 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 
 ## Qualité des images
 
-- **Personnages redessinés en vectoriel** (Pikachu, Salamèche, Carapuce, Bulbizarre, Évoli, Rondoudou, Ronflex, Psykokwak, Magicarpe, Sonic, Yoshi, Link, Dark Vador, Stormtrooper, C-3PO, Chewbacca, Boba Fett, Yoda, Grogu) et leurs 14 grandes scènes : dessins SVG à contours noirs dans `tools/sprites/`, convertis en grilles de 56 cases (72×54 pour les scènes) par `tools/sprites/build.js`.
-- **Ombres automatiques** : sur chaque grand personnage ou objet, le bord bas-droite reçoit une teinte plus foncée de sa couleur (relief façon dessin animé), et une petite ombre au sol apparaît sous ce qui est posé par terre. Seules les grandes zones sont ombrées, pour limiter le nombre de couleurs.
+- **Personnages redessinés en vectoriel** (Pikachu, Salamèche, Carapuce, Bulbizarre, Évoli, Rondoudou, Ronflex, Psykokwak, Magicarpe, Sonic, Yoshi, Link, Dark Vador, Stormtrooper, C-3PO, Chewbacca, Boba Fett, Yoda, Grogu) et leurs 14 grandes scènes : dessins SVG à contours noirs dans `tools/sprites/`, convertis en grilles de 56 cases (72×54 pour les scènes) par `tools/sprites/build.js`, avec ombres colorées (bas-droite), reflets (haut-gauche) et décors en dégradé.
+- **Relief automatique** : chaque objet reçoit une ombre sur son bord bas-droite et un reflet clair sur son bord haut-gauche, dans des teintes de sa propre couleur ; une petite ombre au sol apparaît sous ce qui est posé par terre. Au-delà de 28 couleurs, les teintes les plus proches sont réunies pour garder une palette lisible.
 - **Petits dessins faits main** agrandis en 32×32 avec l'algorithme Scale2x (bords adoucis, sans nouvelle couleur), puis ombrés.
 - **Dessins tirés des emojis** générés en 36×36, nettoyés des cases isolées et entourés d'un contour foncé.
 - **Images importées** converties avec `Gen.convert` : rendu en haute définition, couleurs regroupées, traits noirs prioritaires, cases isolées nettoyées.

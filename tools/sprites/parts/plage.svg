@@ -1,10 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192">
-  <rect width="256" height="192" fill="#8fd0f8"/>
-  <circle cx="222" cy="30" r="17" fill="#ffd93b"/>
+  <rect width="256" height="192" fill="#5ab4f0"/>
+  <rect y="34" width="256" height="34" fill="#7ac6f6"/>
+  <rect y="68" width="256" height="60" fill="#a6daf8"/>
+  <circle cx="222" cy="30" r="20" fill="#ffb02e"/><circle cx="222" cy="30" r="14" fill="#ffe14d"/>
   <path d="M24 34 C24 24 40 20 46 28 C52 18 70 22 70 32 C78 32 80 42 72 44 L28 44 C18 44 16 36 24 34 Z" fill="#ffffff"/>
   <rect y="96" width="256" height="40" fill="#3aa0e8"/>
   <path d="M10 108 L30 108 M80 118 L104 118 M150 106 L170 106 M200 122 L226 122" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <rect y="120" width="256" height="16" fill="#2a86d8"/>
   <path d="M0 136 C60 126 190 130 256 138 L256 192 L0 192 Z" fill="#f6dc9a"/>
+  <path d="M0 168 C80 160 180 162 256 168 L256 192 L0 192 Z" fill="#e8c27a"/>
   <g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round">
     <path d="M24 186 C22 160 28 124 40 98 L48 100 C38 126 34 160 36 186 Z" fill="#9a6a3a"/>
     <path d="M44 98 C30 72 6 70 -4 88 C14 80 28 86 44 98 Z M44 98 C38 68 56 52 78 58 C62 68 52 80 44 98 Z M44 98 C64 78 90 84 96 104 C78 92 62 92 44 98 Z M44 98 C22 92 6 106 8 126 C18 110 30 102 44 98 Z" fill="#4caf50" stroke-width="3"/>

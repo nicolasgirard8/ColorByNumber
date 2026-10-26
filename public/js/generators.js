@@ -56,7 +56,29 @@ const Gen = (() => {
     const keys = Object.keys(a.colors);
     const cells = [];
     for (const row of a.rows) for (const ch of row) cells.push(ch === '.' ? -1 : keys.indexOf(ch));
+    capColors(cells, keys.map((k) => a.colors[k]), 28);
     return build({ id: a.id, name: a.name, cat: a.cat }, w, h, keys.map((k) => a.colors[k]), cells);
+  }
+
+  // Au-delà de `max` numéros, les deux teintes les plus proches sont réunies
+  // (la moins utilisée prend la couleur de l'autre) : la palette reste lisible.
+  function capColors(cells, palette, max) {
+    const rgbs = palette.map(hexToRgb);
+    for (;;) {
+      const count = {};
+      cells.forEach((v) => { if (v >= 0) count[v] = (count[v] || 0) + 1; });
+      const used = Object.keys(count).map(Number);
+      if (used.length <= max) return;
+      let best = null;
+      for (const a of used) for (const b of used) {
+        if (a >= b) continue;
+        const x = rgbs[a], y = rgbs[b];
+        const d = 2 * (x[0] - y[0]) ** 2 + 4 * (x[1] - y[1]) ** 2 + 3 * (x[2] - y[2]) ** 2;
+        if (!best || d < best[0]) best = [d, a, b];
+      }
+      const from = count[best[1]] < count[best[2]] ? best[1] : best[2], to = from === best[1] ? best[2] : best[1];
+      for (let i = 0; i < cells.length; i++) if (cells[i] === from) cells[i] = to;
+    }
   }
 
   // Mandala à symétrie d'ordre 8.
