@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="sw-doree" data-name="C-3PO" data-cat="starwars" data-size="52" data-weights="#fff3a0:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- épaules et torse -->
+  <path d="M28 196 C30 160 50 148 100 146 C150 148 170 160 172 196 Z" fill="#e8b830"/>
+  <path d="M70 152 C80 166 120 166 130 152 L128 196 L72 196 Z" fill="#c99520"/>
+  <path d="M84 170 L116 170 L112 190 L88 190 Z" fill="#e8b830"/>
+  <path d="M90 176 L110 176 M92 183 L108 183" fill="none" stroke-width="3"/>
+  <!-- cou -->
+  <path d="M84 126 L116 126 L118 152 L82 152 Z" fill="#8a8f9c"/>
+  <path d="M84 134 L116 134 M84 142 L116 142" fill="none" stroke-width="3"/>
+  <!-- tête -->
+  <path d="M100 14 C140 14 158 44 156 78 C154 104 146 120 136 128 L64 128 C54 120 46 104 44 78 C42 44 60 14 100 14 Z" fill="#e8b830"/>
+  <path d="M62 40 C70 26 84 20 96 20 C84 30 74 42 70 56 Z" fill="#fde07a" stroke="none"/>
+  <!-- sourcils / front -->
+  <path d="M54 66 C70 58 86 60 96 68 M104 68 C114 60 130 58 146 66" fill="none" stroke-width="5"/>
+  <!-- yeux -->
+  <circle cx="76" cy="80" r="13" fill="#c99520"/>
+  <circle cx="124" cy="80" r="13" fill="#c99520"/>
+  <circle cx="76" cy="80" r="8" fill="#ffb020" stroke-width="3"/>
+  <circle cx="124" cy="80" r="8" fill="#ffb020" stroke-width="3"/>
+  <circle cx="74" cy="78" r="3" fill="#fff3a0" stroke="none"/>
+  <circle cx="122" cy="78" r="3" fill="#fff3a0" stroke="none"/>
+  <!-- nez et bouche -->
+  <path d="M100 74 L94 100 L106 100 Z" fill="#c99520" stroke-width="3"/>
+  <path d="M84 112 L116 112" fill="none" stroke-width="6"/>
+  <!-- oreilles -->
+  <circle cx="46" cy="84" r="9" fill="#c99520"/>
+  <circle cx="154" cy="84" r="9" fill="#c99520"/>
+</g>
+</svg>

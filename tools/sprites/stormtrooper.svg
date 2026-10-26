@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="sw-soldat" data-name="Stormtrooper" data-cat="starwars" data-size="52" data-weights="#2a6ad0:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- bas du casque -->
+  <path d="M42 120 C40 150 50 176 70 186 L130 186 C150 176 160 150 158 120 Z" fill="#f4f6f8"/>
+  <!-- dôme -->
+  <path d="M40 124 C34 56 62 14 100 14 C138 14 166 56 160 124 Z" fill="#f4f6f8"/>
+  <path d="M50 62 C70 52 130 52 150 62" fill="none" stroke="#b9c0cc" stroke-width="5"/>
+  <!-- bandes latérales -->
+  <path d="M40 124 L58 112 L60 160 L46 154 Z" fill="#b9c0cc"/>
+  <path d="M160 124 L142 112 L140 160 L154 154 Z" fill="#b9c0cc"/>
+  <!-- front -->
+  <path d="M60 70 L140 70 L136 84 L64 84 Z" fill="#2a6ad0" stroke-width="3"/>
+  <!-- yeux en larme -->
+  <path d="M60 96 C64 86 84 86 92 92 L86 118 C76 118 62 110 60 96 Z" fill="#1b1b22"/>
+  <path d="M140 96 C136 86 116 86 108 92 L114 118 C124 118 138 110 140 96 Z" fill="#1b1b22"/>
+  <!-- nez -->
+  <path d="M92 92 L108 92 L106 128 L94 128 Z" fill="#f4f6f8"/>
+  <!-- larmes -->
+  <path d="M74 122 L70 146 M126 122 L130 146" fill="none" stroke-width="4"/>
+  <!-- bouche (moue) -->
+  <path d="M68 150 C80 134 120 134 132 150 L124 170 L76 170 Z" fill="#8a8f9c"/>
+  <path d="M84 148 L84 166 M92 144 L92 168 M100 142 L100 168 M108 144 L108 168 M116 148 L116 166" fill="none" stroke-width="3.5"/>
+  <!-- prises d'air -->
+  <circle cx="62" cy="172" r="6" fill="#8a8f9c"/>
+  <circle cx="138" cy="172" r="6" fill="#8a8f9c"/>
+</g>
+</svg>

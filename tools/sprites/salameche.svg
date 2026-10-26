@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-salameche" data-name="Salamèche" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#3a6ad0:3,#ffd23c:2,#e8402a:1.5,#c0392b:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M128 150 C160 152 176 132 170 104" fill="none" stroke-width="21"/>
+  <path d="M128 150 C160 152 176 132 170 104" fill="none" stroke="#f7913a" stroke-width="12"/>
+  <path d="M170 104 C150 92 152 66 164 50 C166 62 172 64 176 56 C186 70 192 94 170 104 Z" fill="#e8402a"/>
+  <path d="M170 98 C160 90 162 76 167 68 C170 76 176 78 178 74 C182 84 180 94 170 98 Z" fill="#ffd23c"/>
+  <!-- pieds -->
+  <path d="M60 168 C52 184 64 192 80 190 C92 189 94 178 88 168 Z" fill="#f7913a"/>
+  <path d="M108 168 C102 180 108 191 122 190 C138 189 140 178 130 166 Z" fill="#f7913a"/>
+  <!-- corps -->
+  <path d="M58 118 C46 150 56 178 94 180 C132 180 144 150 132 118 Z" fill="#f7913a"/>
+  <path d="M74 132 C66 152 72 174 95 175 C118 174 124 152 116 132 C104 124 86 124 74 132 Z" fill="#fde29a"/>
+  <!-- bras -->
+  <path d="M62 126 C48 128 40 138 42 146 C48 148 56 144 64 138" fill="#f7913a"/>
+  <path d="M128 126 C142 128 150 138 148 146 C142 148 134 144 126 138" fill="#f7913a"/>
+  <!-- tête -->
+  <path d="M95 18 C140 18 158 50 152 82 C148 108 126 124 95 124 C64 124 42 108 38 82 C32 50 50 18 95 18 Z" fill="#f7913a"/>
+  <!-- yeux -->
+  <ellipse cx="70" cy="68" rx="11" ry="16" fill="#1b1b22"/>
+  <ellipse cx="120" cy="68" rx="11" ry="16" fill="#1b1b22"/>
+  <ellipse cx="70" cy="76" rx="6" ry="6" fill="#3a6ad0" stroke="none"/>
+  <ellipse cx="120" cy="76" rx="6" ry="6" fill="#3a6ad0" stroke="none"/>
+  <ellipse cx="67" cy="60" rx="4" ry="5" fill="#ffffff" stroke="none"/>
+  <ellipse cx="117" cy="60" rx="4" ry="5" fill="#ffffff" stroke="none"/>
+  <!-- bouche -->
+  <path d="M66 96 C80 112 110 112 124 96 C110 102 80 102 66 96 Z" fill="#c0392b"/>
+</g>
+</svg>

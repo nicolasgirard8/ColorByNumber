@@ -581,17 +581,6 @@ const SCENE2_DEFS = [
     },
   },
   {
-    id: 'xl-jv-sonic', name: 'Sonic dans les collines', cat: 'jeux', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p, 'c', 'b', 'a');
-      p.layer((q) => { q.ellipse(50, 30, 12, 12, 'G'); q.ellipse(50, 30, 8, 8, '.'); }, 'K');
-      p.layer((q) => { q.rect(0, 36, 64, 12, 'B'); for (let y = 38; y < 48; y += 4) for (let x = (y / 4) % 2 ? 0 : 4; x < 64; x += 8) q.rect(x, y, 4, 4, 'k'); q.rect(0, 34, 64, 3, 'G'); }, 'K');
-      Deco.palm(p, 8, 34, 1);
-      [[24, 14], [30, 11], [36, 10], [42, 11]].forEach(([x, y]) => Obj2.ring(p, x, y));
-      Obj2.sonic(p, 30, 34, 1.05);
-    },
-  },
-  {
     id: 'xl-jv-kirby', name: 'Kirby et son étoile', cat: 'jeux', w: 64, h: 48,
     draw(p) {
       Deco.sky(p, 'v', 'b', 'a');
@@ -636,16 +625,6 @@ const SCENE2_DEFS = [
     },
   },
   {
-    id: 'xl-jv-link', name: "L'aventure de Link", cat: 'jeux', w: 48, h: 64,
-    draw(p) {
-      Deco.sky(p);
-      Deco.mountains(p, 40, [[10, 14, 12], [38, 18, 14]]);
-      Deco.tree(p, 6, 44, 1); Deco.tree(p, 42, 44, 1.1);
-      Deco.grass(p, 42);
-      Obj2.link(p, 24, 60, 1.4);
-    },
-  },
-  {
     id: 'xl-jv-oiseaux', name: 'Oiseaux en colère', cat: 'jeux', w: 64, h: 48,
     draw(p) {
       Deco.sky(p, 'b', 'a', 'a');
@@ -658,117 +637,8 @@ const SCENE2_DEFS = [
       Obj2.angryBird(p, 6, 20, 0.6);
     },
   },
-  {
-    id: 'xl-jv-yoshi', name: 'Les œufs de Yoshi', cat: 'jeux', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p);
-      Deco.sun(p, 8, 8, 4);
-      Deco.hills(p, 30, 'l');
-      Deco.grass(p, 32);
-      p.layer((q) => { q.ellipse(32, 42, 22, 5, 'o'); for (let x = 12; x < 53; x += 3) q.line(x, 39, x + 3, 45, 'B', 0.9); }, 'K');
-      [[18, 'G'], [27, 'R'], [36, 'd'], [45, 'P']].forEach(([x, c], i) => Obj2.egg(p, x, 35 - (i % 2), 1.4, c));
-      Obj2.egg(p, 32, 26, 1.2, 'Y');
-    },
-  },
 
   // ---------------- Pokémon ----------------
-  {
-    id: 'xl-pk-starters', name: 'Les trois amis', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p);
-      Deco.cloud(p, 44, 5, 1);
-      Deco.hills(p, 30, 'l');
-      Deco.grass(p, 32);
-      Obj2.bulbasaur(p, 13, 44, 1.05);
-      Obj2.charmander(p, 32, 44, 1.05);
-      Obj2.squirtle(p, 52, 44, 1.05, true);
-    },
-  },
-  {
-    id: 'xl-pk-salameche', name: 'Salamèche et le volcan', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p, 'Q', 'O', 'y', 0.3, 0.6);
-      Deco.volcano(p, 48, 40, 16, 18);
-      p.rect(0, 40, 64, 8, 'n');
-      Obj2.charmander(p, 22, 46, 1.6);
-    },
-  },
-  {
-    id: 'xl-pk-carapuce', name: 'Carapuce à la plage', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p, 'c', 'b', 'a', 0.25, 0.45);
-      Deco.sun(p, 56, 6, 3.5);
-      Obj.waves(p, 20);
-      p.layer((q) => { q.ellipse(32, 52, 46, 22, 'p'); }, 'o');
-      Deco.palm(p, 54, 40, 1.1);
-      Obj2.squirtle(p, 26, 46, 1.6);
-    },
-  },
-  {
-    id: 'xl-pk-bulbizarre', name: 'Bulbizarre dans la forêt', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p, 'b', 'a', 'a');
-      [6, 18, 46, 58].forEach((x, i) => Deco.tree(p, x, 34, 1 + (i % 2) * 0.2));
-      Deco.grass(p, 34);
-      Obj2.bulbasaur(p, 32, 46, 1.7);
-    },
-  },
-  {
-    id: 'xl-pk-ronflex', name: 'Ronflex fait la sieste', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p);
-      Deco.tree(p, 54, 38, 1.4);
-      Deco.grass(p, 38);
-      text(p, 44, 4, 'Z', 'W', 2); text(p, 50, 10, 'Z', 'W', 1); text(p, 39, 12, 'Z', 'W', 1);
-      Obj2.snorlax(p, 26, 46, 1.15);
-    },
-  },
-  {
-    id: 'xl-pk-rondoudou', name: 'Rondoudou chante', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      p.fill('V');
-      p.layer((q) => { q.poly([[0, 0], [14, 0], [8, 40], [0, 40]], 'R'); q.poly([[64, 0], [50, 0], [56, 40], [64, 40]], 'R'); });
-      p.layer((q) => q.poly([[26, 0], [38, 0], [50, 44], [14, 44]], 'v'));
-      p.rect(0, 40, 64, 8, 'B');
-      [[12, 10], [46, 8], [52, 22], [16, 24]].forEach(([x, y]) => text(p, x, y, '♪', 'Y', 1));
-      Obj2.jigglypuff(p, 32, 26, 1.45);
-    },
-  },
-  {
-    id: 'xl-pk-evoli', name: 'Évoli dans les fleurs', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p);
-      Deco.sun(p, 8, 8, 4);
-      Deco.grass(p, 34, false);
-      for (let i = 0; i < 12; i++) {
-        const x = 4 + i * 5.3, y = 37 + (i * 7) % 9;
-        p.layer((q) => { q.disc(x, y, 1.6, i % 3 === 0 ? 'P' : i % 3 === 1 ? 'Y' : 'v'); }, 'K');
-      }
-      Obj2.eevee(p, 32, 44, 1.35);
-    },
-  },
-  {
-    id: 'xl-pk-magicarpe', name: 'Magicarpe saute', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p);
-      Deco.cloud(p, 6, 6, 1);
-      Deco.mountains(p, 30, [[50, 14, 14]]);
-      Obj.waves(p, 32);
-      p.layer((q) => { [[22, 32], [42, 32], [28, 30], [36, 30]].forEach(([x, y]) => q.ellipse(x, y, 2, 3, 'W')); }, 'd');
-      Obj2.magikarp(p, 32, 18, 1.25);
-    },
-  },
-  {
-    id: 'xl-pk-surf', name: 'Pikachu surfe', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p, 'c', 'b', 'a', 0.3, 0.55);
-      Deco.sun(p, 54, 7, 3.5);
-      p.layer((q) => { q.ellipse(10, 36, 18, 16, 'E'); q.ellipse(8, 22, 6, 3, 'W'); }, 'd');
-      Obj.waves(p, 38);
-      p.layer((q) => { q.ellipse(34, 37, 16, 2.4, 'Y'); q.line(19, 37, 49, 37, 'R', 0.9); }, 'K');
-      Obj.pika(p, 34, 16, 0.95);
-    },
-  },
   {
     id: 'xl-pk-mew', name: 'Mew dans sa bulle', cat: 'pokemon', w: 64, h: 48,
     draw(p) {
@@ -777,17 +647,6 @@ const SCENE2_DEFS = [
       p.layer((q) => q.disc(32, 22, 15, 'a'), 'W');
       p.disc(26, 14, 2, 'W');
       Obj2.mew(p, 32, 24, 1.3);
-    },
-  },
-  {
-    id: 'xl-pk-psykokwak', name: 'Psykokwak au lac', cat: 'pokemon', w: 64, h: 48,
-    draw(p) {
-      Deco.sky(p);
-      Deco.tree(p, 8, 34, 1.1);
-      Deco.grass(p, 34, true);
-      p.layer((q) => q.ellipse(44, 40, 20, 7, 'E'), 'd');
-      [[56, 36], [60, 38]].forEach(([x, y]) => p.layer((q) => { q.line(x, y, x, y - 9, 'H', 1); q.ellipse(x, y - 9, 0.8, 1.8, 'B'); }, 'K'));
-      Obj2.psyduck(p, 24, 46, 1.35);
     },
   },
   {

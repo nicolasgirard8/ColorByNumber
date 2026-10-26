@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-bulbizarre" data-name="Bulbizarre" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#d8322e:2,#f07890:1.5">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pattes arrière -->
+  <path d="M150 150 L150 184 L178 184 L176 150 Z" fill="#6cc7a5"/>
+  <!-- bulbe -->
+  <path d="M130 40 C166 52 186 90 176 120 C156 134 110 134 94 118 C86 86 102 54 130 40 Z" fill="#6fbf3a"/>
+  <path d="M130 40 C120 70 122 100 132 128 M130 40 C150 66 160 96 156 126 M130 40 C108 62 100 92 104 122" fill="none" stroke="#3d8a2a" stroke-width="4"/>
+  <!-- corps -->
+  <path d="M60 122 C70 108 150 104 170 124 C184 140 176 166 150 170 L70 170 C50 166 48 140 60 122 Z" fill="#6cc7a5"/>
+  <!-- pattes avant -->
+  <path d="M60 150 L56 186 L88 186 L88 152 Z" fill="#6cc7a5"/>
+  <path d="M112 156 L110 188 L140 188 L140 156 Z" fill="#6cc7a5"/>
+  <path d="M60 186 L64 178 L68 186 M72 186 L76 178 L80 186 M114 188 L118 180 L122 188 M126 188 L130 180 L134 188" fill="#ffffff" stroke-width="2.5"/>
+  <!-- taches -->
+  <path d="M146 140 L158 134 L162 146 L150 150 Z M124 150 L134 146 L136 156 Z" fill="#3f8f7a" stroke="none"/>
+  <!-- tête -->
+  <path d="M66 58 C100 54 122 76 120 104 C118 132 92 142 64 140 C34 138 16 120 18 98 C20 74 38 60 66 58 Z" fill="#6cc7a5"/>
+  <!-- oreilles -->
+  <path d="M34 72 L28 44 L54 60 Z" fill="#6cc7a5"/>
+  <path d="M96 64 L110 38 L114 74 Z" fill="#6cc7a5"/>
+  <!-- taches de la tête -->
+  <path d="M60 64 L72 62 L68 72 Z M84 70 L96 72 L88 80 Z M40 76 L50 72 L48 82 Z" fill="#3f8f7a" stroke="none"/>
+  <!-- yeux -->
+  <path d="M30 96 C34 84 50 84 54 96 C50 104 34 104 30 96 Z" fill="#ffffff"/>
+  <path d="M80 96 C84 84 102 84 106 96 C102 104 84 104 80 96 Z" fill="#ffffff"/>
+  <circle cx="44" cy="94" r="6" fill="#d8322e" stroke="none"/>
+  <circle cx="92" cy="94" r="6" fill="#d8322e" stroke="none"/>
+  <circle cx="45" cy="92" r="2.5" fill="#ffffff" stroke="none"/>
+  <circle cx="93" cy="92" r="2.5" fill="#ffffff" stroke="none"/>
+  <!-- bouche -->
+  <path d="M34 114 C46 134 84 134 100 114 C84 120 50 120 34 114 Z" fill="#f07890"/>
+</g>
+</svg>

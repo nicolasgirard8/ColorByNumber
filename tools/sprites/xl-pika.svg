@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-pika" data-name="Pikachu dans la prairie" data-cat="pokemon" data-size="72" data-full="1">
+  <sprite src="parts/prairie" x="0" y="0" width="256" height="192"/>
+  <sprite src="parts/arbre" x="186" y="62" width="60" height="90"/>
+  <sprite src="parts/fleurs" x="0" y="0" width="256" height="192"/>
+  <sprite src="pikachu" x="56" y="14" width="160" height="172"/>
+  <sprite src="parts/pokeball" x="18" y="140" width="34" height="34"/>
+</svg>

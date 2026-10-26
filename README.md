@@ -20,6 +20,7 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 
 ## Qualité des images
 
+- **Personnages redessinés en vectoriel** (Pikachu, Salamèche, Carapuce, Bulbizarre, Évoli, Rondoudou, Ronflex, Psykokwak, Magicarpe, Sonic, Yoshi, Link, Dark Vador, Stormtrooper, C-3PO, Chewbacca, Boba Fett, Yoda, Grogu) et leurs 14 grandes scènes : dessins SVG à contours noirs dans `tools/sprites/`, convertis en grilles de 56 cases (72×54 pour les scènes) par `tools/sprites/build.js`.
 - **Ombres automatiques** : sur chaque grand personnage ou objet, le bord bas-droite reçoit une teinte plus foncée de sa couleur (relief façon dessin animé), et une petite ombre au sol apparaît sous ce qui est posé par terre. Seules les grandes zones sont ombrées, pour limiter le nombre de couleurs.
 - **Petits dessins faits main** agrandis en 32×32 avec l'algorithme Scale2x (bords adoucis, sans nouvelle couleur), puis ombrés.
 - **Dessins tirés des emojis** générés en 36×36, nettoyés des cases isolées et entourés d'un contour foncé.
@@ -76,6 +77,15 @@ Depuis un ordinateur : `npx wrangler deploy`.
 | `wrangler.jsonc`, `public/_headers` | Déploiement Cloudflare |
 
 ### Ajouter un dessin
+
+**Personnage (recommandé)** : dessine un SVG dans `tools/sprites/` (traits `#1b1b22` de 4 d'épaisseur, couleurs plates) avec `data-id`, `data-name`, `data-cat` et `data-size`. Une scène peut réutiliser un personnage avec `<sprite src="pikachu" x=… y=… width=… height=…/>` et `data-full="1"`. Puis, avec `python3 -m http.server 8765` lancé dans `public/` :
+
+```bash
+node tools/sprites/build.js --preview apercu.png pikachu   # aperçu
+node tools/sprites/build.js                                # régénère public/js/sprites.js
+```
+
+**Petit pixel art** :
 
 Ajoute une entrée dans `public/js/art.js` : chaque lettre de `rows` est une couleur définie dans `colors`, `.` est une case vide.
 
