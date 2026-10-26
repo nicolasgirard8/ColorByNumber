@@ -71,6 +71,24 @@ function rasterize(svgText, opts) {
         }
         cells = next;
       }
+      // Trop de couleurs : on fusionne les deux teintes les plus proches (la moins utilisée
+      // prend la couleur de l'autre) jusqu'à la limite. Le trait n'est jamais fusionné.
+      for (;;) {
+        const count = {};
+        cells.forEach((v) => { if (v >= 0) count[v] = (count[v] || 0) + 1; });
+        const used = Object.keys(count).map(Number);
+        if (used.length <= opts.max) break;
+        let best = null;
+        for (const a of used) for (const b of used) {
+          if (a >= b || a === inkIdx || b === inkIdx) continue;
+          const [ca, cb] = [rgb[a], rgb[b]];
+          const dist = 2 * (ca[0] - cb[0]) ** 2 + 4 * (ca[1] - cb[1]) ** 2 + 3 * (ca[2] - cb[2]) ** 2;
+          if (!best || dist < best[0]) best = [dist, a, b];
+        }
+        const [, a, b] = best;
+        const from = count[a] < count[b] ? a : b, to = from === a ? b : a;
+        cells = cells.map((v) => (v === from ? to : v));
+      }
       if (opts.full) {
         const lumF = rgb.map((c) => 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]);
         const usedF = [...new Set(cells.filter((v) => v >= 0))].sort((a, b) => lumF[b] - lumF[a]);
@@ -111,11 +129,79 @@ function rasterize(svgText, opts) {
   });
 }
 
+// ---------- Relief : ombre en bas à droite, reflet en haut à gauche ----------
+// Chaque forme colorée et entourée d'un trait reçoit une teinte plus foncée sur son bord
+// bas-droite et plus claire sur son bord haut-gauche (couleurs plates façon dessin animé).
+// `cell` = taille d'une case dans les unités du SVG. data-flat="1" sur une forme : pas de relief.
+const toRgb = (h) => [1, 3, 5].map((k) => parseInt(h.slice(k, k + 2), 16));
+const toHex = (c) => '#' + c.map((v) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0')).join('');
+const lumOf = (h) => { const [r, g, b] = toRgb(h); return (0.299 * r + 0.587 * g + 0.114 * b) / 255; };
+// Teintes en HSL : l'ombre tourne vers l'orangé (jaunes) ou le violet (bleus, verts),
+// le reflet s'éclaircit vers le jaune, comme en pixel art.
+function toHsl(h) {
+  const [r, g, b] = toRgb(h).map((v) => v / 255);
+  const mx = Math.max(r, g, b), mn = Math.min(r, g, b), l = (mx + mn) / 2;
+  if (mx === mn) return [0, 0, l];
+  const dd = mx - mn, sat = l > 0.5 ? dd / (2 - mx - mn) : dd / (mx + mn);
+  const hue = mx === r ? ((g - b) / dd + (g < b ? 6 : 0)) : mx === g ? (b - r) / dd + 2 : (r - g) / dd + 4;
+  return [hue * 60, sat, l];
+}
+function fromHsl(hh, sat, l) {
+  hh = ((hh % 360) + 360) % 360 / 360;
+  const f = (n) => { const k = (n + hh * 12) % 12; return l - sat * Math.min(l, 1 - l) * Math.max(-1, Math.min(k - 3, 9 - k, 1)); };
+  return toHex([f(0) * 255, f(8) * 255, f(4) * 255]);
+}
+const hueToward = (hue, target, amount) => { let dh = ((target - hue + 540) % 360) - 180; return hue + Math.sign(dh) * Math.min(Math.abs(dh), amount); };
+const darker = (h) => {
+  const [hue, sat, l] = toHsl(h);
+  if (sat < 0.12) return fromHsl(hue, sat, l * 0.74);
+  const target = hue >= 30 && hue < 90 ? 20 : hue >= 90 && hue < 300 ? 250 : 350;
+  return fromHsl(hueToward(hue, target, 10), sat, l * 0.78);
+};
+const lighter = (h) => {
+  const [hue, sat, l] = toHsl(h);
+  if (sat < 0.12) return fromHsl(hue, sat, l + (1 - l) * 0.5);
+  return fromHsl(hueToward(hue, 55, 10), sat, l + (1 - l) * 0.45);
+};
+let sid = 0;
+function shade(svg, cell) {
+  const sd = 3 * cell, hl = 1.6 * cell;
+  // On suit les groupes <g> : seules les formes dont le trait est foncé (contour) ont du relief.
+  const stack = [false];
+  return svg.replace(/<g\b([^>]*)>|<\/g>|<(path|ellipse|circle|rect)\b([^>]*?)\/>/g, (m, gAttrs, tag, attrs) => {
+    if (m === '</g>') { if (stack.length > 1) stack.pop(); return m; }
+    if (gAttrs !== undefined) {
+      const st = (gAttrs.match(/stroke="([^"]*)"/) || [])[1];
+      stack.push(st ? st !== 'none' && lumOf(st) < 0.2 : stack[stack.length - 1]);
+      return m;
+    }
+    const own = (attrs.match(/stroke="([^"]*)"/) || [])[1];
+    const outlined = own ? own !== 'none' && lumOf(own) < 0.2 : stack[stack.length - 1];
+    const fill = (attrs.match(/fill="(#[0-9a-fA-F]{6})"/) || [])[1];
+    if (!outlined || !fill || /data-flat/.test(attrs) || /clip-path/.test(attrs)) return m;
+    const L = lumOf(fill);
+    if (L < 0.25 || L > 0.93) return m;
+    const geo = attrs.replace(/\s(fill|stroke|stroke-width|stroke-linejoin|stroke-linecap)="[^"]*"/g, '');
+    const id = 's' + (++sid);
+    const el = (f) => '<' + tag + geo + ' fill="' + f + '" stroke="none"/>';
+    const done = m.replace(/\/>$/, ' data-flat="1"/>');
+    // Ombre : la forme décalée vers le haut-gauche laisse une bande foncée en bas à droite.
+    // Reflet : ce qui sort de la forme décalée vers le bas-droite devient plus clair.
+    return done
+      + '<clipPath id="' + id + '"><' + tag + ' id="' + id + 'g"' + geo + '/></clipPath>'
+      + '<clipPath id="' + id + 'h"><use href="#' + id + 'g" transform="translate(' + hl + ' ' + hl + ')"/></clipPath>'
+      + '<g clip-path="url(#' + id + ')">' + el(darker(fill))
+      + '<g transform="translate(' + -sd + ' ' + -sd + ')">' + el(lighter(fill)) + '</g>'
+      + '<g clip-path="url(#' + id + 'h)"><g transform="translate(' + -sd + ' ' + -sd + ')">' + el(fill) + '</g></g></g>'
+      + done.replace(/fill="#[0-9a-fA-F]{6}"/, 'fill="none"');
+  });
+}
+
 // <sprite src="pikachu" x="…" y="…" width="…" height="…" flip="1"/> insère un autre dessin
 // (tools/sprites/pikachu.svg ou parts/…) ; ses traits gardent la même épaisseur à l'écran.
 let uid = 0;
 let included = {};
-function expand(svg) {
+function expand(svg, cell) {
   return svg.replace(/<sprite ([^>]*)\/>/g, (m, attrs) => {
     const a = {};
     attrs.replace(/(\w+)="([^"]*)"/g, (_, k, v) => { a[k] = v; });
@@ -126,7 +212,8 @@ function expand(svg) {
     const x = +a.x, y = +a.y, w = +a.width, h = +a.height;
     const sc = Math.min(w / vb[2], h / vb[3]);
     const id = 'u' + (++uid);
-    let inner = expand(src.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, ''));
+    let inner = expand(src.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, ''), cell / sc);
+    inner = shade(inner, cell / sc);
     inner = inner.replace(/stroke-width="([\d.]+)"/g, (_, v) => 'stroke-width="' + (+v * (+a.line || 0.85) / sc).toFixed(2) + '"');
     inner = inner.replace(/id="(\w+)"/g, 'id="$1' + id + '"').replace(/url\(#(\w+)\)/g, 'url(#$1' + id + ')');
     const nested = '<svg x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" viewBox="' + vb.join(' ') + '">' + inner + '</svg>';
@@ -147,7 +234,9 @@ function expand(svg) {
   const result = [];
   for (const f of pick) {
     included = {};
-    const svg = expand(fs.readFileSync(path.join(DIR, f), 'utf8'));
+    const raw = fs.readFileSync(path.join(DIR, f), 'utf8');
+    const cellU = +raw.match(/viewBox="[^"]+"/)[0].split(/[\s"]+/)[3] / +((raw.match(/data-size="(\d+)"/) || [])[1] || 44);
+    const svg = shade(expand(raw, cellU), cellU);
     const attr = (k, def) => (svg.match(new RegExp('data-' + k + '="([^"]*)"')) || [])[1] || def;
     const weights = { ...included };
     attr('weights', '').split(',').filter(Boolean).forEach((s) => { const [c, v] = s.split(':'); weights[c.toLowerCase()] = +v; });
@@ -155,9 +244,9 @@ function expand(svg) {
     const vbW = +svg.match(/viewBox="[^"]+"/)[0].split(/[\s"]+/)[3];
     const k = (vbW / size) * +attr('stroke', 1.05) / 4;
     const svgScaled = svg.replace(/stroke-width="([\d.]+)"/g, (m, v) => 'stroke-width="' + (+v * k).toFixed(2) + '"');
-    const r = await page.evaluate(([svg, o]) => rasterize(svg, o), [svgScaled, { size, weights, S: 12, inkShare: +attr('ink', 0.46), full: attr('full', '') === '1' }]).catch(async () => {
+    const r = await page.evaluate(([svg, o]) => rasterize(svg, o), [svgScaled, { size, weights, S: 12, inkShare: +attr('ink', 0.46), full: attr('full', '') === '1', max: +attr('max', attr('full', '') === '1' ? 22 : 16) }]).catch(async () => {
       await page.addScriptTag({ content: rasterize.toString() });
-      return page.evaluate(([svg, o]) => rasterize(svg, o), [svgScaled, { size, weights, S: 12, inkShare: +attr('ink', 0.46), full: attr('full', '') === '1' }]);
+      return page.evaluate(([svg, o]) => rasterize(svg, o), [svgScaled, { size, weights, S: 12, inkShare: +attr('ink', 0.46), full: attr('full', '') === '1', max: +attr('max', attr('full', '') === '1' ? 22 : 16) }]);
     });
     result.push({ id: attr('id'), name: attr('name'), cat: attr('cat'), colors: r.colors, rows: r.rows, src: f });
   }

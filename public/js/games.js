@@ -85,26 +85,27 @@ function painter(w, h, seed = 1, shader = null) {
       });
       return P;
     },
-    // Ombre sur le bord bas-droite de chaque forme : donne du relief sans ajouter de reflets.
+    // Relief de chaque forme : ombre sur le bord bas-droite, reflet clair sur le bord haut-gauche.
     shade() {
       if (shaded || !shader) return P;
       shaded = true;
       const out = g.slice();
       const outside = (x, y) => P.get(x, y) === '.';
-      // Seules les grandes zones reçoivent une ombre : peu de couleurs en plus pour les petits.
+      // Les petites zones restent unies : pas de cases isolées à colorier.
       const count = {};
       g.forEach((c) => { count[c] = (count[c] || 0) + 1; });
       each((x, y) => {
         const c = g[y * w + x];
-        if (c === '.' || count[c] < 40) return;
-        const dark = shader.dark(c);
-        if (!dark) return;
+        if (c === '.' || count[c] < 24) return;
         // Les détails fins (yeux, traits) restent intacts.
         const same = [[1, 0], [-1, 0], [0, 1], [0, -1]].filter(([a, b]) => P.get(x + a, y + b) === c).length;
         if (same < 2) return;
-        if (outside(x + 1, y) || outside(x, y + 1) || outside(x + 1, y + 1)) out[y * w + x] = dark;
+        const dark = shader.dark(c), light = shader.light(c);
+        const edge = (k) => outside(x + k, y) || outside(x, y + k) || outside(x + k, y + k);
+        if (dark && (edge(1) || (count[c] >= 80 && edge(2)))) out[y * w + x] = dark;
+        else if (light && count[c] >= 40 && (outside(x - 1, y) || outside(x, y - 1) || outside(x - 1, y - 1))) out[y * w + x] = light;
       });
-      // Une case d'ombre toute seule (coin en escalier) reprend sa couleur d'origine.
+      // Une case d'ombre ou de reflet toute seule (coin en escalier) reprend sa couleur d'origine.
       each((x, y) => {
         const i = y * w + x;
         if (out[i] === g[i]) return;
@@ -949,28 +950,36 @@ function darkerHex(hex) {
 // Lettres libres pour les teintes d'ombre ajoutées aux palettes.
 const SHADE_POOL = 'αβγδεζηθικλμνξοπρστυφχψωабвгдежзийклмнопрстуфхцчшщэюяΓΔΘΛΞΠΣΦΨΩ';
 
-// Crée l'ombreur d'une palette : ajoute à `colors` une teinte foncée par couleur
-// (ou réutilise une couleur déjà très proche, pour ne pas multiplier les numéros).
+// Teinte de reflet : même couleur, plus claire, légèrement réchauffée.
+function lighterHex(hex) {
+  const [r, g, b] = Gen.hexToRgb(hex);
+  const mix = (v, warm) => Math.round(v + (255 - v) * 0.42 + warm);
+  return '#' + [mix(r, 4), mix(g, 2), mix(b, -6)].map((v) => Math.max(0, Math.min(255, v)).toString(16).padStart(2, '0')).join('');
+}
+
+// Crée l'ombreur d'une palette : ajoute à `colors` une teinte foncée et une teinte claire
+// par couleur (ou réutilise une couleur déjà très proche, pour ne pas multiplier les numéros).
 function makeShader(colors, { skip = 'K', ground = '' } = {}) {
-  const map = {};
+  const map = {}, lightMap = {};
   const dist = (a, b) => { const x = Gen.hexToRgb(a), y = Gen.hexToRgb(b); return Math.hypot(x[0] - y[0], x[1] - y[1], x[2] - y[2]); };
-  Object.keys(colors).forEach((ch) => {
-    if (skip.includes(ch) || SHADE_POOL.includes(ch) || Gen.luminance(colors[ch]) < 0.14) return;
-    const dark = darkerHex(colors[ch]);
-    const near = Object.keys(colors).find((k) => k !== ch && dist(colors[k], dark) < 26);
-    if (near) { map[ch] = near; return; }
+  const add = (ch, hex, into) => {
+    const near = Object.keys(colors).find((k) => k !== ch && dist(colors[k], hex) < 26);
+    if (near) { into[ch] = near; return; }
     const letter = [...SHADE_POOL].find((l) => !(l in colors));
     if (!letter) return;
-    colors[letter] = dark;
-    map[ch] = letter;
-  });
-  return { dark: (c) => map[c], ground: (c) => ground.includes(c) };
+    colors[letter] = hex;
+    into[ch] = letter;
+  };
+  const base = Object.keys(colors).filter((ch) => !skip.includes(ch) && !SHADE_POOL.includes(ch));
+  base.forEach((ch) => { if (Gen.luminance(colors[ch]) >= 0.14) add(ch, darkerHex(colors[ch]), map); });
+  base.forEach((ch) => { if (Gen.luminance(colors[ch]) >= 0.14 && Gen.luminance(colors[ch]) < 0.86) add(ch, lighterHex(colors[ch]), lightMap); });
+  return { dark: (c) => map[c], light: (c) => lightMap[c], ground: (c) => ground.includes(c) };
 }
 
 function renderDefs(defs, name, seedOf, extra = '', shaderFor = null) {
   // Les ombreurs complètent les palettes : ils sont créés même quand le dessin vient du cache.
   const shaders = defs.map((d) => (shaderFor ? shaderFor(d) : null));
-  let src = painter.toString() + extra + darkerHex.toString() + makeShader.toString();
+  let src = painter.toString() + extra + darkerHex.toString() + lighterHex.toString() + makeShader.toString();
   defs.forEach((d) => { src += d.id + d.w + 'x' + d.h + d.draw.toString() + (d.colors ? JSON.stringify(d.colors) : ''); });
   let hash = 2166136261;
   for (let i = 0; i < src.length; i++) hash = Math.imul(hash ^ src.charCodeAt(i), 16777619);
