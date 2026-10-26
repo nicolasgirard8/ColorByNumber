@@ -1,5 +1,5 @@
 // Cache hors ligne : l'application fonctionne sans connexion après la première visite.
-const CACHE = 'coloriage-v12';
+const CACHE = 'coloriage-v13';
 const FILES = [
   './',
   'index.html',
@@ -10,6 +10,7 @@ const FILES = [
   'js/scenes.js',
   'js/scenes2.js',
   'js/gems.js',
+  'js/openmoji-data.js',
   'js/audio.js',
   'js/app.js',
   'manifest.webmanifest',

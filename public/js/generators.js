@@ -279,5 +279,140 @@ const Gen = (() => {
     return { w, h, ...res };
   }
 
-  return { rng, build, fromArt, mandala, emoji, photo, luminance, hexToRgb };
+  // Convertit une image (dessin, clipart, photo) en coloriage net.
+  // - analyse en 6× plus grand, puis chaque case prend la couleur majoritaire de son bloc ;
+  // - les traits foncés sont prioritaires quand ils couvrent assez la case (contours continus) ;
+  // - option : fond enlevé (couleur des bords), recadrage sur le sujet et contour ajouté.
+  function convert(source, { size = 40, colors = 12, removeBg = false, outline = false, crop = true } = {}) {
+    const S = 6;
+    const sw = source.naturalWidth || source.width, sh = source.naturalHeight || source.height;
+    // 1. Image de travail en haute définition (côté max = size × S).
+    const scale0 = (size * S) / Math.max(sw, sh);
+    let W = Math.max(1, Math.round(sw * scale0)), H = Math.max(1, Math.round(sh * scale0));
+    let cv = document.createElement('canvas');
+    cv.width = W; cv.height = H;
+    let g = cv.getContext('2d', { willReadFrequently: true });
+    g.imageSmoothingEnabled = true;
+    g.imageSmoothingQuality = 'high';
+    g.drawImage(source, 0, 0, W, H);
+    let data = g.getImageData(0, 0, W, H).data;
+    const alpha = new Uint8Array(W * H);
+    for (let i = 0; i < W * H; i++) alpha[i] = data[i * 4 + 3] >= 128 ? 1 : 0;
+    // 2. Fond enlevé : remplissage depuis les bords sur la couleur des coins.
+    if (removeBg) {
+      const corners = [0, W - 1, (H - 1) * W, H * W - 1].map((i) => [data[i * 4], data[i * 4 + 1], data[i * 4 + 2]]);
+      const ref = corners.reduce((a, c) => [a[0] + c[0] / 4, a[1] + c[1] / 4, a[2] + c[2] / 4], [0, 0, 0]);
+      const near = (i) => Math.hypot(data[i * 4] - ref[0], data[i * 4 + 1] - ref[1], data[i * 4 + 2] - ref[2]) < 48;
+      const stack = [];
+      for (let x = 0; x < W; x++) stack.push(x, (H - 1) * W + x);
+      for (let y = 0; y < H; y++) stack.push(y * W, y * W + W - 1);
+      const seen = new Uint8Array(W * H);
+      while (stack.length) {
+        const i = stack.pop();
+        if (seen[i]) continue;
+        seen[i] = 1;
+        // On traverse le transparent et la couleur du fond ; on s'arrête sur le sujet.
+        if (alpha[i] && !near(i)) continue;
+        alpha[i] = 0;
+        const x = i % W, y = (i / W) | 0;
+        if (x > 0) stack.push(i - 1);
+        if (x < W - 1) stack.push(i + 1);
+        if (y > 0) stack.push(i - W);
+        if (y < H - 1) stack.push(i + W);
+      }
+    }
+    // 3. Recadrage sur le sujet (une petite marge pour le contour).
+    let x0 = 0, y0 = 0, x1 = W - 1, y1 = H - 1;
+    if (crop) {
+      x0 = W; y0 = H; x1 = -1; y1 = -1;
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (alpha[y * W + x]) { if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+      if (x1 < 0) { x0 = 0; y0 = 0; x1 = W - 1; y1 = H - 1; }
+    }
+    const bw = x1 - x0 + 1, bh = y1 - y0 + 1;
+    const inner = outline ? size - 2 : size;
+    const w = Math.max(4, Math.round(bw >= bh ? inner : (inner * bw) / bh)) + (outline ? 2 : 0);
+    const h = Math.max(4, Math.round(bh >= bw ? inner : (inner * bh) / bw)) + (outline ? 2 : 0);
+    const pad = outline ? 1 : 0;
+    const cellW = bw / (w - 2 * pad), cellH = bh / (h - 2 * pad);
+    // 4. Couleurs : k-moyennes sur un échantillon des pixels du sujet.
+    const sample = [];
+    for (let y = y0; y <= y1; y += 2) for (let x = x0; x <= x1; x += 2) {
+      const i = y * W + x;
+      if (alpha[i]) sample.push([data[i * 4], data[i * 4 + 1], data[i * 4 + 2]]);
+    }
+    if (!sample.length) return { w, h, palette: ['#ffffff'], cells: new Array(w * h).fill(0) };
+    const { centers } = quantize(sample, colors, w * 31 + h);
+    const lum = centers.map((c) => (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255);
+    const nearestC = (r, gg, b) => {
+      let best = 0, bd = Infinity;
+      for (let j = 0; j < centers.length; j++) {
+        const c = centers[j], d = 2 * (r - c[0]) ** 2 + 4 * (gg - c[1]) ** 2 + 3 * (b - c[2]) ** 2;
+        if (d < bd) { bd = d; best = j; }
+      }
+      return best;
+    };
+    // 5. Une case = la couleur majoritaire de son bloc, avec priorité aux traits foncés.
+    let cells = new Array(w * h).fill(-1);
+    for (let cy = pad; cy < h - pad; cy++) {
+      for (let cx = pad; cx < w - pad; cx++) {
+        const ax = x0 + (cx - pad) * cellW, ay = y0 + (cy - pad) * cellH;
+        const tally = new Array(centers.length).fill(0);
+        let opaque = 0, total = 0;
+        for (let y = Math.floor(ay); y < Math.min(y1 + 1, Math.ceil(ay + cellH)); y++) {
+          for (let x = Math.floor(ax); x < Math.min(x1 + 1, Math.ceil(ax + cellW)); x++) {
+            total++;
+            const i = y * W + x;
+            if (!alpha[i]) continue;
+            opaque++;
+            tally[nearestC(data[i * 4], data[i * 4 + 1], data[i * 4 + 2])]++;
+          }
+        }
+        if (!total || opaque * 2 < total) continue;
+        let best = 0;
+        tally.forEach((v, j) => { if (v > tally[best]) best = j; });
+        let ink = -1;
+        tally.forEach((v, j) => { if (lum[j] < 0.22 && v >= opaque * 0.22 && (ink < 0 || lum[j] < lum[ink])) ink = j; });
+        cells[cy * w + cx] = ink >= 0 ? ink : best;
+      }
+    }
+    // 6. Nettoyage des cases isolées (deux passes).
+    const at2 = (c, x, y) => (x < 0 || y < 0 || x >= w || y >= h ? -2 : c[y * w + x]);
+    for (let pass = 0; pass < 2; pass++) {
+      const next = cells.slice();
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        const v = cells[y * w + x];
+        if (v < 0) continue;
+        const nb = [at2(cells, x + 1, y), at2(cells, x - 1, y), at2(cells, x, y + 1), at2(cells, x, y - 1)];
+        if (nb.includes(v)) continue;
+        const t = {};
+        nb.filter((n) => n >= 0).forEach((n) => { t[n] = (t[n] || 0) + 1; });
+        const keys = Object.keys(t);
+        if (keys.length) next[y * w + x] = +keys.sort((a, b) => t[b] - t[a])[0];
+      }
+      cells = next;
+    }
+    // 7. Fusion des couleurs presque identiques.
+    const target = centers.map((_, j) => j);
+    for (let a = 0; a < centers.length; a++) for (let b = 0; b < a; b++) {
+      if (target[b] !== b || target[a] !== a) continue;
+      const d = Math.hypot(centers[a][0] - centers[b][0], centers[a][1] - centers[b][1], centers[a][2] - centers[b][2]);
+      if (d < 22) target[a] = b;
+    }
+    cells = cells.map((v) => (v < 0 ? v : target[v]));
+    const palette = centers.map((c) => hex(c[0], c[1], c[2]));
+    // 8. Contour net autour du sujet.
+    if (outline) {
+      const darkest = lum.indexOf(Math.min(...lum));
+      const ink = lum[darkest] < 0.22 ? darkest : palette.push('#2b2438') - 1;
+      const out = cells.slice();
+      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+        if (cells[y * w + x] >= 0) continue;
+        if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([a, b]) => at2(cells, x + a, y + b) >= 0)) out[y * w + x] = ink;
+      }
+      cells = out;
+    }
+    return { w, h, palette, cells };
+  }
+
+  return { rng, build, fromArt, mandala, emoji, photo, convert, luminance, hexToRgb };
 })();

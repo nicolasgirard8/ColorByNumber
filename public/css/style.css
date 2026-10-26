@@ -144,6 +144,7 @@ button {
   gap: 6px;
   transition: transform .15s;
   text-align: left;
+  min-width: 0;
 }
 .card:active { transform: scale(.96); }
 .card canvas {
@@ -201,6 +202,15 @@ button {
   text-align: center;
 }
 .card.add .plus { font-size: 46px; line-height: 1; }
+.credit {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 8px 10px 16px;
+}
+.credit a { color: inherit; }
+
 .empty {
   grid-column: 1 / -1;
   text-align: center;
