@@ -6,7 +6,7 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 ## Fonctionnalités
 
 - **Galerie** par thèmes : dinosaures, véhicules, police, espace, océan, aventure, pierres précieuses, Minecraft, Pokémon, Star Wars, jeux vidéo, animaux, nourriture, nature, objets, mandalas, et un onglet « Mes coloriages » (en cours et terminés).
-- **Plus de 700 dessins** : 517 dessins OpenMoji (animaux, émotions, métiers, sports, fêtes, véhicules, nourriture…) et 192 dessins faits pour le jeu, dont **33 nouvelles scènes XXL** (police, jeux vidéo, Pokémon), dont **16 pierres précieuses sans contour** (diamant, rubis, émeraude, saphir, améthyste, topaze, citrine, aigue-marine, quartz rose, péridot, grenat, tanzanite, tourmaline, perle, opale et un trésor qui les réunit), dont **51 scènes XXL plein écran** (64×48 ou 48×64 cases : dinosaures, camions de pompiers, monster trucks, fusées, requins, dragons, robots, super-héros, ninjas, pirates…), 64 grands dessins jeux vidéo (18 Minecraft, 12 Pokémon, 16 Star Wars, 18 autres dont Mario, Sonic, Kirby, Zelda et Fortnite, de 32×32 à 56×24), 20 pixel arts faits main, 8 mandalas générés.
+- **230 dessins**, dont **33 nouvelles scènes XXL** (police, jeux vidéo, Pokémon), dont **16 pierres précieuses sans contour** (diamant, rubis, émeraude, saphir, améthyste, topaze, citrine, aigue-marine, quartz rose, péridot, grenat, tanzanite, tourmaline, perle, opale et un trésor qui les réunit), dont **51 scènes XXL plein écran** (64×48 ou 48×64 cases : dinosaures, camions de pompiers, monster trucks, fusées, requins, dragons, robots, super-héros, ninjas, pirates…), 64 grands dessins jeux vidéo (18 Minecraft, 12 Pokémon, 16 Star Wars, 18 autres dont Mario, Sonic, Kirby, Zelda et Fortnite, de 32×32 à 56×24), 20 pixel arts faits main, 8 mandalas générés et une quarantaine d'emojis convertis en pixel art (selon les polices de l'appareil).
 - **Coloriage au doigt ou à la souris** : un appui colorie une case, un glissé déplace l'image ; garde le doigt appuyé un instant puis glisse pour colorier plusieurs cases d'un coup (un rond de la couleur choisie entoure alors le doigt).
 - **Zoom** : pincement à deux doigts, molette, boutons ＋ / － / ⤢ ; un appui sur un dessin trop petit zoome directement dessus.
 - Les cases de la couleur choisie sont **bien visibles** : bord de la vraie couleur, centre pâle qui pulse doucement, même dézoomé ; les autres cases s'estompent. Une couleur ne peut colorier que les cases de son propre numéro.
@@ -22,7 +22,8 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 
 - **Ombres automatiques** : sur chaque grand personnage ou objet, le bord bas-droite reçoit une teinte plus foncée de sa couleur (relief façon dessin animé), et une petite ombre au sol apparaît sous ce qui est posé par terre. Seules les grandes zones sont ombrées, pour limiter le nombre de couleurs.
 - **Petits dessins faits main** agrandis en 32×32 avec l'algorithme Scale2x (bords adoucis, sans nouvelle couleur), puis ombrés.
-- **Dessins OpenMoji** convertis en 40×40 au maximum avec `Gen.convert` : rendu en haute définition, couleurs regroupées, traits noirs prioritaires, cases isolées nettoyées. Le même moteur sert à l'import d'images.
+- **Dessins tirés des emojis** générés en 36×36, nettoyés des cases isolées et entourés d'un contour foncé.
+- **Images importées** converties avec `Gen.convert` : rendu en haute définition, couleurs regroupées, traits noirs prioritaires, cases isolées nettoyées.
 - **Peu de cases isolées** : étoiles en petites croix espacées, fenêtres allumées en 2×2, brins d'herbe et fleurs groupés, contours sans « marches » en diagonale (un seul trait continu), ombres sans cases orphelines.
 - Un dessin déjà terminé reste terminé quand son image est améliorée ; un dessin en cours sur une image modifiée repart de zéro.
 
@@ -69,7 +70,6 @@ Depuis un ordinateur : `npx wrangler deploy`.
 | `public/js/scenes2.js` | Deuxième série de scènes : police, jeux vidéo et Pokémon en pied |
 | `public/js/scenes.js` | Scènes XXL : décors et personnages réutilisables (agrandis, retournés, recolorés) |
 | `public/js/generators.js` | Mandalas, conversion d'images en grille numérotée (`Gen.convert`) |
-| `public/js/openmoji-data.js` | Dessins OpenMoji convertis (CC BY-SA 4.0) |
 | `public/js/audio.js` | Effets sonores |
 | `public/js/app.js` | Galerie, jeu, gestes, sauvegarde, écran de fin |
 | `public/sw.js`, `public/manifest.webmanifest` | Mode hors ligne et installation |
@@ -86,7 +86,3 @@ Ajoute une entrée dans `public/js/art.js` : chaque lettre de `rows` est une cou
   rows: ['.RR.RR.', 'RWRRRRR', '.RRRRR.', '..RRR..', '...R...'],
 }
 ```
-
-## Crédits
-
-Les dessins de `public/js/openmoji-data.js` sont dérivés d'[OpenMoji](https://openmoji.org), le projet d'emojis open source du HfG Schwäbisch Gmünd, sous licence [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Ces grilles converties sont partagées sous la même licence. Noms français : [Emojibase](https://emojibase.dev) (MIT).
