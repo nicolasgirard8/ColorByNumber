@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" data-id="hoc-joueur" data-name="Le patineur" data-cat="hockey" data-size="56" data-weights="#ffffff:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- crosse -->
+  <path d="M176 76 L130 140" fill="none" stroke-width="14"/><path d="M176 76 L130 140" fill="none" stroke="#c88a3a" stroke-width="7"/>
+  <path d="M132 138 L108 168 L88 168 C82 168 82 160 88 158 L122 138 Z" fill="#c88a3a"/>
+  <!-- palet -->
+  <ellipse cx="62" cy="172" rx="16" ry="6" fill="#2a2030"/><path d="M46 172 L46 166 C46 160 78 160 78 166 L78 172" fill="#2a2030" stroke="none"/>
+  <!-- jambes en patinage -->
+  <path d="M96 120 L74 160" fill="none" stroke-width="30"/><path d="M96 120 L74 160" fill="none" stroke="#2a6ad0" stroke-width="22"/>
+  <path d="M122 120 L156 150" fill="none" stroke-width="30"/><path d="M122 120 L156 150" fill="none" stroke="#2a6ad0" stroke-width="22"/>
+  <!-- patins -->
+  <path d="M52 164 L92 164 L92 178 L46 178 C42 178 44 168 52 164 Z" fill="#f4f4f8"/>
+  <path d="M42 182 L98 182" fill="none" stroke="#c9ced6" stroke-width="7"/>
+  <path d="M142 150 L174 156 L170 170 L138 164 Z" fill="#f4f4f8"/>
+  <path d="M132 174 L184 174" fill="none" stroke="#c9ced6" stroke-width="7"/>
+  <!-- chandail -->
+  <path d="M70 66 L134 66 L142 128 L66 128 Z" fill="#2a6ad0"/>
+  <path d="M68 98 L140 98 L141 112 L67 112 Z" fill="#ffffff" stroke="none"/>
+  <path d="M96 66 C100 78 112 78 116 66" fill="#ffffff"/>
+  <!-- bras -->
+  <path d="M138 72 L172 74" fill="none" stroke-width="22"/><path d="M138 72 L172 74" fill="none" stroke="#2a6ad0" stroke-width="14"/>
+  <path d="M70 76 L118 112" fill="none" stroke-width="22"/><path d="M70 76 L118 112" fill="none" stroke="#2a6ad0" stroke-width="14"/>
+  <circle cx="178" cy="74" r="10" fill="#2a2030"/><circle cx="126" cy="132" r="10" fill="#2a2030"/>
+  <!-- tête avec casque -->
+  <circle cx="102" cy="40" r="26" fill="#f6d0a8"/>
+  <path d="M74 44 C70 14 96 6 108 8 C130 10 134 34 130 46 L120 42 C112 30 92 28 82 36 Z" fill="#e8302a"/>
+  <ellipse cx="94" cy="46" rx="3" ry="4.5" fill="#1b1b22" stroke="none"/><ellipse cx="114" cy="46" rx="3" ry="4.5" fill="#1b1b22" stroke="none"/>
+  <path d="M96 58 Q104 64 112 58" fill="none" stroke-width="3"/>
+  <path d="M76 54 C86 64 118 64 128 54" fill="none" stroke="#7a8a9a" stroke-width="3"/>
+</g>
+</svg>

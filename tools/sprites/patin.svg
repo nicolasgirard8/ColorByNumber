@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 190" data-id="hoc-patin" data-name="Patin à glace" data-cat="hockey" data-size="52" data-weights="#ffffff:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- lame -->
+  <path d="M20 156 L204 156 C210 156 212 164 206 168 L186 176 L30 176 C20 176 14 168 20 156 Z" fill="#c9ced6"/>
+  <path d="M30 166 L200 166" fill="none" stroke="#8a8f9c" stroke-width="3"/>
+  <!-- supports -->
+  <path d="M54 146 L54 158 M158 146 L158 158" fill="none" stroke-width="10"/><path d="M54 146 L54 158 M158 146 L158 158" fill="none" stroke="#8a8f9c" stroke-width="3"/>
+  <!-- chaussure -->
+  <path d="M30 150 C26 110 34 60 40 26 C54 14 82 14 94 28 C100 60 110 82 150 96 C186 108 204 126 200 150 Z" fill="#f4f4f8"/>
+  <!-- col -->
+  <path d="M40 26 C54 14 82 14 94 28 C90 40 52 42 40 26 Z" fill="#e8302a"/>
+  <!-- lacets -->
+  <path d="M96 48 L120 66 M100 62 L128 76 M110 74 L136 84 M122 82 L150 94" fill="none" stroke-width="5"/>
+  <!-- bande bleue -->
+  <path d="M32 120 C60 104 110 104 192 128 L196 144 L30 144 Z" fill="#2a6ad0"/>
+  <!-- semelle -->
+  <path d="M28 146 L202 146 L200 154 L26 154 Z" fill="#2a2030"/>
+</g>
+</svg>

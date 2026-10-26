@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-togepi" data-name="Togepi" data-cat="pokemon" data-size="56" data-weights="#ffffff:3,#e8302a:3,#2a6ad0:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pieds et mains -->
+  <ellipse cx="78" cy="186" rx="14" ry="7" fill="#fce8b0"/><ellipse cx="122" cy="186" rx="14" ry="7" fill="#fce8b0"/>
+  <ellipse cx="50" cy="132" rx="10" ry="12" fill="#fce8b0"/><ellipse cx="150" cy="132" rx="10" ry="12" fill="#fce8b0"/>
+  <!-- grand œuf à motifs -->
+  <path d="M100 52 C150 52 162 112 148 150 C140 174 120 184 100 184 C80 184 60 174 52 150 C38 112 50 52 100 52 Z" fill="#fcf6e0"/>
+  <path d="M62 82 L74 98 L88 78 L100 98 L112 78 L126 98 L138 82 C142 94 144 104 144 114 L56 114 C56 104 58 94 62 82 Z" fill="#e8302a" stroke-width="3"/>
+  <path d="M60 128 L72 146 L84 126 L98 146 L110 126 L124 146 L136 128 C138 150 126 170 114 180 L86 180 C74 170 62 150 60 128 Z" fill="#2a6ad0" stroke-width="3"/>
+  <!-- visage -->
+  <path d="M100 44 C128 44 140 62 138 80 C132 96 68 96 62 80 C60 62 72 44 100 44 Z" fill="#fce8b0"/>
+  <path d="M76 44 L86 30 L100 42 L114 30 L124 44" fill="#fce8b0" stroke-width="3"/>
+  <ellipse cx="82" cy="68" rx="7" ry="9" fill="#1b1b22"/><ellipse cx="118" cy="68" rx="7" ry="9" fill="#1b1b22"/>
+  <circle cx="80" cy="64" r="3" fill="#ffffff" stroke="none"/><circle cx="116" cy="64" r="3" fill="#ffffff" stroke="none"/>
+  <path d="M92 80 Q100 86 108 80" fill="none" stroke-width="3"/>
+</g>
+</svg>

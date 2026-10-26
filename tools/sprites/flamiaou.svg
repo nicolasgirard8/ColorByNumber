@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-flamiaou" data-name="Flamiaou" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#f6d23a:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M130 164 C166 168 186 146 178 112 C174 98 160 100 162 112" fill="none" stroke-width="16"/>
+  <path d="M130 164 C166 168 186 146 178 112 C174 98 160 100 162 112" fill="none" stroke="#e8402a" stroke-width="8"/>
+  <!-- pattes -->
+  <ellipse cx="74" cy="184" rx="16" ry="8" fill="#1b1b22"/><ellipse cx="126" cy="184" rx="16" ry="8" fill="#1b1b22"/>
+  <!-- corps -->
+  <path d="M100 96 C138 96 150 130 144 154 C140 172 120 178 100 178 C80 178 60 172 56 154 C50 130 62 96 100 96 Z" fill="#e8402a"/>
+  <path d="M100 120 C120 120 126 142 120 158 C114 170 86 170 80 158 C74 142 80 120 100 120 Z" fill="#fce8c0" stroke="none"/>
+  <!-- bras noirs -->
+  <path d="M62 112 C46 120 42 138 50 148 C58 146 64 134 70 124 Z" fill="#2a2030"/>
+  <path d="M138 112 C154 120 158 138 150 148 C142 146 136 134 130 124 Z" fill="#2a2030"/>
+  <!-- oreilles -->
+  <path d="M58 56 L48 14 L92 40 Z" fill="#e8402a"/>
+  <path d="M142 56 L152 14 L108 40 Z" fill="#e8402a"/>
+  <path d="M60 44 L56 24 L76 38 Z" fill="#2a2030" stroke="none"/>
+  <path d="M140 44 L144 24 L124 38 Z" fill="#2a2030" stroke="none"/>
+  <!-- tête -->
+  <path d="M100 32 C140 32 154 54 150 72 C146 92 126 100 100 100 C74 100 54 92 50 72 C46 54 60 32 100 32 Z" fill="#e8402a"/>
+  <path d="M62 72 C74 82 126 82 138 72 C134 88 120 96 100 96 C80 96 66 88 62 72 Z" fill="#2a2030" stroke="none"/>
+  <path d="M82 38 L100 54 L118 38" fill="#2a2030" stroke="none"/>
+  <!-- yeux jaunes -->
+  <path d="M64 56 C70 46 88 48 90 60 C84 68 70 66 64 56 Z" fill="#f6d23a"/>
+  <path d="M110 60 C112 48 130 46 136 56 C130 66 116 68 110 60 Z" fill="#f6d23a"/>
+  <ellipse cx="79" cy="58" rx="3" ry="6" fill="#1b1b22" stroke="none"/><ellipse cx="121" cy="58" rx="3" ry="6" fill="#1b1b22" stroke="none"/>
+  <path d="M96 76 L104 76 L100 82 Z" fill="#e87a8a" stroke-width="2.5"/>
+  <path d="M60 78 L42 74 M60 84 L42 88 M140 78 L158 74 M140 84 L158 88" fill="none" stroke-width="3"/>
+</g>
+</svg>

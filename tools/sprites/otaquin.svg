@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-otaquin" data-name="Otaquin" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#f08aa8:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M130 164 C158 166 176 154 178 138 C164 142 148 142 136 138 Z" fill="#4a86c8"/>
+  <!-- nageoires pieds -->
+  <ellipse cx="72" cy="184" rx="18" ry="8" fill="#f4f4f8"/><ellipse cx="128" cy="184" rx="18" ry="8" fill="#f4f4f8"/>
+  <!-- corps -->
+  <path d="M100 96 C138 96 150 130 144 154 C140 172 120 178 100 178 C80 178 60 172 56 154 C50 130 62 96 100 96 Z" fill="#4a86c8"/>
+  <path d="M100 122 C120 122 126 142 120 158 C114 170 86 170 80 158 C74 142 80 122 100 122 Z" fill="#f4f4f8" stroke="none"/>
+  <!-- nageoires bras -->
+  <path d="M58 112 C36 118 28 140 38 154 C50 152 60 140 64 124 Z" fill="#4a86c8"/>
+  <path d="M142 112 C164 118 172 140 162 154 C150 152 140 140 136 124 Z" fill="#4a86c8"/>
+  <!-- bulle de nez rose -->
+  <circle cx="100" cy="82" r="13" fill="#fcc0d4" stroke-width="3"/>
+  <circle cx="95" cy="77" r="4" fill="#ffffff" stroke="none"/>
+  <!-- tête -->
+  <path d="M100 30 C138 30 152 52 148 74 C144 94 124 102 100 102 C76 102 56 94 52 74 C48 52 62 30 100 30 Z" fill="#4a86c8"/>
+  <path d="M60 78 C72 96 128 96 140 78 C140 92 124 102 100 102 C76 102 60 92 60 78 Z" fill="#f4f4f8" stroke="none"/>
+  <path d="M82 30 C80 18 90 12 100 12 C110 12 120 18 118 30 Z" fill="#4a86c8"/>
+  <ellipse cx="76" cy="60" rx="8" ry="10" fill="#1b1b22"/><ellipse cx="124" cy="60" rx="8" ry="10" fill="#1b1b22"/>
+  <circle cx="74" cy="56" r="3.5" fill="#ffffff" stroke="none"/><circle cx="122" cy="56" r="3.5" fill="#ffffff" stroke="none"/>
+  <circle cx="64" cy="76" r="6" fill="#f08aa8" stroke="none"/><circle cx="136" cy="76" r="6" fill="#f08aa8" stroke="none"/>
+</g>
+</svg>

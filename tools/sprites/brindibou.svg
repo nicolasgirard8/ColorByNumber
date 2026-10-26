@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-brindibou" data-name="Brindibou" data-cat="pokemon" data-size="56" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pieds -->
+  <path d="M76 168 L70 188 M76 168 L82 188 M64 188 L88 188 M124 168 L118 188 M124 168 L130 188 M112 188 L136 188" fill="none" stroke="#c88a4a" stroke-width="5"/>
+  <!-- corps rond -->
+  <path d="M100 92 C148 92 162 134 152 160 C144 178 122 184 100 184 C78 184 56 178 48 160 C38 134 52 92 100 92 Z" fill="#c8a07a"/>
+  <path d="M100 120 C126 120 134 144 128 162 C122 176 78 176 72 162 C66 144 74 120 100 120 Z" fill="#fcf2e0" stroke="none"/>
+  <path d="M82 138 L92 146 M100 134 L100 148 M118 138 L108 146" fill="none" stroke="#c8a07a" stroke-width="3"/>
+  <!-- ailes -->
+  <path d="M52 112 C32 118 24 144 32 164 C46 160 58 144 62 126 Z" fill="#a87848"/>
+  <path d="M148 112 C168 118 176 144 168 164 C154 160 142 144 138 126 Z" fill="#a87848"/>
+  <!-- feuille-collier -->
+  <path d="M60 106 C72 124 128 124 140 106 C128 100 72 100 60 106 Z" fill="#4ca83a"/>
+  <!-- tête de hibou -->
+  <path d="M100 24 C140 24 154 50 150 74 C146 96 126 104 100 104 C74 104 54 96 50 74 C46 50 60 24 100 24 Z" fill="#c8a07a"/>
+  <path d="M66 28 L62 8 L84 24 Z" fill="#a87848"/>
+  <path d="M134 28 L138 8 L116 24 Z" fill="#a87848"/>
+  <path d="M60 60 C60 48 78 48 100 62 C122 48 140 48 140 60 C142 78 124 90 100 90 C76 90 58 78 60 60 Z" fill="#fcf2e0"/>
+  <ellipse cx="80" cy="64" rx="10" ry="12" fill="#1b1b22"/><ellipse cx="120" cy="64" rx="10" ry="12" fill="#1b1b22"/>
+  <circle cx="77" cy="60" r="4" fill="#ffffff" stroke="none"/><circle cx="117" cy="60" r="4" fill="#ffffff" stroke="none"/>
+  <path d="M92 76 L108 76 L100 90 Z" fill="#f6b03a"/>
+</g>
+</svg>

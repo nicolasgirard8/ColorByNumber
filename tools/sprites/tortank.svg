@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-tortank" data-name="Tortank" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#8a2a2a:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M138 160 C164 164 184 156 186 140 C176 142 160 142 144 136 Z" fill="#5aa8e0"/>
+  <!-- pattes -->
+  <path d="M62 150 C50 170 54 190 74 192 L98 192 C102 182 98 164 94 150 Z" fill="#5aa8e0"/>
+  <path d="M138 150 C150 170 146 190 126 192 L102 192 C98 182 102 164 106 150 Z" fill="#5aa8e0"/>
+  <path d="M60 190 L64 182 L68 190 M72 192 L76 184 L80 192 M140 190 L136 182 L132 190 M128 192 L124 184 L120 192" fill="#ffffff" stroke-width="2.5"/>
+  <!-- carapace -->
+  <path d="M100 70 C142 70 156 108 150 138 C146 160 124 168 100 168 C76 168 54 160 50 138 C44 108 58 70 100 70 Z" fill="#b87a3c"/>
+  <path d="M100 96 C124 96 132 120 128 142 C124 160 112 164 100 164 C88 164 76 160 72 142 C68 120 76 96 100 96 Z" fill="#f6eac0"/>
+  <path d="M78 122 L122 122 M76 138 L124 138 M82 152 L118 152 M100 98 L100 164" fill="none" stroke="#d9c58a" stroke-width="3"/>
+  <!-- canons -->
+  <path d="M40 60 L74 76 L66 98 L32 82 Z" fill="#c9ced6"/>
+  <path d="M160 60 L126 76 L134 98 L168 82 Z" fill="#c9ced6"/>
+  <ellipse cx="36" cy="71" rx="6" ry="13" transform="rotate(-25 36 71)" fill="#8a8f9c"/>
+  <ellipse cx="164" cy="71" rx="6" ry="13" transform="rotate(25 164 71)" fill="#8a8f9c"/>
+  <path d="M52 78 L60 92 M148 78 L140 92" fill="none" stroke="#8a8f9c" stroke-width="3"/>
+  <!-- bras -->
+  <path d="M62 112 C46 120 42 138 50 146 C60 144 66 132 70 122 Z" fill="#5aa8e0"/>
+  <path d="M138 112 C154 120 158 138 150 146 C140 144 134 132 130 122 Z" fill="#5aa8e0"/>
+  <!-- tête -->
+  <path d="M100 26 C132 26 148 48 144 68 C142 86 126 94 100 94 C74 94 58 86 56 68 C52 48 68 26 100 26 Z" fill="#5aa8e0"/>
+  <path d="M74 56 C80 48 120 48 126 56 C128 64 124 70 118 72 L82 72 C76 70 72 64 74 56 Z" fill="#8cc4ee" stroke="none"/>
+  <path d="M84 84 C92 90 108 90 116 84 L112 94 L88 94 Z" fill="#f6eac0"/>
+  <!-- yeux -->
+  <path d="M70 58 C74 50 88 50 92 58 C88 64 74 64 70 58 Z" fill="#ffffff"/>
+  <path d="M108 58 C112 50 126 50 130 58 C126 64 112 64 108 58 Z" fill="#ffffff"/>
+  <circle cx="82" cy="57" r="4" fill="#8a2a2a" stroke-width="2.5"/>
+  <circle cx="118" cy="57" r="4" fill="#8a2a2a" stroke-width="2.5"/>
+  <circle cx="94" cy="72" r="1.8" fill="#1b1b22"/><circle cx="106" cy="72" r="1.8" fill="#1b1b22"/>
+  <path d="M86 82 Q100 90 114 82" fill="none" stroke-width="3.5"/>
+</g>
+</svg>

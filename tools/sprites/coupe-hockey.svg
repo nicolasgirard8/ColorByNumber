@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 230" data-id="hoc-coupe" data-name="La grande coupe" data-cat="hockey" data-size="52" data-weights="#ffffff:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- base à bagues -->
+  <path d="M44 214 L156 214 L156 196 L44 196 Z" fill="#2a2030"/>
+  <path d="M52 196 L148 196 L144 176 L56 176 Z" fill="#c9ced6"/>
+  <path d="M60 176 L140 176 L136 158 L64 158 Z" fill="#c9ced6"/>
+  <path d="M66 158 L134 158 L130 142 L70 142 Z" fill="#c9ced6"/>
+  <path d="M60 186 L140 186 M66 168 L134 168 M72 150 L128 150" fill="none" stroke="#8a8f9c" stroke-width="2.5"/>
+  <!-- tige -->
+  <path d="M84 142 L116 142 L122 104 L78 104 Z" fill="#dfe4ea"/>
+  <!-- bol -->
+  <path d="M48 24 L152 24 C152 62 134 96 100 104 C66 96 48 62 48 24 Z" fill="#dfe4ea"/>
+  <path d="M58 32 C60 58 72 82 92 94" fill="none" stroke="#ffffff" stroke-width="8"/>
+  <!-- couvercle -->
+  <path d="M44 24 L156 24 L148 10 L52 10 Z" fill="#c9ced6"/>
+  <path d="M70 10 L130 10 L124 2 L76 2 Z" fill="#c9ced6"/>
+  <!-- anses -->
+  <path d="M50 40 C26 40 24 74 56 84" fill="none" stroke-width="12"/><path d="M50 40 C26 40 24 74 56 84" fill="none" stroke="#dfe4ea" stroke-width="5"/>
+  <path d="M150 40 C174 40 176 74 144 84" fill="none" stroke-width="12"/><path d="M150 40 C174 40 176 74 144 84" fill="none" stroke="#dfe4ea" stroke-width="5"/>
+</g>
+</svg>

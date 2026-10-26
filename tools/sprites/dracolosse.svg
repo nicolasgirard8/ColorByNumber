@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-dracolosse" data-name="Dracolosse" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#2a8a98:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M130 164 C162 172 184 156 184 134 C172 140 152 140 136 134 Z" fill="#f4a838"/>
+  <!-- petites ailes -->
+  <path d="M64 92 C44 78 30 64 26 44 C44 46 58 54 72 68 Z" fill="#7ad0c8"/>
+  <path d="M136 92 C156 78 170 64 174 44 C156 46 142 54 128 68 Z" fill="#7ad0c8"/>
+  <!-- pattes -->
+  <path d="M70 148 C58 166 60 188 80 190 L98 190 C102 178 98 162 96 148 Z" fill="#f4a838"/>
+  <path d="M130 148 C142 166 140 188 120 190 L102 190 C98 178 102 162 104 148 Z" fill="#f4a838"/>
+  <path d="M66 188 L70 180 L74 188 M78 190 L82 182 L86 190 M134 188 L130 180 L126 188 M122 190 L118 182 L114 190" fill="#ffffff" stroke-width="2.5"/>
+  <!-- ventre rond -->
+  <path d="M100 76 C142 76 156 112 148 142 C142 162 122 168 100 168 C78 168 58 162 52 142 C44 112 58 76 100 76 Z" fill="#f4a838"/>
+  <path d="M100 100 C126 100 134 124 128 144 C122 160 78 160 72 144 C66 124 74 100 100 100 Z" fill="#fce8b0" stroke="none"/>
+  <!-- bras -->
+  <path d="M60 100 C44 108 38 126 46 138 C56 136 64 124 70 112 Z" fill="#f4a838"/>
+  <path d="M140 100 C156 108 162 126 154 138 C144 136 136 124 130 112 Z" fill="#f4a838"/>
+  <!-- antennes -->
+  <path d="M82 34 C72 22 62 18 54 22 C62 28 66 34 72 42 Z" fill="#fce8b0"/>
+  <path d="M118 34 C128 22 138 18 146 22 C138 28 134 34 128 42 Z" fill="#fce8b0"/>
+  <!-- tête -->
+  <path d="M100 26 C130 26 144 44 140 62 C136 80 120 88 100 88 C80 88 64 80 60 62 C56 44 70 26 100 26 Z" fill="#f4a838"/>
+  <path d="M74 66 C82 80 118 80 126 66 C118 74 82 74 74 66 Z" fill="#fce8b0" stroke="none"/>
+  <ellipse cx="80" cy="54" rx="9" ry="11" fill="#ffffff"/><ellipse cx="120" cy="54" rx="9" ry="11" fill="#ffffff"/>
+  <circle cx="81" cy="56" r="5" fill="#1b1b22" stroke="none"/><circle cx="119" cy="56" r="5" fill="#1b1b22" stroke="none"/>
+  <circle cx="94" cy="70" r="1.8" fill="#1b1b22"/><circle cx="106" cy="70" r="1.8" fill="#1b1b22"/>
+  <path d="M88 78 Q100 86 112 78" fill="none" stroke-width="3.5"/>
+</g>
+</svg>

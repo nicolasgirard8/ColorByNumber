@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-hockey-coupe" data-name="La grande coupe" data-cat="hockey" data-size="72" data-full="1">
+  <sprite src="parts/patinoire" x="0" y="0" width="256" height="192"/>
+  <sprite src="coupe-hockey" x="70" y="12" width="116" height="176"/>
+  <sprite src="casque-hockey" x="6" y="132" width="56" height="56"/>
+  <sprite src="patin" x="196" y="140" width="56" height="48"/>
+</svg>

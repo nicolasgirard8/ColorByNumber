@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-miaouss" data-name="Miaouss" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#f6d23a:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M130 160 C170 170 190 140 178 100 C170 84 156 90 160 102" fill="none" stroke-width="18"/>
+  <path d="M130 160 C170 170 190 140 178 100 C170 84 156 90 160 102" fill="none" stroke="#fce8c0" stroke-width="10"/>
+  <circle cx="160" cy="104" r="6" fill="#fce8c0"/>
+  <!-- pattes arrière + corps -->
+  <path d="M66 112 C50 132 52 168 70 184 L130 184 C148 168 150 132 134 112 Z" fill="#fce8c0"/>
+  <ellipse cx="82" cy="184" rx="14" ry="8" fill="#e8c890"/>
+  <ellipse cx="118" cy="184" rx="14" ry="8" fill="#e8c890"/>
+  <!-- bras -->
+  <path d="M68 120 C56 130 54 148 62 154 C72 150 76 138 78 126 Z" fill="#e8c890"/>
+  <path d="M132 120 C144 130 146 148 138 154 C128 150 124 138 122 126 Z" fill="#e8c890"/>
+  <!-- pièce d'or -->
+  <ellipse cx="100" cy="106" rx="22" ry="8" fill="#f6d23a" transform="rotate(0 100 106)"/>
+  <ellipse cx="100" cy="106" rx="22" ry="10" fill="#f6d23a"/>
+  <path d="M100 100 L100 112" fill="none" stroke="#c9a010" stroke-width="3"/>
+  <!-- oreilles -->
+  <path d="M56 56 L42 12 L88 36 Z" fill="#fce8c0"/>
+  <path d="M144 56 L158 12 L112 36 Z" fill="#fce8c0"/>
+  <path d="M54 44 L48 22 L72 36 Z" fill="#1b1b22" stroke="none"/>
+  <path d="M146 44 L152 22 L128 36 Z" fill="#1b1b22" stroke="none"/>
+  <!-- tête -->
+  <path d="M100 32 C142 32 156 56 152 76 C148 96 126 104 100 104 C74 104 52 96 48 76 C44 56 58 32 100 32 Z" fill="#fce8c0"/>
+  <ellipse cx="100" cy="42" rx="5" ry="10" fill="#f6d23a" stroke-width="3"/>
+  <!-- moustaches -->
+  <path d="M58 80 L38 76 M58 88 L38 92 M142 80 L162 76 M142 88 L162 92" fill="none" stroke-width="3"/>
+  <!-- yeux -->
+  <path d="M68 62 C72 52 88 52 92 62 C88 72 72 72 68 62 Z" fill="#ffffff"/>
+  <path d="M108 62 C112 52 128 52 132 62 C128 72 112 72 108 62 Z" fill="#ffffff"/>
+  <ellipse cx="80" cy="62" rx="3" ry="7" fill="#1b1b22" stroke="none"/>
+  <ellipse cx="120" cy="62" rx="3" ry="7" fill="#1b1b22" stroke="none"/>
+  <path d="M94 80 L106 80 L100 86 Z" fill="#e87a8a" stroke-width="3"/>
+  <path d="M100 86 L100 92 M86 92 Q100 100 114 92" fill="none" stroke-width="3"/>
+</g>
+</svg>

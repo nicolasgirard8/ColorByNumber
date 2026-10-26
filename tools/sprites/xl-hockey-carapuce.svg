@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-hockey-carapuce" data-name="Carapuce sur la glace" data-cat="hockey" data-size="72" data-full="1">
+  <sprite src="parts/patinoire" x="0" y="0" width="256" height="192"/>
+  <sprite src="carapuce" x="60" y="34" width="130" height="150"/>
+  <sprite src="palet-crosse" x="130" y="108" width="110" height="82"/>
+</svg>

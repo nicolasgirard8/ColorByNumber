@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-dracaufeu" data-name="Dracaufeu" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#ffd23c:2,#e8402a:1.5,#3a8a98:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue et flamme -->
+  <path d="M128 164 C160 170 182 154 180 128" fill="none" stroke-width="20"/>
+  <path d="M128 164 C160 170 182 154 180 128" fill="none" stroke="#f6963a" stroke-width="12"/>
+  <path d="M180 128 C162 116 166 94 180 76 C182 88 190 90 192 84 C200 102 196 124 180 128 Z" fill="#e8402a"/>
+  <path d="M180 122 C172 114 174 104 180 96 C182 104 188 106 189 102 C192 112 188 120 180 122 Z" fill="#ffd23c"/>
+  <!-- ailes -->
+  <path d="M62 104 C38 84 18 66 6 36 C26 44 40 42 52 30 C52 46 62 56 74 62 C72 46 84 40 94 40 C86 62 86 84 90 104 Z" fill="#3fa9b8"/>
+  <path d="M138 104 C162 84 182 66 194 36 C174 44 160 42 148 30 C148 46 138 56 126 62 C128 46 116 40 106 40 C114 62 114 84 110 104 Z" fill="#3fa9b8"/>
+  <path d="M30 56 L58 82 M56 38 L72 76" fill="none" stroke="#2a7a88" stroke-width="3"/>
+  <!-- pattes -->
+  <path d="M68 150 C56 172 58 190 76 192 L98 192 C104 182 100 166 96 150 Z" fill="#f6963a"/>
+  <path d="M132 150 C144 172 142 190 124 192 L102 192 C96 182 100 166 104 150 Z" fill="#f6963a"/>
+  <path d="M68 190 L72 182 L76 190 M82 192 L86 184 L90 192 M132 190 L128 182 L124 190 M118 192 L114 184 L110 192" fill="#ffffff" stroke-width="2.5"/>
+  <!-- corps -->
+  <path d="M100 76 C140 76 150 112 144 140 C140 160 120 168 100 168 C80 168 60 160 56 140 C50 112 60 76 100 76 Z" fill="#f6963a"/>
+  <path d="M100 98 C124 98 130 124 126 144 C122 160 112 164 100 164 C88 164 78 160 74 144 C70 124 76 98 100 98 Z" fill="#f9d68a"/>
+  <path d="M82 118 L118 118 M80 130 L120 130 M80 142 L120 142 M84 154 L116 154" fill="none" stroke="#e6b566" stroke-width="3"/>
+  <!-- bras -->
+  <path d="M62 100 C48 108 44 126 52 134 C60 132 66 122 70 112 Z" fill="#f6963a"/>
+  <path d="M138 100 C152 108 156 126 148 134 C140 132 134 122 130 112 Z" fill="#f6963a"/>
+  <path d="M50 134 L48 142 M56 134 L56 144 M62 130 L64 140" fill="none" stroke-width="3"/>
+  <path d="M150 134 L152 142 M144 134 L144 144 M138 130 L136 140" fill="none" stroke-width="3"/>
+  <!-- cornes -->
+  <path d="M66 36 C54 30 44 36 38 46 C50 44 58 46 68 52 Z" fill="#f9d68a"/>
+  <path d="M134 36 C146 30 156 36 162 46 C150 44 142 46 132 52 Z" fill="#f9d68a"/>
+  <!-- tête -->
+  <path d="M100 24 C132 24 146 46 142 66 C140 82 126 90 100 90 C74 90 60 82 58 66 C54 46 68 24 100 24 Z" fill="#f6963a"/>
+  <path d="M82 66 C90 80 110 80 118 66 C112 74 88 74 82 66 Z" fill="#f9d68a" stroke="none"/>
+  <!-- yeux -->
+  <path d="M68 52 C72 44 86 44 90 54 C86 60 72 60 68 52 Z" fill="#ffffff"/>
+  <path d="M110 54 C114 44 128 44 132 52 C128 60 114 60 110 54 Z" fill="#ffffff"/>
+  <circle cx="82" cy="53" r="4.5" fill="#2a8a98" stroke-width="2.5"/>
+  <circle cx="118" cy="53" r="4.5" fill="#2a8a98" stroke-width="2.5"/>
+  <!-- narines et bouche -->
+  <circle cx="94" cy="68" r="1.8" fill="#1b1b22"/><circle cx="106" cy="68" r="1.8" fill="#1b1b22"/>
+  <path d="M84 80 Q100 88 116 80" fill="none" stroke-width="3.5"/>
+</g>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-florizarre" data-name="Florizarre" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#e8302a:2,#ffd23c:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- fleur géante -->
+  <path d="M120 54 C104 40 108 18 128 16 C132 6 150 6 154 18 C170 14 184 28 176 42 C192 46 192 66 176 70 C180 84 164 94 150 88 C140 100 118 94 120 78 C108 74 106 60 120 54 Z" fill="#f08aa8"/>
+  <path d="M120 54 C132 60 140 70 150 88 M154 18 C148 34 148 44 148 54 M176 42 C164 48 156 52 148 54 M128 16 C134 32 140 44 148 54 M176 70 C164 66 156 62 148 54" fill="none" stroke="#c85a7c" stroke-width="3"/>
+  <circle cx="148" cy="56" r="14" fill="#ffd23c"/>
+  <path d="M142 52 L154 52 M142 60 L154 60" fill="none" stroke="#e0a010" stroke-width="3"/>
+  <!-- feuilles derrière -->
+  <path d="M96 94 C100 76 126 70 140 84 C132 100 112 104 96 94 Z" fill="#4ca83a"/>
+  <!-- pattes arrière -->
+  <path d="M146 140 L146 186 L180 186 L178 142 Z" fill="#5fb89a"/>
+  <path d="M150 186 L154 178 L158 186 M162 186 L166 178 L170 186" fill="#ffffff" stroke-width="2.5"/>
+  <!-- corps -->
+  <path d="M42 114 C50 94 150 90 176 116 C190 134 182 164 154 170 L66 170 C40 164 32 136 42 114 Z" fill="#5fb89a"/>
+  <path d="M120 112 L134 106 L138 122 L124 128 Z M150 138 L162 132 L166 146 L152 150 Z" fill="#3f8f7a" stroke="none"/>
+  <!-- pattes avant -->
+  <path d="M42 150 L38 188 L76 188 L76 152 Z" fill="#5fb89a"/>
+  <path d="M96 156 L94 190 L130 190 L130 156 Z" fill="#5fb89a"/>
+  <path d="M40 188 L44 180 L48 188 M52 188 L56 180 L60 188 M96 190 L100 182 L104 190 M108 190 L112 182 L116 190" fill="#ffffff" stroke-width="2.5"/>
+  <!-- tête -->
+  <path d="M36 62 C70 54 100 74 98 100 C96 128 68 136 40 134 C12 132 -4 114 2 92 C6 72 20 64 36 62 Z" fill="#5fb89a"/>
+  <path d="M10 66 L2 40 L28 56 Z" fill="#5fb89a"/>
+  <path d="M82 66 L96 42 L98 78 Z" fill="#5fb89a"/>
+  <path d="M30 64 L42 62 L38 74 Z M56 70 L68 74 L60 82 Z M12 80 L22 76 L20 86 Z" fill="#3f8f7a" stroke="none"/>
+  <!-- yeux -->
+  <path d="M4 98 C8 88 24 88 28 98 C24 106 8 106 4 98 Z" fill="#ffffff"/>
+  <path d="M54 98 C58 88 76 88 80 98 C76 106 58 106 54 98 Z" fill="#ffffff"/>
+  <circle cx="17" cy="97" r="5.5" fill="#e8302a" stroke-width="2.5"/>
+  <circle cx="67" cy="97" r="5.5" fill="#e8302a" stroke-width="2.5"/>
+  <circle cx="16" cy="95" r="2" fill="#ffffff" stroke="none"/><circle cx="66" cy="95" r="2" fill="#ffffff" stroke="none"/>
+  <!-- bouche -->
+  <path d="M14 118 C30 134 64 134 82 116 C66 122 30 124 14 118 Z" fill="#f07890"/>
+</g>
+</svg>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" data-id="soc-trophee" data-name="La coupe" data-cat="soccer" data-size="52" data-weights="#ffffff:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- socle -->
+  <path d="M52 188 L148 188 L156 208 L44 208 Z" fill="#2a8a34"/>
+  <path d="M62 170 L138 170 L148 188 L52 188 Z" fill="#f6c83a"/>
+  <path d="M60 176 L140 176" fill="none" stroke="#c9981a" stroke-width="3"/>
+  <!-- pied -->
+  <path d="M84 120 L116 120 L124 170 L76 170 Z" fill="#f6c83a"/>
+  <!-- anses -->
+  <path d="M44 42 C14 42 12 90 54 100" fill="none" stroke-width="18"/><path d="M44 42 C14 42 12 90 54 100" fill="none" stroke="#f6c83a" stroke-width="10"/>
+  <path d="M156 42 C186 42 188 90 146 100" fill="none" stroke-width="18"/><path d="M156 42 C186 42 188 90 146 100" fill="none" stroke="#f6c83a" stroke-width="10"/>
+  <!-- coupe -->
+  <path d="M40 20 L160 20 C160 70 140 116 100 124 C60 116 40 70 40 20 Z" fill="#f6c83a"/>
+  <path d="M54 30 C56 64 70 94 92 106" fill="none" stroke="#fde89a" stroke-width="8"/>
+  <!-- ballon sur la coupe -->
+  <circle cx="100" cy="68" r="22" fill="#ffffff"/>
+  <polygon points="100 56 112 64 108 78 92 78 88 64" fill="#1b1b22" stroke-width="2.5"/>
+  <!-- étoile -->
+  <path d="M100 4 L106 16 L120 18 L110 28 L112 42 L100 35 L88 42 L90 28 L80 18 L94 16 Z" fill="#fde89a" stroke-width="3"/>
+</g>
+</svg>

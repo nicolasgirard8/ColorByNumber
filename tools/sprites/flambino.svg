@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-flambino" data-name="Flambino" data-cat="pokemon" data-size="56" data-weights="#ffffff:4,#e8302a:2,#ffd23c:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue-flamme -->
+  <path d="M140 164 C170 164 186 148 184 128 C170 114 174 94 190 78 C190 92 198 94 200 90 C200 108 198 130 190 144" fill="#e8402a"/>
+  <path d="M168 150 C176 142 176 130 172 120 C184 126 190 136 188 148 Z" fill="#ffd23c" stroke="none"/>
+  <!-- pattes -->
+  <path d="M66 156 C56 170 60 188 78 190 L98 190 C102 180 98 166 96 156 Z" fill="#fcfcfc"/>
+  <path d="M134 156 C144 170 140 188 122 190 L102 190 C98 180 102 166 104 156 Z" fill="#fcfcfc"/>
+  <!-- corps -->
+  <path d="M100 96 C136 96 148 128 142 152 C138 170 118 176 100 176 C82 176 62 170 58 152 C52 128 64 96 100 96 Z" fill="#fcfcfc"/>
+  <path d="M100 128 C116 128 122 146 118 160 C112 170 88 170 82 160 C78 146 84 128 100 128 Z" fill="#f4e8d8" stroke="none"/>
+  <!-- bras -->
+  <ellipse cx="56" cy="130" rx="9" ry="16" transform="rotate(15 56 130)" fill="#fcfcfc"/>
+  <ellipse cx="144" cy="130" rx="9" ry="16" transform="rotate(-15 144 130)" fill="#fcfcfc"/>
+  <!-- tête -->
+  <path d="M100 30 C134 30 148 52 144 72 C140 92 122 100 100 100 C78 100 60 92 56 72 C52 52 66 30 100 30 Z" fill="#fcfcfc"/>
+  <!-- oreilles -->
+  <path d="M68 40 L58 12 L84 32 Z" fill="#fcfcfc"/>
+  <path d="M132 40 L142 12 L116 32 Z" fill="#fcfcfc"/>
+  <!-- masque orange sur le museau -->
+  <path d="M70 68 C74 58 126 58 130 68 C136 82 120 96 100 96 C80 96 64 82 70 68 Z" fill="#f6963a"/>
+  <path d="M60 62 C66 56 74 58 80 62 L82 72 C74 74 64 70 60 62 Z" fill="#fcfcfc" stroke="none"/>
+  <ellipse cx="82" cy="62" rx="7" ry="9" fill="#1b1b22"/><ellipse cx="118" cy="62" rx="7" ry="9" fill="#1b1b22"/>
+  <circle cx="80" cy="58" r="3" fill="#ffffff" stroke="none"/><circle cx="116" cy="58" r="3" fill="#ffffff" stroke="none"/>
+  <ellipse cx="100" cy="78" rx="4" ry="3" fill="#1b1b22"/>
+  <path d="M92 86 Q100 92 108 86" fill="none" stroke-width="3"/>
+</g>
+</svg>

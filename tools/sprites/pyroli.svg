@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-pyroli" data-name="Pyroli" data-cat="pokemon" data-size="56" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue touffue crème au bout -->
+  <path d="M128 168 C150 174 178 162 186 132 C192 108 180 90 168 86 C166 104 158 110 150 112 C158 124 150 140 134 146 Z" fill="#e8742a"/>
+  <path d="M172 90 C188 98 192 116 188 132 C178 128 170 122 166 112 C170 106 172 100 172 90 Z" fill="#fcecb0"/>
+  <!-- corps assis -->
+  <path d="M70 120 C56 140 56 172 72 186 L128 186 C144 172 144 140 130 120 Z" fill="#e8742a"/>
+  <ellipse cx="84" cy="186" rx="12" ry="7" fill="#e8742a"/>
+  <ellipse cx="116" cy="186" rx="12" ry="7" fill="#e8742a"/>
+  <path d="M86 150 L84 184 M114 150 L116 184" fill="none" stroke-width="4"/>
+  <!-- grosse fourrure du cou -->
+  <path d="M52 112 C40 120 44 136 54 138 C50 148 62 156 72 150 C76 160 90 164 100 156 C110 164 124 160 128 150 C138 156 150 148 146 138 C156 136 160 120 148 112 Z" fill="#fcecb0"/>
+  <path d="M62 122 C68 128 72 134 72 142 M138 122 C132 128 128 134 128 142" fill="none" stroke="#e6c078" stroke-width="3"/>
+  <!-- oreilles -->
+  <path d="M66 62 C50 46 38 20 36 2 C60 10 82 30 90 52 Z" fill="#e8742a"/>
+  <path d="M64 52 C54 40 48 26 46 16 C60 22 74 34 80 48 Z" fill="#fcecb0" stroke="none"/>
+  <path d="M134 62 C150 46 162 20 164 2 C140 10 118 30 110 52 Z" fill="#e8742a"/>
+  <path d="M136 52 C146 40 152 26 154 16 C140 22 126 34 120 48 Z" fill="#fcecb0" stroke="none"/>
+  <!-- touffe sur la tête -->
+  <path d="M82 50 C84 36 94 28 100 22 C106 28 116 36 118 50 Z" fill="#fcecb0"/>
+  <!-- tête -->
+  <path d="M100 44 C132 44 146 64 146 84 C146 104 126 118 100 118 C74 118 54 104 54 84 C54 64 68 44 100 44 Z" fill="#e8742a"/>
+  <path d="M82 50 C84 40 92 34 100 30 C108 34 116 40 118 50 C112 58 88 58 82 50 Z" fill="#fcecb0" stroke="none"/>
+  <ellipse cx="80" cy="84" rx="9" ry="11" fill="#3a1a0a"/>
+  <ellipse cx="120" cy="84" rx="9" ry="11" fill="#3a1a0a"/>
+  <circle cx="77" cy="80" r="3.5" fill="#ffffff" stroke="none"/>
+  <circle cx="117" cy="80" r="3.5" fill="#ffffff" stroke="none"/>
+  <path d="M96 98 L104 98 L100 102 Z" fill="#1b1b22" stroke-width="2"/>
+  <path d="M92 106 Q100 112 108 106" fill="none" stroke-width="3"/>
+</g>
+</svg>
