@@ -19,35 +19,23 @@ const CATS = [
   { id: 'animaux', name: 'Animaux', icon: '🐾' },
   { id: 'nourriture', name: 'Miam', icon: '🍓' },
   { id: 'nature', name: 'Nature', icon: '🌼' },
-  { id: 'objets', name: 'Objets', icon: '🚀' },
+  { id: 'objets', name: 'Objets', icon: '🎁' },
+  { id: 'emotions', name: 'Émotions', icon: '😀' },
+  { id: 'sports', name: 'Sports', icon: '⚽' },
+  { id: 'fetes', name: 'Fêtes', icon: '🎉' },
+  { id: 'personnes', name: 'Métiers', icon: '🧑‍🚒' },
   { id: 'mandalas', name: 'Mandalas', icon: '🌀' },
   { id: 'photos', name: 'Mes photos', icon: '📷' },
   { id: 'mine', name: 'Mes coloriages', icon: '🏆' },
 ];
 
-// Emojis transformés en pixel art (si l'appareil possède une police emoji en couleur).
-const EMOJIS = [
-  ['🦊', 'Renard', 'animaux'], ['🐼', 'Panda', 'animaux'], ['🦁', 'Lion', 'animaux'],
-  ['🐶', 'Chien', 'animaux'], ['🐰', 'Lapin', 'animaux'], ['🐷', 'Cochon', 'animaux'],
-  ['🦄', 'Licorne', 'animaux'], ['🐢', 'Tortue', 'animaux'], ['🐙', 'Pieuvre', 'animaux'],
-  ['🦋', 'Papillon bleu', 'animaux'], ['🐝', 'Abeille', 'animaux'], ['🐧', 'Pingouin', 'animaux'],
-  ['🦖', 'Dinosaure', 'animaux'], ['🐞', 'Coccinelle', 'animaux'], ['🦉', 'Hibou', 'animaux'],
-  ['🍕', 'Pizza', 'nourriture'], ['🍩', 'Beignet', 'nourriture'], ['🍔', 'Burger', 'nourriture'],
-  ['🍉', 'Melon', 'nourriture'], ['🍒', 'Cerises', 'nourriture'], ['🍭', 'Sucette', 'nourriture'],
-  ['🥕', 'Carotte', 'nourriture'], ['🍌', 'Banane', 'nourriture'], ['🎂', 'Gâteau', 'nourriture'],
-  ['🌻', 'Tournesol', 'nature'], ['🌈', 'Arc-en-ciel 2', 'nature'], ['🌵', 'Cactus', 'nature'],
-  ['🌙', 'Lune', 'nature'], ['⭐', 'Étoile', 'nature'], ['🌷', 'Tulipe', 'nature'], ['🍀', 'Trèfle', 'nature'],
-  ['🚒', 'Pompiers', 'objets'], ['🚂', 'Train', 'objets'], ['🎈', 'Ballon', 'objets'],
-  ['⚽', 'Football', 'objets'], ['🎁', 'Cadeau', 'objets'], ['🏰', 'Château', 'objets'],
-  ['🚁', 'Hélicoptère', 'objets'], ['👑', 'Couronne', 'objets'], ['⛵', 'Bateau', 'objets'],
-];
+// Anciens dessins emoji : leurs identifiants sont gardés pour ne perdre aucune progression.
+const LEGACY_EMOJIS = '🦊🐼🦁🐶🐰🐷🦄🐢🐙🦋🐝🐧🦖🐞🦉🍕🍩🍔🍉🍒🍭🥕🍌🎂🌻🌈🌵🌙⭐🌷🍀🚒🚂🎈⚽🎁🏰🚁👑⛵';
 
 const MANDALA_SIZES = [21, 25, 25, 29, 31, 33, 35, 41];
-const EMOJI_SIZE = 36;
 
 const START_TOOLS = 5;
 const STORE = 'cbn.';
-const EMOJI_VERSION = 'e2.';
 
 // ---------- Stockage ----------
 const store = {
@@ -99,20 +87,21 @@ function loadLibrary() {
     addImage(Gen.build({ id: 'mandala' + (i + 1), name: 'Mandala ' + (i + 1), cat: 'mandalas' }, size, size, palette, cells));
   });
 
-  // Les emojis sont mémorisés une fois générés pour que la grille ne change jamais.
-  EMOJIS.forEach(([ch, name, cat], i) => {
-    const id = 'emoji' + i;
-    let data = store.get(EMOJI_VERSION + id, null);
-    if (!data) {
-      const res = Gen.emoji(ch, EMOJI_SIZE);
-      if (!res) return;
-      const img = Gen.build({}, EMOJI_SIZE, EMOJI_SIZE, res.palette, res.cells);
-      if (img.palette.length < 2) return;
-      data = { palette: img.palette, cells: encodeCells(img.cells) };
-      store.set(EMOJI_VERSION + id, data);
-    }
-    addImage({ id, name, cat, w: EMOJI_SIZE, h: EMOJI_SIZE, palette: data.palette, cells: decodeCells(data.cells) });
+  // Dessins OpenMoji (CC BY-SA 4.0), déjà convertis en grilles : on décode les plages.
+  const legacy = Array.from(LEGACY_EMOJIS);
+  OPENMOJI.forEach(([emoji, hex, name, cat, w, h, pal, runs]) => {
+    const old = legacy.indexOf(emoji.replace(/\uFE0F/g, ''));
+    const cells = new Int16Array(w * h);
+    let k = 0;
+    runs.replace(/([A-Z])(\d*)/g, (m, ch, n) => {
+      cells.fill(ch.charCodeAt(0) - 66, k, k + (+n || 1));
+      k += +n || 1;
+      return '';
+    });
+    addImage({ id: old >= 0 ? 'emoji' + old : 'om-' + hex, name, cat, w, h, palette: pal.match(/#[0-9a-f]{6}/gi), cells, credit: 'OpenMoji' });
   });
+  // Les anciennes grilles emoji générées sur l'appareil ne servent plus.
+  legacy.forEach((_, i) => store.del('e2.emoji' + i));
 
   store.get('photos', []).forEach((p) => {
     addImage({ id: p.id, name: p.name, cat: 'photos', w: p.w, h: p.h, palette: p.palette, cells: decodeCells(p.cells), custom: true });
@@ -332,6 +321,13 @@ function renderGrid() {
     card.onclick = () => { Sound.unlock(); Sound.tap(); Game.open(img); };
     frag.appendChild(card);
   });
+  // Licence CC BY-SA : l'auteur des dessins OpenMoji doit être cité.
+  if (items.some((img) => img.credit)) {
+    const c = document.createElement('p');
+    c.className = 'credit';
+    c.innerHTML = 'Plusieurs dessins viennent d’<a href="https://openmoji.org" target="_blank" rel="noopener">OpenMoji</a>, licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank" rel="noopener">CC BY-SA 4.0</a>.';
+    frag.appendChild(c);
+  }
   grid.appendChild(frag);
 }
 
@@ -1491,10 +1487,11 @@ let importSource = null;
 let importResult = null;
 
 function segValue(id) {
-  return +document.querySelector(`#${id} .on`).dataset.v;
+  const v = document.querySelector(`#${id} .on`).dataset.v;
+  return isNaN(v) ? v : +v;
 }
 
-['seg-size', 'seg-colors'].forEach((id) => {
+['seg-style', 'seg-size', 'seg-colors'].forEach((id) => {
   $(id).addEventListener('click', (e) => {
     const b = e.target.closest('button');
     if (!b) return;
@@ -1531,7 +1528,12 @@ $('file-input').addEventListener('change', () => {
 
 function updateImportPreview() {
   if (!importSource) return;
-  const res = Gen.photo(importSource, segValue('seg-size'), segValue('seg-colors'));
+  // « Dessin » : fond retiré et contour noir, idéal pour une image de coloriage
+  // trouvée sur le web. « Photo » : garde toute l'image et ses nuances.
+  const drawing = segValue('seg-style') === 'dessin';
+  const res = Gen.convert(importSource, {
+    size: segValue('seg-size'), colors: segValue('seg-colors'), removeBg: drawing, outline: drawing, crop: drawing,
+  });
   importResult = Gen.build({}, res.w, res.h, res.palette, res.cells);
   const cv = $('import-preview');
   drawPicture(cv, importResult, importResult.cells, Math.max(2, Math.floor(260 / Math.max(res.w, res.h))));
