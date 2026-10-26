@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-hockey-match" data-name="Le match de hockey" data-cat="hockey" data-size="72" data-full="1">
+  <sprite src="parts/patinoire" x="0" y="0" width="256" height="192"/>
+  <sprite src="but-hockey" x="130" y="64" width="126" height="94"/>
+  <sprite src="gardien-hockey" x="150" y="74" width="84" height="82"/>
+  <sprite src="joueur-hockey" x="6" y="52" width="150" height="136"/>
+</svg>

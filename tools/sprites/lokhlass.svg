@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" data-id="pk-lokhlass" data-name="Lokhlass" data-cat="pokemon" data-size="56" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- nageoires -->
+  <path d="M60 150 C30 164 20 184 32 192 C52 186 66 172 76 160 Z" fill="#6aa8e0"/>
+  <path d="M130 156 C140 176 160 188 184 184 C180 168 164 156 144 150 Z" fill="#6aa8e0"/>
+  <!-- carapace -->
+  <path d="M96 76 C130 62 168 76 174 108 C178 132 156 150 124 150 L86 150 C70 140 74 96 96 76 Z" fill="#b8a888"/>
+  <path d="M110 84 L116 70 M130 84 L136 72 M150 90 L158 78 M164 104 L174 96" fill="none" stroke-width="5"/>
+  <path d="M100 150 C100 120 116 100 130 98 C144 108 148 130 144 148 Z" fill="#a89878" stroke="none"/>
+  <!-- corps -->
+  <path d="M40 150 C34 122 60 110 84 122 C108 134 130 134 154 142 C170 150 160 168 130 170 L70 170 C52 170 44 162 40 150 Z" fill="#6aa8e0"/>
+  <path d="M60 158 C84 166 120 166 148 158 C148 168 130 172 110 172 L72 172 C62 170 60 164 60 158 Z" fill="#f4f0e0" stroke="none"/>
+  <!-- cou et tête -->
+  <path d="M56 130 C40 100 40 70 58 52 C70 40 90 40 98 52 C106 66 98 84 86 98 C80 110 82 124 90 132 Z" fill="#6aa8e0"/>
+  <path d="M70 56 C80 52 92 56 94 66 C84 70 74 68 70 56 Z" fill="#8cc4ee" stroke="none"/>
+  <!-- cornes -->
+  <path d="M60 46 L52 28 L72 42 Z" fill="#f4f0e0"/>
+  <path d="M88 44 L96 26 L100 50 Z" fill="#f4f0e0"/>
+  <!-- visage -->
+  <path d="M42 66 C38 80 46 92 62 94 C66 80 62 68 52 62 Z" fill="#f4f0e0"/>
+  <ellipse cx="66" cy="66" rx="6" ry="8" fill="#1b1b22"/>
+  <circle cx="64" cy="62" r="2.5" fill="#ffffff" stroke="none"/>
+  <path d="M46 84 Q56 90 66 86" fill="none" stroke-width="3"/>
+</g>
+</svg>

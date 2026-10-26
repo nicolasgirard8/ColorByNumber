@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-foot-pika" data-name="Pikachu joue au soccer" data-cat="soccer" data-size="72" data-full="1">
+  <sprite src="parts/terrain" x="0" y="0" width="256" height="192"/>
+  <sprite src="pikachu" x="40" y="26" width="150" height="164"/>
+  <sprite src="parts/ballon" x="172" y="126" width="62" height="62" line="0.4"/>
+</svg>

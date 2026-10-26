@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" data-id="soc-gardien" data-name="Gardien de but" data-cat="soccer" data-size="56" data-weights="#ffffff:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- jambes écartées -->
+  <path d="M90 130 L66 176" fill="none" stroke-width="22"/><path d="M90 130 L66 176" fill="none" stroke="#f6d0a8" stroke-width="14"/>
+  <path d="M130 130 L154 176" fill="none" stroke-width="22"/><path d="M130 130 L154 176" fill="none" stroke="#f6d0a8" stroke-width="14"/>
+  <path d="M74 156 L62 178 L74 184 L86 162 Z M146 156 L158 178 L146 184 L134 162 Z" fill="#ffffff"/>
+  <path d="M48 178 L72 182 L70 194 L44 192 Z M148 182 L172 178 L176 192 L150 194 Z" fill="#1b1b22"/>
+  <!-- short noir -->
+  <path d="M82 116 L138 116 L146 148 L122 148 L110 132 L98 148 L74 148 Z" fill="#2a2a38"/>
+  <!-- maillot vert -->
+  <path d="M80 64 L140 64 L144 122 L76 122 Z" fill="#3fae4a"/>
+  <path d="M110 64 L110 122" fill="none" stroke="#2a8a34" stroke-width="3"/>
+  <!-- bras écartés avec gants -->
+  <path d="M82 72 L40 54" fill="none" stroke-width="20"/><path d="M82 72 L40 54" fill="none" stroke="#3fae4a" stroke-width="12"/>
+  <path d="M138 72 L180 54" fill="none" stroke-width="20"/><path d="M138 72 L180 54" fill="none" stroke="#3fae4a" stroke-width="12"/>
+  <circle cx="30" cy="50" r="17" fill="#f6d23a"/><circle cx="190" cy="50" r="17" fill="#f6d23a"/>
+  <path d="M20 44 L28 52 M30 40 L34 50 M40 44 L38 54 M180 44 L186 52 M190 40 L192 50 M200 44 L196 54" fill="none" stroke-width="3"/>
+  <!-- tête -->
+  <circle cx="110" cy="38" r="26" fill="#f6d0a8"/>
+  <path d="M84 38 C82 16 100 8 112 10 C128 10 140 22 136 40 C128 30 116 28 104 30 C96 32 88 36 84 38 Z" fill="#2a2030"/>
+  <ellipse cx="102" cy="44" rx="3" ry="4.5" fill="#1b1b22" stroke="none"/><ellipse cx="124" cy="44" rx="3" ry="4.5" fill="#1b1b22" stroke="none"/>
+  <path d="M106 56 Q114 62 122 56" fill="none" stroke-width="3"/>
+</g>
+</svg>

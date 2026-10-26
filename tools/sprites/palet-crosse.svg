@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180" data-id="hoc-crosse" data-name="Crosse et palet" data-cat="hockey" data-size="52" data-weights="#ffffff:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- glace -->
+  <path d="M0 140 C60 128 160 128 220 140 L220 180 L0 180 Z" fill="#dff0fa" stroke="none"/>
+  <path d="M20 156 L60 152 M120 164 L170 160" fill="none" stroke="#a8d4ee" stroke-width="3"/>
+  <!-- manche -->
+  <path d="M196 10 L72 128" fill="none" stroke-width="18"/><path d="M196 10 L72 128" fill="none" stroke="#c88a3a" stroke-width="10"/>
+  <path d="M190 14 L176 28" fill="none" stroke="#2a2030" stroke-width="10"/>
+  <!-- lame -->
+  <path d="M76 120 L46 140 L18 140 C12 140 10 132 16 128 L56 108 Z" fill="#c88a3a"/>
+  <path d="M24 134 L52 132" fill="none" stroke-width="3"/>
+  <!-- palet -->
+  <ellipse cx="120" cy="160" rx="34" ry="12" fill="#2a2030"/>
+  <path d="M86 160 L86 148 C86 140 154 140 154 148 L154 160" fill="#2a2030" stroke="none"/>
+  <ellipse cx="120" cy="148" rx="34" ry="12" fill="#3a3a4a"/>
+  <path d="M96 144 C104 140 116 140 124 142" fill="none" stroke="#8a8f9c" stroke-width="3"/>
+</g>
+</svg>

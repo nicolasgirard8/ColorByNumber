@@ -275,7 +275,7 @@ function expand(svg, cell) {
   } else {
     // Personnages seuls d'abord, puis les grandes scènes.
     const first = ['jv-souris', 'pk-salameche', 'pk-carapuce', 'pk-bulbizarre', 'xl-pika', 'xl-pk-starters'];
-    const rank = (it) => (it.id.startsWith('xl-') ? 10 : 0) + ['pokemon', 'jeux', 'starwars'].indexOf(it.cat) - (first.includes(it.id) ? 0.5 + (6 - first.indexOf(it.id)) / 100 : 0);
+    const rank = (it) => (it.id.startsWith('xl-') ? 10 : 0) + ['pokemon', 'soccer', 'hockey', 'jeux', 'starwars'].indexOf(it.cat) - (first.includes(it.id) ? 0.5 + (6 - first.indexOf(it.id)) / 100 : 0);
     result.sort((a, b) => rank(a) - rank(b));
     const lines = result.map((it) => '  ' + JSON.stringify({ id: it.id, name: it.name, cat: it.cat, colors: it.colors, rows: it.rows }) + ',');
     fs.writeFileSync(OUT, "// Personnages redessinés en vectoriel (tools/sprites/*.svg) puis convertis par tools/sprites/build.js.\n// Ne pas modifier à la main : relancer le script après avoir changé un SVG.\n'use strict';\n\nconst SPRITES = [\n" + lines.join('\n') + '\n];\n\n// Placés en tête de la galerie ; un dessin du même identifiant est remplacé.\nfor (const s of SPRITES.slice().reverse()) {\n  const i = GAME_ART.findIndex((a) => a.id === s.id);\n  if (i >= 0) GAME_ART.splice(i, 1);\n  GAME_ART.unshift(s);\n}\n');

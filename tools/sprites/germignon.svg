@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="pk-germignon" data-name="Germignon" data-cat="pokemon" data-size="56" data-weights="#ffffff:3,#e8302a:3">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pieds -->
+  <ellipse cx="72" cy="184" rx="16" ry="8" fill="#a8d878"/>
+  <ellipse cx="128" cy="184" rx="16" ry="8" fill="#a8d878"/>
+  <!-- corps -->
+  <path d="M100 100 C140 100 152 134 146 158 C140 176 120 182 100 182 C80 182 60 176 54 158 C48 134 60 100 100 100 Z" fill="#b6e07c"/>
+  <!-- collier de bourgeons -->
+  <circle cx="64" cy="116" r="9" fill="#f6d23a"/><circle cx="82" cy="124" r="9" fill="#f6d23a"/><circle cx="100" cy="128" r="9" fill="#f6d23a"/><circle cx="118" cy="124" r="9" fill="#f6d23a"/><circle cx="136" cy="116" r="9" fill="#f6d23a"/>
+  <!-- bras -->
+  <ellipse cx="52" cy="148" rx="9" ry="14" transform="rotate(15 52 148)" fill="#b6e07c"/>
+  <ellipse cx="148" cy="148" rx="9" ry="14" transform="rotate(-15 148 148)" fill="#b6e07c"/>
+  <!-- grande feuille -->
+  <path d="M100 52 C68 56 40 40 28 14 C60 6 90 18 100 38 C110 18 140 6 172 14 C160 40 132 56 100 52 Z" fill="#4ca83a"/>
+  <path d="M100 38 L100 52 M60 24 C76 30 90 38 100 46 M140 24 C124 30 110 38 100 46" fill="none" stroke="#2f7a24" stroke-width="3"/>
+  <!-- tête -->
+  <path d="M100 48 C136 48 150 70 146 92 C142 110 122 120 100 120 C78 120 58 110 54 92 C50 70 64 48 100 48 Z" fill="#b6e07c"/>
+  <!-- yeux -->
+  <ellipse cx="78" cy="86" rx="9" ry="11" fill="#e8302a"/>
+  <ellipse cx="122" cy="86" rx="9" ry="11" fill="#e8302a"/>
+  <circle cx="75" cy="82" r="3.5" fill="#ffffff" stroke="none"/><circle cx="119" cy="82" r="3.5" fill="#ffffff" stroke="none"/>
+  <path d="M90 104 Q100 112 110 104" fill="none" stroke-width="3.5"/>
+</g>
+</svg>

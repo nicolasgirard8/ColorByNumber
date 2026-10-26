@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" data-id="soc-maillot" data-name="Le maillot" data-cat="soccer" data-size="52" data-weights="#ffffff:3,#f6d23a:2">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M70 22 L130 22 L176 46 L162 88 L140 80 L140 180 L60 180 L60 80 L38 88 L24 46 Z" fill="#e8302a"/>
+  <path d="M60 80 L60 180 L90 180 L90 80 Z M140 80 L140 180 L110 180 L110 80 Z" fill="#c8201a" stroke="none"/>
+  <path d="M26 56 L44 62 M174 56 L156 62" fill="none" stroke="#ffffff" stroke-width="8"/>
+  <path d="M82 22 C88 40 112 40 118 22" fill="#ffffff"/>
+  <!-- numéro 10 en bâtons -->
+  <path d="M82 84 L90 78 L90 120 M104 78 L120 78 L120 120 L104 120 Z" fill="none" stroke="#ffffff" stroke-width="10" stroke-linejoin="miter"/>
+  <!-- écusson -->
+  <path d="M120 54 L136 54 L136 66 C136 72 128 76 128 76 C128 76 120 72 120 66 Z" fill="#f6d23a" stroke-width="3"/>
+</g>
+</svg>

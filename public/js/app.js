@@ -14,6 +14,8 @@ const CATS = [
   { id: 'gemmes', name: 'Pierres précieuses', icon: '💎' },
   { id: 'minecraft', name: 'Minecraft', icon: '⛏️' },
   { id: 'pokemon', name: 'Pokémon', icon: '⚡' },
+  { id: 'soccer', name: 'Soccer', icon: '⚽' },
+  { id: 'hockey', name: 'Hockey', icon: '🏒' },
   { id: 'starwars', name: 'Star Wars', icon: '🌌' },
   { id: 'jeux', name: 'Jeux vidéo', icon: '🎮' },
   { id: 'animaux', name: 'Animaux', icon: '🐾' },
