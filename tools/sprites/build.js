@@ -156,6 +156,22 @@ function rasterize(svgFull, svgFill, opts) {
       }
       cells = next;
     }
+    // Contours colorés : un trait prend une version foncée de la couleur qu'il borde.
+    if (opts.selout) {
+      const next = cells.slice();
+      for (let c = 0; c < C; c++) {
+        if (!(kind[c] === 2 || kind[c] === 3) || !isInk(cells[c])) continue;
+        const x = c % W0, y = (c / W0) | 0, t = {};
+        N8.forEach(([a, b]) => { const v = at(cells, x + a, y + b); if (v >= 0 && !inkLike[v]) t[v] = (t[v] || 0) + 1; });
+        const k = Object.keys(t); if (!k.length) continue;
+        const col = rgb[+k.sort((a, b) => t[b] - t[a])[0]];
+        const dc = [col[0] * 0.42, col[1] * 0.38, col[2] * 0.48].map((v) => Math.round(v));
+        const hx = '#' + dc.map((v) => v.toString(16).padStart(2, '0')).join('');
+        let j = pal.indexOf(hx); if (j < 0) { pal.push(hx); rgb.push(dc); lum.push(lumOf(dc)); inkLike.push(false); j = pal.length - 1; }
+        next[c] = j;
+      }
+      cells = next;
+    }
     // Textes en lettres de pixels (5 cases de haut), centrés sur x, posés en haut à y.
     const FONT = {
       A: ['0110', '1001', '1111', '1001', '1001'], B: ['1110', '1001', '1110', '1001', '1110'], C: ['0111', '1000', '1000', '1000', '0111'],
@@ -200,7 +216,7 @@ function rasterize(svgFull, svgFill, opts) {
     cells.forEach((v, c) => { if (v < 0) return; const x = c % W0, y = (c / W0) | 0; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); });
     if (full) { x0 = 0; y0 = 0; x1 = W0 - 1; y1 = H0 - 1; }
     const usedAll = [...new Set(cells.filter((v) => v >= 0))].sort((a, b) => lum[b] - lum[a]);
-    const L = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', colors = {}, map = {};
+    const L = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', colors = {}, map = {};
     usedAll.forEach((v, k) => { colors[L[k]] = pal[v]; map[v] = L[k]; });
     const rows = [];
     for (let y = y0; y <= y1; y++) { let r = ''; for (let x = x0; x <= x1; x++) { const v = cells[y * W0 + x]; r += v < 0 ? '.' : map[v]; } rows.push(r); }
@@ -243,6 +259,8 @@ const lighter = (h) => {
   return fromHsl(hueToward(hue, 55, 10), sat, l + (1 - l) * 0.45);
 };
 let sid = 0;
+// Essai « style application » : STYLE=app SCALE=1.7 node tools/sprites/build.js --preview …
+const APP = process.env.STYLE === 'app';
 function shade(svg, cell) {
   const sd = 3 * cell, hl = 1.6 * cell;
   // On suit les groupes <g> : seules les formes dont le trait est foncé (contour) ont du relief.
@@ -266,6 +284,22 @@ function shade(svg, cell) {
     const done = m.replace(/\/>$/, ' data-flat="1"/>');
     // Ombre : la forme décalée vers le haut-gauche laisse une bande foncée en bas à droite.
     // Reflet : ce qui sort de la forme décalée vers le bas-droite devient plus clair.
+    if (APP) {
+      // Style « application » : deux tons d'ombre et deux tons de reflet, en dégradé.
+      const mix = (a, b) => toHex(toRgb(a).map((v, k) => (v + toRgb(b)[k]) / 2));
+      const deep = darker(fill), light = lighter(fill);
+      const h1 = 1.2 * cell, h2 = 2.4 * cell, s1 = 1.6 * cell, s2 = 3.2 * cell;
+      return done
+        + '<clipPath id="' + id + '"><' + tag + ' id="' + id + 'g"' + geo + '/></clipPath>'
+        + '<clipPath id="' + id + 'a"><use href="#' + id + 'g" transform="translate(' + h1 + ' ' + h1 + ')"/></clipPath>'
+        + '<clipPath id="' + id + 'b"><use href="#' + id + 'g" transform="translate(' + h2 + ' ' + h2 + ')"/></clipPath>'
+        + '<g clip-path="url(#' + id + ')">' + el(deep)
+        + '<g transform="translate(' + -s1 + ' ' + -s1 + ')">' + el(mix(deep, fill)) + '</g>'
+        + '<g transform="translate(' + -s2 + ' ' + -s2 + ')">' + el(light) + '</g>'
+        + '<g clip-path="url(#' + id + 'a)"><g transform="translate(' + -s2 + ' ' + -s2 + ')">' + el(mix(light, fill)) + '</g></g>'
+        + '<g clip-path="url(#' + id + 'b)"><g transform="translate(' + -s2 + ' ' + -s2 + ')">' + el(fill) + '</g></g></g>'
+        + done.replace(/fill="#[0-9a-fA-F]{6}"/, 'fill="none"');
+    }
     return done
       + '<clipPath id="' + id + '"><' + tag + ' id="' + id + 'g"' + geo + '/></clipPath>'
       + '<clipPath id="' + id + 'h"><use href="#' + id + 'g" transform="translate(' + hl + ' ' + hl + ')"/></clipPath>'
@@ -327,7 +361,7 @@ function expand(svg, cell) {
     const attr = (k, def) => (svg.match(new RegExp('data-' + k + '="([^"]*)"')) || [])[1] || def;
     const weights = { ...included };
     attr('weights', '').split(',').filter(Boolean).forEach((s) => { const [c, v] = s.split(':'); weights[c.toLowerCase()] = +v; });
-    const size = +attr('size', 44);
+    const size = Math.round(+attr('size', 44) * (APP ? +(process.env.SCALE || 1.7) : 1));
     const vbW = +svg.match(/viewBox="[^"]+"/)[0].split(/[\s"]+/)[3];
     const k = (vbW / size) * +attr('stroke', 1.05) / 4;
     const svgScaled = svg.replace(/stroke-width="([\d.]+)"/g, (m, v) => 'stroke-width="' + (+v * k).toFixed(2) + '"');
@@ -336,7 +370,7 @@ function expand(svg, cell) {
     const svgFill = svgScaled.replace(/stroke="(#[0-9a-fA-F]{6})"/g, (m, c) => (darkHex.includes(c.toLowerCase()) ? 'stroke="none"' : m));
     const o = {
       size, weights, S: 12, full: attr('full', '') === '1',
-      max: +attr('max', attr('full', '') === '1' ? 24 : 18), inkCov: +attr('ink', 0.24), strokePx: 12 * +attr('stroke', 1.05), texts,
+      max: APP ? 40 : +attr('max', attr('full', '') === '1' ? 24 : 18), selout: APP, inkCov: +attr('ink', 0.24), strokePx: 12 * +attr('stroke', 1.05), texts,
     };
     const run = () => page.evaluate(([a, b, c]) => rasterize(a, b, c), [svgScaled, svgFill, o]);
     const r = await run().catch(async () => { await page.addScriptTag({ content: rasterize.toString() }); return run(); });
