@@ -265,7 +265,7 @@ function prepRaster(url, K) {
       }
       const lum = (c) => (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255;
       const INK = [27, 27, 34];
-      const cols = centers.map((c) => (lum(c) < 0.22 ? INK : c.map(Math.round)));
+      const cols = centers.map((c) => (lum(c) < 0.15 ? INK : c.map(Math.round)));
       const lab = new Int16Array(N).fill(-1);
       for (let p = 0; p < N; p++) {
         if (bg[p]) continue;
