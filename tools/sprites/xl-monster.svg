@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-monster" data-name="Monster truck" data-cat="vehicules" data-size="72" data-full="1">
+  <sprite src="parts/desert" x="0" y="0" width="256" height="192"/>
+  <sprite src="parts/monster" x="24" y="14" width="200" height="170"/>
+</svg>

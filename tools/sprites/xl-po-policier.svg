@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 256" data-id="xl-po-policier" data-name="Policier" data-cat="police" data-size="72" data-full="1">
+  <sprite src="parts/ville" x="0" y="0" width="192" height="256" fit="stretch"/>
+  <sprite src="parts/policier" x="16" y="14" width="160" height="240"/>
+</svg>

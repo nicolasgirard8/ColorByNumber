@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192">
+  <rect width="256" height="192" fill="#5ab4f0"/>
+  <rect y="30" width="256" height="30" fill="#7ac6f6"/>
+  <circle cx="226" cy="22" r="16" fill="#ffb02e"/><circle cx="226" cy="22" r="11" fill="#ffe14d"/>
+  <rect y="56" width="256" height="40" fill="#6a7a94"/>
+  <g>
+    <rect x="0" y="62" width="17" height="8" rx="3" fill="#e8302a"/><rect x="21" y="62" width="17" height="8" rx="3" fill="#f6d23a"/><rect x="42" y="62" width="17" height="8" rx="3" fill="#2a6ad0"/><rect x="63" y="62" width="17" height="8" rx="3" fill="#ffffff"/><rect x="84" y="62" width="17" height="8" rx="3" fill="#e8302a"/><rect x="105" y="62" width="17" height="8" rx="3" fill="#f6d23a"/><rect x="126" y="62" width="17" height="8" rx="3" fill="#2a6ad0"/><rect x="147" y="62" width="17" height="8" rx="3" fill="#ffffff"/><rect x="168" y="62" width="17" height="8" rx="3" fill="#e8302a"/><rect x="189" y="62" width="17" height="8" rx="3" fill="#f6d23a"/><rect x="210" y="62" width="17" height="8" rx="3" fill="#2a6ad0"/><rect x="231" y="62" width="17" height="8" rx="3" fill="#ffffff"/>
+    <rect x="10" y="76" width="17" height="8" rx="3" fill="#f6d23a"/><rect x="31" y="76" width="17" height="8" rx="3" fill="#2a6ad0"/><rect x="52" y="76" width="17" height="8" rx="3" fill="#ffffff"/><rect x="73" y="76" width="17" height="8" rx="3" fill="#e8302a"/><rect x="94" y="76" width="17" height="8" rx="3" fill="#f6d23a"/><rect x="115" y="76" width="17" height="8" rx="3" fill="#2a6ad0"/><rect x="136" y="76" width="17" height="8" rx="3" fill="#ffffff"/><rect x="157" y="76" width="17" height="8" rx="3" fill="#e8302a"/><rect x="178" y="76" width="17" height="8" rx="3" fill="#f6d23a"/><rect x="199" y="76" width="17" height="8" rx="3" fill="#2a6ad0"/><rect x="220" y="76" width="17" height="8" rx="3" fill="#ffffff"/><rect x="241" y="76" width="17" height="8" rx="3" fill="#e8302a"/>
+  </g>
+  <rect y="96" width="256" height="10" fill="#ffffff"/>
+  <path d="M0 101 L256 101" stroke="#e8302a" stroke-width="5" stroke-dasharray="16 16"/>
+  <rect y="106" width="256" height="70" fill="#5a5e6a"/>
+  <path d="M0 140 L256 140" stroke="#ffffff" stroke-width="4" stroke-dasharray="24 16"/>
+  <rect y="176" width="256" height="16" fill="#4fae3a"/>
+  <path d="M0 178 L256 178" stroke="#e8302a" stroke-width="5" stroke-dasharray="16 16"/>
+</svg>

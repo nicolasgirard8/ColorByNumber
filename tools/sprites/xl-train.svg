@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-train" data-name="Petit train" data-cat="vehicules" data-size="72" data-full="1">
+  <sprite src="parts/prairie" x="0" y="0" width="256" height="192"/>
+  <sprite src="parts/rails" x="0" y="160" width="256" height="30"/>
+  <sprite src="parts/train" x="4" y="58" width="248" height="132"/>
+</svg>

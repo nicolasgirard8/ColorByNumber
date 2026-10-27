@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pattes arrière -->
+  <path d="M46 168 L42 230 L70 230 L72 172 Z" fill="#5a8ac0"/>
+  <path d="M118 172 L118 230 L144 230 L144 170 Z" fill="#5a8ac0"/>
+  <!-- queue -->
+  <path d="M30 170 C10 176 2 194 4 210 C14 200 26 192 40 188 Z" fill="#78a8de"/>
+  <!-- corps -->
+  <path d="M28 168 C30 132 70 116 112 120 C146 124 162 150 156 176 C150 196 50 202 34 190 C28 184 26 176 28 168 Z" fill="#78a8de"/>
+  <path d="M50 190 C80 200 130 198 154 184 C150 196 138 200 110 202 L52 200 C44 198 44 194 50 190 Z" fill="#c8e0f4" stroke="none"/>
+  <!-- taches -->
+  <circle cx="70" cy="146" r="8" fill="#5a8ac0" stroke="none"/><circle cx="96" cy="136" r="6" fill="#5a8ac0" stroke="none"/><circle cx="90" cy="162" r="9" fill="#5a8ac0" stroke="none"/><circle cx="122" cy="150" r="6" fill="#5a8ac0" stroke="none"/>
+  <!-- long cou -->
+  <path d="M120 130 C132 96 136 60 146 36 L170 40 C164 70 156 110 150 150 Z" fill="#78a8de"/>
+  <path d="M146 60 L162 62 M142 84 L158 86 M138 108 L154 110" fill="none" stroke="#5a8ac0" stroke-width="4"/>
+  <!-- pattes avant -->
+  <path d="M70 176 L66 232 L96 232 L98 180 Z" fill="#78a8de"/>
+  <path d="M130 170 L130 232 L158 232 L156 166 Z" fill="#78a8de"/>
+  <path d="M66 232 L70 224 L74 232 M80 232 L84 224 L88 232 M130 232 L134 224 L138 232 M144 232 L148 224 L152 232" fill="#ffffff" stroke-width="2.5"/>
+  <!-- tête -->
+  <path d="M140 30 C140 12 158 4 176 6 C194 8 200 22 196 34 C192 46 178 50 162 48 C150 48 140 42 140 30 Z" fill="#78a8de"/>
+  <path d="M156 10 C160 4 170 2 176 6 C172 10 164 12 156 10 Z" fill="#5a8ac0" stroke="none"/>
+  <ellipse cx="168" cy="24" rx="7" ry="8" fill="#ffffff"/>
+  <circle cx="170" cy="25" r="4" fill="#1b1b22" stroke="none"/>
+  <circle cx="168" cy="23" r="1.5" fill="#ffffff" stroke="none"/>
+  <path d="M180 38 Q188 40 194 36" fill="none" stroke-width="3"/>
+  <circle cx="190" cy="22" r="1.8" fill="#1b1b22"/>
+</g>
+</svg>

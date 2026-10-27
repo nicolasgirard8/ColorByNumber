@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 140">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M8 22 C8 14 14 10 22 10 L232 10 C246 10 254 20 258 36 L264 70 L264 112 L8 112 Z" fill="#f6c21a"/>
+  <path d="M8 76 L264 76 L264 86 L8 86 Z" fill="#1b1b22" stroke="none"/>
+  <path d="M8 92 L264 92" fill="none" stroke-width="4"/>
+  <!-- fenêtres -->
+  <path d="M20 22 L56 22 L56 56 L20 56 Z M64 22 L100 22 L100 56 L64 56 Z M108 22 L144 22 L144 56 L108 56 Z M152 22 L188 22 L188 56 L152 56 Z" fill="#a8dcf4"/>
+  <path d="M200 22 L236 22 C244 22 248 30 250 40 L252 56 L200 56 Z" fill="#a8dcf4"/>
+  <path d="M196 22 L196 104" fill="none" stroke-width="3"/>
+  <!-- phares -->
+  <path d="M254 94 L266 94 L266 106 L254 106 Z" fill="#fff6c0"/>
+  <path d="M2 106 L268 106 L268 116 L2 116 Z" fill="#5a5e6a"/>
+  <!-- roues -->
+  <circle cx="60" cy="114" r="20" fill="#3a3a48"/><circle cx="60" cy="114" r="9" fill="#c9ced6"/>
+  <circle cx="214" cy="114" r="20" fill="#3a3a48"/><circle cx="214" cy="114" r="9" fill="#c9ced6"/>
+</g>
+</svg>

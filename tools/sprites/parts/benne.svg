@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- benne -->
+  <path d="M8 30 L160 30 L150 104 L18 104 Z" fill="#f08a2a"/>
+  <path d="M30 40 L44 96 M60 40 L68 96 M90 40 L92 96 M120 40 L116 96 M146 40 L140 96" fill="none" stroke="#c8641a" stroke-width="4"/>
+  <!-- cailloux -->
+  <circle cx="40" cy="26" r="14" fill="#9aa0ac"/><circle cx="70" cy="20" r="16" fill="#8a8f9c"/><circle cx="102" cy="24" r="14" fill="#9aa0ac"/><circle cx="130" cy="26" r="12" fill="#8a8f9c"/>
+  <!-- cabine -->
+  <path d="M166 40 L216 40 C228 40 240 56 246 74 L250 104 L166 104 Z" fill="#f6c21a"/>
+  <path d="M178 50 L214 50 C222 50 230 62 234 72 L178 72 Z" fill="#a8dcf4"/>
+  <path d="M242 88 L254 88 L254 100 L242 100 Z" fill="#fff6c0"/>
+  <path d="M2 100 L256 100 L256 112 L2 112 Z" fill="#5a5e6a"/>
+  <!-- roues -->
+  <circle cx="44" cy="118" r="22" fill="#3a3a48"/><circle cx="44" cy="118" r="10" fill="#c9ced6"/>
+  <circle cx="100" cy="118" r="22" fill="#3a3a48"/><circle cx="100" cy="118" r="10" fill="#c9ced6"/>
+  <circle cx="212" cy="118" r="22" fill="#3a3a48"/><circle cx="212" cy="118" r="10" fill="#c9ced6"/>
+</g>
+</svg>

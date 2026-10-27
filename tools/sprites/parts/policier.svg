@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 240">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- jambes et chaussures -->
+  <path d="M52 160 L50 220 L76 220 L78 160 Z M82 160 L84 220 L110 220 L108 160 Z" fill="#24304a"/>
+  <path d="M40 220 L78 220 L78 232 L38 232 Z M82 220 L120 220 L122 232 L82 232 Z" fill="#2a2a38"/>
+  <!-- corps -->
+  <path d="M40 92 L120 92 L124 164 L36 164 Z" fill="#2a5ab8"/>
+  <path d="M36 150 L124 150 L124 162 L36 162 Z" fill="#2a2a38"/>
+  <rect x="72" y="150" width="16" height="12" fill="#f6d23a" stroke-width="3"/>
+  <path d="M80 92 L80 150" fill="none" stroke="#1c3a8a" stroke-width="3"/>
+  <circle cx="80" cy="110" r="2.5" fill="#f6d23a" stroke="none"/><circle cx="80" cy="128" r="2.5" fill="#f6d23a" stroke="none"/>
+  <!-- étoile -->
+  <path d="M104 104 L107 111 L114 111 L109 116 L111 123 L104 119 L97 123 L99 116 L94 111 L101 111 Z" fill="#f6d23a" stroke-width="2.5"/>
+  <!-- bras : un qui salue -->
+  <path d="M40 98 L24 150" fill="none" stroke-width="20"/><path d="M40 98 L24 150" fill="none" stroke="#2a5ab8" stroke-width="12"/>
+  <circle cx="22" cy="154" r="9" fill="#f6d0a8"/>
+  <path d="M120 98 L142 56" fill="none" stroke-width="20"/><path d="M120 98 L142 56" fill="none" stroke="#2a5ab8" stroke-width="12"/>
+  <circle cx="144" cy="50" r="9" fill="#f6d0a8"/>
+  <!-- tête -->
+  <circle cx="80" cy="62" r="30" fill="#f6d0a8"/>
+  <circle cx="50" cy="64" r="7" fill="#f6d0a8"/><circle cx="110" cy="64" r="7" fill="#f6d0a8"/>
+  <!-- casquette -->
+  <path d="M46 46 C46 18 114 18 114 46 Z" fill="#1c3a8a"/>
+  <path d="M40 46 L120 46 L120 54 L40 54 Z" fill="#2a2a38"/>
+  <path d="M74 26 L86 26 L86 38 L74 38 Z" fill="#f6d23a" stroke-width="3"/>
+  <!-- visage -->
+  <ellipse cx="68" cy="66" rx="4" ry="5" fill="#1b1b22" stroke="none"/><ellipse cx="92" cy="66" rx="4" ry="5" fill="#1b1b22" stroke="none"/>
+  <circle cx="60" cy="76" r="4" fill="#f4a0a0" stroke="none"/><circle cx="100" cy="76" r="4" fill="#f4a0a0" stroke="none"/>
+  <path d="M70 80 Q80 88 90 80" fill="none" stroke-width="3"/>
+</g>
+</svg>

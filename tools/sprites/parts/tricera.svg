@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 170">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pattes arrière -->
+  <path d="M60 110 L56 162 L82 162 L84 118 Z" fill="#d07a3a"/>
+  <path d="M120 116 L118 162 L142 162 L142 118 Z" fill="#d07a3a"/>
+  <!-- queue -->
+  <path d="M40 88 C20 92 8 104 2 120 C20 116 34 112 48 108 Z" fill="#f0964a"/>
+  <!-- corps -->
+  <path d="M36 92 C40 56 96 42 136 52 C162 58 170 86 160 112 C150 132 70 136 48 124 C38 118 34 104 36 92 Z" fill="#f0964a"/>
+  <path d="M60 118 C88 128 132 128 156 116 C152 128 140 132 120 134 L64 132 C56 130 56 124 60 118 Z" fill="#f8d6a0" stroke="none"/>
+  <!-- taches -->
+  <ellipse cx="78" cy="70" rx="9" ry="6" fill="#c8641e" stroke="none"/>
+  <ellipse cx="104" cy="62" rx="7" ry="5" fill="#c8641e" stroke="none"/>
+  <ellipse cx="96" cy="88" rx="10" ry="6" fill="#c8641e" stroke="none"/>
+  <ellipse cx="62" cy="96" rx="7" ry="5" fill="#c8641e" stroke="none"/>
+  <!-- pattes avant -->
+  <path d="M78 116 L74 164 L102 164 L102 120 Z" fill="#f0964a"/>
+  <path d="M136 112 L134 164 L162 164 L160 108 Z" fill="#f0964a"/>
+  <path d="M74 164 L78 156 L82 164 M88 164 L92 156 L96 164 M136 164 L140 156 L144 164 M150 164 L154 156 L158 164" fill="#ffffff" stroke-width="2.5"/>
+  <!-- collerette -->
+  <path d="M146 40 C150 14 186 2 206 18 C216 28 214 52 206 66 C196 84 168 96 150 88 Z" fill="#7a5ab8"/>
+  <path d="M154 30 L160 22 M172 12 L176 6 M194 10 L200 4 M208 26 L216 22 M212 48 L220 46" fill="none" stroke-width="5"/>
+  <circle cx="170" cy="30" r="5" fill="#f6d23a" stroke-width="2.5"/><circle cx="192" cy="26" r="5" fill="#f6d23a" stroke-width="2.5"/><circle cx="202" cy="48" r="5" fill="#f6d23a" stroke-width="2.5"/>
+  <!-- tête -->
+  <path d="M144 62 C150 44 182 44 196 58 C210 70 214 92 206 104 C196 116 172 118 158 110 C144 102 138 80 144 62 Z" fill="#f0964a"/>
+  <path d="M196 96 C206 92 214 96 216 104 C210 112 200 114 192 110 Z" fill="#f8d6a0"/>
+  <!-- cornes -->
+  <path d="M168 52 L176 18 L186 50 Z" fill="#fcf2dc"/>
+  <path d="M190 58 L208 30 L204 64 Z" fill="#fcf2dc"/>
+  <path d="M204 88 L218 76 L212 96 Z" fill="#fcf2dc"/>
+  <!-- œil -->
+  <ellipse cx="180" cy="74" rx="8" ry="9" fill="#ffffff"/>
+  <circle cx="182" cy="75" r="4.5" fill="#1b1b22" stroke="none"/>
+  <circle cx="180" cy="73" r="1.6" fill="#ffffff" stroke="none"/>
+  <path d="M182 104 Q194 108 204 104" fill="none" stroke-width="3"/>
+</g>
+</svg>

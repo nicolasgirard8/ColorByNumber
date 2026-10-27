@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-po-poursuite" data-name="Course-poursuite" data-cat="police" data-size="72" data-full="1">
+  <sprite src="parts/ville-nuit" x="0" y="0" width="256" height="192"/>
+  <sprite src="parts/voiture-police" x="0" y="118" width="140" height="74"/>
+  <sprite src="parts/voiture-police" x="150" y="128" width="104" height="58" recolor="#1c3a7a:#3fae4a,#f4f4f8:#f6d23a,#2a6ad0:#3fae4a,#e8302a:#3fae4a"/>
+</svg>

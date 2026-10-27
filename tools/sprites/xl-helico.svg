@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-helico" data-name="Hélicoptère" data-cat="vehicules" data-size="72" data-full="1">
+  <sprite src="parts/ville" x="0" y="0" width="256" height="192"/>
+  <sprite src="parts/helico" x="20" y="6" width="216" height="134"/>
+</svg>
