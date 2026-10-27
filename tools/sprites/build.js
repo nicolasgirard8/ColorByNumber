@@ -11,121 +11,178 @@ const path = require('path');
 const DIR = __dirname;
 const OUT = path.join(DIR, '../../public/js/sprites.js');
 
-function rasterize(svgText, opts) {
-  // Exécuté dans la page : rendu haute définition puis une couleur par case.
-  return new Promise((resolve) => {
-    const im = new Image();
-    im.onload = () => {
-      const { size, weights, S } = opts;
-      const vb = svgText.match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(Number);
-      const ratio = vb[2] / vb[3];
-      // Palette exacte : toutes les couleurs écrites dans le SVG.
-      const pal = [...new Set((svgText.match(/#[0-9a-fA-F]{6}\b/g) || []).map((c) => c.toLowerCase()))];
-      const rgb = pal.map((c) => [1, 3, 5].map((k) => parseInt(c.slice(k, k + 2), 16)));
-      const W0 = ratio >= 1 ? size : Math.round(size * ratio), H0 = ratio >= 1 ? Math.round(size / ratio) : size;
-      const cv = document.createElement('canvas'); cv.width = W0 * S; cv.height = H0 * S;
-      const g = cv.getContext('2d', { willReadFrequently: true });
-      g.drawImage(im, 0, 0, cv.width, cv.height);
-      const d = g.getImageData(0, 0, cv.width, cv.height).data;
-      const near = (i) => {
-        let best = 0, bd = Infinity;
-        for (let j = 0; j < rgb.length; j++) {
-          const c = rgb[j], e = (d[i] - c[0]) ** 2 + (d[i + 1] - c[1]) ** 2 + (d[i + 2] - c[2]) ** 2;
-          if (e < bd) { bd = e; best = j; }
-        }
-        return best;
-      };
-      const lum0 = rgb.map((c) => 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]);
-      const inkIdx = lum0.indexOf(Math.min(...lum0));
-      const inkShare = opts.inkShare;
-      let cells = new Array(W0 * H0).fill(-1);
-      for (let cy = 0; cy < H0; cy++) for (let cx = 0; cx < W0; cx++) {
-        const t = new Array(pal.length).fill(0);
-        let op = 0;
-        for (let y = cy * S; y < (cy + 1) * S; y++) for (let x = cx * S; x < (cx + 1) * S; x++) {
-          const i = (y * cv.width + x) * 4;
-          if (d[i + 3] < 128) continue;
-          op++;
-          t[near(i)] += weights[pal[near(i)]] || 1;
-        }
-        if (op * 2 < S * S) continue;
-        let best = 0;
-        t.forEach((v, j) => { if (v > t[best]) best = j; });
-        // Le trait foncé gagne dès qu'il couvre une bonne part de la case : lignes continues.
-        if (t[inkIdx] >= op * inkShare) best = inkIdx;
-        cells[cy * W0 + cx] = best;
+// Exécuté dans la page. Deux rendus du même dessin : complet (silhouette et traits)
+// et sans les traits noirs (vraies couleurs sous les traits). Puis, comme un graphiste
+// pixel art : trait d'une case sans coins doublés, contour extérieur net, couleurs
+// réunies. Les ombres et reflets viennent du dessin vectoriel (fonction shade).
+function rasterize(svgFull, svgFill, opts) {
+  const load = (t) => new Promise((ok) => { const im = new Image(); im.onload = () => ok(im); im.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(t))); });
+  return Promise.all([load(svgFull), load(svgFill)]).then(([imF, imL]) => {
+    const { size, weights, S, full, max } = opts;
+    const vb = svgFull.match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(Number);
+    const ratio = vb[2] / vb[3];
+    const W0 = ratio >= 1 ? size : Math.round(size * ratio), H0 = ratio >= 1 ? Math.round(size / ratio) : size;
+    const Wp = W0 * S, Hp = H0 * S;
+    const grab = (im) => { const c = document.createElement('canvas'); c.width = Wp; c.height = Hp; const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(im, 0, 0, Wp, Hp); return g.getImageData(0, 0, Wp, Hp).data; };
+    const DF = grab(imF), DL = grab(imL);
+    // Palette exacte : toutes les couleurs écrites dans le SVG.
+    const pal = [...new Set((svgFull.match(/#[0-9a-fA-F]{6}\b/g) || []).map((c) => c.toLowerCase()))];
+    const rgb = pal.map((c) => [1, 3, 5].map((k) => parseInt(c.slice(k, k + 2), 16)));
+    const lumOf = (c) => (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255;
+    const lum = rgb.map(lumOf);
+    const inkIdx = lum.indexOf(Math.min(...lum));
+    const inkLike = lum.map((l) => l < 0.13);
+    const nearest = (D, i) => {
+      let best = 0, bd = Infinity;
+      for (let j = 0; j < rgb.length; j++) {
+        const c = rgb[j], e = (D[i] - c[0]) ** 2 + (D[i + 1] - c[1]) ** 2 + (D[i + 2] - c[2]) ** 2;
+        if (e < bd) { bd = e; best = j; }
       }
-      // Cases isolées (sans voisine de même couleur) : prises par la couleur voisine dominante.
-      // Les détails protégés par un poids (reflets des yeux…) sont gardés.
-      for (let pass = 0; pass < 2; pass++) {
-        const next = cells.slice();
-        for (let y = 0; y < H0; y++) for (let x = 0; x < W0; x++) {
-          const v = cells[y * W0 + x];
-          if (v < 0 || weights[pal[v]]) continue;
-          const nb = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([a, b]) => (x + a < 0 || y + b < 0 || x + a >= W0 || y + b >= H0 ? -1 : cells[(y + b) * W0 + x + a]));
-          if (nb.includes(v)) continue;
-          const t = {};
-          nb.filter((n) => n >= 0).forEach((n) => { t[n] = (t[n] || 0) + 1; });
-          const keys = Object.keys(t);
-          if (keys.length) next[y * W0 + x] = +keys.sort((a, b) => t[b] - t[a])[0];
-        }
-        cells = next;
-      }
-      // Trop de couleurs : on fusionne les deux teintes les plus proches (la moins utilisée
-      // prend la couleur de l'autre) jusqu'à la limite. Le trait n'est jamais fusionné.
-      for (;;) {
-        const count = {};
-        cells.forEach((v) => { if (v >= 0) count[v] = (count[v] || 0) + 1; });
-        const used = Object.keys(count).map(Number);
-        if (used.length <= opts.max) break;
-        let best = null;
-        for (const a of used) for (const b of used) {
-          if (a >= b || a === inkIdx || b === inkIdx) continue;
-          const [ca, cb] = [rgb[a], rgb[b]];
-          const dist = 2 * (ca[0] - cb[0]) ** 2 + 4 * (ca[1] - cb[1]) ** 2 + 3 * (ca[2] - cb[2]) ** 2;
-          if (!best || dist < best[0]) best = [dist, a, b];
-        }
-        const [, a, b] = best;
-        const from = count[a] < count[b] ? a : b, to = from === a ? b : a;
-        cells = cells.map((v) => (v === from ? to : v));
-      }
-      if (opts.full) {
-        const lumF = rgb.map((c) => 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]);
-        const usedF = [...new Set(cells.filter((v) => v >= 0))].sort((a, b) => lumF[b] - lumF[a]);
-        const L = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', colorsF = {}, mapF = {};
-        usedF.forEach((v, k) => { colorsF[L[k]] = pal[v]; mapF[v] = L[k]; });
-        const rowsF = [];
-        for (let y = 0; y < H0; y++) { let r = ''; for (let x = 0; x < W0; x++) { const v = cells[y * W0 + x]; r += v < 0 ? '.' : mapF[v]; } rowsF.push(r); }
-        resolve({ colors: colorsF, rows: rowsF });
-        return;
-      }
-      // Recadrage sur le sujet + une case de marge pour le contour.
-      let x0 = W0, y0 = H0, x1 = -1, y1 = -1;
-      cells.forEach((v, i) => { if (v < 0) return; const x = i % W0, y = (i / W0) | 0; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); });
-      const w = x1 - x0 + 3, h = y1 - y0 + 3;
-      const crop = new Array(w * h).fill(-1);
-      for (let y = y0; y <= y1; y++) for (let x = x0; x <= x1; x++) crop[(y - y0 + 1) * w + (x - x0 + 1)] = cells[y * W0 + x];
-      cells = crop;
-      // Contour extérieur d'une case, dans la couleur du trait (la plus foncée).
-      const lum = rgb.map((c) => 0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]);
-      const ink = lum.indexOf(Math.min(...lum));
-      const at = (x, y) => (x < 0 || y < 0 || x >= w || y >= h ? -1 : cells[y * w + x]);
-      const out = cells.slice();
-      for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
-        if (cells[y * w + x] >= 0) continue;
-        if ([[1, 0], [-1, 0], [0, 1], [0, -1]].some(([a, b]) => at(x + a, y + b) >= 0 && at(x + a, y + b) !== ink)) out[y * w + x] = ink;
-      }
-      cells = out;
-      // Couleurs réellement utilisées, triées de la plus claire à la plus foncée.
-      const used = [...new Set(cells.filter((v) => v >= 0))].sort((a, b) => lum[b] - lum[a]);
-      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-      const colors = {}; const map = {};
-      used.forEach((v, k) => { colors[letters[k]] = pal[v]; map[v] = letters[k]; });
-      const rows = [];
-      for (let y = 0; y < h; y++) { let r = ''; for (let x = 0; x < w; x++) { const v = cells[y * w + x]; r += v < 0 ? '.' : map[v]; } rows.push(r); }
-      resolve({ colors, rows });
+      return best;
     };
-    im.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgText)));
+    // Distance (en pixels) au vide extérieur : les traits proches du bord forment le contour.
+    const N = Wp * Hp, dist = new Float32Array(N);
+    for (let p = 0; p < N; p++) dist[p] = DF[p * 4 + 3] < 128 ? 0 : 1e9;
+    for (let y = 0; y < Hp; y++) for (let x = 0; x < Wp; x++) {
+      const p = y * Wp + x; let v = dist[p];
+      if (x > 0) v = Math.min(v, dist[p - 1] + 1);
+      if (y > 0) { v = Math.min(v, dist[p - Wp] + 1); if (x > 0) v = Math.min(v, dist[p - Wp - 1] + 1.41); if (x < Wp - 1) v = Math.min(v, dist[p - Wp + 1] + 1.41); }
+      dist[p] = v;
+    }
+    for (let y = Hp - 1; y >= 0; y--) for (let x = Wp - 1; x >= 0; x--) {
+      const p = y * Wp + x; let v = dist[p];
+      if (x < Wp - 1) v = Math.min(v, dist[p + 1] + 1);
+      if (y < Hp - 1) { v = Math.min(v, dist[p + Wp] + 1); if (x < Wp - 1) v = Math.min(v, dist[p + Wp + 1] + 1.41); if (x > 0) v = Math.min(v, dist[p + Wp - 1] + 1.41); }
+      dist[p] = v;
+    }
+    const edgePx = opts.strokePx * 1.15;
+    // 1. Une couleur par case (rendu sans traits) et la part de trait intérieur.
+    const C = W0 * H0;
+    let cells = new Array(C).fill(-1);
+    const base = new Array(C).fill(-1), cov = new Float32Array(C), noFill = new Uint8Array(C);
+    for (let cy = 0; cy < H0; cy++) for (let cx = 0; cx < W0; cx++) {
+      const t = new Array(pal.length).fill(0);
+      let op = 0, inner = 0, filled = 0;
+      for (let y = cy * S; y < (cy + 1) * S; y++) for (let x = cx * S; x < (cx + 1) * S; x++) {
+        const p = y * Wp + x, i = p * 4;
+        if (DF[i + 3] < 128) continue;
+        op++;
+        const fillHere = DL[i + 3] >= 128;
+        const jl = fillHere ? nearest(DL, i) : -1;
+        if (fillHere) { filled++; t[jl] += weights[pal[jl]] || 1; }
+        if (inkLike[nearest(DF, i)] && !(fillHere && inkLike[jl]) && (full || dist[p] > edgePx)) inner++;
+      }
+      const c = cy * W0 + cx;
+      if (op * 2 < S * S) continue;
+      let best = inkIdx;
+      if (filled) { best = 0; t.forEach((v, j) => { if (v > t[best]) best = j; }); }
+      else noFill[c] = 1;
+      base[c] = best; cells[c] = best; cov[c] = inner / op;
+    }
+    const at = (a, x, y) => (x < 0 || y < 0 || x >= W0 || y >= H0 ? -1 : a[y * W0 + x]);
+    const N4 = [[1, 0], [-1, 0], [0, 1], [0, -1]], N8 = [[1, 0], [1, 1], [0, 1], [-1, 1], [-1, 0], [-1, -1], [0, -1], [1, -1]];
+    // 2. Traits intérieurs amincis à une case (squelette de Zhang-Suen).
+    const M = new Uint8Array(C);
+    for (let c = 0; c < C; c++) if (cells[c] >= 0 && !inkLike[cells[c]] && cov[c] >= opts.inkCov) M[c] = 1;
+    const mAt = (x, y) => (x < 0 || y < 0 || x >= W0 || y >= H0 ? 0 : M[y * W0 + x]);
+    for (let changed = true; changed;) {
+      changed = false;
+      for (const step of [0, 1]) {
+        const del = [];
+        for (let y = 0; y < H0; y++) for (let x = 0; x < W0; x++) {
+          if (!M[y * W0 + x]) continue;
+          const P2 = mAt(x, y - 1), P3 = mAt(x + 1, y - 1), P4 = mAt(x + 1, y), P5 = mAt(x + 1, y + 1);
+          const P6 = mAt(x, y + 1), P7 = mAt(x - 1, y + 1), P8 = mAt(x - 1, y), P9 = mAt(x - 1, y - 1);
+          const seq = [P2, P3, P4, P5, P6, P7, P8, P9, P2];
+          const B = P2 + P3 + P4 + P5 + P6 + P7 + P8 + P9;
+          let A = 0; for (let k = 0; k < 8; k++) if (!seq[k] && seq[k + 1]) A++;
+          if (B < 2 || B > 6 || A !== 1) continue;
+          if (step === 0 ? (P2 * P4 * P6 === 0 && P4 * P6 * P8 === 0) : (P2 * P4 * P8 === 0 && P2 * P6 * P8 === 0)) del.push(y * W0 + x);
+        }
+        del.forEach((c) => { M[c] = 0; }); if (del.length) changed = true;
+      }
+    }
+    const kind = new Uint8Array(C); // 1 aplat foncé, 2 trait, 3 contour
+    for (let c = 0; c < C; c++) {
+      if (cells[c] < 0) continue;
+      if (M[c]) { cells[c] = inkIdx; kind[c] = 2; } else if (inkLike[cells[c]] && !noFill[c]) kind[c] = 1;
+    }
+    const isInk = (v) => v >= 0 && inkLike[v];
+    const ring = () => {
+      for (let c = 0; c < C; c++) {
+        if (cells[c] < 0 || (isInk(cells[c]) && kind[c] !== 0)) continue;
+        const x = c % W0, y = (c / W0) | 0;
+        if (N4.some(([a, b]) => at(cells, x + a, y + b) === -1)) { cells[c] = inkIdx; kind[c] = 3; }
+      }
+    };
+    // 3. Contour extérieur : une seule case, à l'intérieur de la silhouette.
+    if (!full) {
+      ring();
+      // Restes du trait extérieur (sans couleur dessous) : repris par la couleur voisine.
+      for (let pass = 0; pass < 3; pass++) for (let c = 0; c < C; c++) {
+        if (!noFill[c] || kind[c] === 3 || cells[c] < 0) continue;
+        const x = c % W0, y = (c / W0) | 0, t = {};
+        N4.forEach(([a, b]) => { const v = at(cells, x + a, y + b); if (v >= 0 && !inkLike[v]) t[v] = (t[v] || 0) + 1; });
+        const k = Object.keys(t); if (k.length) { cells[c] = +k.sort((a, b) => t[b] - t[a])[0]; noFill[c] = 0; kind[c] = 0; }
+      }
+    }
+    // 4. Coins en escalier : la case du coin d'un « L » est en trop (trait « pixel perfect »).
+    for (let pass = 0; pass < 2; pass++) for (let c = 0; c < C; c++) {
+      if (kind[c] !== 2 && kind[c] !== 3) continue;
+      const x = c % W0, y = (c / W0) | 0;
+      const inkN = N8.filter(([a, b]) => { const v = at(cells, x + a, y + b); return isInk(v) && kind[(y + b) * W0 + x + a] !== 1; });
+      if (inkN.length !== 2) continue;
+      const [[a1, b1], [a2, b2]] = inkN;
+      if (!(Math.abs(a1) + Math.abs(b1) === 1 && Math.abs(a2) + Math.abs(b2) === 1 && (a1 === 0) !== (a2 === 0))) continue;
+      const colorN = N4.map(([a, b]) => at(cells, x + a, y + b)).filter((v) => v >= 0 && !inkLike[v]);
+      if (kind[c] === 3) {
+        if (colorN.length) continue; // coin rentrant : le contour reste fermé
+        cells[c] = -1; kind[c] = 0;
+      } else {
+        cells[c] = base[c] >= 0 && !inkLike[base[c]] ? base[c] : (colorN.length ? colorN[0] : inkIdx); kind[c] = 0;
+      }
+    }
+    if (!full) ring();
+    // 5. Cases de couleur isolées : prises par la couleur voisine (détails protégés exceptés).
+    for (let pass = 0; pass < 2; pass++) {
+      const next = cells.slice();
+      for (let c = 0; c < C; c++) {
+        const v = cells[c]; if (v < 0 || inkLike[v] || weights[pal[v]]) continue;
+        const x = c % W0, y = (c / W0) | 0;
+        const nb = N4.map(([a, b]) => at(cells, x + a, y + b));
+        if (nb.includes(v)) continue;
+        const t = {}; nb.filter((n) => n >= 0 && !inkLike[n]).forEach((n) => { t[n] = (t[n] || 0) + 1; });
+        const k = Object.keys(t); if (k.length) next[c] = +k.sort((a, b) => t[b] - t[a])[0];
+      }
+      cells = next;
+    }
+    // 6. Trop de couleurs : les deux teintes les plus proches sont réunies (jamais le trait).
+    for (;;) {
+      const count = {};
+      cells.forEach((v) => { if (v >= 0) count[v] = (count[v] || 0) + 1; });
+      const used = Object.keys(count).map(Number);
+      if (used.length <= max) break;
+      let best = null;
+      for (const a of used) for (const b of used) {
+        if (a >= b || a === inkIdx || b === inkIdx) continue;
+        const ca = rgb[a], cb = rgb[b];
+        const dd = 2 * (ca[0] - cb[0]) ** 2 + 4 * (ca[1] - cb[1]) ** 2 + 3 * (ca[2] - cb[2]) ** 2;
+        if (!best || dd < best[0]) best = [dd, a, b];
+      }
+      const [, a, b] = best;
+      const from = count[a] < count[b] ? a : b, to = from === a ? b : a;
+      cells = cells.map((v) => (v === from ? to : v));
+    }
+    // 7. Recadrage et lettres (couleurs de la plus claire à la plus foncée).
+    let x0 = W0, y0 = H0, x1 = -1, y1 = -1;
+    cells.forEach((v, c) => { if (v < 0) return; const x = c % W0, y = (c / W0) | 0; x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); });
+    if (full) { x0 = 0; y0 = 0; x1 = W0 - 1; y1 = H0 - 1; }
+    const usedAll = [...new Set(cells.filter((v) => v >= 0))].sort((a, b) => lum[b] - lum[a]);
+    const L = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', colors = {}, map = {};
+    usedAll.forEach((v, k) => { colors[L[k]] = pal[v]; map[v] = L[k]; });
+    const rows = [];
+    for (let y = y0; y <= y1; y++) { let r = ''; for (let x = x0; x <= x1; x++) { const v = cells[y * W0 + x]; r += v < 0 ? '.' : map[v]; } rows.push(r); }
+    return { colors, rows };
   });
 }
 
@@ -244,16 +301,21 @@ function expand(svg, cell) {
     const vbW = +svg.match(/viewBox="[^"]+"/)[0].split(/[\s"]+/)[3];
     const k = (vbW / size) * +attr('stroke', 1.05) / 4;
     const svgScaled = svg.replace(/stroke-width="([\d.]+)"/g, (m, v) => 'stroke-width="' + (+v * k).toFixed(2) + '"');
-    const r = await page.evaluate(([svg, o]) => rasterize(svg, o), [svgScaled, { size, weights, S: 12, inkShare: +attr('ink', 0.46), full: attr('full', '') === '1', max: +attr('max', attr('full', '') === '1' ? 22 : 16) }]).catch(async () => {
-      await page.addScriptTag({ content: rasterize.toString() });
-      return page.evaluate(([svg, o]) => rasterize(svg, o), [svgScaled, { size, weights, S: 12, inkShare: +attr('ink', 0.46), full: attr('full', '') === '1', max: +attr('max', attr('full', '') === '1' ? 22 : 16) }]);
-    });
+    // Rendu « couleurs seules » : les traits foncés (contours) sont retirés.
+    const darkHex = [...new Set((svgScaled.match(/#[0-9a-fA-F]{6}\b/g) || []).map((c) => c.toLowerCase()))].filter((c) => lumOf(c) < 0.13);
+    const svgFill = svgScaled.replace(/stroke="(#[0-9a-fA-F]{6})"/g, (m, c) => (darkHex.includes(c.toLowerCase()) ? 'stroke="none"' : m));
+    const o = {
+      size, weights, S: 12, full: attr('full', '') === '1',
+      max: +attr('max', attr('full', '') === '1' ? 24 : 18), inkCov: +attr('ink', 0.24), strokePx: 12 * +attr('stroke', 1.05),
+    };
+    const run = () => page.evaluate(([a, b, c]) => rasterize(a, b, c), [svgScaled, svgFill, o]);
+    const r = await run().catch(async () => { await page.addScriptTag({ content: rasterize.toString() }); return run(); });
     result.push({ id: attr('id'), name: attr('name'), cat: attr('cat'), colors: r.colors, rows: r.rows, src: f });
   }
   if (preview) {
     const svgs = pick.map((f) => fs.readFileSync(path.join(DIR, f), 'utf8'));
-    await page.evaluate(async ([items, svgs]) => {
-      const cell = 7, gap = 16, V = 300;
+    await page.evaluate(async ([items, svgs, cell]) => {
+      const gap = 16, V = 300;
       const W = items.reduce((s, it) => s + Math.max(V, it.rows[0].length * cell) + gap, gap);
       const H = V + Math.max(...items.map((it) => it.rows.length)) * cell + 60;
       const cv = document.createElement('canvas'); cv.width = W; cv.height = H; cv.id = 'pv';
@@ -269,7 +331,7 @@ function expand(svg, cell) {
         ox += Math.max(V, it.rows[0].length * cell) + gap;
       }
       document.body.innerHTML = ''; document.body.style.margin = 0; document.body.appendChild(cv);
-    }, [result, svgs]);
+    }, [result, svgs, +(process.env.CELL || 9)]);
     await page.setViewportSize({ width: 2400, height: 1000 });
     await page.locator('#pv').screenshot({ path: preview });
   } else {
