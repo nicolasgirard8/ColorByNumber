@@ -224,6 +224,93 @@ function rasterize(svgFull, svgFill, opts) {
   });
 }
 
+
+// Image PNG/JPG (générée par une IA, dessinée…) : fond blanc retiré, couleurs regroupées
+// (k-moyennes), traits noirs unifiés, puis un rendu « sans traits » où chaque pixel de trait
+// prend la couleur voisine. Le résultat passe ensuite par rasterize comme un dessin vectoriel.
+function prepRaster(url, K) {
+  return new Promise((ok) => {
+    const im = new Image();
+    im.onload = () => {
+      const sc = Math.min(1, 900 / Math.max(im.width, im.height));
+      const W = Math.round(im.width * sc), H = Math.round(im.height * sc), N = W * H;
+      const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+      const g = cv.getContext('2d', { willReadFrequently: true });
+      g.drawImage(im, 0, 0, W, H);
+      const img = g.getImageData(0, 0, W, H), d = img.data;
+      // Fond : pixels clairs et gris reliés au bord.
+      const bgLike = (p) => { const i = p * 4, mx = Math.max(d[i], d[i + 1], d[i + 2]), mn = Math.min(d[i], d[i + 1], d[i + 2]); return d[i + 3] < 128 || (mn > 170 && mx - mn < 40); };
+      const bg = new Uint8Array(N), stack = [];
+      for (let x = 0; x < W; x++) stack.push(x, (H - 1) * W + x);
+      for (let y = 0; y < H; y++) stack.push(y * W, y * W + W - 1);
+      while (stack.length) {
+        const p = stack.pop(); if (bg[p] || !bgLike(p)) continue; bg[p] = 1;
+        const x = p % W, y = (p / W) | 0;
+        if (x > 0) stack.push(p - 1); if (x < W - 1) stack.push(p + 1); if (y > 0) stack.push(p - W); if (y < H - 1) stack.push(p + W);
+      }
+      // k-moyennes sur un échantillon des pixels du sujet.
+      const sample = [];
+      for (let p = 0; p < N; p += 3) if (!bg[p]) sample.push([d[p * 4], d[p * 4 + 1], d[p * 4 + 2]]);
+      const dist2 = (a, b) => 2 * (a[0] - b[0]) ** 2 + 4 * (a[1] - b[1]) ** 2 + 3 * (a[2] - b[2]) ** 2;
+      const centers = [sample[(sample.length / 2) | 0]];
+      while (centers.length < K) {
+        let best = null, bd = -1;
+        for (let i = 0; i < sample.length; i += 7) { const m = Math.min(...centers.map((c) => dist2(c, sample[i]))); if (m > bd) { bd = m; best = sample[i]; } }
+        centers.push(best.slice());
+      }
+      for (let it = 0; it < 12; it++) {
+        const sum = centers.map(() => [0, 0, 0, 0]);
+        sample.forEach((px) => { let j = 0, bd = Infinity; centers.forEach((c, k) => { const e = dist2(c, px); if (e < bd) { bd = e; j = k; } }); const s2 = sum[j]; s2[0] += px[0]; s2[1] += px[1]; s2[2] += px[2]; s2[3]++; });
+        sum.forEach((s2, k) => { if (s2[3]) centers[k] = [s2[0] / s2[3], s2[1] / s2[3], s2[2] / s2[3]]; });
+      }
+      const lum = (c) => (0.299 * c[0] + 0.587 * c[1] + 0.114 * c[2]) / 255;
+      const INK = [27, 27, 34];
+      const cols = centers.map((c) => (lum(c) < 0.22 ? INK : c.map(Math.round)));
+      const lab = new Int16Array(N).fill(-1);
+      for (let p = 0; p < N; p++) {
+        if (bg[p]) continue;
+        const px = [d[p * 4], d[p * 4 + 1], d[p * 4 + 2]];
+        let j = 0, bd = Infinity; centers.forEach((c, k) => { const e = dist2(c, px); if (e < bd) { bd = e; j = k; } });
+        lab[p] = j;
+      }
+      const isInk = (j) => cols[j] === INK;
+      const paint = (labels) => {
+        const out = g.createImageData(W, H);
+        for (let p = 0; p < N; p++) { const j = labels[p]; if (j < 0) continue; const c = cols[j]; out.data.set([c[0], c[1], c[2], 255], p * 4); }
+        g.putImageData(out, 0, 0); return cv.toDataURL('image/png');
+      };
+      const fullUrl = paint(lab);
+      // Rendu sans traits : chaque pixel noir prend la couleur non noire la plus proche.
+      // Aplats noirs (pupilles…) : là où le noir est épais, il reste noir ; seuls les traits fins
+      // sont remplacés par la couleur voisine.
+      const dd = new Float32Array(N);
+      for (let p = 0; p < N; p++) dd[p] = lab[p] >= 0 && isInk(lab[p]) ? 1e9 : 0;
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) { const p = y * W + x; if (!dd[p]) continue; let v = dd[p]; if (x > 0) v = Math.min(v, dd[p - 1] + 1); if (y > 0) v = Math.min(v, dd[p - W] + 1); dd[p] = v; }
+      for (let y = H - 1; y >= 0; y--) for (let x = W - 1; x >= 0; x--) { const p = y * W + x; if (!dd[p]) continue; let v = dd[p]; if (x < W - 1) v = Math.min(v, dd[p + 1] + 1); if (y < H - 1) v = Math.min(v, dd[p + W] + 1); dd[p] = v; }
+      const thick = Math.max(4, Math.round(Math.max(W, H) / 90)), solid = new Uint8Array(N);
+      for (let p = 0; p < N; p++) if (dd[p] >= thick) {
+        const x = p % W, y = (p / W) | 0;
+        for (let b = -thick; b <= thick; b++) for (let a = -thick; a <= thick; a++) { const X = x + a, Y = y + b; if (X >= 0 && Y >= 0 && X < W && Y < H && Math.abs(a) + Math.abs(b) <= thick && dd[Y * W + X] > 0) solid[Y * W + X] = 1; }
+      }
+      const fl = lab.slice(), seen = new Uint8Array(N), q = [];
+      for (let p = 0; p < N; p++) if (solid[p]) seen[p] = 1;
+      for (let p = 0; p < N; p++) if (lab[p] >= 0 && !isInk(lab[p])) { seen[p] = 1; q.push(p); }
+      for (let k = 0; k < q.length; k++) {
+        const p = q[k], x = p % W, y = (p / W) | 0;
+        [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([a, b]) => { const X = x + a, Y = y + b; if (X < 0 || Y < 0 || X >= W || Y >= H) return; const r = Y * W + X; if (!seen[r] && lab[r] >= 0 && isInk(lab[r])) { seen[r] = 1; fl[r] = fl[p]; q.push(r); } });
+      }
+      // Un trait sans couleur voisine (aplat noir : pupille…) reste noir.
+      const fillUrl = paint(fl);
+      const hex = (c) => '#' + c.map((v) => Math.round(v).toString(16).padStart(2, '0')).join('');
+      const palette = [...new Set(cols.map(hex))];
+      const wrap = (u) => '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '"><!-- ' + palette.join(' ') + ' --><image href="' + u + '" width="' + W + '" height="' + H + '"/></svg>';
+      const lightest = palette.slice().sort((a, b) => lum([1, 3, 5].map((k) => parseInt(b.slice(k, k + 2), 16))) - lum([1, 3, 5].map((k) => parseInt(a.slice(k, k + 2), 16))))[0];
+      ok({ full: wrap(fullUrl), fill: wrap(fillUrl), lightest });
+    };
+    im.src = url;
+  });
+}
+
 // ---------- Relief : ombre en bas à droite, reflet en haut à gauche ----------
 // Chaque forme colorée et entourée d'un trait reçoit une teinte plus foncée sur son bord
 // bas-droite et plus claire sur son bord haut-gauche (couleurs plates façon dessin animé).
@@ -372,7 +459,18 @@ function expand(svg, cell) {
       size, weights, S: 12, full: attr('full', '') === '1',
       max: APP ? 40 : +attr('max', attr('full', '') === '1' ? 24 : 18), selout: APP, inkCov: +attr('ink', 0.24), strokePx: 12 * +attr('stroke', 1.05), texts,
     };
-    const run = () => page.evaluate(([a, b, c]) => rasterize(a, b, c), [svgScaled, svgFill, o]);
+    let full = svgScaled, fill = svgFill;
+    if (attr('raster', '')) {
+      // Image importée : préparée dans la page, puis convertie comme un dessin.
+      const file = path.join(DIR, attr('raster'));
+      const url = 'data:image/' + (file.endsWith('.png') ? 'png' : 'jpeg') + ';base64,' + fs.readFileSync(file).toString('base64');
+      const prepRun = () => page.evaluate(([u, k]) => prepRaster(u, k), [url, +attr('colors', 14)]);
+      const pr = await prepRun().catch(async () => { await page.addScriptTag({ content: prepRaster.toString() }); return prepRun(); });
+      full = pr.full; fill = pr.fill;
+      o.inkCov = +attr('ink', 0.12);
+      o.weights = { [pr.lightest]: 3, ...weights };
+    }
+    const run = () => page.evaluate(([a, b, c]) => rasterize(a, b, c), [full, fill, o]);
     const r = await run().catch(async () => { await page.addScriptTag({ content: rasterize.toString() }); return run(); });
     result.push({ id: attr('id'), name: attr('name'), cat: attr('cat'), colors: r.colors, rows: r.rows, src: f });
   }
