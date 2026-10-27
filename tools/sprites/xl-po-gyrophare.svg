@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200" data-id="xl-po-gyrophare" data-name="Gyrophare" data-cat="police" data-size="48">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- rayons -->
+  <path d="M60 60 L20 20 M40 96 L4 92 M160 60 L200 20 M180 96 L216 92 M110 30 L110 4" fill="none" stroke="#f6d23a" stroke-width="10"/>
+  <path d="M60 60 L20 20 M40 96 L4 92 M160 60 L200 20 M180 96 L216 92 M110 30 L110 4" fill="none" stroke-width="2" stroke-opacity="0"/>
+  <!-- globe -->
+  <path d="M50 150 L50 100 C50 56 170 56 170 100 L170 150 Z" fill="#e8302a"/>
+  <path d="M110 58 C140 58 170 76 170 100 L170 150 L110 150 Z" fill="#2a6ad0"/>
+  <path d="M70 100 C70 82 84 72 96 70" fill="none" stroke="#ffa8a0" stroke-width="8"/>
+  <path d="M130 70 C146 74 156 84 158 98" fill="none" stroke="#8ab8f8" stroke-width="8"/>
+  <!-- socle -->
+  <path d="M30 150 L190 150 L196 184 L24 184 Z" fill="#5a5e6a"/>
+  <path d="M40 166 L180 166" fill="none" stroke="#8a8f9c" stroke-width="4"/>
+</g>
+</svg>

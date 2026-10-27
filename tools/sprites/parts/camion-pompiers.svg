@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 150">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- échelle -->
+  <path d="M20 40 L190 40 L190 54 L20 54 Z" fill="#dfe4ea"/>
+  <path d="M40 40 L40 54 M62 40 L62 54 M84 40 L84 54 M106 40 L106 54 M128 40 L128 54 M150 40 L150 54 M172 40 L172 54" fill="none" stroke-width="3"/>
+  <path d="M180 54 L180 64 M30 54 L30 64" fill="none" stroke-width="5"/>
+  <!-- caisse -->
+  <path d="M8 62 L188 62 L188 124 L8 124 Z" fill="#e8302a"/>
+  <path d="M8 96 L188 96 L188 106 L8 106 Z" fill="#f6f6f8"/>
+  <path d="M24 70 L60 70 L60 92 L24 92 Z M72 70 L108 70 L108 92 L72 92 Z M120 70 L156 70 L156 92 L120 92 Z" fill="#c8201a"/>
+  <circle cx="42" cy="81" r="7" fill="#f6d23a" stroke-width="3"/>
+  <!-- cabine -->
+  <path d="M188 52 L226 52 C238 52 248 70 252 90 L254 124 L188 124 Z" fill="#e8302a"/>
+  <path d="M198 60 L224 60 C232 60 240 74 242 88 L198 88 Z" fill="#a8dcf4"/>
+  <path d="M188 96 L254 96 L254 106 L188 106 Z" fill="#f6f6f8"/>
+  <path d="M244 112 L256 112 L256 124 L244 124 Z" fill="#f6d23a"/>
+  <!-- gyrophares -->
+  <path d="M200 52 L200 42 C200 36 214 36 214 42 L214 52 Z" fill="#2a6ad0"/>
+  <path d="M220 52 L220 42 C220 36 234 36 234 42 L234 52 Z" fill="#e8302a"/>
+  <!-- pare-chocs -->
+  <path d="M2 120 L258 120 L258 130 L2 130 Z" fill="#c9ced6"/>
+  <!-- roues -->
+  <circle cx="52" cy="128" r="20" fill="#3a3a48"/><circle cx="52" cy="128" r="9" fill="#c9ced6"/>
+  <circle cx="104" cy="128" r="20" fill="#3a3a48"/><circle cx="104" cy="128" r="9" fill="#c9ced6"/>
+  <circle cx="214" cy="128" r="20" fill="#3a3a48"/><circle cx="214" cy="128" r="9" fill="#c9ced6"/>
+</g>
+</svg>

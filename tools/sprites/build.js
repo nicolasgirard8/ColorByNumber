@@ -156,6 +156,28 @@ function rasterize(svgFull, svgFill, opts) {
       }
       cells = next;
     }
+    // Textes en lettres de pixels (5 cases de haut), centrés sur x, posés en haut à y.
+    const FONT = {
+      A: ['0110', '1001', '1111', '1001', '1001'], B: ['1110', '1001', '1110', '1001', '1110'], C: ['0111', '1000', '1000', '1000', '0111'],
+      D: ['1110', '1001', '1001', '1001', '1110'], E: ['1111', '1000', '1110', '1000', '1111'], F: ['1111', '1000', '1110', '1000', '1000'],
+      G: ['0111', '1000', '1011', '1001', '0111'], H: ['1001', '1001', '1111', '1001', '1001'], I: ['111', '010', '010', '010', '111'],
+      K: ['1001', '1010', '1100', '1010', '1001'], L: ['1000', '1000', '1000', '1000', '1111'], M: ['10001', '11011', '10101', '10001', '10001'],
+      N: ['1001', '1101', '1011', '1001', '1001'], O: ['0110', '1001', '1001', '1001', '0110'], P: ['1110', '1001', '1110', '1000', '1000'],
+      R: ['1110', '1001', '1110', '1010', '1001'], S: ['0111', '1000', '0110', '0001', '1110'], T: ['11111', '00100', '00100', '00100', '00100'],
+      U: ['1001', '1001', '1001', '1001', '0110'], X: ['1001', '1001', '0110', '1001', '1001'], ' ': ['00', '00', '00', '00', '00'],
+      0: ['0110', '1001', '1001', '1001', '0110'], 1: ['010', '110', '010', '010', '111'], 7: ['1111', '0001', '0010', '0100', '0100'],
+    };
+    (opts.texts || []).forEach((t) => {
+      const j = (() => { const c = [1, 3, 5].map((k) => parseInt(t.color.slice(k, k + 2), 16)); const hx = t.color.toLowerCase(); let i = pal.indexOf(hx); if (i < 0) { pal.push(hx); rgb.push(c); lum.push(lumOf(c)); inkLike.push(lumOf(c) < 0.13); i = pal.length - 1; } return i; })();
+      const glyphs = [...t.text.toUpperCase()].map((ch) => FONT[ch] || FONT[' ']);
+      const width = glyphs.reduce((sum, g) => sum + g[0].length + 1, -1);
+      let gx = Math.round((t.x / vb[2]) * W0 - width / 2);
+      const gy = Math.round((t.y / vb[3]) * H0);
+      glyphs.forEach((g) => {
+        g.forEach((row, yy) => [...row].forEach((bit, xx) => { if (bit === '1') { const X = gx + xx, Y = gy + yy; if (X >= 0 && Y >= 0 && X < W0 && Y < H0 && cells[Y * W0 + X] >= 0) cells[Y * W0 + X] = j; } }));
+        gx += g[0].length + 1;
+      });
+    });
     // 6. Trop de couleurs : les deux teintes les plus proches sont réunies (jamais le trait).
     for (;;) {
       const count = {};
@@ -262,7 +284,9 @@ function expand(svg, cell) {
   return svg.replace(/<sprite ([^>]*)\/>/g, (m, attrs) => {
     const a = {};
     attrs.replace(/(\w+)="([^"]*)"/g, (_, k, v) => { a[k] = v; });
-    const src = fs.readFileSync(path.join(DIR, a.src + '.svg'), 'utf8');
+    let src = fs.readFileSync(path.join(DIR, a.src + '.svg'), 'utf8');
+    // recolor="#avant:#après,…" : le même dessin dans d'autres couleurs.
+    (a.recolor || '').split(',').filter(Boolean).forEach((pair) => { const [f, t] = pair.split(':'); src = src.split(f).join(t); });
     // Les détails protégés du dessin inclus le restent dans la scène.
     ((src.match(/data-weights="([^"]*)"/) || [])[1] || '').split(',').filter(Boolean).forEach((p) => { const [c, v] = p.split(':'); included[c.toLowerCase()] = Math.max(included[c.toLowerCase()] || 0, +v); });
     const vb = src.match(/viewBox="([^"]+)"/)[1].split(/\s+/).map(Number);
@@ -272,9 +296,14 @@ function expand(svg, cell) {
     let inner = expand(src.replace(/^[\s\S]*?<svg[^>]*>/, '').replace(/<\/svg>\s*$/, ''), cell / sc);
     inner = shade(inner, cell / sc);
     inner = inner.replace(/stroke-width="([\d.]+)"/g, (_, v) => 'stroke-width="' + (+v * (+a.line || 0.85) / sc).toFixed(2) + '"');
-    inner = inner.replace(/id="(\w+)"/g, 'id="$1' + id + '"').replace(/url\(#(\w+)\)/g, 'url(#$1' + id + ')');
-    const nested = '<svg x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" viewBox="' + vb.join(' ') + '">' + inner + '</svg>';
-    return a.flip ? '<g transform="translate(' + (2 * x + w) + ' 0) scale(-1 1)">' + nested + '</g>' : nested;
+    inner = inner.replace(/id="(\w+)"/g, 'id="$1' + id + '"').replace(/url\(#(\w+)\)/g, 'url(#$1' + id + ')').replace(/href="#(\w+)"/g, 'href="#$1' + id + '"');
+    // fit="stretch" : le décor remplit tout le cadre, même s'il n'a pas les mêmes proportions.
+    const fit = a.fit === 'stretch' ? ' preserveAspectRatio="none"' : '';
+    const nested = '<svg x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" viewBox="' + vb.join(' ') + '"' + fit + '>' + inner + '</svg>';
+    let placed = a.flip ? '<g transform="translate(' + (2 * x + w) + ' 0) scale(-1 1)">' + nested + '</g>' : nested;
+    // rotate="degrés" : penché autour de son centre (saut, vol…).
+    if (a.rotate) placed = '<g transform="rotate(' + a.rotate + ' ' + (x + w / 2) + ' ' + (y + h / 2) + ')">' + placed + '</g>';
+    return placed;
   });
 }
 
@@ -293,7 +322,8 @@ function expand(svg, cell) {
     included = {};
     const raw = fs.readFileSync(path.join(DIR, f), 'utf8');
     const cellU = +raw.match(/viewBox="[^"]+"/)[0].split(/[\s"]+/)[3] / +((raw.match(/data-size="(\d+)"/) || [])[1] || 44);
-    const svg = shade(expand(raw, cellU), cellU);
+    const texts = [];
+    const svg = shade(expand(raw.replace(/<pixeltext ([^>]*)\/>/g, (m, at) => { const o = {}; at.replace(/(\w+)="([^"]*)"/g, (_, k, v) => { o[k] = v; }); texts.push({ x: +o.x, y: +o.y, color: o.color, text: o.text }); return ''; }), cellU), cellU);
     const attr = (k, def) => (svg.match(new RegExp('data-' + k + '="([^"]*)"')) || [])[1] || def;
     const weights = { ...included };
     attr('weights', '').split(',').filter(Boolean).forEach((s) => { const [c, v] = s.split(':'); weights[c.toLowerCase()] = +v; });
@@ -306,7 +336,7 @@ function expand(svg, cell) {
     const svgFill = svgScaled.replace(/stroke="(#[0-9a-fA-F]{6})"/g, (m, c) => (darkHex.includes(c.toLowerCase()) ? 'stroke="none"' : m));
     const o = {
       size, weights, S: 12, full: attr('full', '') === '1',
-      max: +attr('max', attr('full', '') === '1' ? 24 : 18), inkCov: +attr('ink', 0.24), strokePx: 12 * +attr('stroke', 1.05),
+      max: +attr('max', attr('full', '') === '1' ? 24 : 18), inkCov: +attr('ink', 0.24), strokePx: 12 * +attr('stroke', 1.05), texts,
     };
     const run = () => page.evaluate(([a, b, c]) => rasterize(a, b, c), [svgScaled, svgFill, o]);
     const r = await run().catch(async () => { await page.addScriptTag({ content: rasterize.toString() }); return run(); });
@@ -337,7 +367,7 @@ function expand(svg, cell) {
   } else {
     // Personnages seuls d'abord, puis les grandes scènes.
     const first = ['jv-souris', 'pk-salameche', 'pk-carapuce', 'pk-bulbizarre', 'xl-pika', 'xl-pk-starters'];
-    const rank = (it) => (it.id.startsWith('xl-') ? 10 : 0) + ['pokemon', 'soccer', 'hockey', 'jeux', 'starwars'].indexOf(it.cat) - (first.includes(it.id) ? 0.5 + (6 - first.indexOf(it.id)) / 100 : 0);
+    const rank = (it) => (it.id.startsWith('xl-') ? 10 : 0) + ['pokemon', 'soccer', 'hockey', 'dinos', 'vehicules', 'police', 'espace', 'ocean', 'aventure', 'jeux', 'starwars', 'minecraft', 'animaux', 'nourriture', 'nature', 'objets'].indexOf(it.cat) - (first.includes(it.id) ? 0.5 + (6 - first.indexOf(it.id)) / 100 : 0);
     result.sort((a, b) => rank(a) - rank(b));
     const lines = result.map((it) => '  ' + JSON.stringify({ id: it.id, name: it.name, cat: it.cat, colors: it.colors, rows: it.rows }) + ',');
     fs.writeFileSync(OUT, "// Personnages redessinés en vectoriel (tools/sprites/*.svg) puis convertis par tools/sprites/build.js.\n// Ne pas modifier à la main : relancer le script après avoir changé un SVG.\n'use strict';\n\nconst SPRITES = [\n" + lines.join('\n') + '\n];\n\n// Placés en tête de la galerie ; un dessin du même identifiant est remplacé.\nfor (const s of SPRITES.slice().reverse()) {\n  const i = GAME_ART.findIndex((a) => a.id === s.id);\n  if (i >= 0) GAME_ART.splice(i, 1);\n  GAME_ART.unshift(s);\n}\n');

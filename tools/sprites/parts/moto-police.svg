@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 200">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- roues -->
+  <circle cx="52" cy="158" r="34" fill="#3a3a48"/><circle cx="52" cy="158" r="15" fill="#c9ced6"/>
+  <circle cx="190" cy="158" r="34" fill="#3a3a48"/><circle cx="190" cy="158" r="15" fill="#c9ced6"/>
+  <!-- moto -->
+  <path d="M52 158 L96 116 L150 116 L190 158" fill="none" stroke-width="10"/>
+  <path d="M52 158 L96 116 L150 116 L190 158" fill="none" stroke="#8a8f9c" stroke-width="4"/>
+  <path d="M70 110 C70 96 90 92 120 94 L170 98 C182 100 186 112 180 124 L150 134 L90 134 C76 132 70 122 70 110 Z" fill="#f4f4f8"/>
+  <path d="M90 112 L170 114 L168 124 L92 124 Z" fill="#2a5ab8"/>
+  <path d="M176 92 L196 80 L206 86" fill="none" stroke-width="5"/>
+  <path d="M190 102 L210 100 L212 114 L192 116 Z" fill="#fff6c0"/>
+  <path d="M168 74 L190 70 L184 92 L170 94 Z" fill="#a8dcf4"/>
+  <!-- pilote -->
+  <path d="M100 96 L110 52 L144 52 L150 96 Z" fill="#2a5ab8"/>
+  <path d="M108 96 L96 132 L118 136 L126 100" fill="#24304a"/>
+  <path d="M140 60 L178 82" fill="none" stroke-width="16"/><path d="M140 60 L178 82" fill="none" stroke="#2a5ab8" stroke-width="9"/>
+  <circle cx="180" cy="84" r="7" fill="#2a2a38"/>
+  <!-- casque -->
+  <circle cx="128" cy="34" r="22" fill="#f4f4f8"/>
+  <path d="M128 34 L152 34 C152 46 144 52 134 52 L128 52 Z" fill="#f6d0a8"/>
+  <path d="M130 30 L156 30 L154 40 L132 40 Z" fill="#2a2a38"/>
+  <path d="M110 22 L144 18" fill="none" stroke="#2a5ab8" stroke-width="5"/>
+</g>
+</svg>

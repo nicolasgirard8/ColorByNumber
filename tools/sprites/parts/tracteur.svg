@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 170">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pot d'échappement -->
+  <path d="M160 26 L160 66 L170 66 L170 26 Z" fill="#8a8f9c"/>
+  <path d="M156 26 L174 26 L174 20 L156 20 Z" fill="#5a5e6a"/>
+  <!-- cabine -->
+  <path d="M40 14 L104 14 L112 22 L112 92 L40 92 Z" fill="#3fae4a"/>
+  <path d="M30 10 L116 10 L116 20 L30 20 Z" fill="#2a8a34"/>
+  <path d="M52 28 L100 28 L100 70 L52 70 Z" fill="#a8dcf4"/>
+  <!-- capot -->
+  <path d="M112 62 L206 62 C214 62 218 68 218 76 L218 112 L112 112 Z" fill="#3fae4a"/>
+  <path d="M130 72 L196 72 M130 84 L196 84 M130 96 L196 96" fill="none" stroke="#2a8a34" stroke-width="4"/>
+  <path d="M210 70 L222 70 L222 82 L210 82 Z" fill="#f6d23a"/>
+  <path d="M40 92 L112 92 L112 112 L40 112 Z" fill="#2a8a34"/>
+  <!-- roues -->
+  <circle cx="74" cy="122" r="44" fill="#3a3a48"/><circle cx="74" cy="122" r="22" fill="#f6d23a"/><circle cx="74" cy="122" r="7" fill="#c9981a"/>
+  <path d="M38 98 L46 104 M32 122 L42 122 M38 146 L46 140 M74 82 L74 92 M110 98 L102 104" fill="none" stroke-width="4"/>
+  <circle cx="190" cy="138" r="26" fill="#3a3a48"/><circle cx="190" cy="138" r="12" fill="#f6d23a"/>
+</g>
+</svg>

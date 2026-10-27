@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-po-voleur" data-name="Attrapez le voleur !" data-cat="police" data-size="72" data-full="1">
+  <sprite src="parts/ville" x="0" y="0" width="256" height="192"/>
+  <sprite src="parts/policier" x="10" y="28" width="110" height="164"/>
+  <sprite src="parts/voleur" x="130" y="28" width="116" height="164"/>
+</svg>

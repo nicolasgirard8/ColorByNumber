@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 170">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- bras -->
+  <path d="M110 70 L170 22 L184 34 L128 84 Z" fill="#f6c21a"/>
+  <path d="M170 22 L230 58 L222 72 L166 38 Z" fill="#f6c21a"/>
+  <path d="M150 50 L190 38" fill="none" stroke-width="8"/><path d="M150 50 L190 38" fill="none" stroke="#c9ced6" stroke-width="3"/>
+  <!-- godet -->
+  <path d="M214 62 L250 70 L246 104 C236 112 216 108 210 96 Z" fill="#8a8f9c"/>
+  <path d="M216 104 L220 112 M228 108 L230 116 M240 106 L242 114" fill="none" stroke-width="4"/>
+  <!-- cabine -->
+  <path d="M40 40 L100 40 L110 52 L110 104 L40 104 Z" fill="#f6c21a"/>
+  <path d="M54 50 L96 50 L100 56 L100 82 L54 82 Z" fill="#a8dcf4"/>
+  <path d="M4 70 L40 70 L40 104 L4 104 Z" fill="#e8a41a"/>
+  <path d="M0 102 L140 102 L140 114 L0 114 Z" fill="#5a5e6a"/>
+  <!-- chenilles -->
+  <path d="M10 118 L150 118 C164 118 170 130 170 140 C170 152 160 160 150 160 L10 160 C0 160 -6 152 -6 140 C-6 128 0 118 10 118 Z" fill="#3a3a48"/>
+  <circle cx="16" cy="140" r="11" fill="#8a8f9c"/><circle cx="50" cy="140" r="11" fill="#8a8f9c"/><circle cx="84" cy="140" r="11" fill="#8a8f9c"/><circle cx="118" cy="140" r="11" fill="#8a8f9c"/><circle cx="150" cy="140" r="11" fill="#8a8f9c"/>
+</g>
+</svg>

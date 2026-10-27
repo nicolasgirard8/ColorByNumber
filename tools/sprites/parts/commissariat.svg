@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 160">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round">
+  <path d="M10 40 L210 40 L210 156 L10 156 Z" fill="#e8ecf2"/>
+  <path d="M2 30 L218 30 L218 44 L2 44 Z" fill="#2a5ab8"/>
+  <path d="M50 46 L170 46 L170 78 L50 78 Z" fill="#2a5ab8"/>
+  <!-- gyrophare sur le toit -->
+  <path d="M96 30 L96 16 C96 8 124 8 124 16 L124 30 Z" fill="#e8302a"/>
+  <!-- fenêtres -->
+  <path d="M24 86 L56 86 L56 112 L24 112 Z M164 86 L196 86 L196 112 L164 112 Z" fill="#a8dcf4"/>
+  <path d="M40 86 L40 112 M180 86 L180 112" fill="none" stroke-width="3"/>
+  <!-- porte -->
+  <path d="M86 92 L134 92 L134 156 L86 156 Z" fill="#2a5ab8"/>
+  <path d="M110 92 L110 156" fill="none" stroke-width="3"/>
+  <circle cx="104" cy="126" r="3" fill="#f6d23a"/><circle cx="116" cy="126" r="3" fill="#f6d23a"/>
+  <path d="M78 156 L142 156 L146 150 L74 150 Z" fill="#c9ced6"/>
+</g>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-ptero" data-name="Ptérodactyles" data-cat="dinos" data-size="72" data-full="1">
+  <sprite src="parts/coucher" x="0" y="0" width="256" height="192"/>
+  <sprite src="parts/ptero" x="8" y="10" width="150" height="96"/>
+  <sprite src="parts/ptero" x="150" y="60" width="100" height="64" flip="1"/>
+  <sprite src="parts/volcan-petit" x="150" y="96" width="90" height="82"/>
+</svg>

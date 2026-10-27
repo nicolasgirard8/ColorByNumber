@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-stego" data-name="Stégosaure" data-cat="dinos" data-size="72" data-full="1">
+  <sprite src="parts/jungle" x="0" y="0" width="256" height="192"/>
+  <sprite src="parts/stego" x="14" y="44" width="230" height="146"/>
+</svg>
