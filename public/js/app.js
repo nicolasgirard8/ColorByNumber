@@ -10,6 +10,7 @@ const CATS = [
   { id: 'police', name: 'Police', icon: '👮' },
   { id: 'soccer', name: 'Soccer', icon: '⚽' },
   { id: 'hockey', name: 'Hockey', icon: '🏒' },
+  { id: 'sports', name: 'Sports', icon: '🏀' },
   { id: 'animaux', name: 'Animaux', icon: '🐾' },
   { id: 'espace', name: 'Espace', icon: '🚀' },
   { id: 'ocean', name: 'Océan', icon: '🦈' },

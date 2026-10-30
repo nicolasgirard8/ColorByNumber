@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" data-id="hq-train" data-name="Train à vapeur" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- fumée -->
+  <circle cx="300" cy="40" r="20" fill="#e6ecf4"/><circle cx="270" cy="22" r="14" fill="#e6ecf4"/><circle cx="240" cy="14" r="10" fill="#e6ecf4"/>
+  <!-- cheminée -->
+  <path d="M290 120 L282 66 L326 66 L318 120 Z" fill="#2e2e38"/>
+  <path d="M276 60 L332 60 L332 72 L276 72 Z" fill="#ffc21a"/>
+  <!-- chaudière -->
+  <path d="M170 120 L360 120 C378 120 390 134 390 152 L390 200 L170 200 Z" fill="#3a6fe0"/>
+  <path d="M170 180 L390 180 L390 200 L170 200 Z" fill="#244fb0" stroke="none"/>
+  <path d="M232 120 L232 200 M300 120 L300 200" fill="none" stroke="#ffc21a" stroke-width="7"/>
+  <path d="M372 134 L392 134 L392 154 L372 154 Z" fill="#ffe066"/>
+  <!-- chasse-pierres -->
+  <path d="M362 200 L398 200 L398 224 L350 224 Z" fill="#e8322e"/>
+  <!-- cabine -->
+  <path d="M40 80 L180 80 L180 200 L40 200 Z" fill="#e8322e"/>
+  <path d="M28 66 L192 66 C196 66 198 70 196 76 L24 76 C22 70 24 66 28 66 Z" fill="#2e2e38"/>
+  <path d="M64 98 L156 98 L156 150 L64 150 Z" fill="#9fe2ff"/>
+  <path d="M74 106 L88 106 L74 132 Z" fill="#e6f8ff" stroke="none"/>
+  <!-- conducteur -->
+  <circle cx="122" cy="136" r="18" fill="#f6c9a0" stroke-width="3"/>
+  <path d="M102 128 C102 108 142 108 142 128 Z" fill="#3a6fe0" stroke-width="3"/>
+  <path d="M100 128 L148 128" fill="none" stroke-width="4"/>
+  <circle cx="116" cy="136" r="3" fill="#1b1b22" stroke="none"/><circle cx="130" cy="136" r="3" fill="#1b1b22" stroke="none"/>
+  <path d="M116 144 C120 150 128 150 132 144 Z" fill="#a8234e" stroke-width="2.5"/>
+  <!-- châssis -->
+  <path d="M30 200 L390 200 L390 216 L30 216 Z" fill="#2e2e38"/>
+  <!-- roues -->
+  <circle cx="90" cy="222" r="38" fill="#e8322e"/><circle cx="90" cy="222" r="12" fill="#ffc21a"/>
+  <circle cx="200" cy="232" r="28" fill="#e8322e"/><circle cx="200" cy="232" r="9" fill="#ffc21a"/>
+  <circle cx="276" cy="232" r="28" fill="#e8322e"/><circle cx="276" cy="232" r="9" fill="#ffc21a"/>
+  <circle cx="348" cy="236" r="22" fill="#e8322e"/><circle cx="348" cy="236" r="7" fill="#ffc21a"/>
+  <path d="M90 222 L276 232" fill="none" stroke="#c9d2de" stroke-width="7"/>
+  <!-- rail -->
+  <path d="M0 266 L400 266" fill="none" stroke="#8a5a3a" stroke-width="10"/>
+</g>
+</svg>

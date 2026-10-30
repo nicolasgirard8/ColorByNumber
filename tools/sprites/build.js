@@ -503,7 +503,7 @@ function expand(svg, cell) {
   } else {
     // Les dessins préférés d'abord, puis par thème.
     const first = ['hq-dragon', 'ia-lezard', 'ia-hockeyeur', 'hq-chien-police', 'ia-trex', 'hq-pompiers'];
-    const cats = ['dinos', 'vehicules', 'police', 'soccer', 'hockey', 'animaux', 'espace', 'ocean', 'aventure'];
+    const cats = ['dinos', 'vehicules', 'police', 'soccer', 'hockey', 'sports', 'animaux', 'espace', 'ocean', 'aventure'];
     const rank = (it) => (first.includes(it.id) ? first.indexOf(it.id) - 100 : cats.indexOf(it.cat));
     result.sort((a, b) => rank(a) - rank(b));
     const lines = result.map((it) => '  ' + JSON.stringify({ id: it.id, name: it.name, cat: it.cat, colors: it.colors, rows: it.rows }) + ',');

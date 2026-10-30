@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" data-id="hq-ankylo" data-name="Ankylosaure" data-cat="dinos" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue à massue -->
+  <path d="M70 176 C46 172 30 160 22 146 L40 136 C48 148 60 154 80 156 Z" fill="#c98a4a"/>
+  <path d="M6 132 C4 112 24 104 38 112 C52 120 50 144 34 150 C18 156 8 148 6 132 Z" fill="#8a5a2a"/>
+  <!-- pattes loin -->
+  <path d="M100 200 L98 248 C98 260 132 260 132 248 L134 204 Z" fill="#a8703a"/>
+  <path d="M232 204 L232 248 C232 260 266 260 266 248 L266 200 Z" fill="#a8703a"/>
+  <!-- corps -->
+  <path d="M62 180 C58 126 120 96 180 96 C246 96 296 124 296 176 C296 210 250 222 180 222 C110 222 64 214 62 180 Z" fill="#c98a4a"/>
+  <path d="M84 196 C120 216 240 218 280 196 C270 214 240 222 180 222 C120 222 92 214 84 196 Z" fill="#f2d4a0" stroke="none"/>
+  <!-- carapace à piques -->
+  <path d="M70 168 C68 118 124 92 180 92 C240 92 290 120 290 168 C250 150 110 150 70 168 Z" fill="#6b8a3a"/>
+  <path d="M96 128 L88 104 L112 116 Z M136 108 L134 82 L156 98 Z M180 100 L184 74 L202 96 Z M222 104 L232 80 L244 106 Z M260 122 L276 102 L280 130 Z" fill="#fff4d6"/>
+  <circle cx="120" cy="140" r="9" fill="#8aa84e" stroke-width="3"/><circle cx="160" cy="128" r="9" fill="#8aa84e" stroke-width="3"/>
+  <circle cx="200" cy="126" r="9" fill="#8aa84e" stroke-width="3"/><circle cx="240" cy="134" r="9" fill="#8aa84e" stroke-width="3"/>
+  <!-- pattes proches -->
+  <path d="M116 204 L114 254 C114 268 152 268 152 254 L154 208 Z" fill="#c98a4a"/>
+  <path d="M248 206 L246 254 C246 268 284 268 284 254 L284 200 Z" fill="#c98a4a"/>
+  <path d="M124 264 L124 256 M134 266 L134 258 M144 264 L144 256 M256 264 L256 256 M266 266 L266 258 M276 264 L276 256" fill="none" stroke-width="3"/>
+  <!-- tête -->
+  <path d="M280 168 C278 134 306 120 338 124 C374 128 394 150 392 176 C390 202 366 214 338 214 C306 214 282 198 280 168 Z" fill="#c98a4a"/>
+  <path d="M294 140 L300 120 L314 132 Z M328 124 L340 106 L348 126 Z" fill="#fff4d6"/>
+  <path d="M302 160 C302 138 336 138 336 160 C336 184 302 184 302 160 Z" fill="#ffffff"/>
+  <ellipse cx="321" cy="163" rx="10" ry="13" fill="#1b1b22" stroke="none"/>
+  <circle cx="317" cy="156" r="4.5" fill="#ffffff" stroke="none"/>
+  <path d="M348 184 C354 204 380 204 386 184 Z" fill="#a8234e" stroke-width="3.5"/>
+  <ellipse cx="306" cy="192" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+  <circle cx="380" cy="160" r="3" fill="#1b1b22" stroke="none"/>
+</g>
+</svg>

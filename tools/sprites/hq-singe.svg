@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" data-id="hq-singe" data-name="Petit singe" data-cat="animaux" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue en spirale -->
+  <path d="M232 300 C290 300 316 260 300 228 C288 206 260 212 264 234 C268 250 286 246 284 236" fill="none" stroke-width="18"/>
+  <path d="M232 300 C290 300 316 260 300 228 C288 206 260 212 264 234 C268 250 286 246 284 236" fill="none" stroke="#a8622a" stroke-width="10"/>
+  <!-- jambes -->
+  <path d="M100 300 C80 304 76 336 98 342 L136 342 C148 340 148 324 136 318 L134 296 Z" fill="#a8622a"/>
+  <path d="M206 296 L204 318 C192 324 192 340 204 342 L242 342 C264 336 260 304 240 300 Z" fill="#a8622a"/>
+  <!-- corps -->
+  <path d="M96 236 C90 290 116 318 170 318 C224 318 250 290 244 236 C238 198 102 198 96 236 Z" fill="#a8622a"/>
+  <path d="M136 234 C128 272 142 306 170 308 C198 306 212 272 204 234 Z" fill="#f2c79a"/>
+  <!-- banane -->
+  <path d="M236 168 C262 176 276 200 272 226 C266 214 252 196 232 186 Z" fill="#ffd23a"/>
+  <path d="M232 170 L228 160" fill="none" stroke-width="5"/>
+  <!-- bras -->
+  <path d="M98 230 C76 246 72 276 90 290 C104 296 116 284 114 270 L120 250 Z" fill="#a8622a"/>
+  <path d="M236 226 C252 214 256 196 248 184 C240 178 230 182 228 194 Z" fill="#a8622a"/>
+  <!-- oreilles -->
+  <circle cx="62" cy="122" r="30" fill="#a8622a"/><circle cx="62" cy="122" r="16" fill="#f2c79a" stroke="none"/>
+  <circle cx="278" cy="122" r="30" fill="#a8622a"/><circle cx="278" cy="122" r="16" fill="#f2c79a" stroke="none"/>
+  <!-- tête -->
+  <path d="M170 40 C238 40 262 86 258 130 C254 176 218 204 170 204 C122 204 86 176 82 130 C78 86 102 40 170 40 Z" fill="#a8622a"/>
+  <path d="M164 42 C170 28 184 22 196 26 C186 30 180 36 178 46 Z" fill="#a8622a"/>
+  <!-- visage clair -->
+  <path d="M112 112 C110 84 144 72 168 90 C194 72 230 84 228 112 C244 132 240 190 170 192 C100 190 96 132 112 112 Z" fill="#f2c79a"/>
+  <!-- yeux -->
+  <path d="M124 114 C124 92 158 92 158 114 C158 138 124 138 124 114 Z" fill="#ffffff"/>
+  <path d="M182 114 C182 92 216 92 216 114 C216 138 182 138 182 114 Z" fill="#ffffff"/>
+  <ellipse cx="143" cy="117" rx="10" ry="13" fill="#3a2418" stroke="none"/><ellipse cx="197" cy="117" rx="10" ry="13" fill="#3a2418" stroke="none"/>
+  <circle cx="139" cy="110" r="4.5" fill="#ffffff" stroke="none"/><circle cx="193" cy="110" r="4.5" fill="#ffffff" stroke="none"/>
+  <!-- nez et grande bouche -->
+  <path d="M162 146 L162 146 M160 144 C160 140 166 140 166 144 M174 144 C174 140 180 140 180 144" fill="none" stroke-width="3.5"/>
+  <path d="M138 158 C146 186 194 186 202 158 Z" fill="#a8234e" stroke-width="3.5"/>
+  <path d="M152 172 C160 166 180 166 188 172 C180 180 160 180 152 172 Z" fill="#ff6f8e" stroke="none"/>
+  <ellipse cx="118" cy="158" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="222" cy="158" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

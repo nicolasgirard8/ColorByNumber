@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" data-id="hq-spino" data-name="Spinosaure" data-cat="dinos" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- voile du dos -->
+  <path d="M70 200 C60 140 90 90 130 70 C150 90 170 80 180 60 C200 80 220 76 236 64 C246 100 240 160 220 200 Z" fill="#ff6f4a"/>
+  <path d="M110 190 L120 100 M150 190 L156 84 M190 190 L200 82" fill="none" stroke="#c84a2a" stroke-width="4"/>
+  <!-- queue -->
+  <path d="M90 260 C50 270 18 256 6 230 C30 236 60 234 92 222 Z" fill="#3fb8a8"/>
+  <!-- jambe loin -->
+  <path d="M190 286 L192 340 C192 352 228 352 228 340 L226 282 Z" fill="#2a9a8a"/>
+  <!-- corps -->
+  <path d="M74 236 C70 186 110 160 160 160 C214 160 250 190 250 238 C250 286 214 304 160 304 C108 304 78 284 74 236 Z" fill="#3fb8a8"/>
+  <path d="M232 196 C254 232 246 288 196 302 C226 300 250 280 250 238 C250 220 244 206 232 196 Z" fill="#2a9a8a" stroke="none"/>
+  <path d="M118 240 C114 208 132 194 160 194 C188 194 206 208 202 240 C198 276 184 294 160 294 C136 294 122 276 118 240 Z" fill="#fff0b8"/>
+  <!-- jambe proche -->
+  <path d="M110 290 L108 344 C108 358 148 358 148 344 L150 292 Z" fill="#3fb8a8"/>
+  <path d="M118 354 L118 346 M128 356 L128 348 M138 354 L138 346" fill="none" stroke-width="3"/>
+  <!-- bras -->
+  <path d="M220 230 C240 236 254 250 258 266 C248 272 238 266 232 256 Z" fill="#3fb8a8"/>
+  <!-- tête allongée -->
+  <path d="M196 124 C190 90 220 68 256 70 C300 72 344 92 352 120 C356 140 342 160 310 164 L246 170 C218 172 200 152 196 124 Z" fill="#3fb8a8"/>
+  <path d="M316 92 C344 104 356 128 342 152 C340 136 330 118 316 110 Z" fill="#2a9a8a" stroke="none"/>
+  <!-- bouche souriante -->
+  <path d="M262 140 C290 150 326 148 348 132 C340 156 300 166 262 158 Z" fill="#a8234e" stroke-width="3.5"/>
+  <path d="M276 146 L282 156 L288 148 M300 148 L306 158 L312 148 M324 144 L330 152 L334 142" fill="#ffffff" stroke-width="2.5"/>
+  <!-- œil -->
+  <path d="M226 106 C226 84 260 84 260 106 C260 130 226 130 226 106 Z" fill="#ffffff"/>
+  <ellipse cx="245" cy="109" rx="10" ry="13" fill="#1b1b22" stroke="none"/>
+  <circle cx="241" cy="102" r="4.5" fill="#ffffff" stroke="none"/>
+  <ellipse cx="222" cy="142" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+  <circle cx="336" cy="98" r="3" fill="#1b1b22" stroke="none"/>
+</g>
+</svg>
