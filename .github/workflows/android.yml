@@ -30,7 +30,7 @@ jobs:
         with:
           distribution: temurin
           java-version: 21
-      - uses: android-actions/setup-android@v3
+      # Le SDK Android est déjà installé sur les runners Ubuntu (ANDROID_HOME).
       - name: Version web des stores et synchronisation Capacitor
         run: |
           npm ci
