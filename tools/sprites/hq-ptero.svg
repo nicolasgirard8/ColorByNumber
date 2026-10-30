@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-id="hq-ptero" data-name="Ptérodactyle" data-cat="dinos" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- aile gauche -->
+  <path d="M186 150 C130 96 70 70 10 80 C30 100 34 120 26 140 C52 132 64 150 58 170 C84 156 104 168 108 188 C124 172 146 172 186 186 Z" fill="#a77cf2"/>
+  <path d="M164 150 C130 112 84 96 40 98" fill="none" stroke="#7a52d0" stroke-width="4"/>
+  <path d="M160 168 C130 148 100 140 70 150" fill="none" stroke="#7a52d0" stroke-width="4"/>
+  <!-- aile droite -->
+  <path d="M214 150 C270 96 330 70 390 80 C370 100 366 120 374 140 C348 132 336 150 342 170 C316 156 296 168 292 188 C276 172 254 172 214 186 Z" fill="#a77cf2"/>
+  <path d="M236 150 C270 112 316 96 360 98" fill="none" stroke="#7a52d0" stroke-width="4"/>
+  <path d="M240 168 C270 148 300 140 330 150" fill="none" stroke="#7a52d0" stroke-width="4"/>
+  <!-- pattes -->
+  <path d="M176 238 L170 268 L158 276 M170 268 L176 280 M170 268 L184 276" fill="none" stroke-width="5"/>
+  <path d="M224 238 L230 268 L218 276 M230 268 L224 280 M230 268 L242 276" fill="none" stroke-width="5"/>
+  <!-- corps -->
+  <path d="M150 180 C146 140 170 124 200 124 C230 124 254 140 250 180 C248 220 230 246 200 246 C170 246 152 220 150 180 Z" fill="#a77cf2"/>
+  <path d="M232 140 C254 170 248 230 206 244 C232 244 250 216 250 180 C250 160 244 148 232 140 Z" fill="#7a52d0" stroke="none"/>
+  <path d="M172 178 C170 152 186 144 200 144 C214 144 230 152 228 178 C226 210 216 232 200 232 C184 232 174 210 172 178 Z" fill="#ffe7b0"/>
+  <!-- crête -->
+  <path d="M176 44 C150 30 128 30 112 40 C130 46 148 56 166 70 Z" fill="#ff7a8a"/>
+  <!-- bec (sous la tête) -->
+  <path d="M240 78 C280 74 320 84 344 100 C318 114 278 118 240 112 Z" fill="#ffc94a"/>
+  <!-- tête -->
+  <path d="M200 30 C246 30 266 62 262 92 C258 124 232 136 200 136 C168 136 142 124 138 92 C134 62 154 30 200 30 Z" fill="#a77cf2"/>
+  <path d="M244 50 C268 80 262 122 220 134 C246 130 262 112 262 92 C264 72 256 58 244 50 Z" fill="#7a52d0" stroke="none"/>
+  <!-- bec -->
+  <!-- yeux -->
+  <path d="M152 76 C152 54 186 54 186 76 C186 100 152 100 152 76 Z" fill="#ffffff"/>
+  <path d="M196 72 C196 50 230 50 230 72 C230 96 196 96 196 72 Z" fill="#ffffff"/>
+  <ellipse cx="172" cy="80" rx="10" ry="13" fill="#1b1b22" stroke="none"/><ellipse cx="216" cy="76" rx="10" ry="13" fill="#1b1b22" stroke="none"/>
+  <circle cx="168" cy="73" r="4.5" fill="#ffffff" stroke="none"/><circle cx="212" cy="69" r="4.5" fill="#ffffff" stroke="none"/>
+  <ellipse cx="156" cy="108" rx="11" ry="7" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

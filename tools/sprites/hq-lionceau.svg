@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" data-id="hq-lionceau" data-name="Lionceau" data-cat="animaux" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M222 286 C262 282 286 254 284 220 C284 210 276 208 272 216 C272 244 252 266 216 268 Z" fill="#ffc04a"/>
+  <path d="M274 222 C262 208 266 190 280 186 C284 196 298 198 298 210 C298 222 284 228 274 222 Z" fill="#c8641e"/>
+  <!-- pattes arrière -->
+  <path d="M90 302 C70 306 66 338 88 344 L126 344 C138 342 138 326 126 320 L124 298 Z" fill="#ffc04a"/>
+  <path d="M196 298 L194 320 C182 326 182 342 194 344 L232 344 C254 338 250 306 230 302 Z" fill="#ffc04a"/>
+  <!-- corps -->
+  <path d="M86 238 C80 292 106 320 160 320 C214 320 240 292 234 238 C228 200 92 200 86 238 Z" fill="#ffc04a"/>
+  <path d="M220 224 C236 262 226 310 176 318 C212 314 238 292 234 238 Z" fill="#e8a030" stroke="none"/>
+  <path d="M128 236 C120 272 132 306 160 308 C188 306 200 272 192 236 Z" fill="#fff0c8"/>
+  <!-- pattes avant -->
+  <path d="M118 270 L114 332 C112 346 150 348 150 334 L150 274 Z" fill="#ffc04a"/>
+  <path d="M170 274 L170 334 C170 348 208 346 206 332 L202 270 Z" fill="#ffc04a"/>
+  <path d="M126 344 L126 336 M138 345 L138 337 M182 345 L182 337 M194 344 L194 336" fill="none" stroke-width="3"/>
+  <!-- crinière -->
+  <path d="M160 6 C186 6 196 22 210 22 C230 18 246 34 244 52 C262 56 274 74 266 92 C286 104 288 128 272 140 C288 156 282 182 262 188 C266 210 248 226 228 222 C220 240 196 248 180 236 C170 250 150 250 140 236 C124 248 100 240 92 222 C72 226 54 210 58 188 C38 182 32 156 48 140 C32 128 34 104 54 92 C46 74 58 56 76 52 C74 34 90 18 110 22 C124 22 134 6 160 6 Z" fill="#c8641e"/>
+  <path d="M244 52 C262 56 274 74 266 92 C286 104 288 128 272 140 C288 156 282 182 262 188 C266 210 248 226 228 222 C250 200 268 150 244 52 Z" fill="#a04e14" stroke="none"/>
+  <!-- oreilles -->
+  <circle cx="92" cy="64" r="20" fill="#ffc04a"/><circle cx="92" cy="64" r="9" fill="#ff9fb2" stroke="none"/>
+  <circle cx="228" cy="64" r="20" fill="#ffc04a"/><circle cx="228" cy="64" r="9" fill="#ff9fb2" stroke="none"/>
+  <!-- tête -->
+  <path d="M160 52 C222 52 246 92 242 132 C238 178 204 202 160 202 C116 202 82 178 78 132 C74 92 98 52 160 52 Z" fill="#ffc04a"/>
+  <path d="M228 80 C250 112 246 176 196 198 C226 184 240 160 242 132 C244 112 238 94 228 80 Z" fill="#e8a030" stroke="none"/>
+  <!-- museau -->
+  <path d="M116 160 C116 132 204 132 204 160 C204 192 116 192 116 160 Z" fill="#fff0c8"/>
+  <path d="M146 144 C146 134 174 134 174 144 C174 154 166 158 160 160 C154 158 146 154 146 144 Z" fill="#7a3a2a"/>
+  <path d="M160 160 L160 168" fill="none" stroke-width="3.5"/>
+  <path d="M142 166 C148 186 172 186 178 166 Z" fill="#a8234e" stroke-width="3.5"/>
+  <path d="M152 176 C156 172 164 172 168 176 C164 180 156 180 152 176 Z" fill="#ff6f8e" stroke="none"/>
+  <!-- yeux -->
+  <path d="M106 112 C106 90 140 90 140 112 C140 136 106 136 106 112 Z" fill="#ffffff"/>
+  <path d="M180 112 C180 90 214 90 214 112 C214 136 180 136 180 112 Z" fill="#ffffff"/>
+  <ellipse cx="125" cy="115" rx="10" ry="13" fill="#3a2418" stroke="none"/><ellipse cx="199" cy="115" rx="10" ry="13" fill="#3a2418" stroke="none"/>
+  <circle cx="121" cy="108" r="4.5" fill="#ffffff" stroke="none"/><circle cx="195" cy="108" r="4.5" fill="#ffffff" stroke="none"/>
+  <ellipse cx="98" cy="152" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="222" cy="152" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

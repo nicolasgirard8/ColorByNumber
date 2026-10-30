@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-foot-match" data-name="Le grand match" data-cat="soccer" data-size="72" data-full="1">
-  <sprite src="parts/terrain" x="0" y="0" width="256" height="192"/>
-  <sprite src="but" x="130" y="58" width="126" height="94"/>
-  <sprite src="gardien-foot" x="150" y="76" width="88" height="80"/>
-  <sprite src="joueur-foot" x="4" y="58" width="150" height="130"/>
-</svg>

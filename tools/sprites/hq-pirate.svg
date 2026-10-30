@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" data-id="hq-pirate" data-name="Petit pirate" data-cat="ocean" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- longue-vue -->
+  <path d="M234 220 L306 188 L314 206 L242 238 Z" fill="#c88a3a"/>
+  <path d="M290 194 L306 188 L314 206 L298 212 Z" fill="#ffc21a"/>
+  <!-- jambes -->
+  <path d="M118 290 L116 340 L154 340 L156 290 Z" fill="#3a6fe0"/>
+  <path d="M166 290 L166 340 L204 340 L202 290 Z" fill="#3a6fe0"/>
+  <path d="M104 336 C104 326 156 326 158 336 L158 360 L100 360 C98 350 100 342 104 336 Z" fill="#5a3418"/>
+  <path d="M162 336 C164 326 216 326 216 336 C220 342 222 350 220 360 L162 360 Z" fill="#5a3418"/>
+  <!-- chemise rayée -->
+  <path d="M102 196 C90 232 94 276 102 300 L218 300 C226 276 230 232 218 196 C198 182 122 182 102 196 Z" fill="#ffffff"/>
+  <path d="M96 216 L224 216 L226 230 L94 230 Z M94 244 L226 244 L226 258 L94 258 Z M96 272 L224 272 L222 286 L98 286 Z" fill="#e8322e" stroke="none"/>
+  <path d="M102 196 C90 232 94 276 102 300 L218 300 C226 276 230 232 218 196 C198 182 122 182 102 196 Z" fill="none"/>
+  <path d="M100 284 L220 284 L220 300 L100 300 Z" fill="#2e2e38"/>
+  <rect x="150" y="282" width="20" height="20" rx="3" fill="#ffc21a" stroke-width="3"/>
+  <!-- bras -->
+  <path d="M104 206 C84 222 82 248 98 262" fill="none" stroke-width="22"/><path d="M104 206 C84 222 82 248 98 262" fill="none" stroke="#e8322e" stroke-width="14"/>
+  <circle cx="102" cy="266" r="12" fill="#f6c9a0"/>
+  <path d="M214 206 C232 214 240 222 244 232" fill="none" stroke-width="22"/><path d="M214 206 C232 214 240 222 244 232" fill="none" stroke="#e8322e" stroke-width="14"/>
+  <circle cx="246" cy="232" r="12" fill="#f6c9a0"/>
+  <!-- tête -->
+  <path d="M160 52 C222 52 246 90 244 128 C242 168 210 194 160 194 C110 194 78 168 76 128 C74 90 98 52 160 52 Z" fill="#f6c9a0"/>
+  <!-- bandana et tricorne -->
+  <path d="M78 104 C78 70 242 70 242 104 L242 112 L78 112 Z" fill="#e8322e"/>
+  <circle cx="108" cy="92" r="5" fill="#ffffff" stroke="none"/><circle cx="160" cy="86" r="5" fill="#ffffff" stroke="none"/><circle cx="212" cy="92" r="5" fill="#ffffff" stroke="none"/>
+  <path d="M40 76 C70 90 100 66 160 66 C220 66 250 90 280 76 C270 40 230 14 160 14 C90 14 50 40 40 76 Z" fill="#2e2e38"/>
+  <path d="M146 30 C146 22 174 22 174 30 C174 40 166 44 160 44 C154 44 146 40 146 30 Z" fill="#ffffff" stroke-width="3"/>
+  <path d="M150 50 L170 58 M170 50 L150 58" fill="none" stroke="#ffffff" stroke-width="4"/>
+  <!-- cache-œil -->
+  <path d="M88 116 L232 104" fill="none" stroke-width="4"/>
+  <path d="M106 134 C106 116 140 116 140 134 C140 152 124 158 122 158 C120 158 106 152 106 134 Z" fill="#2e2e38"/>
+  <!-- œil -->
+  <path d="M180 138 C180 116 212 116 212 138 C212 160 180 160 180 138 Z" fill="#ffffff"/>
+  <ellipse cx="197" cy="141" rx="9" ry="12" fill="#3a2418" stroke="none"/>
+  <circle cx="193" cy="134" r="4" fill="#ffffff" stroke="none"/>
+  <path d="M138 164 C144 184 172 184 180 164 Z" fill="#a8234e" stroke-width="3.5"/>
+  <ellipse cx="218" cy="166" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

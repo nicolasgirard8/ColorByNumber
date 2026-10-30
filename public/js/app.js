@@ -8,48 +8,18 @@ const CATS = [
   { id: 'dinos', name: 'Dinosaures', icon: '🦖' },
   { id: 'vehicules', name: 'Véhicules', icon: '🚒' },
   { id: 'police', name: 'Police', icon: '👮' },
+  { id: 'soccer', name: 'Soccer', icon: '⚽' },
+  { id: 'hockey', name: 'Hockey', icon: '🏒' },
+  { id: 'animaux', name: 'Animaux', icon: '🐾' },
   { id: 'espace', name: 'Espace', icon: '🚀' },
   { id: 'ocean', name: 'Océan', icon: '🦈' },
   { id: 'aventure', name: 'Aventure', icon: '🐉' },
-  { id: 'gemmes', name: 'Pierres précieuses', icon: '💎' },
-  { id: 'minecraft', name: 'Minecraft', icon: '⛏️' },
-  { id: 'pokemon', name: 'Pokémon', icon: '⚡' },
-  { id: 'soccer', name: 'Soccer', icon: '⚽' },
-  { id: 'hockey', name: 'Hockey', icon: '🏒' },
-  { id: 'starwars', name: 'Star Wars', icon: '🌌' },
-  { id: 'jeux', name: 'Jeux vidéo', icon: '🎮' },
-  { id: 'animaux', name: 'Animaux', icon: '🐾' },
-  { id: 'nourriture', name: 'Miam', icon: '🍓' },
-  { id: 'nature', name: 'Nature', icon: '🌼' },
-  { id: 'objets', name: 'Objets', icon: '🎁' },
-  { id: 'mandalas', name: 'Mandalas', icon: '🌀' },
   { id: 'photos', name: 'Mes photos', icon: '📷' },
   { id: 'mine', name: 'Mes coloriages', icon: '🏆' },
 ];
 
-// Emojis transformés en pixel art (si l'appareil possède une police emoji en couleur).
-const EMOJIS = [
-  ['🦊', 'Renard', 'animaux'], ['🐼', 'Panda', 'animaux'], ['🦁', 'Lion', 'animaux'],
-  ['🐶', 'Chien', 'animaux'], ['🐰', 'Lapin', 'animaux'], ['🐷', 'Cochon', 'animaux'],
-  ['🦄', 'Licorne', 'animaux'], ['🐢', 'Tortue', 'animaux'], ['🐙', 'Pieuvre', 'animaux'],
-  ['🦋', 'Papillon bleu', 'animaux'], ['🐝', 'Abeille', 'animaux'], ['🐧', 'Pingouin', 'animaux'],
-  ['🦖', 'Dinosaure', 'animaux'], ['🐞', 'Coccinelle', 'animaux'], ['🦉', 'Hibou', 'animaux'],
-  ['🍕', 'Pizza', 'nourriture'], ['🍩', 'Beignet', 'nourriture'], ['🍔', 'Burger', 'nourriture'],
-  ['🍉', 'Melon', 'nourriture'], ['🍒', 'Cerises', 'nourriture'], ['🍭', 'Sucette', 'nourriture'],
-  ['🥕', 'Carotte', 'nourriture'], ['🍌', 'Banane', 'nourriture'], ['🎂', 'Gâteau', 'nourriture'],
-  ['🌻', 'Tournesol', 'nature'], ['🌈', 'Arc-en-ciel 2', 'nature'], ['🌵', 'Cactus', 'nature'],
-  ['🌙', 'Lune', 'nature'], ['⭐', 'Étoile', 'nature'], ['🌷', 'Tulipe', 'nature'], ['🍀', 'Trèfle', 'nature'],
-  ['🚒', 'Pompiers', 'objets'], ['🚂', 'Train', 'objets'], ['🎈', 'Ballon', 'objets'],
-  ['⚽', 'Football', 'objets'], ['🎁', 'Cadeau', 'objets'], ['🏰', 'Château', 'objets'],
-  ['🚁', 'Hélicoptère', 'objets'], ['👑', 'Couronne', 'objets'], ['⛵', 'Bateau', 'objets'],
-];
-
-const MANDALA_SIZES = [21, 25, 25, 29, 31, 33, 35, 41];
-const EMOJI_SIZE = 36;
-
 const START_TOOLS = 5;
 const STORE = 'cbn.';
-const EMOJI_VERSION = 'e2.';
 
 // ---------- Stockage ----------
 const store = {
@@ -86,68 +56,19 @@ const saveSettings = () => { if (profile) store.set(pk('settings'), settings); }
 const library = [];
 const byId = new Map();
 
-// Version des stores : les personnages de marques protégées (jeux vidéo, films) sont retirés ;
-// le site familial les garde.
-const LICENSED_CATS = ['pokemon', 'minecraft', 'starwars', 'jeux'];
-const LICENSED_IDS = ['xl-foot-pika', 'xl-foot-penalty', 'xl-foot-gardien', 'xl-hockey-carapuce', 'xl-hockey-pika', 'xl-hockey-gardien', 'ia-creeper'];
-const isLicensed = (img) => LICENSED_CATS.includes(img.cat) || LICENSED_IDS.includes(img.id);
-
 function addImage(img) {
-  if (window.APP_CONFIG.store && !img.custom && isLicensed(img)) return;
   img.total = img.cells.reduce((s, c) => s + (c >= 0 ? 1 : 0), 0);
   library.push(img);
   byId.set(img.id, img);
 }
 
 function loadLibrary() {
+  // Seulement des dessins de grande qualité (tools/sprites), puis les photos de l'enfant.
   GAME_ART.forEach((a) => addImage(Gen.fromArt(a)));
-  ART.forEach((a) => addImage(Gen.fromArt(upgradeArt(a))));
-
-  MANDALA_SIZES.forEach((size, i) => {
-    const { cells, palette } = Gen.mandala(i + 1, size);
-    addImage(Gen.build({ id: 'mandala' + (i + 1), name: 'Mandala ' + (i + 1), cat: 'mandalas' }, size, size, palette, cells));
-  });
-
-  // Les emojis sont mémorisés une fois générés pour que la grille ne change jamais.
-  EMOJIS.forEach(([ch, name, cat], i) => {
-    const id = 'emoji' + i;
-    let data = store.get(EMOJI_VERSION + id, null);
-    if (!data) {
-      const res = Gen.emoji(ch, EMOJI_SIZE);
-      if (!res) return;
-      const img = Gen.build({}, EMOJI_SIZE, EMOJI_SIZE, res.palette, res.cells);
-      if (img.palette.length < 2) return;
-      data = { palette: img.palette, cells: encodeCells(img.cells) };
-      store.set(EMOJI_VERSION + id, data);
-    }
-    addImage({ id, name, cat, w: EMOJI_SIZE, h: EMOJI_SIZE, palette: data.palette, cells: decodeCells(data.cells) });
-  });
 
   store.get('photos', []).forEach((p) => {
     addImage({ id: p.id, name: p.name, cat: 'photos', w: p.w, h: p.h, palette: p.palette, cells: decodeCells(p.cells), custom: true });
   });
-}
-
-// Les petits dessins faits main sont agrandis en 32×32 avec l'algorithme Scale2x
-// (bords en escalier adoucis, sans nouvelle couleur), puis reçoivent des ombres.
-function upgradeArt(a) {
-  const src = a.rows, h = src.length, w = src[0].length;
-  const at2 = (x, y) => (x < 0 || y < 0 || x >= w || y >= h ? '.' : src[y][x]);
-  const out = Array.from({ length: h * 2 }, () => []);
-  for (let y = 0; y < h; y++) {
-    for (let x = 0; x < w; x++) {
-      const P = at2(x, y), A = at2(x, y - 1), B = at2(x + 1, y), C = at2(x - 1, y), D = at2(x, y + 1);
-      out[2 * y][2 * x] = C === A && C !== D && A !== B ? A : P;
-      out[2 * y][2 * x + 1] = A === B && A !== C && B !== D ? B : P;
-      out[2 * y + 1][2 * x] = D === C && D !== B && C !== A ? C : P;
-      out[2 * y + 1][2 * x + 1] = B === D && B !== A && D !== C ? D : P;
-    }
-  }
-  const colors = { ...a.colors };
-  const p = painter(w * 2, h * 2, 1, makeShader(colors));
-  out.forEach((row, y) => row.forEach((c, x) => p.set(x, y, c)));
-  p.shade();
-  return { ...a, colors, rows: p.rows() };
 }
 
 // Progression : `fill[i]` = couleur posée (-1 si vide), `order` = ordre des bonnes cases.

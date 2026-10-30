@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-foot-coupe" data-name="Champions !" data-cat="soccer" data-size="72" data-full="1">
-  <sprite src="parts/terrain" x="0" y="0" width="256" height="192"/>
-  <sprite src="trophee-foot" x="66" y="20" width="124" height="168"/>
-  <sprite src="parts/ballon" x="6" y="134" width="56" height="56" line="0.4"/>
-  <sprite src="parts/ballon" x="196" y="134" width="56" height="56" line="0.4"/>
-</svg>

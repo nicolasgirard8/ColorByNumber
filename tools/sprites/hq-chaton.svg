@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" data-id="hq-chaton" data-name="Chaton" data-cat="animaux" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pelote de laine -->
+  <circle cx="262" cy="310" r="36" fill="#7ab8ff"/>
+  <path d="M232 294 C252 286 276 292 290 306 M230 314 C250 304 280 312 292 326 M250 280 C246 300 250 324 264 344" fill="none" stroke="#3d78d0" stroke-width="4"/>
+  <path d="M234 330 C210 344 196 330 206 318" fill="none" stroke="#3d78d0" stroke-width="4"/>
+  <!-- queue -->
+  <path d="M98 296 C58 300 30 276 32 238 C34 222 50 222 52 236 C54 262 72 278 102 276 Z" fill="#ffad5c"/>
+  <path d="M36 248 L52 244 M38 266 L56 258" fill="none" stroke="#d97a2a" stroke-width="5"/>
+  <!-- pattes arrière -->
+  <path d="M96 298 C76 302 72 334 94 340 L130 340 C142 338 142 322 130 316 L128 294 Z" fill="#ffad5c"/>
+  <path d="M192 294 L190 316 C178 322 178 338 190 340 L226 340 C248 334 244 302 224 298 Z" fill="#ffad5c"/>
+  <!-- corps -->
+  <path d="M90 236 C84 290 110 316 160 316 C210 316 236 290 230 236 C224 198 96 198 90 236 Z" fill="#ffad5c"/>
+  <path d="M216 222 C232 260 222 306 176 314 C210 310 234 290 230 236 Z" fill="#e8913e" stroke="none"/>
+  <path d="M130 234 C122 270 134 302 160 304 C186 302 198 270 190 234 Z" fill="#fff6ea"/>
+  <path d="M96 252 L112 256 M94 272 L110 274 M224 252 L208 256 M226 272 L210 274" fill="none" stroke="#d97a2a" stroke-width="5"/>
+  <!-- pattes avant -->
+  <path d="M120 268 L116 328 C114 342 150 344 150 330 L150 272 Z" fill="#fff6ea"/>
+  <path d="M170 272 L170 330 C170 344 206 342 204 328 L200 268 Z" fill="#fff6ea"/>
+  <path d="M128 340 L128 332 M140 341 L140 333 M180 341 L180 333 M192 340 L192 332" fill="none" stroke-width="3"/>
+  <!-- oreilles -->
+  <path d="M82 104 C70 70 72 34 86 14 C112 30 132 56 140 74 Z" fill="#ffad5c"/>
+  <path d="M238 104 C250 70 248 34 234 14 C208 30 188 56 180 74 Z" fill="#ffad5c"/>
+  <path d="M92 86 C86 64 88 44 94 32 C108 44 118 58 124 72 Z" fill="#ff9fb2" stroke="none"/>
+  <path d="M228 86 C234 64 232 44 226 32 C212 44 202 58 196 72 Z" fill="#ff9fb2" stroke="none"/>
+  <!-- tête -->
+  <path d="M160 50 C232 50 258 96 252 142 C246 186 208 206 160 206 C112 206 74 186 68 142 C62 96 88 50 160 50 Z" fill="#ffad5c"/>
+  <path d="M240 90 C262 124 254 184 200 202 C234 188 250 166 252 142 C254 120 250 102 240 90 Z" fill="#e8913e" stroke="none"/>
+  <!-- rayures du front -->
+  <path d="M146 54 L150 80 M160 52 L160 84 M174 54 L170 80" fill="none" stroke="#d97a2a" stroke-width="6"/>
+  <!-- museau blanc -->
+  <path d="M120 162 C120 136 200 136 200 162 C200 192 120 192 120 162 Z" fill="#fff6ea"/>
+  <path d="M150 148 L170 148 L160 160 Z" fill="#ff6f8e" stroke-width="3"/>
+  <path d="M160 160 L160 166 M144 166 C150 184 170 184 176 166 Z" fill="#a8234e" stroke-width="3"/>
+  <!-- moustaches -->
+  <path d="M104 156 L66 148 M104 168 L64 172 M216 156 L254 148 M216 168 L256 172" fill="none" stroke-width="3"/>
+  <!-- yeux -->
+  <path d="M100 116 C100 90 140 90 140 116 C140 144 100 144 100 116 Z" fill="#ffffff"/>
+  <path d="M180 116 C180 90 220 90 220 116 C220 144 180 144 180 116 Z" fill="#ffffff"/>
+  <ellipse cx="121" cy="119" rx="12" ry="15" fill="#2a8a4a" stroke="none"/><ellipse cx="199" cy="119" rx="12" ry="15" fill="#2a8a4a" stroke="none"/>
+  <ellipse cx="121" cy="121" rx="6" ry="10" fill="#1b1b22" stroke="none"/><ellipse cx="199" cy="121" rx="6" ry="10" fill="#1b1b22" stroke="none"/>
+  <circle cx="116" cy="111" r="4.5" fill="#ffffff" stroke="none"/><circle cx="194" cy="111" r="4.5" fill="#ffffff" stroke="none"/>
+  <ellipse cx="96" cy="158" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="224" cy="158" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

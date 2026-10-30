@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-tricera-soir" data-name="Tricératops au coucher du soleil" data-cat="dinos" data-size="72" data-full="1">
-  <sprite src="parts/coucher" x="0" y="0" width="256" height="192"/>
-  <sprite src="parts/ptero" x="10" y="8" width="80" height="52"/>
-  <sprite src="parts/tricera" x="20" y="44" width="226" height="146" flip="1"/>
-</svg>

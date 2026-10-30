@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 380" data-id="hq-lapin" data-name="Petit lapin" data-cat="animaux" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- oreilles -->
+  <path d="M104 132 C80 90 76 30 96 10 C122 0 136 60 138 120 Z" fill="#f2f0f6"/>
+  <path d="M106 112 C92 80 92 40 102 26 C116 26 124 70 124 108 Z" fill="#ffb0c6" stroke="none"/>
+  <path d="M196 132 C220 90 236 36 222 14 C198 2 168 60 162 120 Z" fill="#f2f0f6"/>
+  <path d="M194 112 C208 80 220 46 214 30 C200 32 184 70 178 108 Z" fill="#ffb0c6" stroke="none"/>
+  <!-- pieds -->
+  <path d="M80 330 C58 334 56 364 82 368 L130 368 C144 366 144 346 130 340 L126 318 Z" fill="#f2f0f6"/>
+  <path d="M174 318 L170 340 C156 346 156 366 170 368 L218 368 C244 364 242 334 220 330 Z" fill="#f2f0f6"/>
+  <!-- corps -->
+  <path d="M78 262 C72 316 98 344 150 344 C202 344 228 316 222 262 C216 222 84 222 78 262 Z" fill="#f2f0f6"/>
+  <path d="M208 246 C224 286 214 334 166 342 C200 338 226 316 222 262 Z" fill="#d6d2e2" stroke="none"/>
+  <path d="M118 258 C110 296 122 330 150 332 C178 330 190 296 182 258 Z" fill="#ffffff"/>
+  <!-- bras -->
+  <path d="M96 262 C78 276 76 304 94 312 C108 316 118 302 116 288 L122 270 Z" fill="#f2f0f6"/>
+  <path d="M204 262 C222 276 224 304 206 312 C192 316 182 302 184 288 L178 270 Z" fill="#f2f0f6"/>
+  <!-- tête -->
+  <path d="M150 104 C214 104 238 146 234 186 C230 228 196 248 150 248 C104 248 70 228 66 186 C62 146 86 104 150 104 Z" fill="#f2f0f6"/>
+  <path d="M222 140 C244 172 238 224 190 244 C220 230 232 208 234 186 C236 166 232 152 222 140 Z" fill="#d6d2e2" stroke="none"/>
+  <!-- yeux -->
+  <path d="M94 168 C94 144 130 144 130 168 C130 194 94 194 94 168 Z" fill="#ffffff"/>
+  <path d="M170 168 C170 144 206 144 206 168 C206 194 170 194 170 168 Z" fill="#ffffff"/>
+  <ellipse cx="114" cy="171" rx="11" ry="14" fill="#6a2a5a" stroke="none"/><ellipse cx="188" cy="171" rx="11" ry="14" fill="#6a2a5a" stroke="none"/>
+  <circle cx="109" cy="163" r="5" fill="#ffffff" stroke="none"/><circle cx="183" cy="163" r="5" fill="#ffffff" stroke="none"/>
+  <!-- nez et dents -->
+  <path d="M140 196 C140 188 160 188 160 196 C160 202 154 206 150 206 C146 206 140 202 140 196 Z" fill="#ff6f8e" stroke-width="3"/>
+  <path d="M132 212 C140 222 160 222 168 212" fill="none" stroke-width="3.5"/>
+  <path d="M140 216 L140 230 L160 230 L160 216" fill="#ffffff" stroke-width="3"/>
+  <ellipse cx="88" cy="204" rx="11" ry="7" fill="#ff9fb2" stroke="none"/><ellipse cx="212" cy="204" rx="11" ry="7" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

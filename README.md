@@ -1,12 +1,12 @@
-# Coloriage Magique 🎨
+# Pixel Coloriage Kids 🎨
 
 Jeu de coloriage par numéros pour enfants, inspiré de *Color By Number*.
 Choisis un dessin, sélectionne une couleur numérotée et touche les cases portant le même numéro jusqu'à révéler l'image.
 
 ## Fonctionnalités
 
-- **Galerie** par thèmes : dinosaures, véhicules, police, espace, océan, aventure, pierres précieuses, Minecraft, Pokémon, Star Wars, jeux vidéo, animaux, nourriture, nature, objets, mandalas, et un onglet « Mes coloriages » (en cours et terminés).
-- **290 dessins**, dont **33 nouvelles scènes XXL** (police, jeux vidéo, Pokémon), dont **16 pierres précieuses sans contour** (diamant, rubis, émeraude, saphir, améthyste, topaze, citrine, aigue-marine, quartz rose, péridot, grenat, tanzanite, tourmaline, perle, opale et un trésor qui les réunit), dont **51 scènes XXL plein écran** (64×48 ou 48×64 cases : dinosaures, camions de pompiers, monster trucks, fusées, requins, dragons, robots, super-héros, ninjas, pirates…), 64 grands dessins jeux vidéo (18 Minecraft, 12 Pokémon, 16 Star Wars, 18 autres dont Mario, Sonic, Kirby, Zelda et Fortnite, de 32×32 à 56×24), 20 pixel arts faits main, 8 mandalas générés et une quarantaine d'emojis convertis en pixel art (selon les polices de l'appareil).
+- **Galerie** par thèmes : dinosaures, véhicules, police, soccer, hockey, animaux, espace, océan, aventure, et un onglet « Mes coloriages » (en cours et terminés).
+- **34 grands dessins originaux** de 80 à 100 cases de côté, tous au même niveau de qualité : style dessin animé, contour noir d'une case, grands yeux brillants, couleurs franches (8 à 18 numéros).
 - **Coloriage au doigt ou à la souris** : un appui colorie une case, un glissé déplace l'image ; garde le doigt appuyé un instant puis glisse pour colorier plusieurs cases d'un coup (un rond de la couleur choisie entoure alors le doigt).
 - **Zoom** : pincement à deux doigts, molette, boutons ＋ / － / ⤢ ; un appui sur un dessin trop petit zoome directement dessus.
 - Les cases de la couleur choisie sont **bien visibles** : bord de la vraie couleur, centre pâle qui pulse doucement, même dézoomé ; les autres cases s'estompent. Une couleur ne peut colorier que les cases de son propre numéro.
@@ -20,13 +20,10 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 
 ## Qualité des images
 
-- **Personnages redessinés en vectoriel** (34 Pokémon de plus, dont Dracaufeu, Tortank, Florizarre, Mewtwo, Mew, Ectoplasma, Lucario, Arcanin, les évolutions d'Évoli et les 3 départs de chaque région ; Sonic, Yoshi, Link et 7 personnages Star Wars) et leurs grandes scènes, plus les thèmes **Soccer** (ballon, crampons, but, tireur, gardien, coupe, maillot, arbitre) et **Hockey** (casque, patin, crosse, masque, but, coupe, patineur, gardien), avec 10 scènes où les Pokémon jouent : dessins SVG à contours noirs dans `tools/sprites/`, convertis en grilles de 56 cases (72×54 pour les scènes) par `tools/sprites/build.js`, avec ombres colorées (bas-droite), reflets (haut-gauche) et décors en dégradé.
-- **Relief automatique** : chaque objet reçoit une ombre sur son bord bas-droite et un reflet clair sur son bord haut-gauche, dans des teintes de sa propre couleur ; une petite ombre au sol apparaît sous ce qui est posé par terre. Au-delà de 28 couleurs, les teintes les plus proches sont réunies pour garder une palette lisible.
-- **Petits dessins faits main** agrandis en 32×32 avec l'algorithme Scale2x (bords adoucis, sans nouvelle couleur), puis ombrés.
-- **Dessins tirés des emojis** générés en 36×36, nettoyés des cases isolées et entourés d'un contour foncé.
-- **Images importées** converties avec `Gen.convert` : rendu en haute définition, couleurs regroupées, traits noirs prioritaires, cases isolées nettoyées.
-- **Peu de cases isolées** : étoiles en petites croix espacées, fenêtres allumées en 2×2, brins d'herbe et fleurs groupés, contours sans « marches » en diagonale (un seul trait continu), ombres sans cases orphelines.
-- Un dessin déjà terminé reste terminé quand son image est améliorée ; un dessin en cours sur une image modifiée repart de zéro.
+- **Exigence** : aucun dessin en dessous de la qualité des images importées (le lézard feuille, le petit hockeyeur). Les anciens petits pixel arts, scènes, pierres, mandalas et emojis ont été retirés, ainsi que les personnages de marques (Pokémon, Star Wars, Minecraft, jeux vidéo).
+- **Dessins vectoriels** `tools/sprites/hq-*.svg` : personnages originaux dessinés à la main en SVG (traits `#1b1b22`, couleurs plates, ombre peinte à la main en `data-noshade="1"`), convertis en grilles par `tools/sprites/build.js` : trait d'une case sans coins doublés, contour extérieur net, couleurs réunies.
+- **Images importées** `tools/sprites/ia-*.svg` (`data-raster`) : illustrations PNG/JPG converties (fond retiré, couleurs regroupées, traits noirs gardés).
+- **Peu de cases isolées** ; un dessin déjà terminé reste terminé quand son image est améliorée ; un dessin en cours garde les cases encore justes.
 
 ## Lancer le jeu
 
@@ -65,12 +62,8 @@ Depuis un ordinateur : `npx wrangler deploy`.
 | --- | --- |
 | `public/index.html` | Structure des écrans |
 | `public/css/style.css` | Style |
-| `public/js/art.js` | Dessins pixel art faits main |
-| `public/js/games.js` | Dessins jeux vidéo, tracés avec un petit « pinceau » (formes, textures, contours, calques) ; les dessins générés sont gardés sur l'appareil |
-| `public/js/gems.js` | Pierres précieuses : tailles brillant, à degrés, cristal, perle et opale |
-| `public/js/scenes2.js` | Deuxième série de scènes : police, jeux vidéo et Pokémon en pied |
-| `public/js/scenes.js` | Scènes XXL : décors et personnages réutilisables (agrandis, retournés, recolorés) |
-| `public/js/generators.js` | Mandalas, conversion d'images en grille numérotée (`Gen.convert`) |
+| `public/js/sprites.js` | Dessins de la galerie (généré par `tools/sprites/build.js`, ne pas modifier à la main) |
+| `public/js/generators.js` | Conversion d'images en grille numérotée (`Gen.convert`) |
 | `public/js/audio.js` | Effets sonores |
 | `public/js/app.js` | Galerie, jeu, gestes, sauvegarde, écran de fin |
 | `public/sw.js`, `public/manifest.webmanifest` | Mode hors ligne et installation |
@@ -78,28 +71,16 @@ Depuis un ordinateur : `npx wrangler deploy`.
 
 ### Ajouter un dessin
 
-**Personnage (recommandé)** : dessine un SVG dans `tools/sprites/` (traits `#1b1b22` de 4 d'épaisseur, couleurs plates) avec `data-id`, `data-name`, `data-cat` et `data-size`. Une scène peut réutiliser un personnage avec `<sprite src="pikachu" x=… y=… width=… height=…/>` et `data-full="1"`. Puis, avec `python3 -m http.server 8765` lancé dans `public/` :
+Dessine un SVG `tools/sprites/hq-…svg` (traits `#1b1b22` de 4 d'épaisseur, couleurs plates, `data-noshade="1"`) avec `data-id`, `data-name`, `data-cat` et `data-size="100"` ; les sourires sont des formes pleines (une ligne seule disparaît en pixels). Ou importe une illustration : `tools/sprites/ia-…svg` avec `data-raster="images/…png"`. Puis, avec `python3 -m http.server 8765` lancé dans `public/` :
 
 ```bash
-node tools/sprites/build.js --preview apercu.png pikachu   # aperçu
-node tools/sprites/build.js                                # régénère public/js/sprites.js
-```
-
-**Petit pixel art** :
-
-Ajoute une entrée dans `public/js/art.js` : chaque lettre de `rows` est une couleur définie dans `colors`, `.` est une case vide.
-
-```js
-{
-  id: 'coeur', name: 'Cœur', cat: 'objets',
-  colors: { R: '#e53950', W: '#ffd6dc' },
-  rows: ['.RR.RR.', 'RWRRRRR', '.RRRRR.', '..RRR..', '...R...'],
-}
+node tools/sprites/build.js --preview apercu.png hq-dragon   # aperçu
+node tools/sprites/build.js                                  # régénère public/js/sprites.js
 ```
 
 ## App Android (Google Play, Amazon)
 
 Le dossier `android/` est un projet Capacitor qui embarque la version « store » du site
-(`npm run build:store` → `dist-store/`, sans les personnages sous licence). Le workflow
+(`npm run build:store` → `dist-store/`). Le workflow
 GitHub *Android* produit l'AAB (Google Play) et l'APK (Amazon). Toutes les étapes de
 publication sont dans [STORES.md](STORES.md).

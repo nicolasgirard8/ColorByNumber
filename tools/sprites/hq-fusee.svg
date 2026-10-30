@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 400" data-id="hq-fusee" data-name="Fusée" data-cat="espace" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- flamme -->
+  <path d="M100 300 C90 340 110 370 140 396 C170 370 190 340 180 300 Z" fill="#ff7a1e"/>
+  <path d="M116 300 C112 330 124 352 140 370 C156 352 168 330 164 300 Z" fill="#ffd23a" stroke="none"/>
+  <!-- ailerons -->
+  <path d="M92 220 C56 236 40 270 40 310 L94 290 Z" fill="#e8322e"/>
+  <path d="M188 220 C224 236 240 270 240 310 L186 290 Z" fill="#e8322e"/>
+  <path d="M130 250 L150 250 L150 318 L130 318 Z" fill="#e8322e"/>
+  <!-- tuyère -->
+  <path d="M104 286 L176 286 L184 308 L96 308 Z" fill="#7a8494"/>
+  <!-- corps -->
+  <path d="M140 10 C196 54 214 140 196 290 L84 290 C66 140 84 54 140 10 Z" fill="#f2f4f8"/>
+  <path d="M168 40 C204 100 210 190 196 290 L166 290 C180 200 182 110 168 40 Z" fill="#c9d2de" stroke="none"/>
+  <!-- nez -->
+  <path d="M140 10 C162 28 176 50 186 74 C156 66 124 66 94 74 C104 50 118 28 140 10 Z" fill="#e8322e"/>
+  <!-- bandes -->
+  <path d="M86 236 C120 244 160 244 194 236 L196 260 C160 268 120 268 84 260 Z" fill="#3a8bff"/>
+  <!-- hublot -->
+  <circle cx="140" cy="146" r="40" fill="#7a8494"/>
+  <circle cx="140" cy="146" r="28" fill="#5ec8ff"/>
+  <path d="M124 134 C128 124 138 120 146 122" fill="none" stroke="#e6f8ff" stroke-width="6"/>
+  <!-- rivets -->
+  <circle cx="140" cy="200" r="4" fill="#7a8494" stroke-width="2.5"/>
+  <circle cx="112" cy="196" r="4" fill="#7a8494" stroke-width="2.5"/><circle cx="168" cy="196" r="4" fill="#7a8494" stroke-width="2.5"/>
+  <!-- étoiles -->
+  <path d="M30 60 L36 74 L50 76 L39 85 L43 99 L30 91 L17 99 L21 85 L10 76 L24 74 Z" fill="#ffd23a" stroke-width="3"/>
+  <path d="M244 150 L249 161 L261 162 L252 170 L255 181 L244 175 L233 181 L236 170 L227 162 L239 161 Z" fill="#ffd23a" stroke-width="3"/>
+</g>
+</svg>

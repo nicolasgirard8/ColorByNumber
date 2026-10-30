@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" data-id="hq-astronaute" data-name="Petit astronaute" data-cat="espace" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- sac à dos -->
+  <path d="M84 196 L236 196 L240 300 L80 300 Z" fill="#c9d2de"/>
+  <!-- jambes et bottes -->
+  <path d="M112 300 L108 340 L152 340 L154 300 Z" fill="#f2f4f8"/>
+  <path d="M166 300 L168 340 L212 340 L208 300 Z" fill="#f2f4f8"/>
+  <path d="M100 336 C100 326 154 326 156 336 L156 360 L96 360 C94 350 96 340 100 336 Z" fill="#ff7a1e"/>
+  <path d="M164 336 C166 326 220 326 220 336 C224 340 226 350 224 360 L164 360 Z" fill="#ff7a1e"/>
+  <!-- corps -->
+  <path d="M100 196 C90 230 92 280 100 306 L220 306 C228 280 230 230 220 196 C200 182 120 182 100 196 Z" fill="#f2f4f8"/>
+  <path d="M208 196 C224 230 224 280 216 306 L220 306 C228 280 230 230 220 196 Z" fill="#c9d2de" stroke="none"/>
+  <!-- panneau de contrôle -->
+  <rect x="128" y="226" width="64" height="44" rx="6" fill="#3a8bff"/>
+  <circle cx="146" cy="242" r="6" fill="#ff3b3b" stroke-width="3"/><circle cx="170" cy="242" r="6" fill="#ffd23a" stroke-width="3"/>
+  <path d="M140 258 L180 258" fill="none" stroke="#9fe2ff" stroke-width="4"/>
+  <path d="M100 290 L220 290" fill="none" stroke="#ff7a1e" stroke-width="8"/>
+  <!-- bras -->
+  <path d="M100 204 C72 214 58 240 60 266 L84 268 C86 248 94 236 104 232 Z" fill="#f2f4f8"/>
+  <circle cx="70" cy="274" r="16" fill="#ff7a1e"/>
+  <path d="M220 204 C250 196 270 172 276 146 L254 138 C250 156 238 172 218 180 Z" fill="#f2f4f8"/>
+  <circle cx="266" cy="132" r="16" fill="#ff7a1e"/>
+  <!-- casque -->
+  <circle cx="160" cy="114" r="94" fill="#f2f4f8"/>
+  <path d="M222 44 C262 84 266 160 212 194 C244 160 250 100 222 44 Z" fill="#c9d2de" stroke="none"/>
+  <path d="M92 100 C92 56 228 56 228 100 L228 136 C228 176 92 176 92 136 Z" fill="#2b3a6b"/>
+  <!-- visage visible -->
+  <path d="M104 112 C104 78 216 78 216 112 L216 134 C216 166 104 166 104 134 Z" fill="#f6c9a0"/>
+  <path d="M104 112 C104 78 216 78 216 112 C196 96 186 92 170 96 C150 100 126 96 104 112 Z" fill="#8a4b22" stroke-width="3"/>
+  <path d="M120 120 C120 104 144 104 144 120 C144 136 120 136 120 120 Z" fill="#ffffff" stroke-width="3"/>
+  <path d="M176 120 C176 104 200 104 200 120 C200 136 176 136 176 120 Z" fill="#ffffff" stroke-width="3"/>
+  <ellipse cx="133" cy="122" rx="7" ry="9" fill="#3a2418" stroke="none"/><ellipse cx="189" cy="122" rx="7" ry="9" fill="#3a2418" stroke="none"/>
+  <circle cx="130" cy="117" r="3" fill="#ffffff" stroke="none"/><circle cx="186" cy="117" r="3" fill="#ffffff" stroke="none"/>
+  <path d="M146 142 C154 154 168 154 176 142 Z" fill="#c2304a" stroke-width="3"/>
+  <ellipse cx="118" cy="140" rx="8" ry="5" fill="#ff9fb2" stroke="none"/><ellipse cx="202" cy="140" rx="8" ry="5" fill="#ff9fb2" stroke="none"/>
+  <!-- reflet de la visière -->
+  <path d="M112 92 C126 80 144 76 160 76" fill="none" stroke="#9fe2ff" stroke-width="5"/>
+  <!-- antenne -->
+  <path d="M220 34 L234 8" fill="none" stroke-width="5"/><circle cx="236" cy="6" r="7" fill="#ff3b3b" stroke-width="3"/>
+</g>
+</svg>

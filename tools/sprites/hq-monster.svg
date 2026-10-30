@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-id="hq-monster" data-name="Monster truck" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- suspension -->
+  <path d="M96 150 L110 200 M120 150 L104 200 M290 150 L304 200 M314 150 L298 200" fill="none" stroke="#9aa5b4" stroke-width="9"/>
+  <!-- carrosserie -->
+  <path d="M130 50 L250 50 C262 50 270 56 276 66 L298 102 L370 110 C384 112 392 120 392 134 L392 154 C392 160 388 164 382 164 L18 164 C12 164 8 160 8 154 L8 124 C8 114 14 108 24 108 L110 102 L116 64 C118 56 122 50 130 50 Z" fill="#33c46a"/>
+  <path d="M8 138 L392 138 L392 154 C392 160 388 164 382 164 L18 164 C12 164 8 160 8 154 Z" fill="#1f9450" stroke="none"/>
+  <!-- flammes -->
+  <path d="M20 122 C60 118 90 112 110 118 C96 124 120 128 140 124 C126 132 150 136 170 132 C150 142 70 140 20 140 Z" fill="#ffc21a" stroke-width="3"/>
+  <path d="M30 128 C60 126 80 124 96 126 C90 130 104 132 116 132 C90 136 60 136 30 134 Z" fill="#ff7a1e" stroke="none"/>
+  <!-- fenêtres -->
+  <path d="M136 64 L196 64 L196 102 L126 102 L130 72 C130 68 132 64 136 64 Z" fill="#9fe2ff"/>
+  <path d="M212 64 L248 64 C254 64 258 68 262 74 L278 102 L212 102 Z" fill="#9fe2ff"/>
+  <path d="M144 72 L156 72 L142 94 L136 94 Z" fill="#e6f8ff" stroke="none"/>
+  <path d="M370 118 L390 122 L390 134 L370 132 Z" fill="#ffe066"/>
+  <!-- grosses roues -->
+  <circle cx="104" cy="226" r="62" fill="#2e2e38"/>
+  <circle cx="104" cy="226" r="34" fill="#4a4a58"/>
+  <circle cx="104" cy="226" r="20" fill="#c9d2de"/>
+  <path d="M104 164 L104 176 M104 276 L104 288 M42 226 L54 226 M154 226 L166 226 M60 182 L68 190 M140 262 L148 270 M60 270 L68 262 M140 190 L148 182" fill="none" stroke="#4a4a58" stroke-width="7"/>
+  <circle cx="302" cy="226" r="62" fill="#2e2e38"/>
+  <circle cx="302" cy="226" r="34" fill="#4a4a58"/>
+  <circle cx="302" cy="226" r="20" fill="#c9d2de"/>
+  <path d="M302 164 L302 176 M302 276 L302 288 M240 226 L252 226 M352 226 L364 226 M258 182 L266 190 M338 262 L346 270 M258 270 L266 262 M338 190 L346 182" fill="none" stroke="#4a4a58" stroke-width="7"/>
+</g>
+</svg>

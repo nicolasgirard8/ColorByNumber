@@ -6,7 +6,7 @@ const { chromium } = require('playwright');
 const path = require('path');
 
 const OUT = path.join(__dirname, '../../store/captures');
-const DONE = ['ia-trex', 'xl-pompiers', 'ia-policier', 'xl-tricera', 'ia-footballeur', 'xl-requin', 'ia-hockeyeur', 'xl-fusee', 'xl-po-badge', 'xl-train', 'xl-brachio', 'coeur'];
+const DONE = ['hq-dragon', 'ia-lezard', 'hq-chien-police', 'ia-trex', 'hq-tricera', 'hq-pompiers', 'ia-hockeyeur', 'hq-lionceau', 'hq-fusee', 'hq-pieuvre', 'hq-robot', 'hq-requin'];
 
 async function shoot(browser, name, viewport, scale) {
   const ctx = await browser.newContext({ viewport, deviceScaleFactor: scale, hasTouch: true });
@@ -22,14 +22,14 @@ async function shoot(browser, name, viewport, scale) {
   await p.reload();
   await p.waitForTimeout(1500);
   await p.evaluate(() => {
-    const img = library.find((i) => i.id === 'xl-po-moto');
+    const img = library.find((i) => i.id === 'hq-police-auto');
     const fill = Int16Array.from(img.cells, (c, k) => (c >= 0 && (k % img.w) < img.w * 0.62 ? c : -1));
     localStorage.setItem('cbn.u.k.p.' + img.id, JSON.stringify({ s: encodeCells(fill), o: [], c: 1, d: false }));
   });
   await p.reload();
   await p.waitForTimeout(1500);
   await p.screenshot({ path: path.join(OUT, name + '-1-galerie.png') });
-  await p.locator('.card', { hasText: 'Moto de police' }).first().click();
+  await p.locator('.card', { hasText: 'Auto de police' }).first().click();
   await p.waitForTimeout(900);
   await p.screenshot({ path: path.join(OUT, name + '-2-coloriage.png') });
   await p.locator('#btn-back').click();

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" data-id="hq-pompiers" data-name="Camion de pompiers" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- échelle -->
+  <path d="M36 70 L252 44 L254 70 L38 96 Z" fill="#c9d2de"/>
+  <path d="M68 66 L70 92 M100 62 L102 88 M132 58 L134 84 M164 54 L166 80 M196 50 L198 76 M228 47 L230 73" fill="none" stroke-width="4"/>
+  <path d="M60 104 L60 92 M240 104 L240 76" fill="none" stroke-width="6"/>
+  <!-- caisse arrière -->
+  <path d="M20 100 L264 100 L264 210 L20 210 C14 210 12 206 12 200 L12 108 C12 104 16 100 20 100 Z" fill="#e8322e"/>
+  <path d="M20 182 L264 182 L264 210 L20 210 C14 210 12 206 12 200 L12 190 C12 186 16 182 20 182 Z" fill="#b8201e" stroke="none"/>
+  <path d="M12 156 L264 156 L264 170 L12 170 Z" fill="#ffffff"/>
+  <!-- volets de rangement -->
+  <rect x="30" y="112" width="60" height="36" rx="4" fill="#ff5a4e"/>
+  <rect x="104" y="112" width="60" height="36" rx="4" fill="#ff5a4e"/>
+  <rect x="178" y="112" width="70" height="36" rx="4" fill="#ff5a4e"/>
+  <path d="M40 124 L80 124 M114 124 L154 124 M188 124 L238 124" fill="none" stroke="#b8201e" stroke-width="3"/>
+  <!-- tuyau enroulé -->
+  <!-- cabine -->
+  <path d="M258 90 L332 90 C346 90 354 96 362 110 L388 152 C392 158 392 164 392 172 L392 204 C392 208 388 210 384 210 L258 210 Z" fill="#e8322e"/>
+  <path d="M258 182 L392 182 L392 204 C392 208 388 210 384 210 L258 210 Z" fill="#b8201e" stroke="none"/>
+  <path d="M258 156 L392 156 L392 170 L258 170 Z" fill="#ffffff"/>
+  <path d="M290 104 L330 104 C338 104 342 108 346 114 L364 144 L290 144 Z" fill="#9fe2ff"/>
+  <path d="M300 112 L312 112 L298 136 L292 136 Z" fill="#e6f8ff" stroke="none"/>
+  <path d="M270 104 L280 104 L280 144 L270 144 Z" fill="#9fe2ff"/>
+  <!-- gyrophares -->
+  <path d="M286 90 L286 76 C286 68 312 68 312 76 L312 90 Z" fill="#3a8bff"/>
+  <path d="M292 82 L298 74" fill="none" stroke="#bfe0ff" stroke-width="3"/>
+  <!-- phare et pare-choc -->
+  <path d="M378 160 L394 160 L394 176 L378 176 Z" fill="#ffe066"/>
+  <path d="M250 210 L398 210 L398 222 L250 222 Z" fill="#9aa5b4"/>
+  <path d="M6 210 L130 210 L130 222 L6 222 Z" fill="#9aa5b4"/>
+  <!-- roues -->
+  <circle cx="80" cy="218" r="32" fill="#2e2e38"/><circle cx="80" cy="218" r="14" fill="#c9d2de"/>
+  <circle cx="190" cy="218" r="32" fill="#2e2e38"/><circle cx="190" cy="218" r="14" fill="#c9d2de"/>
+  <circle cx="330" cy="218" r="32" fill="#2e2e38"/><circle cx="330" cy="218" r="14" fill="#c9d2de"/>
+  <!-- insigne -->
+</g>
+</svg>

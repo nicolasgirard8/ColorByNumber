@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" data-id="hq-tortue" data-name="Tortue de mer" data-cat="ocean" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- nageoires arrière -->
+  <path d="M90 190 C60 206 34 230 24 256 C56 254 88 236 110 210 Z" fill="#7ed37a"/>
+  <path d="M90 104 C64 84 44 60 38 36 C70 42 98 64 114 92 Z" fill="#7ed37a"/>
+  <!-- nageoires avant -->
+  <path d="M250 196 C270 232 300 256 340 266 C340 238 314 206 276 186 Z" fill="#7ed37a"/>
+  <path d="M250 96 C270 58 302 30 344 20 C344 50 318 84 278 106 Z" fill="#7ed37a"/>
+  <!-- carapace -->
+  <path d="M60 150 C60 70 130 44 180 44 C236 44 290 76 290 150 C290 196 240 214 176 214 C110 214 60 196 60 150 Z" fill="#c98a42"/>
+  <path d="M60 150 C60 190 110 214 176 214 C240 214 290 196 290 150 C280 180 236 196 176 196 C116 196 72 180 60 150 Z" fill="#9a6428" stroke="none"/>
+  <path d="M144 84 L208 84 L228 124 L208 164 L144 164 L124 124 Z" fill="#e8b46a"/>
+  <path d="M144 84 L124 60 M208 84 L228 60 M228 124 L280 124 M124 124 L70 124 M144 164 L124 196 M208 164 L228 196" fill="none" stroke-width="4"/>
+  <path d="M60 150 C60 70 130 44 180 44 C236 44 290 76 290 150" fill="none" stroke-width="4"/>
+  <!-- tête -->
+  <path d="M262 150 C262 112 300 96 336 102 C374 108 394 132 392 156 C390 182 366 198 334 198 C296 198 262 186 262 150 Z" fill="#7ed37a"/>
+  <path d="M376 118 C396 142 392 188 348 196 C372 190 390 176 392 156 C392 140 386 128 376 118 Z" fill="#55b058" stroke="none"/>
+  <path d="M300 138 C300 116 334 116 334 138 C334 162 300 162 300 138 Z" fill="#ffffff"/>
+  <ellipse cx="320" cy="141" rx="10" ry="13" fill="#1b1b22" stroke="none"/>
+  <circle cx="316" cy="134" r="4.5" fill="#ffffff" stroke="none"/><circle cx="323" cy="148" r="2.2" fill="#ffffff" stroke="none"/>
+  <path d="M344 166 C352 186 374 186 382 166 Z" fill="#a8234e" stroke-width="3.5"/>
+  <ellipse cx="306" cy="174" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

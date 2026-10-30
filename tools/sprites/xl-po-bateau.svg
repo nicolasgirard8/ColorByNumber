@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-po-bateau" data-name="Bateau de police" data-cat="police" data-size="72" data-full="1">
-  <sprite src="parts/bateau-mer" x="0" y="0" width="256" height="192"/>
-  <sprite src="parts/bateau-police" x="8" y="40" width="240" height="134"/>
-  <pixeltext x="127" y="131" color="#2a5ab8" text="POLICE"/>
-</svg>

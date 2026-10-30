@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-jv-yoshi" data-name="Les œufs de Yoshi" data-cat="jeux" data-size="72" data-full="1">
-  <sprite src="parts/prairie" x="0" y="0" width="256" height="192"/>
-  <sprite src="yoshi" x="20" y="16" width="150" height="172"/>
-  <sprite src="parts/oeuf" x="168" y="134" width="36" height="46"/>
-  <sprite src="parts/oeuf" x="206" y="140" width="36" height="46"/>
-  <sprite src="parts/oeuf" x="186" y="100" width="36" height="46"/>
-</svg>

@@ -349,6 +349,8 @@ let sid = 0;
 // Essai « style application » : STYLE=app SCALE=1.7 node tools/sprites/build.js --preview …
 const APP = process.env.STYLE === 'app';
 function shade(svg, cell) {
+  // data-noshade="1" sur le dessin : couleurs plates, ombres dessinées à la main.
+  if (/^\s*<svg[^>]*data-noshade="1"/.test(svg)) return svg;
   const sd = 3 * cell, hl = 1.6 * cell;
   // On suit les groupes <g> : seules les formes dont le trait est foncé (contour) ont du relief.
   const stack = [false];
@@ -449,7 +451,9 @@ function expand(svg, cell) {
     const weights = { ...included };
     attr('weights', '').split(',').filter(Boolean).forEach((s) => { const [c, v] = s.split(':'); weights[c.toLowerCase()] = +v; });
     const size = Math.round(+attr('size', 44) * (APP ? +(process.env.SCALE || 1.7) : 1));
-    const vbW = +svg.match(/viewBox="[^"]+"/)[0].split(/[\s"]+/)[3];
+    const vbN = svg.match(/viewBox="[^"]+"/)[0].split(/[\s"]+/);
+    // Les dessins « hq » mesurent leurs traits sur le plus grand côté (case = côté / taille).
+    const vbW = /^hq-/.test(f) ? Math.max(+vbN[3], +vbN[4]) : +vbN[3];
     const k = (vbW / size) * +attr('stroke', 1.05) / 4;
     const svgScaled = svg.replace(/stroke-width="([\d.]+)"/g, (m, v) => 'stroke-width="' + (+v * k).toFixed(2) + '"');
     // Rendu « couleurs seules » : les traits foncés (contours) sont retirés.
@@ -494,15 +498,16 @@ function expand(svg, cell) {
       }
       document.body.innerHTML = ''; document.body.style.margin = 0; document.body.appendChild(cv);
     }, [result, svgs, +(process.env.CELL || 9)]);
-    await page.setViewportSize({ width: 2400, height: 1000 });
+    await page.setViewportSize({ width: 2400, height: 2000 });
     await page.locator('#pv').screenshot({ path: preview });
   } else {
-    // Personnages seuls d'abord, puis les grandes scènes.
-    const first = ['jv-souris', 'pk-salameche', 'pk-carapuce', 'pk-bulbizarre', 'xl-pika', 'xl-pk-starters'];
-    const rank = (it) => (it.id.startsWith('xl-') ? 10 : 0) + ['pokemon', 'soccer', 'hockey', 'dinos', 'vehicules', 'police', 'espace', 'ocean', 'aventure', 'jeux', 'starwars', 'minecraft', 'animaux', 'nourriture', 'nature', 'objets'].indexOf(it.cat) - (first.includes(it.id) ? 0.5 + (6 - first.indexOf(it.id)) / 100 : 0);
+    // Les dessins préférés d'abord, puis par thème.
+    const first = ['hq-dragon', 'ia-lezard', 'ia-hockeyeur', 'hq-chien-police', 'ia-trex', 'hq-pompiers'];
+    const cats = ['dinos', 'vehicules', 'police', 'soccer', 'hockey', 'animaux', 'espace', 'ocean', 'aventure'];
+    const rank = (it) => (first.includes(it.id) ? first.indexOf(it.id) - 100 : cats.indexOf(it.cat));
     result.sort((a, b) => rank(a) - rank(b));
     const lines = result.map((it) => '  ' + JSON.stringify({ id: it.id, name: it.name, cat: it.cat, colors: it.colors, rows: it.rows }) + ',');
-    fs.writeFileSync(OUT, "// Personnages redessinés en vectoriel (tools/sprites/*.svg) puis convertis par tools/sprites/build.js.\n// Ne pas modifier à la main : relancer le script après avoir changé un SVG.\n'use strict';\n\nconst SPRITES = [\n" + lines.join('\n') + '\n];\n\n// Placés en tête de la galerie ; un dessin du même identifiant est remplacé.\nfor (const s of SPRITES.slice().reverse()) {\n  const i = GAME_ART.findIndex((a) => a.id === s.id);\n  if (i >= 0) GAME_ART.splice(i, 1);\n  GAME_ART.unshift(s);\n}\n');
+    fs.writeFileSync(OUT, "// Dessins de la galerie : vectoriels (tools/sprites/hq-*.svg) ou images importées (ia-*.svg) puis convertis par tools/sprites/build.js.\n// Ne pas modifier à la main : relancer le script après avoir changé un SVG.\n'use strict';\n\nconst SPRITES = [\n" + lines.join('\n') + '\n];\n\nconst GAME_ART = SPRITES;\n');
   }
   console.log(result.map((it) => it.id + ' ' + it.rows[0].length + 'x' + it.rows.length + ' ' + Object.keys(it.colors).length + 'c').join('\n'));
   await browser.close();

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 400" data-id="hq-brachio" data-name="Brachiosaure" data-cat="dinos" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M90 300 C54 302 24 290 8 268 C34 276 60 274 92 264 Z" fill="#8bd45a"/>
+  <!-- pattes arrière -->
+  <path d="M98 300 L96 368 C96 382 136 382 136 368 L138 306 Z" fill="#62b03c"/>
+  <path d="M206 300 L206 368 C206 382 246 382 246 368 L246 300 Z" fill="#62b03c"/>
+  <!-- corps -->
+  <path d="M74 286 C70 236 116 208 170 208 C226 208 270 232 268 280 C266 322 226 336 170 336 C114 336 78 322 74 286 Z" fill="#8bd45a"/>
+  <path d="M248 240 C272 272 260 322 206 334 C236 332 266 316 268 280 C268 264 262 250 248 240 Z" fill="#62b03c" stroke="none"/>
+  <path d="M100 306 C130 330 210 332 246 312 C230 332 200 336 170 336 C128 336 104 328 100 306 Z" fill="#e8f8b0" stroke="none"/>
+  <!-- cou -->
+  <path d="M206 216 C222 160 232 110 246 76 L292 84 C280 130 268 180 262 236 Z" fill="#8bd45a"/>
+  <path d="M276 84 L292 84 C280 130 268 180 262 236 C256 228 252 222 248 218 C258 170 266 126 276 84 Z" fill="#62b03c" stroke="none"/>
+  <!-- taches -->
+  <ellipse cx="140" cy="236" rx="16" ry="9" fill="#62b03c" stroke="none"/>
+  <ellipse cx="186" cy="226" rx="11" ry="7" fill="#62b03c" stroke="none"/>
+  <ellipse cx="108" cy="262" rx="10" ry="6" fill="#62b03c" stroke="none"/>
+  <ellipse cx="248" cy="150" rx="7" ry="11" fill="#62b03c" stroke="none"/>
+  <!-- pattes avant -->
+  <path d="M120 310 L118 378 C118 392 158 392 158 378 L160 312 Z" fill="#8bd45a"/>
+  <path d="M128 388 L128 380 M139 390 L139 382 M150 388 L150 380" fill="none" stroke-width="3"/>
+  <path d="M226 306 L226 378 C226 392 266 392 266 378 L264 300 Z" fill="#8bd45a"/>
+  <path d="M234 388 L234 380 M245 390 L245 382 M256 388 L256 380" fill="none" stroke-width="3"/>
+  <!-- tête -->
+  <path d="M228 60 C226 26 262 10 296 14 C334 18 354 44 350 70 C346 96 318 108 290 106 C254 104 230 90 228 60 Z" fill="#8bd45a"/>
+  <path d="M336 34 C356 58 348 98 304 106 C334 100 348 84 350 70 C352 56 346 44 336 34 Z" fill="#62b03c" stroke="none"/>
+  <!-- feuille dans la bouche -->
+  <path d="M332 84 C346 74 360 78 358 92 C352 102 338 100 332 84 Z" fill="#3fbf6a"/>
+  <path d="M332 84 L356 90" fill="none" stroke-width="2.5"/>
+  <!-- œil -->
+  <path d="M262 46 C262 26 296 26 296 46 C296 68 262 68 262 46 Z" fill="#ffffff"/>
+  <ellipse cx="282" cy="49" rx="10" ry="13" fill="#1b1b22" stroke="none"/>
+  <circle cx="278" cy="42" r="4.5" fill="#ffffff" stroke="none"/><circle cx="286" cy="56" r="2.4" fill="#ffffff" stroke="none"/>
+  <path d="M302 84 C312 92 322 92 330 86" fill="none" stroke-width="3.5"/>
+  <ellipse cx="268" cy="80" rx="11" ry="7" fill="#ff9fb2" stroke="none"/>
+  <circle cx="330" cy="40" r="3" fill="#1b1b22" stroke="none"/>
+</g>
+</svg>

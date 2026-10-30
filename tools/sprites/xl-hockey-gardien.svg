@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-hockey-gardien" data-name="Ronflex gardien de but" data-cat="hockey" data-size="72" data-full="1">
-  <sprite src="parts/patinoire" x="0" y="0" width="256" height="192"/>
-  <sprite src="but-hockey" x="8" y="40" width="240" height="152"/>
-  <sprite src="ronflex" x="64" y="62" width="130" height="126"/>
-</svg>

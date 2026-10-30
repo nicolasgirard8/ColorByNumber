@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 230" data-id="hq-autobus" data-name="Autobus scolaire" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M20 30 L312 30 C324 30 330 36 332 46 L340 100 L380 108 C392 110 396 118 396 130 L396 176 C396 182 392 186 386 186 L16 186 C10 186 6 182 6 176 L6 44 C6 36 12 30 20 30 Z" fill="#ffc21a"/>
+  <path d="M6 156 L396 156 L396 176 C396 182 392 186 386 186 L16 186 C10 186 6 182 6 176 Z" fill="#e09a00" stroke="none"/>
+  <path d="M6 128 L396 128 L396 138 L6 138 Z" fill="#1b1b22" stroke-width="2"/>
+  <!-- fenêtres -->
+  <rect x="22" y="46" width="52" height="54" rx="5" fill="#9fe2ff"/>
+  <rect x="86" y="46" width="52" height="54" rx="5" fill="#9fe2ff"/>
+  <rect x="150" y="46" width="52" height="54" rx="5" fill="#9fe2ff"/>
+  <rect x="214" y="46" width="52" height="54" rx="5" fill="#9fe2ff"/>
+  <path d="M30 54 L42 54 L30 76 Z M94 54 L106 54 L94 76 Z M158 54 L170 54 L158 76 Z M222 54 L234 54 L222 76 Z" fill="#e6f8ff" stroke="none"/>
+  <!-- enfants aux fenêtres -->
+  <circle cx="48" cy="86" r="13" fill="#f6c9a0" stroke-width="3"/><path d="M35 84 C35 66 61 66 61 84 C54 78 42 78 35 84 Z" fill="#6b3d1e" stroke-width="3"/>
+  <circle cx="176" cy="86" r="13" fill="#d9a27a" stroke-width="3"/><path d="M163 84 C163 66 189 66 189 84 C182 76 170 76 163 84 Z" fill="#1b1b22" stroke-width="3"/>
+  <!-- porte et conducteur -->
+  <path d="M280 46 L326 46 L332 100 L280 100 Z" fill="#9fe2ff"/>
+  <path d="M306 46 L306 186" fill="none" stroke-width="3"/>
+  <path d="M280 104 L332 104 L332 156 L280 156" fill="none" stroke-width="3"/>
+  <!-- panneau stop -->
+  <path d="M378 112 L396 116 L396 128 L378 126 Z" fill="#ffe066"/>
+  <!-- roues -->
+  <circle cx="86" cy="186" r="32" fill="#2e2e38"/><circle cx="86" cy="186" r="14" fill="#c9d2de"/>
+  <circle cx="320" cy="186" r="32" fill="#2e2e38"/><circle cx="320" cy="186" r="14" fill="#c9d2de"/>
+</g>
+</svg>

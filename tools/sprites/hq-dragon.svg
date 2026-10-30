@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 360" data-id="hq-dragon" data-name="Bébé dragon" data-cat="aventure" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- ailes (derrière) -->
+  <path d="M92 196 C60 150 24 146 8 166 C24 168 26 182 18 196 C36 190 44 204 40 218 C56 206 76 210 92 220 Z" fill="#8f73ff"/>
+  <path d="M90 204 C66 182 44 176 26 178" fill="none" stroke-width="3"/>
+  <path d="M208 196 C240 150 276 146 292 166 C276 168 274 182 282 196 C264 190 256 204 260 218 C244 206 224 210 208 220 Z" fill="#8f73ff"/>
+  <path d="M210 204 C234 182 256 176 274 178" fill="none" stroke-width="3"/>
+  <!-- queue -->
+  <path d="M196 300 C236 302 262 286 264 254 C266 236 254 226 242 230 C248 244 244 262 226 272 C214 278 200 280 190 278 Z" fill="#ff8a3d"/>
+  <path d="M242 232 C232 214 240 196 256 190 C254 204 268 208 268 222 C268 234 254 240 242 232 Z" fill="#8f73ff"/>
+  <!-- pieds -->
+  <path d="M96 296 C80 300 76 334 94 342 L136 342 C148 342 148 322 132 314 L128 296 Z" fill="#ff8a3d"/>
+  <path d="M172 296 L168 314 C152 322 152 342 164 342 L206 342 C224 334 220 300 204 296 Z" fill="#ff8a3d"/>
+  <path d="M108 342 L108 332 M122 342 L122 332 M178 342 L178 332 M192 342 L192 332" fill="none" stroke-width="3"/>
+  <!-- corps -->
+  <path d="M84 216 C72 268 92 314 150 316 C208 314 228 268 216 216 C206 186 94 186 84 216 Z" fill="#ff8a3d"/>
+  <path d="M206 210 C222 260 206 306 160 314 C196 296 208 260 196 214 Z" fill="#e8622a" stroke="none"/>
+  <path d="M114 222 C102 254 112 300 150 302 C188 300 198 254 186 222 C174 208 126 208 114 222 Z" fill="#ffe4a6"/>
+  <path d="M118 252 C136 260 164 260 182 252 M116 278 C134 288 166 288 184 278" fill="none" stroke="#e3a65c" stroke-width="4"/>
+  <!-- bras gauche -->
+  <path d="M92 224 C74 238 74 262 92 270 C104 274 118 266 120 254 C112 252 104 248 104 240 Z" fill="#ff8a3d"/>
+  <!-- bras qui salue -->
+  <path d="M206 224 C226 214 238 196 242 176 L264 180 C262 208 244 236 214 250 Z" fill="#ff8a3d"/>
+  <path d="M240 178 C232 164 238 148 250 148 C252 136 266 136 268 146 C280 146 282 162 274 170 C272 180 256 184 248 180 Z" fill="#ff8a3d"/>
+  <path d="M254 156 L258 168 M264 152 L266 164" fill="none" stroke-width="3"/>
+  <!-- cornes et crête -->
+  <path d="M98 70 C80 46 82 22 92 8 C100 32 114 46 124 56 Z" fill="#fff1c8"/>
+  <path d="M202 70 C220 46 218 22 208 8 C200 32 186 46 176 56 Z" fill="#fff1c8"/>
+  <path d="M132 44 L142 18 L152 38 L162 16 L170 42 Z" fill="#8f73ff"/>
+  <!-- oreilles -->
+  <path d="M68 106 C42 94 28 110 32 128 C44 124 56 128 66 136 Z" fill="#ff8a3d"/>
+  <path d="M232 106 C258 94 272 110 268 128 C256 124 244 128 234 136 Z" fill="#ff8a3d"/>
+  <!-- tête -->
+  <path d="M150 36 C230 36 252 96 240 142 C228 188 194 202 150 202 C106 202 72 188 60 142 C48 96 70 36 150 36 Z" fill="#ff8a3d"/>
+  <path d="M226 70 C250 104 246 168 196 196 C226 160 234 110 220 74 Z" fill="#e8622a" stroke="none"/>
+  <!-- museau -->
+  <path d="M98 148 C98 120 202 120 202 148 C202 190 98 190 98 148 Z" fill="#ffe4a6"/>
+  <ellipse cx="134" cy="138" rx="4" ry="3" fill="#1b1b22" stroke="none"/><ellipse cx="166" cy="138" rx="4" ry="3" fill="#1b1b22" stroke="none"/>
+  <!-- bouche -->
+  <path d="M122 152 C130 186 170 186 178 152 Z" fill="#7a1f2e"/>
+  <path d="M134 172 C140 162 160 162 166 172 C160 180 140 180 134 172 Z" fill="#ff6f8e" stroke="none"/>
+  <path d="M128 153 L135 163 L142 154 Z M158 154 L165 163 L172 153 Z" fill="#ffffff" stroke-width="2.5"/>
+  <!-- yeux -->
+  <path d="M92 96 C92 66 136 66 136 96 C136 128 92 128 92 96 Z" fill="#ffffff"/>
+  <path d="M164 96 C164 66 208 66 208 96 C208 128 164 128 164 96 Z" fill="#ffffff"/>
+  <ellipse cx="117" cy="100" rx="14" ry="18" fill="#1b1b22" stroke="none"/>
+  <ellipse cx="183" cy="100" rx="14" ry="18" fill="#1b1b22" stroke="none"/>
+  <circle cx="111" cy="92" r="6" fill="#ffffff" stroke="none"/><circle cx="177" cy="92" r="6" fill="#ffffff" stroke="none"/>
+  <circle cx="122" cy="110" r="3" fill="#ffffff" stroke="none"/><circle cx="188" cy="110" r="3" fill="#ffffff" stroke="none"/>
+  <!-- joues -->
+  <ellipse cx="80" cy="142" rx="12" ry="8" fill="#ff9fb2" stroke="none"/>
+  <ellipse cx="220" cy="142" rx="12" ry="8" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" data-id="xl-oeuf" data-name="Bébé dinosaure" data-cat="dinos" data-size="64" data-full="1">
-  <sprite src="parts/prairie" x="0" y="0" width="240" height="240" fit="stretch"/>
-  <sprite src="parts/fleurs" x="0" y="48" width="240" height="192"/>
-  <sprite src="parts/oeuf-dino" x="30" y="20" width="180" height="210"/>
-</svg>

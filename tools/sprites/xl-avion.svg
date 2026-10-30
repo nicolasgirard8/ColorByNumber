@@ -1,4 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-avion" data-name="Avion dans les nuages" data-cat="vehicules" data-size="72" data-full="1">
-  <sprite src="parts/ciel" x="0" y="0" width="256" height="192"/>
-  <sprite src="parts/avion" x="8" y="40" width="240" height="130" rotate="-6"/>
-</svg>

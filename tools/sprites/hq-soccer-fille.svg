@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" data-id="hq-soccer-fille" data-name="Joueuse de soccer" data-cat="soccer" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- couettes -->
+  <path d="M74 104 C40 100 24 132 34 160 C44 184 70 186 82 166 Z" fill="#6b3d1e"/>
+  <path d="M246 104 C280 100 296 132 286 160 C276 184 250 186 238 166 Z" fill="#6b3d1e"/>
+  <circle cx="78" cy="108" r="9" fill="#ff7ab0"/><circle cx="242" cy="108" r="9" fill="#ff7ab0"/>
+  <!-- jambe d'appui -->
+  <path d="M128 284 L120 338 L150 340 L156 286 Z" fill="#f6c9a0"/>
+  <path d="M120 306 L152 308 L150 340 L120 338 Z" fill="#ffffff"/>
+  <path d="M112 336 C112 328 154 328 156 336 L156 354 L106 354 C104 346 106 340 112 336 Z" fill="#2e2e38"/>
+  <!-- jambe qui frappe -->
+  <path d="M176 278 L230 300 L222 324 L168 304 Z" fill="#f6c9a0"/>
+  <path d="M200 290 L230 300 L222 324 L192 314 Z" fill="#ffffff"/>
+  <path d="M226 294 C238 290 258 300 258 312 L252 330 L220 320 Z" fill="#2e2e38"/>
+  <!-- ballon -->
+  <circle cx="290" cy="320" r="36" fill="#ffffff"/>
+  <path d="M290 304 L304 314 L299 330 L281 330 L276 314 Z" fill="#2e2e38" stroke-width="3"/>
+  <path d="M290 304 L290 286 M304 314 L322 306 M299 330 L310 348 M281 330 L270 348 M276 314 L258 306" fill="none" stroke-width="3"/>
+  <!-- short -->
+  <path d="M108 250 L212 250 L216 292 L166 296 L160 280 L154 296 L104 292 Z" fill="#2e2e38"/>
+  <!-- chandail -->
+  <path d="M104 196 C94 222 96 246 104 260 L216 260 C224 246 226 222 216 196 C196 182 124 182 104 196 Z" fill="#ffc21a"/>
+  <path d="M204 192 C220 222 220 248 212 260 L216 260 C224 246 226 222 216 196 Z" fill="#e09a00" stroke="none"/>
+  <path d="M146 214 L174 214 L170 246 L150 246 Z" fill="#2e8a4a" stroke-width="3"/>
+  <!-- bras -->
+  <path d="M104 204 C80 196 62 176 56 154" fill="none" stroke-width="22"/><path d="M104 204 C80 196 62 176 56 154" fill="none" stroke="#ffc21a" stroke-width="14"/>
+  <circle cx="54" cy="146" r="12" fill="#f6c9a0"/>
+  <path d="M216 204 C240 214 254 230 262 250" fill="none" stroke-width="22"/><path d="M216 204 C240 214 254 230 262 250" fill="none" stroke="#ffc21a" stroke-width="14"/>
+  <circle cx="264" cy="258" r="12" fill="#f6c9a0"/>
+  <!-- tête -->
+  <path d="M160 34 C222 34 246 74 244 116 C242 160 210 190 160 190 C110 190 78 160 76 116 C74 74 98 34 160 34 Z" fill="#f6c9a0"/>
+  <path d="M76 112 C70 62 104 30 160 30 C216 30 250 62 244 112 C226 92 206 80 180 78 C170 90 150 96 126 92 C106 94 88 102 76 112 Z" fill="#6b3d1e"/>
+  <path d="M108 124 C108 102 142 102 142 124 C142 148 108 148 108 124 Z" fill="#ffffff"/>
+  <path d="M178 124 C178 102 212 102 212 124 C212 148 178 148 178 124 Z" fill="#ffffff"/>
+  <ellipse cx="126" cy="127" rx="10" ry="13" fill="#3a2418" stroke="none"/><ellipse cx="196" cy="127" rx="10" ry="13" fill="#3a2418" stroke="none"/>
+  <circle cx="122" cy="120" r="4.5" fill="#ffffff" stroke="none"/><circle cx="192" cy="120" r="4.5" fill="#ffffff" stroke="none"/>
+  <path d="M140 154 C146 176 174 176 180 154 Z" fill="#a8234e" stroke-width="3.5"/>
+  <path d="M150 166 C156 162 164 162 170 166 C164 172 156 172 150 166 Z" fill="#ff6f8e" stroke="none"/>
+  <ellipse cx="104" cy="152" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="216" cy="152" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>
