@@ -1,0 +1,16 @@
+{
+  "appId": "com.pixelcoloriage.kids",
+  "appName": "Pixel Coloriage Kids",
+  "webDir": "dist-store",
+  "android": {
+    "backgroundColor": "#f4f1ff"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1200,
+      "launchAutoHide": true,
+      "backgroundColor": "#7c5cff",
+      "showSpinner": false
+    }
+  }
+}

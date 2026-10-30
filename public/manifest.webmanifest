@@ -1,7 +1,7 @@
 {
-  "name": "Coloriage Magique",
-  "short_name": "Coloriage",
-  "description": "Coloriage par numéros pour enfants.",
+  "name": "Pixel Coloriage Kids",
+  "short_name": "Pixel Coloriage",
+  "description": "Coloriage par numéros en pixel art pour les enfants.",
   "lang": "fr",
   "start_url": "./",
   "scope": "./",

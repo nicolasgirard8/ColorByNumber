@@ -86,7 +86,14 @@ const saveSettings = () => { if (profile) store.set(pk('settings'), settings); }
 const library = [];
 const byId = new Map();
 
+// Version des stores : les personnages de marques protégées (jeux vidéo, films) sont retirés ;
+// le site familial les garde.
+const LICENSED_CATS = ['pokemon', 'minecraft', 'starwars', 'jeux'];
+const LICENSED_IDS = ['xl-foot-pika', 'xl-foot-penalty', 'xl-foot-gardien', 'xl-hockey-carapuce', 'xl-hockey-pika', 'xl-hockey-gardien', 'ia-creeper'];
+const isLicensed = (img) => LICENSED_CATS.includes(img.cat) || LICENSED_IDS.includes(img.id);
+
 function addImage(img) {
+  if (window.APP_CONFIG.store && !img.custom && isLicensed(img)) return;
   img.total = img.cells.reduce((s, c) => s + (c >= 0 ? 1 : 0), 0);
   library.push(img);
   byId.set(img.id, img);
@@ -237,7 +244,8 @@ let currentTab = store.get('tab', 'all');
 function renderTabs() {
   const tabs = $('tabs');
   tabs.innerHTML = '';
-  CATS.forEach((c) => {
+  // Seulement les catégories qui ont des dessins (« Mes photos » et « Mes coloriages » toujours).
+  CATS.filter((c) => ['all', 'photos', 'mine'].includes(c.id) || library.some((i) => i.cat === c.id)).forEach((c) => {
     const b = document.createElement('button');
     b.className = 'tab' + (c.id === currentTab ? ' on' : '');
     b.textContent = c.icon + ' ' + c.name;
@@ -1583,6 +1591,27 @@ if (profiles.length === 1) Profiles.use(profiles[0]);
 else Profiles.show();
 $('loading').hidden = true;
 
-if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+// ---------- Application Android (Capacitor) ----------
+const Native = window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform() ? window.Capacitor.Plugins : null;
+if (Native) {
+  document.body.classList.add('native');
+  // Plein écran : la barre d'état ne distrait pas les enfants.
+  if (Native.StatusBar) Native.StatusBar.hide().catch(() => {});
+  // Bouton retour d'Android : ferme la fenêtre ouverte, puis revient à l'écran précédent.
+  if (Native.App) {
+    Native.App.addListener('backButton', () => {
+      const open = (id) => !$(id).hidden;
+      if (open('dialog')) $('dialog').hidden = true;
+      else if (open('import')) $('import').hidden = true;
+      else if (open('profile-edit')) $('profile-edit').hidden = true;
+      else if (open('done')) $('btn-done-gallery').click();
+      else if ($('game').classList.contains('active')) $('btn-back').click();
+      else if ($('album').classList.contains('active')) $('btn-album-back').click();
+      else Native.App.exitApp();
+    });
+  }
+}
+
+if (!Native && 'serviceWorker' in navigator && location.protocol.startsWith('http')) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }

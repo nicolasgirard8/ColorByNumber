@@ -96,3 +96,10 @@ Ajoute une entrée dans `public/js/art.js` : chaque lettre de `rows` est une cou
   rows: ['.RR.RR.', 'RWRRRRR', '.RRRRR.', '..RRR..', '...R...'],
 }
 ```
+
+## App Android (Google Play, Amazon)
+
+Le dossier `android/` est un projet Capacitor qui embarque la version « store » du site
+(`npm run build:store` → `dist-store/`, sans les personnages sous licence). Le workflow
+GitHub *Android* produit l'AAB (Google Play) et l'APK (Amazon). Toutes les étapes de
+publication sont dans [STORES.md](STORES.md).

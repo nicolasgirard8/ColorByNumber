@@ -572,3 +572,13 @@ button {
   .game-tools { gap: 6px; }
   .swatch { width: 54px; height: 54px; }
 }
+
+/* Application Android : l'enregistrement d'image passe par le navigateur, pas disponible ici. */
+.native #btn-save { display: none; }
+
+@media (max-width: 520px) {
+  .brand-logo { display: none; }
+  .gallery-head .brand h1 { font-size: 20px; line-height: 1.05; }
+  .gallery-head .brand h1 span { display: block; font-size: 15px; }
+  .tool-stock { display: none; }
+}
