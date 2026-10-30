@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-id="hq-pelleteuse" data-name="Pelleteuse" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- bras -->
+  <path d="M226 120 L300 44 L322 62 L250 140 Z" fill="#ffc21a"/>
+  <path d="M302 50 L370 120 L350 138 L284 70 Z" fill="#ffc21a"/>
+  <path d="M244 104 L292 56" fill="none" stroke="#b07c00" stroke-width="5"/>
+  <circle cx="306" cy="56" r="10" fill="#9aa5b4"/>
+  <!-- godet -->
+  <path d="M340 122 L392 132 L380 196 C366 198 344 190 336 176 Z" fill="#9aa5b4"/>
+  <path d="M380 196 L372 206 M366 194 L356 204 M352 188 L342 198" fill="none" stroke-width="5"/>
+  <circle cx="360" cy="128" r="9" fill="#c9d2de"/>
+  <!-- chenilles -->
+  <path d="M40 222 L250 222 C272 222 284 238 284 252 C284 268 272 282 250 282 L40 282 C18 282 6 268 6 252 C6 236 18 222 40 222 Z" fill="#3a3a46"/>
+  <path d="M42 236 L248 236 C262 236 270 244 270 252 C270 262 262 268 248 268 L42 268 C28 268 20 262 20 252 C20 244 28 236 42 236 Z" fill="#6b7280"/>
+  <circle cx="44" cy="252" r="10" fill="#c9d2de"/><circle cx="100" cy="252" r="10" fill="#c9d2de"/>
+  <circle cx="160" cy="252" r="10" fill="#c9d2de"/><circle cx="220" cy="252" r="10" fill="#c9d2de"/>
+  <!-- corps -->
+  <path d="M30 150 L250 150 L250 222 L30 222 C24 222 20 218 20 212 L20 160 C20 154 24 150 30 150 Z" fill="#ffc21a"/>
+  <path d="M20 196 L250 196 L250 222 L30 222 C24 222 20 218 20 212 Z" fill="#e09a00" stroke="none"/>
+  <path d="M34 168 L120 168 M34 182 L120 182" fill="none" stroke="#b07c00" stroke-width="4"/>
+  <!-- cabine -->
+  <path d="M140 70 L216 70 C226 70 232 76 232 86 L232 150 L140 150 Z" fill="#ffc21a"/>
+  <path d="M154 84 L218 84 L218 136 L154 136 Z" fill="#9fe2ff"/>
+  <path d="M164 92 L178 92 L162 120 L158 120 Z" fill="#e6f8ff" stroke="none"/>
+  <!-- conducteur -->
+  <circle cx="194" cy="112" r="14" fill="#f6c9a0" stroke-width="3"/>
+  <path d="M178 108 C178 92 210 92 210 108 Z" fill="#ff8a1e" stroke-width="3"/>
+  <!-- gyrophare et cheminée -->
+  <path d="M170 70 L170 58 C170 52 188 52 188 58 L188 70 Z" fill="#ff7a1e"/>
+  <path d="M60 150 L60 116 L76 116 L76 150 Z" fill="#6b7280"/>
+  <path d="M68 108 C60 98 72 90 66 80" fill="none" stroke="#c9d2de" stroke-width="4"/>
+</g>
+</svg>

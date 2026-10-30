@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-id="hq-stego" data-name="Stégosaure" data-cat="dinos" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- plaques du dos -->
+  <path d="M96 150 L84 104 L122 120 Z" fill="#ff8f5a"/>
+  <path d="M124 124 L120 66 L164 96 Z" fill="#ff8f5a"/>
+  <path d="M164 104 L170 44 L208 86 Z" fill="#ff8f5a"/>
+  <path d="M206 98 L224 48 L250 98 Z" fill="#ff8f5a"/>
+  <path d="M244 112 L270 74 L282 124 Z" fill="#ff8f5a"/>
+  <!-- queue à piques -->
+  <path d="M74 200 C40 196 18 176 8 150 C30 162 52 166 84 164 Z" fill="#ffd25a"/>
+  <path d="M20 160 L6 136 M34 168 L24 142" fill="none" stroke-width="5"/>
+  <path d="M20 160 L8 140 M34 168 L26 146" fill="none" stroke="#fff4d6" stroke-width="2"/>
+  <!-- pattes loin -->
+  <path d="M104 216 L102 266 C102 278 136 278 136 266 L138 220 Z" fill="#e8b23a"/>
+  <path d="M220 218 L220 266 C220 278 254 278 254 266 L254 214 Z" fill="#e8b23a"/>
+  <!-- corps -->
+  <path d="M66 184 C62 128 120 104 186 104 C250 104 290 136 290 180 C290 222 250 240 182 240 C112 240 70 226 66 184 Z" fill="#ffd25a"/>
+  <path d="M268 140 C292 176 280 226 222 238 C258 236 290 218 290 180 C290 164 282 150 268 140 Z" fill="#e8b23a" stroke="none"/>
+  <path d="M92 204 C126 230 216 232 254 210 C240 232 210 240 182 240 C134 240 102 230 92 204 Z" fill="#fff0b8" stroke="none"/>
+  <ellipse cx="140" cy="146" rx="14" ry="8" fill="#e8b23a" stroke="none"/>
+  <ellipse cx="200" cy="136" rx="11" ry="7" fill="#e8b23a" stroke="none"/>
+  <ellipse cx="112" cy="174" rx="9" ry="6" fill="#e8b23a" stroke="none"/>
+  <!-- pattes proches -->
+  <path d="M118 220 L116 272 C116 286 156 286 156 272 L158 224 Z" fill="#ffd25a"/>
+  <path d="M126 282 L126 274 M137 284 L137 276 M148 282 L148 274" fill="none" stroke-width="3"/>
+  <path d="M236 218 L234 272 C234 286 274 286 274 272 L274 212 Z" fill="#ffd25a"/>
+  <path d="M244 282 L244 274 M255 284 L255 276 M266 282 L266 274" fill="none" stroke-width="3"/>
+  <!-- tête -->
+  <path d="M270 168 C268 132 300 118 334 122 C372 126 394 150 392 176 C390 204 364 216 334 216 C300 216 272 200 270 168 Z" fill="#ffd25a"/>
+  <path d="M376 140 C398 164 390 208 344 214 C372 208 388 194 390 176 C392 162 386 150 376 140 Z" fill="#e8b23a" stroke="none"/>
+  <path d="M296 160 C296 138 330 138 330 160 C330 184 296 184 296 160 Z" fill="#ffffff"/>
+  <ellipse cx="316" cy="163" rx="10" ry="13" fill="#1b1b22" stroke="none"/>
+  <circle cx="312" cy="156" r="4.5" fill="#ffffff" stroke="none"/><circle cx="320" cy="170" r="2.4" fill="#ffffff" stroke="none"/>
+  <path d="M348 190 C360 200 374 198 382 188" fill="none" stroke-width="3.5"/>
+  <ellipse cx="300" cy="192" rx="11" ry="7" fill="#ff9fb2" stroke="none"/>
+  <circle cx="378" cy="160" r="3" fill="#1b1b22" stroke="none"/>
+</g>
+</svg>

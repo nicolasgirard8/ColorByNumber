@@ -12,7 +12,7 @@ const RES = path.join(ROOT, 'android/app/src/main/res');
   const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto('http://localhost:8765/');
-  await page.waitForFunction(() => typeof library !== 'undefined' && library.length > 100);
+  await page.waitForFunction(() => typeof library !== 'undefined' && library.length > 20);
   const render = (spec) => page.evaluate((spec) => {
     const byIdL = (id) => library.find((i) => i.id === id);
     const cv = document.createElement('canvas'); cv.width = spec.w; cv.height = spec.h;
@@ -73,7 +73,7 @@ const RES = path.join(ROOT, 'android/app/src/main/res');
   // Image de présentation Google Play (1024 × 500).
   await save(path.join(ROOT, 'store/feature-1024x500.png'), {
     w: 1024, h: 500, confetti: false,
-    items: [{ id: 'ia-trex', cx: 0.56, cy: 0.55, size: 0.74 }, { id: 'ia-policier', cx: 0.72, cy: 0.52, size: 0.78 }, { id: 'ia-footballeur', cx: 0.87, cy: 0.58, size: 0.56 }],
+    items: [{ id: 'ia-trex', cx: 0.56, cy: 0.55, size: 0.74 }, { id: 'hq-dragon', cx: 0.72, cy: 0.52, size: 0.72 }, { id: 'ia-footballeur', cx: 0.87, cy: 0.58, size: 0.56 }],
     title: { lines: ['Pixel', 'Coloriage', 'Kids'], x: 0.05, y: 0.25, size: 78 },
   });
   await browser.close();

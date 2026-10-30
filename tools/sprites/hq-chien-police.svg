@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" data-id="hq-chien-police" data-name="Chien pisteur" data-cat="police" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M222 272 C254 262 270 232 266 200 C282 218 286 262 252 288 Z" fill="#ffffff"/>
+  <path d="M262 214 C272 226 274 244 268 258 C264 240 262 228 256 220 Z" fill="#d98a3a" stroke="none"/>
+  <!-- pattes arrière -->
+  <path d="M90 300 C70 304 66 336 88 342 L126 342 C138 340 138 324 126 318 L124 296 Z" fill="#fff6ea"/>
+  <path d="M196 296 L194 318 C182 324 182 340 194 342 L232 342 C254 336 250 304 230 300 Z" fill="#fff6ea"/>
+  <!-- corps -->
+  <path d="M86 236 C80 290 106 318 160 318 C214 318 240 290 234 236 C228 198 92 198 86 236 Z" fill="#fff6ea"/>
+  <path d="M188 214 C226 214 240 240 234 268 C222 258 200 254 186 240 C178 230 178 220 188 214 Z" fill="#d98a3a"/>
+  <path d="M220 230 C236 262 226 306 180 316 C214 310 238 290 234 236 Z" fill="#ecdcc6" stroke="none"/>
+  <!-- collier et médaille -->
+  <path d="M100 206 C130 222 190 222 220 206 L224 222 C190 238 130 238 96 222 Z" fill="#e8322e"/>
+  <path d="M146 228 L174 228 L174 252 L160 262 L146 252 Z" fill="#ffc21a" stroke-width="3.5"/>
+  <path d="M154 238 L166 238 M160 236 L160 250" fill="none" stroke="#b07c00" stroke-width="3"/>
+  <!-- pattes avant -->
+  <path d="M118 266 L114 330 C112 344 150 346 150 332 L150 270 Z" fill="#fff6ea"/>
+  <path d="M170 270 L170 332 C170 346 208 344 206 330 L202 266 Z" fill="#fff6ea"/>
+  <path d="M126 342 L126 334 M138 343 L138 335 M182 343 L182 335 M194 342 L194 334" fill="none" stroke-width="3"/>
+  <!-- tête -->
+  <path d="M160 40 C228 40 254 92 248 138 C242 184 206 206 160 206 C114 206 78 184 72 138 C66 92 92 40 160 40 Z" fill="#fff6ea"/>
+  <!-- tache sur l'œil et le front -->
+  <path d="M176 70 C210 64 236 84 236 116 C236 140 218 150 200 146 C182 142 172 126 176 108 C178 94 172 82 176 70 Z" fill="#d98a3a" stroke="none"/>
+  <path d="M146 42 C156 40 166 40 174 42 C170 66 170 90 160 104 C150 90 150 66 146 42 Z" fill="#d98a3a" stroke="none"/>
+  <!-- grandes oreilles tombantes -->
+  <path d="M86 66 C52 62 30 96 34 150 C36 176 56 186 72 172 C82 150 84 110 98 82 Z" fill="#a8622a"/>
+  <path d="M234 66 C268 62 290 96 286 150 C284 176 264 186 248 172 C238 150 236 110 222 82 Z" fill="#a8622a"/>
+  <!-- museau -->
+  <path d="M110 160 C110 130 210 130 210 160 C210 196 110 196 110 160 Z" fill="#ffffff"/>
+  <path d="M144 146 C144 132 176 132 176 146 C176 158 166 162 160 162 C154 162 144 158 144 146 Z" fill="#3a2a2a"/>
+  <circle cx="153" cy="142" r="3.5" fill="#ffffff" stroke="none"/>
+  <path d="M160 162 L160 172 M138 172 C148 184 172 184 182 172" fill="none" stroke-width="3.5"/>
+  <path d="M152 180 C150 198 170 198 168 180 Z" fill="#ff6f8e" stroke-width="3"/>
+  <!-- yeux -->
+  <path d="M102 112 C102 90 136 90 136 112 C136 136 102 136 102 112 Z" fill="#ffffff"/>
+  <path d="M184 112 C184 90 218 90 218 112 C218 136 184 136 184 112 Z" fill="#ffffff"/>
+  <ellipse cx="121" cy="115" rx="10" ry="13" fill="#3a2418" stroke="none"/><ellipse cx="201" cy="115" rx="10" ry="13" fill="#3a2418" stroke="none"/>
+  <circle cx="117" cy="108" r="4.5" fill="#ffffff" stroke="none"/><circle cx="197" cy="108" r="4.5" fill="#ffffff" stroke="none"/>
+  <ellipse cx="94" cy="152" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="226" cy="152" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

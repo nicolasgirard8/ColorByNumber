@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-course-3" data-name="Grande course" data-cat="vehicules" data-size="72" data-full="1">
-  <sprite src="parts/piste" x="0" y="0" width="256" height="192"/>
-  <sprite src="parts/voiture-course" x="120" y="92" width="130" height="50"/>
-  <sprite src="parts/voiture-course" x="50" y="112" width="130" height="50" recolor="#e8302a:#2a6ad0"/>
-  <sprite src="parts/voiture-course" x="4" y="138" width="130" height="50" recolor="#e8302a:#3fae4a"/>
-</svg>

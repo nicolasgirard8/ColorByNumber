@@ -1,8 +1,7 @@
 # Publier Pixel Coloriage Kids (Google Play et Amazon Appstore)
 
 L'app Android est une coquille Capacitor autour du site (`public/`). La version des stores
-(`dist-store/`, produite par `npm run build:store`) n'inclut **pas** les dessins de personnages
-sous licence (Pokémon, Minecraft, Star Wars, jeux vidéo) : seuls les dessins originaux y sont.
+(`dist-store/`, produite par `npm run build:store`) ne contient que des dessins originaux.
 
 ## 1. Construire l'app (automatique)
 

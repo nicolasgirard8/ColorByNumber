@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" data-id="hq-requin" data-name="Petit requin" data-cat="ocean" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- bulles -->
+  <circle cx="352" cy="40" r="12" fill="#c8f0ff" stroke-width="3"/><circle cx="376" cy="70" r="8" fill="#c8f0ff" stroke-width="3"/>
+  <circle cx="348" cy="18" r="6" fill="#c8f0ff" stroke-width="3"/>
+  <!-- queue -->
+  <path d="M70 138 C48 110 30 70 14 52 C44 54 70 84 92 116 Z" fill="#5b8fd6"/>
+  <path d="M74 148 C52 170 34 200 22 214 C52 210 76 186 96 162 Z" fill="#5b8fd6"/>
+  <!-- nageoire dorsale -->
+  <path d="M170 80 C178 42 196 18 220 8 C222 40 220 64 230 84 Z" fill="#5b8fd6"/>
+  <!-- corps -->
+  <path d="M80 148 C110 86 190 72 260 80 C320 88 368 116 380 150 C368 186 320 208 250 210 C170 214 110 196 80 148 Z" fill="#5b8fd6"/>
+  <path d="M100 160 C150 196 240 204 300 196 C340 190 366 172 378 154 C370 184 330 206 250 210 C170 214 118 196 100 160 Z" fill="#3d6fb8" stroke="none"/>
+  <!-- ventre -->
+  <path d="M150 168 C200 150 290 148 370 156 C354 184 300 200 240 200 C200 200 170 190 150 168 Z" fill="#eef6ff"/>
+  <!-- bouche souriante et dents -->
+  <path d="M300 168 C320 182 344 180 360 166 C344 196 312 196 300 168 Z" fill="#c2304a" stroke-width="3.5"/>
+  <path d="M312 172 L318 182 L324 174 M330 174 L336 182 L342 172" fill="#ffffff" stroke-width="2.5"/>
+  <!-- branchies -->
+  <path d="M232 112 C226 124 226 138 232 150 M246 110 C240 122 240 136 246 148 M260 110 C254 122 254 134 260 146" fill="none" stroke="#2b4f8a" stroke-width="3.5"/>
+  <!-- nageoire -->
+  <path d="M220 180 C214 212 196 236 170 246 C176 222 180 200 196 184 Z" fill="#5b8fd6"/>
+  <!-- œil -->
+  <path d="M296 122 C296 100 330 100 330 122 C330 146 296 146 296 122 Z" fill="#ffffff"/>
+  <ellipse cx="315" cy="125" rx="10" ry="13" fill="#1b1b22" stroke="none"/>
+  <circle cx="311" cy="118" r="4.5" fill="#ffffff" stroke="none"/><circle cx="319" cy="132" r="2.2" fill="#ffffff" stroke="none"/>
+  <ellipse cx="290" cy="156" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

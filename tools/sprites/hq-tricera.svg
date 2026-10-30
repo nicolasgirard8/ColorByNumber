@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-id="hq-tricera" data-name="Bébé tricératops" data-cat="dinos" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M70 190 C40 186 18 168 10 150 C30 160 50 162 78 160 Z" fill="#5fc4e8"/>
+  <!-- pattes arrière (loin) -->
+  <path d="M96 210 L92 268 C92 280 128 280 128 268 L130 214 Z" fill="#3fa3cc"/>
+  <path d="M206 214 L204 268 C204 280 240 280 240 268 L240 210 Z" fill="#3fa3cc"/>
+  <!-- corps -->
+  <path d="M64 176 C60 116 120 88 180 92 C236 96 268 130 266 176 C264 218 224 236 166 236 C104 236 66 222 64 176 Z" fill="#5fc4e8"/>
+  <path d="M244 140 C262 172 252 216 200 232 C230 232 262 214 266 176 C266 162 258 150 244 140 Z" fill="#3fa3cc" stroke="none"/>
+  <path d="M90 196 C120 224 200 226 236 204 C224 228 196 234 166 234 C126 234 98 226 90 196 Z" fill="#c4f0ff" stroke="none"/>
+  <!-- taches sur le dos -->
+  <ellipse cx="130" cy="122" rx="16" ry="10" fill="#3fa3cc" stroke="none"/>
+  <ellipse cx="176" cy="110" rx="12" ry="8" fill="#3fa3cc" stroke="none"/>
+  <ellipse cx="102" cy="150" rx="10" ry="7" fill="#3fa3cc" stroke="none"/>
+  <!-- pattes avant (proches) -->
+  <path d="M110 214 L108 272 C108 286 148 286 148 272 L150 218 Z" fill="#5fc4e8"/>
+  <path d="M118 282 L118 274 M130 284 L130 276 M140 282 L140 274" fill="none" stroke-width="3"/>
+  <path d="M222 214 L220 272 C220 286 260 286 260 272 L260 210 Z" fill="#5fc4e8"/>
+  <path d="M230 282 L230 274 M242 284 L242 276 M252 282 L252 274" fill="none" stroke-width="3"/>
+  <!-- collerette -->
+  <path d="M236 92 C226 50 262 16 300 14 C340 12 372 40 368 76 C364 104 338 118 310 120 C280 122 248 118 236 92 Z" fill="#ffb347"/>
+  <path d="M252 84 C250 56 276 36 302 34 C330 32 352 52 350 74 C348 94 330 104 308 104 C282 104 256 104 252 84 Z" fill="#ffd47a" stroke="none"/>
+  <circle cx="268" cy="46" r="7" fill="#ff7a59"/><circle cx="300" cy="28" r="7" fill="#ff7a59"/>
+  <circle cx="336" cy="34" r="7" fill="#ff7a59"/><circle cx="358" cy="62" r="7" fill="#ff7a59"/>
+  <!-- tête -->
+  <path d="M250 110 C246 76 290 64 326 74 C366 86 392 118 390 150 C388 184 360 200 326 200 C286 200 254 180 250 150 Z" fill="#5fc4e8"/>
+  <path d="M370 112 C392 140 386 190 330 198 C366 192 384 170 384 150 C384 134 378 122 370 112 Z" fill="#3fa3cc" stroke="none"/>
+  <!-- bec -->
+  <path d="M352 156 C372 150 392 158 394 172 C394 186 378 194 360 190 Z" fill="#ffd47a"/>
+  <!-- cornes -->
+  <path d="M286 82 C282 54 290 36 300 28 C306 46 310 64 308 84 Z" fill="#fff4d6"/>
+  <path d="M332 82 C334 54 346 38 358 32 C360 52 356 70 350 88 Z" fill="#fff4d6"/>
+  <path d="M368 138 C370 122 378 112 388 108 C390 122 386 134 380 144 Z" fill="#fff4d6"/>
+  <!-- œil -->
+  <path d="M286 126 C286 100 326 100 326 126 C326 154 286 154 286 126 Z" fill="#ffffff"/>
+  <ellipse cx="309" cy="129" rx="12" ry="16" fill="#1b1b22" stroke="none"/>
+  <circle cx="304" cy="121" r="5.5" fill="#ffffff" stroke="none"/><circle cx="313" cy="138" r="2.8" fill="#ffffff" stroke="none"/>
+  <!-- sourire et joue -->
+  <path d="M322 172 C334 182 348 180 356 170" fill="none" stroke-width="3.5"/>
+  <ellipse cx="290" cy="164" rx="12" ry="8" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

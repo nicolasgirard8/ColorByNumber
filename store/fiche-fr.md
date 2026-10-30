@@ -9,9 +9,9 @@ Coloriage par numéros en pixels pour les petits : dinos, camions, soccer, hocke
 Pixel Coloriage Kids, c'est le coloriage par numéros pensé pour les enfants de 3 à 8 ans.
 Touche une couleur, puis touche les cases avec le même numéro : le dessin apparaît pixel par pixel!
 
-🦖 Plus de 150 dessins originaux : dinosaures, camions de pompiers, police, espace, océan, soccer, hockey…
+🦖 34 grands dessins originaux de style dessin animé : dinosaures, bébé dragon, camions de pompiers, police, soccer, hockey, animaux, espace, océan…
 👆 Gros boutons et grandes cases, faciles pour les petits doigts
-🔍 Zoom à deux doigts et dessins XXL pour les plus grands
+🔍 Zoom à deux doigts pour colorier les petits détails
 🪣 Seau et bombe de couleur pour remplir plus vite
 📒 Album d'autocollants : chaque dessin terminé rejoint la collection
 👨‍👩‍👦 Profils pour chaque enfant, avec sa propre progression

@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-po-fourgon" data-name="Fourgon de police" data-cat="police" data-size="72" data-full="1">
-  <sprite src="parts/ville" x="0" y="0" width="256" height="192"/>
-  <sprite src="parts/fourgon" x="6" y="56" width="244" height="134"/>
-  <pixeltext x="97" y="95" color="#2a5ab8" text="POLICE"/>
-</svg>

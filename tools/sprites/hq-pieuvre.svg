@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 340" data-id="hq-pieuvre" data-name="Pieuvre" data-cat="ocean" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- tentacules -->
+  <path d="M110 200 C70 220 40 250 30 290 C26 312 50 318 56 300 C62 270 92 248 126 236 Z" fill="#ff7ab0"/>
+  <path d="M136 216 C120 250 108 284 112 318 C114 336 138 334 138 318 C138 290 148 262 160 238 Z" fill="#ff7ab0"/>
+  <path d="M224 216 C240 250 252 284 248 318 C246 336 222 334 222 318 C222 290 212 262 200 238 Z" fill="#ff7ab0"/>
+  <path d="M250 200 C290 220 320 250 330 290 C334 312 310 318 304 300 C298 270 268 248 234 236 Z" fill="#ff7ab0"/>
+  <!-- ventouses -->
+  <circle cx="60" cy="282" r="6" fill="#ffd0e4" stroke-width="2.5"/><circle cx="82" cy="258" r="6" fill="#ffd0e4" stroke-width="2.5"/>
+  <circle cx="126" cy="296" r="6" fill="#ffd0e4" stroke-width="2.5"/><circle cx="134" cy="266" r="6" fill="#ffd0e4" stroke-width="2.5"/>
+  <circle cx="234" cy="296" r="6" fill="#ffd0e4" stroke-width="2.5"/><circle cx="226" cy="266" r="6" fill="#ffd0e4" stroke-width="2.5"/>
+  <circle cx="300" cy="282" r="6" fill="#ffd0e4" stroke-width="2.5"/><circle cx="278" cy="258" r="6" fill="#ffd0e4" stroke-width="2.5"/>
+  <!-- tête -->
+  <path d="M180 20 C266 20 300 90 292 150 C284 210 240 236 180 236 C120 236 76 210 68 150 C60 90 94 20 180 20 Z" fill="#ff7ab0"/>
+  <path d="M268 60 C302 110 296 200 220 232 C270 210 290 180 292 150 C296 112 286 82 268 60 Z" fill="#e2508f" stroke="none"/>
+  <ellipse cx="130" cy="62" rx="22" ry="12" fill="#ffc2dc" stroke="none" transform="rotate(-30 130 62)"/>
+  <circle cx="226" cy="74" r="9" fill="#e2508f" stroke="none"/><circle cx="250" cy="102" r="6" fill="#e2508f" stroke="none"/>
+  <!-- yeux -->
+  <path d="M110 136 C110 106 156 106 156 136 C156 168 110 168 110 136 Z" fill="#ffffff"/>
+  <path d="M204 136 C204 106 250 106 250 136 C250 168 204 168 204 136 Z" fill="#ffffff"/>
+  <ellipse cx="134" cy="140" rx="13" ry="17" fill="#1b1b22" stroke="none"/><ellipse cx="228" cy="140" rx="13" ry="17" fill="#1b1b22" stroke="none"/>
+  <circle cx="128" cy="131" r="6" fill="#ffffff" stroke="none"/><circle cx="222" cy="131" r="6" fill="#ffffff" stroke="none"/>
+  <circle cx="139" cy="150" r="3" fill="#ffffff" stroke="none"/><circle cx="233" cy="150" r="3" fill="#ffffff" stroke="none"/>
+  <path d="M156 178 C164 206 196 206 204 178 Z" fill="#a8234e"/>
+  <path d="M168 194 C174 188 186 188 192 194 C186 200 174 200 168 194 Z" fill="#ff9fb2" stroke="none"/>
+  <ellipse cx="102" cy="176" rx="13" ry="8" fill="#ff4f8a" stroke="none"/><ellipse cx="258" cy="176" rx="13" ry="8" fill="#ff4f8a" stroke="none"/>
+</g>
+</svg>

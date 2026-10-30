@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-trex-famille" data-name="Famille T-rex" data-cat="dinos" data-size="72" data-full="1">
-  <sprite src="parts/jungle" x="0" y="0" width="256" height="192"/>
-  <sprite src="parts/trex" x="4" y="22" width="176" height="160"/>
-  <sprite src="parts/trex" x="160" y="104" width="96" height="88"/>
-</svg>

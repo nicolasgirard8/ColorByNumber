@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" data-id="hq-panda" data-name="Bébé panda" data-cat="animaux" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- pattes arrière -->
+  <path d="M86 296 C62 300 58 340 86 346 L130 346 C144 344 144 324 130 316 L128 292 Z" fill="#2e2e38"/>
+  <path d="M192 292 L190 316 C176 324 176 344 190 346 L234 346 C262 340 258 300 234 296 Z" fill="#2e2e38"/>
+  <ellipse cx="100" cy="330" rx="12" ry="9" fill="#ff9fb2" stroke="none"/><ellipse cx="220" cy="330" rx="12" ry="9" fill="#ff9fb2" stroke="none"/>
+  <!-- corps -->
+  <path d="M84 236 C78 292 104 320 160 320 C216 320 242 292 236 236 C230 196 90 196 84 236 Z" fill="#f6f6fa"/>
+  <path d="M222 220 C238 262 228 310 176 318 C214 314 240 292 236 236 Z" fill="#d6d8e2" stroke="none"/>
+  <path d="M84 230 C110 210 210 210 236 230 L234 248 C200 236 120 236 86 248 Z" fill="#2e2e38"/>
+  <!-- tige de bambou -->
+  <path d="M232 160 L262 340" fill="none" stroke-width="18"/><path d="M232 160 L262 340" fill="none" stroke="#7ed37a" stroke-width="10"/>
+  <path d="M240 206 L250 204 M248 256 L258 254 M256 306 L266 304" fill="none" stroke-width="4"/>
+  <path d="M236 182 C254 170 276 172 290 186 C272 196 252 194 236 182 Z" fill="#55b058"/>
+  <!-- bras -->
+  <path d="M96 236 C76 252 72 282 92 292 C108 298 120 284 118 268 L124 248 Z" fill="#2e2e38"/>
+  <path d="M224 236 C246 240 262 228 264 212 C266 200 252 192 242 200 C236 214 226 222 212 226 Z" fill="#2e2e38"/>
+  <!-- oreilles -->
+  <circle cx="88" cy="58" r="30" fill="#2e2e38"/><circle cx="232" cy="58" r="30" fill="#2e2e38"/>
+  <circle cx="88" cy="58" r="13" fill="#4a4a58" stroke="none"/><circle cx="232" cy="58" r="13" fill="#4a4a58" stroke="none"/>
+  <!-- tête -->
+  <path d="M160 40 C232 40 258 92 252 140 C246 186 208 210 160 210 C112 210 74 186 68 140 C62 92 88 40 160 40 Z" fill="#f6f6fa"/>
+  <path d="M240 80 C262 116 256 184 200 206 C234 192 250 166 252 140 C254 116 250 96 240 80 Z" fill="#d6d8e2" stroke="none"/>
+  <!-- taches des yeux -->
+  <path d="M86 116 C88 88 116 80 136 94 C150 106 146 138 124 148 C102 156 84 140 86 116 Z" fill="#2e2e38"/>
+  <path d="M234 116 C232 88 204 80 184 94 C170 106 174 138 196 148 C218 156 236 140 234 116 Z" fill="#2e2e38"/>
+  <path d="M100 118 C100 98 132 98 132 118 C132 140 100 140 100 118 Z" fill="#ffffff" stroke="none"/>
+  <path d="M188 118 C188 98 220 98 220 118 C220 140 188 140 188 118 Z" fill="#ffffff" stroke="none"/>
+  <ellipse cx="118" cy="121" rx="9" ry="12" fill="#1b1b22" stroke="none"/><ellipse cx="202" cy="121" rx="9" ry="12" fill="#1b1b22" stroke="none"/>
+  <circle cx="114" cy="114" r="4" fill="#ffffff" stroke="none"/><circle cx="198" cy="114" r="4" fill="#ffffff" stroke="none"/>
+  <!-- nez et bouche -->
+  <path d="M148 150 C148 140 172 140 172 150 C172 158 164 162 160 162 C156 162 148 158 148 150 Z" fill="#2e2e38"/>
+  <path d="M144 168 C150 188 170 188 176 168 Z" fill="#a8234e" stroke-width="3.5"/>
+  <ellipse cx="88" cy="164" rx="12" ry="7" fill="#ff9fb2" stroke="none"/><ellipse cx="232" cy="164" rx="12" ry="7" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

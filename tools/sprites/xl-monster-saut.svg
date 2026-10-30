@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-monster-saut" data-name="Saut de monster truck" data-cat="vehicules" data-size="72" data-full="1">
-  <sprite src="parts/desert" x="0" y="0" width="256" height="192"/>
-  <sprite src="parts/rampe" x="0" y="120" width="120" height="72"/>
-  <sprite src="parts/monster" x="80" y="6" width="160" height="136" rotate="-14" recolor="#8a4ad0:#3fae4a"/>
-</svg>

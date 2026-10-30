@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 192" data-id="xl-pk-bulbizarre" data-name="Bulbizarre dans la forêt" data-cat="pokemon" data-size="72" data-full="1">
-  <sprite src="parts/prairie" x="0" y="0" width="256" height="192"/>
-  <sprite src="parts/arbre" x="2" y="54" width="64" height="96"/>
-  <sprite src="parts/arbre" x="196" y="50" width="60" height="96"/>
-  <sprite src="parts/fleurs" x="0" y="0" width="256" height="192"/>
-  <sprite src="bulbizarre" x="40" y="40" width="176" height="150"/>
-</svg>
