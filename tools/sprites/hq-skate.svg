@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 380" data-id="hq-skate" data-name="Petit planchiste" data-cat="sports" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- planche -->
+  <path d="M40 318 L310 318 C326 318 336 308 340 296 L348 300 C344 320 330 334 310 334 L40 334 C24 334 14 324 12 310 L20 306 C22 314 30 318 40 318 Z" fill="#ff3b6b"/>
+  <path d="M70 322 L280 322" fill="none" stroke="#ffc21a" stroke-width="5"/>
+  <circle cx="80" cy="348" r="14" fill="#7affc4"/><circle cx="270" cy="348" r="14" fill="#7affc4"/>
+  <!-- jambes fléchies -->
+  <path d="M140 270 L104 300 L128 316 L162 284 Z" fill="#3a6fe0"/>
+  <path d="M194 270 L232 300 L210 316 L176 284 Z" fill="#3a6fe0"/>
+  <path d="M86 300 C88 290 130 296 132 306 L130 318 L84 318 C82 312 82 306 86 300 Z" fill="#ffffff"/>
+  <path d="M206 306 C208 296 250 290 252 300 C256 306 256 312 254 318 L208 318 Z" fill="#ffffff"/>
+  <!-- t-shirt -->
+  <path d="M120 196 C108 228 112 262 120 280 L218 280 C226 262 230 228 218 196 C198 182 140 182 120 196 Z" fill="#33c46a"/>
+  <path d="M206 192 C222 228 222 262 214 280 L218 280 C226 262 230 228 218 196 Z" fill="#1f9450" stroke="none"/>
+  <path d="M150 220 L188 220 L178 246 L196 246 L160 268 L168 244 L150 244 Z" fill="#ffc21a" stroke-width="3"/>
+  <!-- bras écartés -->
+  <path d="M218 206 C246 196 270 186 292 168" fill="none" stroke-width="22"/><path d="M218 206 C246 196 270 186 292 168" fill="none" stroke="#33c46a" stroke-width="14"/>
+  <circle cx="298" cy="164" r="13" fill="#f6c9a0"/>
+  <path d="M120 206 C92 214 68 210 46 196" fill="none" stroke-width="22"/><path d="M120 206 C92 214 68 210 46 196" fill="none" stroke="#33c46a" stroke-width="14"/>
+  <circle cx="40" cy="192" r="13" fill="#f6c9a0"/>
+  <!-- tête -->
+  <path d="M170 50 C232 50 256 88 254 126 C252 166 220 192 170 192 C120 192 88 166 86 126 C84 88 108 50 170 50 Z" fill="#f6c9a0"/>
+  <!-- casque -->
+  <path d="M84 112 C80 52 126 30 172 30 C220 30 262 56 256 112 C224 98 116 98 84 112 Z" fill="#ff8a1e"/>
+  <path d="M120 44 C130 38 144 36 156 36" fill="none" stroke="#ffd0a0" stroke-width="6"/>
+  <path d="M160 32 L160 60 M200 38 L196 64" fill="none" stroke="#c85a10" stroke-width="5"/>
+  <!-- cheveux qui dépassent -->
+  <path d="M86 112 C92 124 104 128 112 120 C116 130 128 132 136 124 L136 108 C116 104 98 106 86 112 Z" fill="#e8b23a" stroke-width="3"/>
+  <!-- visage -->
+  <path d="M112 140 C112 118 144 118 144 140 C144 162 112 162 112 140 Z" fill="#ffffff"/>
+  <path d="M196 140 C196 118 228 118 228 140 C228 162 196 162 196 140 Z" fill="#ffffff"/>
+  <ellipse cx="129" cy="143" rx="9" ry="12" fill="#2a7a3a" stroke="none"/><ellipse cx="213" cy="143" rx="9" ry="12" fill="#2a7a3a" stroke="none"/>
+  <ellipse cx="129" cy="145" rx="5" ry="8" fill="#1b1b22" stroke="none"/><ellipse cx="213" cy="145" rx="5" ry="8" fill="#1b1b22" stroke="none"/>
+  <circle cx="125" cy="136" r="4" fill="#ffffff" stroke="none"/><circle cx="209" cy="136" r="4" fill="#ffffff" stroke="none"/>
+  <path d="M146 164 C152 184 188 184 194 164 Z" fill="#a8234e" stroke-width="3.5"/>
+  <ellipse cx="108" cy="166" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="232" cy="166" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" data-id="hq-viking" data-name="Petit viking" data-cat="aventure" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- hache en bois -->
+  <path d="M262 120 L262 290" fill="none" stroke-width="16"/><path d="M262 120 L262 290" fill="none" stroke="#a8622a" stroke-width="8"/>
+  <path d="M262 116 C292 104 316 116 320 142 C316 168 292 180 262 168 Z" fill="#c9d2de"/>
+  <!-- jambes -->
+  <path d="M126 290 L124 330 L162 330 L162 290 Z" fill="#8a5a2a"/>
+  <path d="M178 290 L178 330 L216 330 L214 290 Z" fill="#8a5a2a"/>
+  <path d="M112 326 C112 316 164 316 166 326 L166 352 L108 352 C106 344 108 334 112 326 Z" fill="#5a3418"/>
+  <path d="M174 326 C176 316 228 316 228 326 C232 334 234 344 232 352 L174 352 Z" fill="#5a3418"/>
+  <!-- tunique -->
+  <path d="M112 196 C100 232 104 276 112 296 L228 296 C236 276 240 232 228 196 C208 182 132 182 112 196 Z" fill="#3aa0a0"/>
+  <path d="M216 192 C232 232 232 276 224 296 L228 296 C236 276 240 232 228 196 Z" fill="#2a7a7a" stroke="none"/>
+  <path d="M110 262 L230 262 L230 278 L110 278 Z" fill="#5a3418"/>
+  <circle cx="170" cy="270" r="10" fill="#ffc21a" stroke-width="3"/>
+  <!-- bras -->
+  <path d="M226 206 C244 210 254 206 260 196" fill="none" stroke-width="22"/><path d="M226 206 C244 210 254 206 260 196" fill="none" stroke="#3aa0a0" stroke-width="14"/>
+  <circle cx="262" cy="196" r="13" fill="#f6c9a0"/>
+  <!-- bouclier devant -->
+  <circle cx="92" cy="250" r="54" fill="#e8322e"/>
+  <circle cx="92" cy="250" r="40" fill="#ffc21a"/>
+  <path d="M92 210 L92 290 M52 250 L132 250" fill="none" stroke="#e8322e" stroke-width="12"/>
+  <circle cx="92" cy="250" r="12" fill="#c9d2de"/>
+  <!-- tête -->
+  <path d="M170 56 C232 56 256 94 254 130 C252 170 220 194 170 194 C120 194 88 170 86 130 C84 94 108 56 170 56 Z" fill="#f6c9a0"/>
+  <!-- tresses rousses -->
+  <path d="M90 118 C80 150 82 190 96 210 C108 200 108 170 104 140 Z" fill="#e8762e"/>
+  <path d="M250 118 C260 150 258 190 244 210 C232 200 232 170 236 140 Z" fill="#e8762e"/>
+  <!-- casque à cornes -->
+  <path d="M96 104 C96 50 244 50 244 104 Z" fill="#c9d2de"/>
+  <path d="M88 100 L252 100 L252 116 L88 116 Z" fill="#9aa5b4"/>
+  <path d="M164 52 L176 52 L176 104 L164 104 Z" fill="#9aa5b4" stroke-width="3"/>
+  <path d="M100 82 C70 76 52 50 54 20 C70 38 88 48 108 56 Z" fill="#fff4d6"/>
+  <path d="M240 82 C270 76 288 50 286 20 C270 38 252 48 232 56 Z" fill="#fff4d6"/>
+  <!-- visage -->
+  <path d="M112 142 C112 120 144 120 144 142 C144 164 112 164 112 142 Z" fill="#ffffff"/>
+  <path d="M196 142 C196 120 228 120 228 142 C228 164 196 164 196 142 Z" fill="#ffffff"/>
+  <ellipse cx="129" cy="145" rx="9" ry="12" fill="#2a5aa8" stroke="none"/><ellipse cx="213" cy="145" rx="9" ry="12" fill="#2a5aa8" stroke="none"/>
+  <circle cx="125" cy="138" r="4" fill="#ffffff" stroke="none"/><circle cx="209" cy="138" r="4" fill="#ffffff" stroke="none"/>
+  <path d="M150 166 C156 186 184 186 190 166 Z" fill="#a8234e" stroke-width="3.5"/>
+  <ellipse cx="108" cy="168" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="232" cy="168" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

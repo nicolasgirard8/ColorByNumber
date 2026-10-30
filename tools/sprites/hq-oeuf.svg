@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" data-id="hq-oeuf" data-name="Bébé dino dans son œuf" data-cat="dinos" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- herbe -->
+  <path d="M20 360 C60 340 260 340 300 360 Z" fill="#7ed37a"/>
+  <!-- bébé dino -->
+  <path d="M160 70 C228 70 254 116 250 160 C246 204 210 226 160 226 C110 226 74 204 70 160 C66 116 92 70 160 70 Z" fill="#9be05a"/>
+  <path d="M238 110 C258 144 254 200 206 222 C236 206 248 184 250 160 C252 140 248 124 238 110 Z" fill="#6fbf3a" stroke="none"/>
+  <!-- bras qui sortent -->
+  <path d="M86 200 C60 190 44 170 42 150 C54 146 66 156 74 170 Z" fill="#9be05a"/>
+  <path d="M234 200 C260 190 276 170 278 150 C266 146 254 156 246 170 Z" fill="#9be05a"/>
+  <!-- taches -->
+  <circle cx="110" cy="96" r="9" fill="#6fbf3a" stroke="none"/><circle cx="208" cy="92" r="7" fill="#6fbf3a" stroke="none"/>
+  <!-- coquille du bas -->
+  <path d="M50 214 L76 186 L104 212 L132 184 L160 212 L188 184 L216 212 L244 186 L270 214 C280 300 236 352 160 352 C84 352 40 300 50 214 Z" fill="#fff4dc"/>
+  <path d="M236 230 C248 300 220 340 172 350 C224 340 266 300 262 222 Z" fill="#ead8b4" stroke="none"/>
+  <circle cx="110" cy="270" r="14" fill="#ffb0c6" stroke="none"/><circle cx="196" cy="296" r="18" fill="#9fd8ff" stroke="none"/>
+  <circle cx="150" cy="320" r="10" fill="#ffd47a" stroke="none"/><circle cx="214" cy="248" r="10" fill="#ffd47a" stroke="none"/>
+  <!-- chapeau de coquille -->
+  <path d="M100 82 C110 40 210 40 220 82 L200 70 L180 88 L160 70 L140 88 L120 70 Z" fill="#fff4dc"/>
+  <!-- yeux -->
+  <path d="M104 132 C104 108 140 108 140 132 C140 158 104 158 104 132 Z" fill="#ffffff"/>
+  <path d="M180 132 C180 108 216 108 216 132 C216 158 180 158 180 132 Z" fill="#ffffff"/>
+  <ellipse cx="124" cy="135" rx="11" ry="14" fill="#1b1b22" stroke="none"/><ellipse cx="200" cy="135" rx="11" ry="14" fill="#1b1b22" stroke="none"/>
+  <circle cx="119" cy="127" r="5" fill="#ffffff" stroke="none"/><circle cx="195" cy="127" r="5" fill="#ffffff" stroke="none"/>
+  <!-- bouche -->
+  <path d="M136 168 C142 194 178 194 184 168 Z" fill="#a8234e"/>
+  <path d="M148 182 C154 176 166 176 172 182 C166 188 154 188 148 182 Z" fill="#ff6f8e" stroke="none"/>
+  <ellipse cx="96" cy="166" rx="11" ry="7" fill="#ff9fb2" stroke="none"/><ellipse cx="224" cy="166" rx="11" ry="7" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

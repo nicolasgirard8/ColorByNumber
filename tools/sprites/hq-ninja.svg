@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" data-id="hq-ninja" data-name="Petit ninja" data-cat="aventure" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- épée dans le dos -->
+  <path d="M90 60 L240 230" fill="none" stroke-width="16"/><path d="M90 60 L240 230" fill="none" stroke="#c9d2de" stroke-width="8"/>
+  <path d="M74 42 L104 76" fill="none" stroke-width="16"/><path d="M74 42 L104 76" fill="none" stroke="#8a4b22" stroke-width="8"/>
+  <!-- jambes en garde -->
+  <path d="M128 286 L100 336 L138 344 L158 292 Z" fill="#2e3a5a"/>
+  <path d="M184 292 L206 344 L244 336 L214 286 Z" fill="#2e3a5a"/>
+  <path d="M88 334 C90 322 140 330 140 340 L136 356 L84 352 C82 344 84 338 88 334 Z" fill="#2e2e38"/>
+  <path d="M204 340 C204 330 254 322 256 334 C260 340 260 346 258 352 L208 356 Z" fill="#2e2e38"/>
+  <!-- corps -->
+  <path d="M112 196 C100 232 104 276 112 296 L228 296 C236 276 240 232 228 196 C208 182 132 182 112 196 Z" fill="#2e3a5a"/>
+  <path d="M216 192 C232 232 232 276 224 296 L228 296 C236 276 240 232 228 196 Z" fill="#1e2840" stroke="none"/>
+  <path d="M110 262 L230 262 L230 280 L110 280 Z" fill="#e8322e"/>
+  <path d="M200 280 L214 314 L226 306 L214 278 Z" fill="#e8322e"/>
+  <path d="M140 196 L170 236 L200 196" fill="none" stroke="#4a5a80" stroke-width="5"/>
+  <!-- bras -->
+  <path d="M226 206 C248 214 266 210 280 196" fill="none" stroke-width="22"/><path d="M226 206 C248 214 266 210 280 196" fill="none" stroke="#2e3a5a" stroke-width="14"/>
+  <circle cx="286" cy="190" r="13" fill="#f6c9a0"/>
+  <path d="M114 206 C92 214 74 210 60 196" fill="none" stroke-width="22"/><path d="M114 206 C92 214 74 210 60 196" fill="none" stroke="#2e3a5a" stroke-width="14"/>
+  <circle cx="54" cy="190" r="13" fill="#f6c9a0"/>
+  <!-- étoile ninja en mousse -->
+  <path d="M300 150 L310 170 L330 168 L316 182 L326 202 L306 192 L292 206 L294 186 L276 176 L296 170 Z" fill="#c9d2de" stroke-width="3"/>
+  <circle cx="302" cy="178" r="5" fill="#2e2e38" stroke-width="2"/>
+  <!-- tête cagoule -->
+  <path d="M170 44 C232 44 256 84 254 124 C252 166 220 192 170 192 C120 192 88 166 86 124 C84 84 108 44 170 44 Z" fill="#2e3a5a"/>
+  <path d="M236 70 C258 104 254 160 212 186 C240 164 252 142 254 124 C256 102 250 84 236 70 Z" fill="#1e2840" stroke="none"/>
+  <!-- bandeau rouge -->
+  <path d="M88 96 C120 84 220 84 252 96 L252 112 C220 102 120 102 88 112 Z" fill="#e8322e"/>
+  <path d="M252 100 C276 92 296 100 304 116 C286 110 272 112 256 112 Z M254 108 C272 116 284 132 284 150 C272 136 262 126 252 120 Z" fill="#e8322e"/>
+  <!-- ouverture des yeux -->
+  <path d="M100 118 C120 108 220 108 240 118 L240 152 C220 162 120 162 100 152 Z" fill="#f6c9a0"/>
+  <path d="M118 134 C118 118 148 118 148 134 C148 150 118 150 118 134 Z" fill="#ffffff"/>
+  <path d="M192 134 C192 118 222 118 222 134 C222 150 192 150 192 134 Z" fill="#ffffff"/>
+  <ellipse cx="134" cy="136" rx="8" ry="10" fill="#3a2418" stroke="none"/><ellipse cx="208" cy="136" rx="8" ry="10" fill="#3a2418" stroke="none"/>
+  <circle cx="131" cy="131" r="3.5" fill="#ffffff" stroke="none"/><circle cx="205" cy="131" r="3.5" fill="#ffffff" stroke="none"/>
+</g>
+</svg>

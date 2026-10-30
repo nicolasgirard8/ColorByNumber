@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" data-id="hq-helico" data-name="Hélicoptère" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- rotor -->
+  <path d="M60 30 L360 30 L360 44 L60 44 Z" fill="#6b7280"/>
+  <path d="M200 44 L200 72" fill="none" stroke-width="10"/>
+  <path d="M190 24 L210 24 L210 50 L190 50 Z" fill="#2e2e38"/>
+  <!-- queue -->
+  <path d="M120 150 L20 128 L20 150 L120 182 Z" fill="#ff8a1e"/>
+  <path d="M6 96 L34 96 L34 164 L6 164 Z" fill="#ff8a1e"/>
+  <circle cx="20" cy="130" r="14" fill="#c9d2de"/>
+  <path d="M20 114 L20 146 M4 130 L36 130" fill="none" stroke-width="4"/>
+  <!-- cabine -->
+  <path d="M110 120 C110 84 160 70 220 70 C290 70 340 94 352 140 C360 176 336 206 290 206 L140 206 C120 206 110 190 110 170 Z" fill="#ff8a1e"/>
+  <path d="M112 180 C140 196 300 200 344 172 C336 196 316 206 290 206 L140 206 C124 206 114 196 112 180 Z" fill="#d96a00" stroke="none"/>
+  <!-- grande vitre -->
+  <path d="M240 86 C290 86 326 106 338 140 L240 140 Z" fill="#9fe2ff"/>
+  <path d="M254 96 L268 96 L254 124 Z" fill="#e6f8ff" stroke="none"/>
+  <path d="M150 92 L222 88 L222 140 L150 140 Z" fill="#9fe2ff"/>
+  <!-- pilote -->
+  <circle cx="286" cy="118" r="16" fill="#f6c9a0" stroke-width="3"/>
+  <path d="M270 114 C270 96 302 96 302 114 Z" fill="#ffffff" stroke-width="3"/>
+  <circle cx="292" cy="118" r="3" fill="#1b1b22" stroke="none"/>
+  <!-- porte et étoile -->
+  <path d="M232 140 L232 200" fill="none" stroke-width="3"/>
+  <path d="M180 154 L186 166 L200 167 L189 176 L193 190 L180 182 L167 190 L171 176 L160 167 L174 166 Z" fill="#ffffff" stroke-width="3"/>
+  <!-- patins -->
+  <path d="M170 206 L160 240 M290 206 L300 240" fill="none" stroke-width="7"/>
+  <path d="M110 240 L340 240 C350 240 356 234 358 226" fill="none" stroke-width="12"/>
+  <path d="M110 240 L340 240 C350 240 356 234 358 226" fill="none" stroke="#c9d2de" stroke-width="5"/>
+</g>
+</svg>

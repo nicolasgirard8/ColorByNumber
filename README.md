@@ -5,8 +5,8 @@ Choisis un dessin, sélectionne une couleur numérotée et touche les cases port
 
 ## Fonctionnalités
 
-- **Galerie** par thèmes : dinosaures, véhicules, police, soccer, hockey, animaux, espace, océan, aventure, et un onglet « Mes coloriages » (en cours et terminés).
-- **34 grands dessins originaux** de 80 à 100 cases de côté, tous au même niveau de qualité : style dessin animé, contour noir d'une case, grands yeux brillants, couleurs franches (8 à 18 numéros).
+- **Galerie** par thèmes : dinosaures, véhicules, police, soccer, hockey, sports, animaux, espace, océan, aventure, et un onglet « Mes coloriages » (en cours et terminés).
+- **52 grands dessins originaux** de 80 à 100 cases de côté, tous au même niveau de qualité : style dessin animé, contour noir d'une case, grands yeux brillants, couleurs franches (8 à 18 numéros).
 - **Coloriage au doigt ou à la souris** : un appui colorie une case, un glissé déplace l'image ; garde le doigt appuyé un instant puis glisse pour colorier plusieurs cases d'un coup (un rond de la couleur choisie entoure alors le doigt).
 - **Zoom** : pincement à deux doigts, molette, boutons ＋ / － / ⤢ ; un appui sur un dessin trop petit zoome directement dessus.
 - Les cases de la couleur choisie sont **bien visibles** : bord de la vraie couleur, centre pâle qui pulse doucement, même dézoomé ; les autres cases s'estompent. Une couleur ne peut colorier que les cases de son propre numéro.

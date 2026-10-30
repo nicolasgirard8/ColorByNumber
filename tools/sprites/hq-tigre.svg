@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 360" data-id="hq-tigre" data-name="Bébé tigre" data-cat="animaux" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- queue -->
+  <path d="M222 286 C262 282 286 254 284 216 C284 206 272 204 270 214 C270 244 252 264 216 268 Z" fill="#ff9a2e"/>
+  <path d="M276 228 L288 226 M272 248 L284 250 M260 266 L268 274" fill="none" stroke-width="6"/>
+  <!-- pattes arrière -->
+  <path d="M90 300 C70 304 66 336 88 342 L126 342 C138 340 138 324 126 318 L124 296 Z" fill="#ff9a2e"/>
+  <path d="M196 296 L194 318 C182 324 182 340 194 342 L232 342 C254 336 250 304 230 300 Z" fill="#ff9a2e"/>
+  <!-- corps -->
+  <path d="M86 236 C80 290 106 318 160 318 C214 318 240 290 234 236 C228 198 92 198 86 236 Z" fill="#ff9a2e"/>
+  <path d="M128 232 C120 270 132 306 160 308 C188 306 200 270 192 232 Z" fill="#fff6ea"/>
+  <path d="M90 240 L112 246 M88 262 L114 264 M90 284 L114 282 M230 240 L208 246 M232 262 L206 264 M230 284 L206 282" fill="none" stroke-width="6"/>
+  <!-- pattes avant -->
+  <path d="M118 270 L114 330 C112 344 150 346 150 332 L150 274 Z" fill="#ff9a2e"/>
+  <path d="M170 274 L170 332 C170 346 208 344 206 330 L202 270 Z" fill="#ff9a2e"/>
+  <path d="M126 342 L126 334 M138 343 L138 335 M182 343 L182 335 M194 342 L194 334" fill="none" stroke-width="3"/>
+  <!-- oreilles -->
+  <path d="M74 90 C60 60 72 34 98 34 C116 36 124 52 124 64 Z" fill="#ff9a2e"/>
+  <path d="M246 90 C260 60 248 34 222 34 C204 36 196 52 196 64 Z" fill="#ff9a2e"/>
+  <path d="M86 78 C80 62 86 48 100 48 C108 50 112 58 112 64 Z" fill="#ffd0b0" stroke="none"/>
+  <path d="M234 78 C240 62 234 48 220 48 C212 50 208 58 208 64 Z" fill="#ffd0b0" stroke="none"/>
+  <!-- tête -->
+  <path d="M160 48 C232 48 258 96 252 142 C246 186 208 206 160 206 C112 206 74 186 68 142 C62 96 88 48 160 48 Z" fill="#ff9a2e"/>
+  <!-- rayures -->
+  <path d="M146 52 L150 76 M160 50 L160 82 M174 52 L170 76" fill="none" stroke-width="6"/>
+  <path d="M70 120 L94 124 M68 144 L90 142 M250 120 L226 124 M252 144 L230 142" fill="none" stroke-width="6"/>
+  <!-- museau -->
+  <path d="M110 162 C110 130 210 130 210 162 C210 198 110 198 110 162 Z" fill="#fff6ea"/>
+  <path d="M146 146 C146 136 174 136 174 146 C174 156 166 160 160 162 C154 160 146 156 146 146 Z" fill="#ff6f8e" stroke-width="3.5"/>
+  <path d="M160 162 L160 168" fill="none" stroke-width="3.5"/>
+  <path d="M140 168 C146 190 174 190 180 168 Z" fill="#a8234e" stroke-width="3.5"/>
+  <path d="M150 180 C156 176 164 176 170 180 C164 186 156 186 150 180 Z" fill="#ff6f8e" stroke="none"/>
+  <!-- yeux -->
+  <path d="M104 112 C104 88 140 88 140 112 C140 138 104 138 104 112 Z" fill="#ffffff"/>
+  <path d="M180 112 C180 88 216 88 216 112 C216 138 180 138 180 112 Z" fill="#ffffff"/>
+  <ellipse cx="124" cy="115" rx="11" ry="14" fill="#2a7a3a" stroke="none"/><ellipse cx="196" cy="115" rx="11" ry="14" fill="#2a7a3a" stroke="none"/>
+  <ellipse cx="124" cy="117" rx="6" ry="9" fill="#1b1b22" stroke="none"/><ellipse cx="196" cy="117" rx="6" ry="9" fill="#1b1b22" stroke="none"/>
+  <circle cx="119" cy="107" r="4.5" fill="#ffffff" stroke="none"/><circle cx="191" cy="107" r="4.5" fill="#ffffff" stroke="none"/>
+  <ellipse cx="96" cy="160" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="224" cy="160" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

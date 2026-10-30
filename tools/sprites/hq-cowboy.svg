@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" data-id="hq-cowboy" data-name="Petit cowboy" data-cat="aventure" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <path d="M126 290 L124 330 L162 330 L162 290 Z" fill="#3a6fe0"/>
+  <path d="M178 290 L178 330 L216 330 L214 290 Z" fill="#3a6fe0"/>
+  <path d="M118 316 L164 316 L166 350 L106 350 C102 342 108 334 118 332 Z" fill="#8a4b22"/>
+  <path d="M176 316 L222 316 L222 332 C232 334 238 342 234 350 L174 350 Z" fill="#8a4b22"/>
+  <path d="M102 354 L170 354 M170 354 L238 354" fill="none" stroke-width="6"/>
+  <!-- chemise et gilet -->
+  <path d="M112 196 C100 232 104 276 112 296 L228 296 C236 276 240 232 228 196 C208 182 132 182 112 196 Z" fill="#e8322e"/>
+  <path d="M112 196 C104 232 106 276 112 296 L146 296 L146 200 Z" fill="#c88a3a"/>
+  <path d="M228 196 C236 232 234 276 228 296 L194 296 L194 200 Z" fill="#c88a3a"/>
+  <path d="M110 274 L230 274 L230 290 L110 290 Z" fill="#5a3418"/>
+  <rect x="158" y="272" width="24" height="20" rx="3" fill="#ffc21a" stroke-width="3"/>
+  <!-- étoile de shérif -->
+  <path d="M212 216 L216 226 L227 227 L219 234 L221 245 L212 239 L203 245 L205 234 L197 227 L208 226 Z" fill="#ffc21a" stroke-width="3"/>
+  <!-- foulard -->
+  <path d="M138 196 L202 196 L170 222 Z" fill="#3aa0e0"/>
+  <!-- bras -->
+  <path d="M226 204 C244 196 252 188 254 174" fill="none" stroke-width="22"/><path d="M226 204 C244 196 252 188 254 174" fill="none" stroke="#e8322e" stroke-width="14"/>
+  <circle cx="254" cy="168" r="13" fill="#f6c9a0"/>
+  <path d="M114 206 C94 220 90 244 102 260" fill="none" stroke-width="22"/><path d="M114 206 C94 220 90 244 102 260" fill="none" stroke="#e8322e" stroke-width="14"/>
+  <circle cx="104" cy="266" r="13" fill="#f6c9a0"/>
+  <!-- tête -->
+  <path d="M170 60 C232 60 256 96 254 132 C252 172 220 194 170 194 C120 194 88 172 86 132 C84 96 108 60 170 60 Z" fill="#f6c9a0"/>
+  <path d="M90 112 C100 96 120 92 136 100 C150 92 190 92 204 100 C220 92 240 96 250 112 L250 96 L90 96 Z" fill="#c8641e"/>
+  <!-- chapeau -->
+  <path d="M20 96 C60 112 280 112 320 96 C318 108 300 120 270 122 L70 122 C40 120 22 108 20 96 Z" fill="#a8622a"/>
+  <path d="M104 100 C100 60 110 20 140 24 C152 26 160 34 170 34 C180 34 188 26 200 24 C230 20 240 60 236 100 Z" fill="#c88a3a"/>
+  <path d="M104 86 L236 86 L236 100 L104 100 Z" fill="#5a3418"/>
+  <!-- visage -->
+  <path d="M112 142 C112 120 144 120 144 142 C144 164 112 164 112 142 Z" fill="#ffffff"/>
+  <path d="M196 142 C196 120 228 120 228 142 C228 164 196 164 196 142 Z" fill="#ffffff"/>
+  <ellipse cx="129" cy="145" rx="9" ry="12" fill="#3a2418" stroke="none"/><ellipse cx="213" cy="145" rx="9" ry="12" fill="#3a2418" stroke="none"/>
+  <circle cx="125" cy="138" r="4" fill="#ffffff" stroke="none"/><circle cx="209" cy="138" r="4" fill="#ffffff" stroke="none"/>
+  <path d="M150 166 C156 186 184 186 190 166 Z" fill="#a8234e" stroke-width="3.5"/>
+  <ellipse cx="108" cy="168" rx="10" ry="6" fill="#ff9fb2" stroke="none"/><ellipse cx="232" cy="168" rx="10" ry="6" fill="#ff9fb2" stroke="none"/>
+</g>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250" data-id="hq-course" data-name="Voiture de course" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- aileron arrière -->
+  <path d="M10 50 L84 50 L84 74 L10 74 Z" fill="#ffc21a"/>
+  <path d="M38 74 L42 118 L62 118 L58 74 Z" fill="#2e2e38"/>
+  <!-- carrosserie bombée -->
+  <path d="M30 116 C40 100 90 96 130 96 C150 66 186 56 222 60 C246 64 260 80 268 98 C320 102 372 116 390 146 C394 156 394 168 388 176 L20 176 C12 176 8 170 8 162 L8 138 C8 126 18 118 30 116 Z" fill="#e8322e"/>
+  <path d="M8 156 L392 156 C392 166 390 172 388 176 L20 176 C12 176 8 170 8 162 Z" fill="#b8201e" stroke="none"/>
+  <!-- bandes blanches -->
+  <path d="M268 100 C320 104 360 116 380 132 L370 140 C350 126 314 116 266 114 Z" fill="#ffffff" stroke-width="3"/>
+  <path d="M20 128 L130 118 L134 134 L16 144 Z" fill="#ffffff" stroke-width="3"/>
+  <!-- étoile -->
+  <path d="M190 112 L197 126 L212 128 L201 138 L204 153 L190 146 L176 153 L179 138 L168 128 L183 126 Z" fill="#ffc21a" stroke-width="3"/>
+  <!-- cockpit et pilote -->
+  <path d="M146 98 C156 76 196 68 222 72 C236 76 246 86 252 98 Z" fill="#9fe2ff"/>
+  <circle cx="198" cy="74" r="26" fill="#3a8bff"/>
+  <path d="M178 70 C178 60 218 60 218 70 L218 84 C218 92 178 92 178 84 Z" fill="#1e2a4a" stroke-width="3"/>
+  <path d="M186 70 L196 70" fill="none" stroke="#9fe2ff" stroke-width="4"/>
+  <path d="M176 54 C186 44 210 44 220 54" fill="none" stroke="#ffffff" stroke-width="5"/>
+  <!-- phare -->
+  <path d="M372 142 L392 148 L392 162 L370 158 Z" fill="#ffe066"/>
+  <!-- roues -->
+  <circle cx="90" cy="176" r="46" fill="#2e2e38"/><circle cx="90" cy="176" r="22" fill="#c9d2de"/><circle cx="90" cy="176" r="8" fill="#6b7280"/>
+  <circle cx="314" cy="176" r="46" fill="#2e2e38"/><circle cx="314" cy="176" r="22" fill="#c9d2de"/><circle cx="314" cy="176" r="8" fill="#6b7280"/>
+</g>
+</svg>

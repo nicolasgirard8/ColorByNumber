@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 380" data-id="hq-basket" data-name="Joueur de basket" data-cat="sports" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- ballon levé -->
+  <circle cx="276" cy="66" r="38" fill="#ff8a2e"/>
+  <path d="M238 66 L314 66 M276 28 L276 104 M248 40 C262 56 262 76 248 92 M304 40 C290 56 290 76 304 92" fill="none" stroke-width="3.5"/>
+  <!-- jambes et baskets -->
+  <path d="M126 290 L124 330 L160 330 L160 290 Z" fill="#c88a5a"/>
+  <path d="M180 290 L180 330 L216 330 L214 290 Z" fill="#c88a5a"/>
+  <path d="M124 314 L160 314 L160 330 L124 330 Z M180 314 L216 314 L216 330 L180 330 Z" fill="#ffffff" stroke-width="3"/>
+  <path d="M112 330 C112 320 164 320 166 330 L166 354 L106 354 C104 346 106 338 112 330 Z" fill="#e8322e"/>
+  <path d="M174 330 C176 320 228 320 228 330 C232 338 234 346 232 354 L174 354 Z" fill="#e8322e"/>
+  <!-- short -->
+  <path d="M108 248 L232 248 L238 300 L176 304 L170 284 L164 304 L102 300 Z" fill="#7a3ad0"/>
+  <path d="M110 260 L230 260" fill="none" stroke="#ffc21a" stroke-width="5"/>
+  <!-- maillot -->
+  <path d="M116 196 C108 220 108 240 110 256 L230 256 C232 240 232 220 224 196 C204 184 136 184 116 196 Z" fill="#7a3ad0"/>
+  <path d="M140 192 C150 208 190 208 200 192" fill="#ffc21a"/>
+  <path d="M170 212 L177 226 L192 228 L181 238 L184 253 L170 246 L156 253 L159 238 L148 228 L163 226 Z" fill="#ffc21a" stroke-width="3"/>
+  <!-- bras -->
+  <path d="M224 204 C246 188 258 160 262 126" fill="none" stroke-width="22"/><path d="M224 204 C246 188 258 160 262 126" fill="none" stroke="#c88a5a" stroke-width="14"/>
+  <path d="M116 204 C94 214 82 236 88 258" fill="none" stroke-width="22"/><path d="M116 204 C94 214 82 236 88 258" fill="none" stroke="#c88a5a" stroke-width="14"/>
+  <circle cx="90" cy="264" r="13" fill="#c88a5a"/>
+  <!-- tête -->
+  <path d="M170 46 C232 46 256 86 254 126 C252 168 220 194 170 194 C120 194 88 168 86 126 C84 86 108 46 170 46 Z" fill="#c88a5a"/>
+  <!-- cheveux frisés -->
+  <path d="M88 112 C76 70 110 34 170 34 C230 34 264 70 252 112 C240 100 230 96 220 98 C214 86 196 84 186 92 C176 82 156 82 148 92 C138 84 120 88 116 100 C104 96 94 102 88 112 Z" fill="#2e2018"/>
+  <!-- bandeau -->
+  <path d="M88 96 C130 82 210 82 252 96 L252 112 C210 100 130 100 88 112 Z" fill="#ffffff"/>
+  <!-- visage -->
+  <path d="M112 136 C112 114 144 114 144 136 C144 158 112 158 112 136 Z" fill="#ffffff"/>
+  <path d="M196 136 C196 114 228 114 228 136 C228 158 196 158 196 136 Z" fill="#ffffff"/>
+  <ellipse cx="129" cy="139" rx="9" ry="12" fill="#2e2018" stroke="none"/><ellipse cx="213" cy="139" rx="9" ry="12" fill="#2e2018" stroke="none"/>
+  <circle cx="125" cy="132" r="4" fill="#ffffff" stroke="none"/><circle cx="209" cy="132" r="4" fill="#ffffff" stroke="none"/>
+  <path d="M146 160 C152 182 188 182 194 160 Z" fill="#7a1f2e" stroke-width="3.5"/>
+  <path d="M156 172 C162 168 178 168 184 172 C178 178 162 178 156 172 Z" fill="#ff6f8e" stroke="none"/>
+</g>
+</svg>

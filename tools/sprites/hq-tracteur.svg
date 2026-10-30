@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" data-id="hq-tracteur" data-name="Tracteur" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- cheminée -->
+  <path d="M286 122 L286 64 L304 64 L304 122 Z" fill="#6b7280"/>
+  <path d="M280 64 L310 64 L310 54 L280 54 Z" fill="#2e2e38"/>
+  <circle cx="320" cy="34" r="12" fill="#e6ecf4" stroke-width="3"/><circle cx="340" cy="16" r="8" fill="#e6ecf4" stroke-width="3"/>
+  <!-- capot -->
+  <path d="M190 122 L360 122 C376 122 386 132 386 148 L386 206 L190 206 Z" fill="#33b54a"/>
+  <path d="M190 186 L386 186 L386 206 L190 206 Z" fill="#228a36" stroke="none"/>
+  <path d="M220 140 L360 140 M220 156 L360 156 M220 172 L360 172" fill="none" stroke="#228a36" stroke-width="5"/>
+  <path d="M372 140 L388 140 L388 158 L372 158 Z" fill="#ffe066"/>
+  <!-- cabine -->
+  <path d="M60 40 L200 40 L200 206 L60 206 Z" fill="#33b54a"/>
+  <path d="M50 30 L210 30 L210 46 L50 46 Z" fill="#ffc21a"/>
+  <path d="M80 60 L182 60 L182 140 L80 140 Z" fill="#9fe2ff"/>
+  <path d="M92 70 L108 70 L92 100 Z" fill="#e6f8ff" stroke="none"/>
+  <!-- fermier -->
+  <circle cx="140" cy="112" r="20" fill="#f6c9a0" stroke-width="3"/>
+  <path d="M112 100 L168 100 L168 92 C168 78 112 78 112 92 Z" fill="#c88a3a" stroke-width="3"/>
+  <path d="M104 100 L176 100" fill="none" stroke-width="5"/>
+  <path d="M130 120 C134 128 146 128 150 120 Z" fill="#a8234e" stroke-width="2.5"/>
+  <circle cx="132" cy="110" r="3" fill="#1b1b22" stroke="none"/><circle cx="148" cy="110" r="3" fill="#1b1b22" stroke="none"/>
+  <!-- grande roue arrière -->
+  <circle cx="110" cy="210" r="74" fill="#2e2e38"/>
+  <circle cx="110" cy="210" r="44" fill="#ffc21a"/>
+  <circle cx="110" cy="210" r="14" fill="#e09a00"/>
+  <path d="M110 136 L110 150 M110 270 L110 284 M36 210 L50 210 M170 210 L184 210 M58 158 L68 168 M152 252 L162 262 M58 262 L68 252 M152 168 L162 158" fill="none" stroke="#4a4a58" stroke-width="8"/>
+  <!-- petite roue avant -->
+  <circle cx="324" cy="236" r="48" fill="#2e2e38"/>
+  <circle cx="324" cy="236" r="26" fill="#ffc21a"/>
+  <circle cx="324" cy="236" r="9" fill="#e09a00"/>
+</g>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" data-id="hq-benne" data-name="Camion-benne" data-cat="vehicules" data-size="100" data-noshade="1" data-weights="#ffffff:4">
+<g stroke="#1b1b22" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+  <!-- roches dans la benne -->
+  <circle cx="70" cy="70" r="22" fill="#a8703a"/><circle cx="110" cy="58" r="26" fill="#8a5a2a"/>
+  <circle cx="152" cy="70" r="20" fill="#c98a4a"/><circle cx="190" cy="64" r="22" fill="#a8703a"/>
+  <!-- benne -->
+  <path d="M20 76 L232 76 L222 170 L36 170 Z" fill="#ffc21a"/>
+  <path d="M30 150 L226 150 L222 170 L36 170 Z" fill="#e09a00" stroke="none"/>
+  <path d="M60 90 L58 156 M100 90 L98 156 M140 90 L140 156 M180 90 L182 156" fill="none" stroke="#e09a00" stroke-width="6"/>
+  <!-- châssis -->
+  <path d="M20 170 L390 170 L390 190 L20 190 Z" fill="#2e2e38"/>
+  <!-- cabine -->
+  <path d="M248 70 L330 70 C344 70 352 78 356 90 L372 130 L384 132 C392 134 394 140 394 148 L394 178 L248 178 Z" fill="#ffc21a"/>
+  <path d="M248 156 L394 156 L394 178 L248 178 Z" fill="#e09a00" stroke="none"/>
+  <path d="M266 86 L326 86 C334 86 338 90 342 98 L356 130 L266 130 Z" fill="#9fe2ff"/>
+  <path d="M276 94 L290 94 L276 120 Z" fill="#e6f8ff" stroke="none"/>
+  <!-- conducteur -->
+  <circle cx="314" cy="114" r="16" fill="#d9a27a" stroke-width="3"/>
+  <path d="M296 110 C296 92 332 92 332 110 Z" fill="#ff7a1e" stroke-width="3"/>
+  <circle cx="320" cy="114" r="3" fill="#1b1b22" stroke="none"/>
+  <path d="M374 140 L394 140 L394 154 L374 154 Z" fill="#ffe066"/>
+  <path d="M270 60 L270 70 L290 70 L290 60 Z" fill="#ff7a1e"/>
+  <!-- roues -->
+  <circle cx="80" cy="196" r="38" fill="#2e2e38"/><circle cx="80" cy="196" r="17" fill="#c9d2de"/>
+  <circle cx="170" cy="196" r="38" fill="#2e2e38"/><circle cx="170" cy="196" r="17" fill="#c9d2de"/>
+  <circle cx="334" cy="196" r="38" fill="#2e2e38"/><circle cx="334" cy="196" r="17" fill="#c9d2de"/>
+</g>
+</svg>
