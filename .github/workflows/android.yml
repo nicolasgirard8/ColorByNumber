@@ -1,0 +1,58 @@
+# Construit l'application Android (Google Play, Amazon Appstore) à chaque envoi.
+# Résultats dans l'onglet « Actions » > ce workflow > « Artifacts » :
+#   - pixel-coloriage-debug.apk : à installer directement sur une tablette pour essayer ;
+#   - pixel-coloriage-release.aab : à téléverser sur Google Play ;
+#   - pixel-coloriage-release.apk : à téléverser sur l'Amazon Appstore.
+# La version « release » est signée seulement si les secrets de la clé existent (voir STORES.md).
+name: Android
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEY: ${{ secrets.KEYSTORE_BASE64 != '' }}
+      VERSION_CODE: ${{ github.run_number }}
+      VERSION_NAME: 1.0.${{ github.run_number }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      # Le SDK Android est déjà installé sur les runners Ubuntu (ANDROID_HOME).
+      - name: Version web des stores et synchronisation Capacitor
+        run: |
+          npm ci
+          npm run android:sync
+      - name: Clé de signature
+        if: env.HAS_KEY == 'true'
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > "$RUNNER_TEMP/release.jks"
+          echo "KEYSTORE_FILE=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
+          echo "KEYSTORE_PASSWORD=${{ secrets.KEYSTORE_PASSWORD }}" >> "$GITHUB_ENV"
+          echo "KEY_ALIAS=${{ secrets.KEY_ALIAS }}" >> "$GITHUB_ENV"
+          echo "KEY_PASSWORD=${{ secrets.KEY_PASSWORD }}" >> "$GITHUB_ENV"
+      - name: Construction
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew --no-daemon assembleDebug assembleRelease bundleRelease
+          mkdir -p ../out
+          cp app/build/outputs/apk/debug/app-debug.apk ../out/pixel-coloriage-debug.apk
+          cp app/build/outputs/bundle/release/app-release.aab ../out/pixel-coloriage-release.aab
+          cp app/build/outputs/apk/release/app-release*.apk ../out/pixel-coloriage-release.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pixel-coloriage-${{ env.VERSION_NAME }}
+          path: out/
